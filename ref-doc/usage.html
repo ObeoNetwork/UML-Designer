@@ -17,6 +17,14 @@
   <!-- Add custom CSS here -->
   <link href="../css/style.css" rel="stylesheet">
   <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
 </head>
 
 
@@ -32,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href="..">UML Designer</a>
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -143,6 +151,14 @@
       	    	
             
             	
+      	    	<li><a href="../developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -218,26 +234,26 @@
 </nav>
 
 
-  <div class="container">
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Usage <small>Reference Documentation</small></h1>
-      
-      <ol class="breadcrumb">
-        <li><a href="../index.html">Home</a></li>
-        <li class="active">Usage</li>
-      </ol>
+      <h1 class="page-header">Usage <small class="green1">Reference Documentation</small></h1>
     </div>
   </div>
-  
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
       <p><span class="caps">UML</span> Designer provides a <em>Usage</em> plugin which when installed and enabled will help us gather anonymous statistics about how the <span class="caps">UML</span> Designer is being used.</p>
 <p>All the data is gathered anonymously and can at any time be disabled if you wish.</p>
-<h1>What will we use the data for ?</h1>
+<h2>What will we use the data for ?</h2>
 <p>With this enabled we can start seeing better how and where <span class="caps">UML</span> Designer is being used; we are especially currently interested in seeing what OS&#8217;s are being used, which type of diagrams are used.</p>
 <p>Over time we hope to learn more to help continuously improve <span class="caps">UML</span> Designer.</p>
-<h1>How to enable/disable usage tracking ?</h1>
+<h2>How to enable/disable usage tracking ?</h2>
 <p>If you have the plugin installed, then on the first start of this Eclipse a dialog will pop up asking you to send anonymous usage statistics.<br />
 <img src="../images/UMLDesignerUsageDialog.png" alt="" /></p>
 <p>If you do not want to send anonymous usage statistics, click on <em>No</em> button in dialog.<br />
@@ -245,7 +261,7 @@ If you close the dialog, no usage statistics will be collected but the dialog wi
 If you just press <em>Yes</em> then usage statistics for <span class="caps">UML</span> Designer is enabled.</p>
 <p>If you later on decide to not send statistics anymore or want to enable it, simply goto the <em>Preferences &gt; Viewpoint &gt; Usage</em> Preferences.<br />
 <img src="../images/UMLDesignerUsagePreferences.png" alt="" /></p>
-<h1>How it works ?</h1>
+<h2>How it works ?</h2>
 <p>When the user has enabled reporting anonymous statistics the plugin uses Google Analytics to track data as though you visited a page under https://github.com/ObeoNetwork/<span class="caps">UML</span>-Modeling/wiki/usage/.</p>
 <p>The information collected is similar/equal to what is possible to collect when you visit a website, including your IP address, and may be transferred to the United States and other countries.</p>
 <p>We do tweak a few things to track more Eclipse oriented things; i.e. instead of Browser name we use the Eclipse product ID and instead of Browser version we use the version of Eclipse core runtime plugin.</p>
@@ -257,18 +273,17 @@ The <span class="caps">UML</span> Designer Usage plugin is based on the <a href=
   </div>
 </div><!-- /.container -->
 
+</div><!-- /#mainbody -->
 
-  <div class="container">
-  <hr>
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
-      </div>
-    </div>
-  </footer>
-</div><!-- /.container -->
-
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
 <!-- JavaScript -->
 <script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/bootstrap.js"></script>

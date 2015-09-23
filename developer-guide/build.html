@@ -17,6 +17,14 @@
   <!-- Add custom CSS here -->
   <link href="../css/style.css" rel="stylesheet">
   <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
 </head>
 
 
@@ -32,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href="..">UML Designer</a>
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -143,6 +151,14 @@
       	    	
             
             	
+      	    	<li><a href="../developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -218,25 +234,22 @@
 </nav>
 
 
-  <div class="container">
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Build <small>developer guide</small></h1>
-      
-      <ol class="breadcrumb">
-        <li><a href="../index.html">Home</a></li>
-        <li class="active">Build</li>
-      </ol>
+      <h1 class="page-header">Build <small class="green1">developer guide</small></h1>
     </div>
   </div>
-  
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Building <span class="caps">UML</span> Designer update-site</h1>
-<p><strong><a href="https://github.com/ObeoNetwork/SysML-Designer">SysML Designer</a></strong> extends <strong><span class="caps">UML</span> Designer</strong> and deals with systems engineering applications.<br />
-<span class="caps">UML</span> Designer and SysML Designer are both provided as Eclipse plugins but only <span class="caps">UML</span> Designer is included in the <strong><span class="caps">UML</span> Designer Product</strong>.</p>
-<p>The schema below explains dependencies:</p>
-<p><img src="../images/UmlProductDependencies.png" alt="" /></p>
+      <h2>Building <span class="caps">UML</span> Designer update-site</h2>
+<p><span class="caps">UML</span> Designer and SysML Designer are both provided as Eclipse plugins but only <span class="caps">UML</span> Designer is included in the <strong><span class="caps">UML</span> Designer Product</strong>.</p>
 <p>You’ll need Apache Maven 3 to be installed on your computer and you must have <a href="../developer-guide/contribute.html#Get_source_code">cloned the <span class="caps">UML</span> Designer github repository</a> on your computer.<br />
 To launch the build, go to the root of the git repository and type :</p>
 <p><code>mvn clean package</code></p>
@@ -247,9 +260,9 @@ To launch the build, go to the root of the git repository and type :</p>
 <p><code>mvn clean verify</code></p>
 <p>Maven will launch the tests and give you the result. <br />
 Code coverage is captured thanks to Jacoco.</p>
-<p>This command build:</p>
+<p>This command builds:</p>
 <p><img src="../images/UMLDesignerBuildPlugins.png" alt="" /></p>
-<h1>Build a product</h1>
+<h2>Building <span class="caps">UML</span> Designer product</h2>
 <p>We have a dedicated command for the product.</p>
 <p><code>mvn clean package -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml</code></p>
 <blockquote>
@@ -257,10 +270,8 @@ Code coverage is captured thanks to Jacoco.</p>
 </blockquote>
 <p>This command build:</p>
 <p><img src="../images/UMLDesignerBuildProduct.png" alt="" /></p>
-<p>We can specify the previous <span class="caps">UML</span> Designer update-site:<br />
-<code>... -Duml-site=file:./packaging/org.obeonetwork.dsl.uml2.update/target/repository</code></p>
-<h1>Maven Tycho</h1>
-<p>Technically, we use Maven Tycho (0.19.0) to build these Eclipse artifacts.</p>
+<h2>Maven Tycho</h2>
+<p>Technically, we use Maven Tycho to build these Eclipse artifacts.</p>
 <p>To reuse a maximum of properties and maven configurations, we have a hierarchy of parents.<br />
 All <span class="caps">UML</span> designer plugins/features/update-sites refers to a dedicated parent:<br />
 <img src="../images/UMLDesignerMavenStructure.png" alt="" /></p>
@@ -283,30 +294,50 @@ All <span class="caps">UML</span> designer plugins/features/update-sites refers 
         ...
     <span class="nt">&lt;/project&gt;</span>
 </code></pre></div></p>
-<h1>Continuous integration</h1>
-<p>Four continuous integration builds exist to build <span class="caps">UML</span>/SysML Designer.</p>
+<h2>Continuous integration</h2>
+<p>Two continuous integration builds exist to build <span class="caps">UML</span> Designer. These builds run on <a href="https://travis-ci.org/">Travis-ci</a>.</p>
+<h3 id="Build"><span class="caps">UML</span>-Designer build</h3>
+<h4>Building branches</h4>
+<p>This Travis &#8220;build&#8221;: https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer/ is used to :</p>
 <ul>
-	<li>The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> is used to generate the documentation and update the gh-pages.</li>
-	<li>The <a href="https://build.obeonetwork.com/hudson/job/UML—master/">Hudson build <span class="caps">UML</span> master</a> is in charge of the creation of the <span class="caps">UML</span> Designer Update site.</li>
-	<li>The <a href="https://build.obeonetwork.com/hudson/job/UMLProduct--master/">Hudson build <span class="caps">UML</span> product master</a> is in charge of the creation of the <span class="caps">UML</span> Designer Product.</li>
-	<li>The <a href="https://build.obeonetwork.com/hudson/job/SysML--master/">Hudson build SysML master</a> is in charge of the creation of the SysML Designer Update site.</li>
+	<li>generate the documentation,</li>
+	<li>update the gh-pages (umldesigner.org web site),</li>
+	<li>create the <span class="caps">UML</span> Designer update site and products.</li>
 </ul>
+<p>This build deploys automatically the build artifacts on <a href="http://aws.amazon.com/fr/s3/">S3</a> : <a href="http://umldesigner.s3.amazonaws.co">http://umldesigner.s3.amazonaws.com</a></p>
+<p>The build is configured thanks to the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/.travis.yml"><code>.travis.yml</code></a> file.</p>
+<p>Each time a commit is integrated on the github repository a nightly build is executed and the resulting update-site and products are deployed on s3:<br />
+http://s3.amazonaws.com/umldesigner/nightly/$BRANCH_NAME.</p>
+<p>The build deploys in S3 <code>umldesigner</code> bucket:</p>
+<ul>
+	<li>the <code>repository</code> folder: the <span class="caps">UML</span> Designer nightly update site.</li>
+	<li>the <code>org.obeonetwork.dsl.uml2.update-nightly.zip</code> : a zip of the nightly update site.</li>
+	<li>the <code>bundles</code> folder: the nightly products.</li>
+	<li>the <code>umldesigner-xxx.tpd</code>: the target platform used to build the update site and products.</li>
+</ul>
+<p>The deploy phase is active only for specific branches: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master"><code>master</code></a>, <a href="https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x"><code>5.0.x</code></a>.</p>
+<p>The <a href="http://www.umldesigner.org">umldesigner.org</a> web site is also updated and deployed thanks to this build. For more details about the web site have a look to the <a href="../developer-guide/documentation.html">documentation section</a> of the developer guide.</p>
+<h4>Pull-requests</h4>
+<p>When a pull request is sent, a build is automatically launched. In this case, the deploy phase and the web site updates phases are not performed. The pull request build results is directly <a href="http://blog.travis-ci.com/2012-09-04-pull-requests-just-got-even-more-awesome/">visible in the github interface</a>.</p>
+<h3 id="UI_Tests_build"><span class="caps">UML</span>-Designer-UI-Tests build</h3>
+<p>The Travis &#8220;UI tests build&#8221;: https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer-UI-Tests is used to launch the UI tests.<br />
+This build deploys the tests results on S3: <br />
+http://s3.amazonaws.com/umldesigner/nightly/$BRANCH_NAME/test-results/$JOB_NUMBER.</p>
     </div>
   </div>
 </div><!-- /.container -->
 
+</div><!-- /#mainbody -->
 
-  <div class="container">
-  <hr>
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
-      </div>
-    </div>
-  </footer>
-</div><!-- /.container -->
-
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
 <!-- JavaScript -->
 <script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/bootstrap.js"></script>

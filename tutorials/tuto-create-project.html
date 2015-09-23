@@ -17,6 +17,14 @@
   <!-- Add custom CSS here -->
   <link href="../css/style.css" rel="stylesheet">
   <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
 </head>
 
 
@@ -32,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href="..">UML Designer</a>
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -143,6 +151,14 @@
       	    	
             
             	
+      	    	<li><a href="../developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -218,60 +234,30 @@
 </nav>
 
 
-  <div class="container">
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
   <div class="row">
-    <div class="col-md-3 col-sm-4 sidebar">
-      <ul class="nav nav-stacked nav-pills">
-      
-        
-      
-        
-      
-        
-          
-        <li><a href="../tutorials/tuto-getting-started.html">Getting started</a></li>
-          
-        <li><a href="../tutorials/tuto-create-project.html">Create project</a></li>
-          
-        <li><a href="../tutorials/tuto-create-representation.html">Create representation</a></li>
-          
-        <li><a href="../tutorials/tuto-import-model.html">Import model</a></li>
-          
-        <li><a href="../tutorials/tuto-start-example.html">Open example</a></li>
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-      </ul>
+    <div class="col-lg-12">
+      <h1 class="page-header">Create a project <small class="green1">Tutorial</small></h1>
     </div>
-    
-    <div class="col-md-9 col-sm-8">
-      <h1 class="page-header">Create a project <small>Tutorial</small></h1>
-      
-      <ol class="breadcrumb">
-        <li><a href="../index.html">Home</a></li>
-        <li class="active">Create a project</li>
-      </ol>
-      
+  </div>
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
       <p>Learn how to create a minimal working <span class="caps">UML</span> project that can be enriched later.</p>
-<h1>Go to the &#8216;Modeling&#8217; perspective</h1>
+<h2>Go to the &#8216;Modeling&#8217; perspective</h2>
 <p>First make sure you are in the &#8216;Modeling&#8217; perspective.<br />
 If the &#8217;Modeling&#8217;perspective is not active, in the title bar select Window &gt; Open Perspective &gt; Other &gt; Modeling</p>
-<h1>Create the project</h1>
+<h2>Create the project</h2>
 <p>First, you need to create an <span class="caps">UML</span> Project.<br />
 In the title bar, select File &gt; New &gt; <span class="caps">UML</span> Project.<br />
 Enter the name of the new project and hit &#8216;Next&#8217;.<br />
 On the next page, select &#8216;Model&#8217; as type for the <span class="caps">UML</span> model root element, and then &#8216;Finish&#8217;.</p>
-<h1>Fill the <span class="caps">UML</span> Model</h1>
+<h2>Fill the <span class="caps">UML</span> Model</h2>
 <p>In the &#8216;Model Explorer&#8217; view a new project was created. The project created is a complete Eclipse plug-in project, and contains :</p>
 <ul>
 	<li>&#8216;Project Dependencies&#8217;, where you can add external dependencies you rely on, i.e. models you will depend on but which are stored outside of the project.</li>
@@ -280,22 +266,20 @@ On the next page, select &#8216;Model&#8217; as type for the <span class="caps">
 	<li>Refer to the <span class="caps">UML</span> Designer <em>User Guide</em> to learn how to create elements and representations.</li>
 </ul>
     </div>
-
-  </div><!-- /.row -->
+  </div>
 </div><!-- /.container -->
 
+</div><!-- /#mainbody -->
 
-  <div class="container">
-  <hr>
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
-      </div>
-    </div>
-  </footer>
-</div><!-- /.container -->
-
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
 <!-- JavaScript -->
 <script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/bootstrap.js"></script>

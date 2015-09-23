@@ -17,6 +17,14 @@
   <!-- Add custom CSS here -->
   <link href="./css/style.css" rel="stylesheet">
   <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
 </head>
 
 
@@ -32,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href=".">UML Designer</a>
+      <a class="navbar-brand" href="."><img src="./images/logo_UMLDesigner.png" alt="" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -143,6 +151,14 @@
       	    	
             
             	
+      	    	<li><a href="./developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="./developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
       	    	<li><a href="./developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -218,17 +234,16 @@
 </nav>
 
 
-  <div class="banner">
+<div id="mainbody">
+  <div class="banner bg_green2">
   <div class="container">
     <div class="row">
       <div class="col-md-12 title">
         <h1>UML Designer</h1>
         <p>graphical tooling to edit and visualize UML models</p>
-        <a href="./download" class="btn btn-default btn-lg">Download UML Designer</a>
+        <a href="./download" class="btn btn-default btn-lg on_dark_bg">Download</a>
       </div>
-      <div class="col-md-12 center">
-        <small><a href="https://github.com/ObeoNetwork/UML-Designer/releases/latest">release notes</a></small>
-      </div>
+      <p>&nbsp;</p>
     </div>
   </div>
 </div>
@@ -236,8 +251,8 @@
 <div class="section">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-4">
-        <h3><i class="fa fa-heart"></i> Based on Sirius</h3>
+      <div class="col-lg-4 col-md-4 center">
+        <h3><a href="https://www.eclipse.org/sirius"><i class="fa fa-heart"></i> Based on Sirius</a></h3>
         <p><a href="https://www.eclipse.org/sirius">Sirius</a> is an Eclipse
 					project which allows you to easily create your own graphical
 					modeling workbench by leveraging the Eclipse Modeling technologies,
@@ -247,7 +262,7 @@
 		</p>
       </div>
 
-      <div class="col-lg-4 col-md-4">
+      <div class="col-lg-4 col-md-4 center">
         <h3><i class="fa fa-gear"></i> Customizable and extensible</h3>
         <p>
 					It uses the standard <a
@@ -260,11 +275,9 @@
 				</p>
       </div>
 
-      <div class="col-lg-4 col-md-4">
-        <h3><i class="fa fa-globe"></i> Download</h3>
-        <p>We provide ready to use bundles or update site in the <a
-						href="./download">download</a>
-					section. Let's give it a try!</p>
+      <div class="col-lg-4 col-md-4 center">
+        <h3><a href="https://github.com/ObeoNetwork/UML-Designer/releases/latest"><i class="fa fa-globe"></i> Latest Release</a></h3>
+        <p>Give a try to the latest UML Designer release and get its the corresponding code.</p>
       </div>
 
     </div><!-- /.row -->
@@ -282,18 +295,17 @@
   </div><!-- /.container -->
 </div><!-- /.section-colored -->
 
+</div><!-- /#mainbody -->
 
-  <div class="container">
-  <hr>
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
-      </div>
-    </div>
-  </footer>
-</div><!-- /.container -->
-
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
 <!-- JavaScript -->
 <script src="./js/jquery-1.10.2.js"></script>
 <script src="./js/bootstrap.js"></script>

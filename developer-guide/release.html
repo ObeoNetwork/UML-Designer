@@ -1,0 +1,513 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UML Designer documentation">
+  <meta name="author" content="Mt&eacute;lanie Bats">
+  
+  <title>Release</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  
+  <!-- Pygments CSS -->
+  <link href="../css/pygments.css" rel="stylesheet">
+
+  <!-- Add custom CSS here -->
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="../overview">Overview</a></li>
+        
+      
+        
+        <li><a href="../download">Download</a></li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+            	
+      	    	<li><a href="../tutorials/tuto-getting-started.html">Getting started</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../tutorials/tuto-create-project.html">Create project</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../tutorials/tuto-create-representation.html">Create representation</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../tutorials/tuto-import-model.html">Import model</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../tutorials/tuto-start-example.html">Open example</a></li>
+      	    	
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+            	
+            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/implement-the-application.html#Class_Diagram">Class Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Component_Diagram">Component Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Composite_Structure_Diagram">Composite Structure Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Deployment_Diagram">Deployment Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Package_Diagram">Package Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Profile_Diagram">Profile Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/implement-the-application.html#Sequence_Diagram">Sequence Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/implement-the-application.html#State_Machine_Diagram">State Machine Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Use_Case_Diagram">Use Case Diagram</a></li>
+            	
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+            	
+      	    	<li><a href="../developer-guide/contribute.html">Contribute</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/build.html">Build</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
+      	    	
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+            	
+      	    	<li><a href="../ref-doc/presentation.html">Presentation</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/define-the-system.html">Define the system</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/define-the-application.html">Define the application</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/implement-the-application.html">Implement the application</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/write-the-application-documentation.html">Write the application documentation</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/refactor-an-application.html">Refactor an application</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/validate-an-application.html">Validate an application</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/non-goals.html">Non Goals</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/usage.html">Usage</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/migration.html">Migration</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/discovery.html">Install UML components</a></li>
+      	    	
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li><a href="../support">Support</a></li>
+        
+      
+        
+        <li><a href="../faq">FAQ</a></li>
+        
+      
+
+      </ul>
+    </div><!-- /.navbar-header -->
+  </div><!-- /.container -->
+</nav>
+
+
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Release <small class="green1">developer guide</small></h1>
+    </div>
+  </div>
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <p>This table lists all the steps to follow to release a new <span class="caps">UML</span> Designer version.</p>
+<h2>Prepare/validate nightly</h2>
+<table>
+	<tr>
+		<td>Action                                                                    </td>
+		<td>         v6.0.0</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release0">Release 0</a> </td>
+		<td>    In progress</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release1">Release 1</a> </td>
+		<td>             KO</td>
+		<td> <br />
+|<a href="../developer-guide/release.html#release2">Release 2</a> </td>
+		<td>             KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release3">Release 3</a> </td>
+		<td>             KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release4">Release 4</a> </td>
+		<td>             KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release5">Release 5</a> </td>
+		<td>             KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release6">Release 6</a> </td>
+		<td>             KO</td>
+		<td> <br />
+|<a href="../developer-guide/release.html#release7">Release 7</a> </td>
+		<td>             KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release8">Release 8</a> </td>
+		<td>             KO</td>
+	</tr>
+</table>
+<h1>Deploy on umldesigner.org</h1>
+<table>
+	<tr>
+		<td>Action                                                                      </td>
+		<td>v6.0.0</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release9">Release 9</a>   </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release10">Release 10</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release11">Release 11</a> </td>
+		<td>    KO</td>
+		<td> <br />
+|<a href="../developer-guide/release.html#release12">Release 12</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release13">Release 13</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release14">Release 14</a> </td>
+		<td>    KO</td>
+	</tr>
+</table>
+<h2>Deploy on Eclipse marketplace</h2>
+<table>
+	<tr>
+		<td>Action                                                                      </td>
+		<td>v6.0.0</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release15">Release 15</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release16">Release 16</a> </td>
+		<td>    KO</td>
+</table>
+<h2>Deploy on the obeonetwork</h2>
+<table>
+	<tr>
+		<td>Action                                                                      </td>
+		<td>v6.0.0</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release17">Release 17</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release18">Release 18</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release19">Release 19</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release20">Release 20</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release21">Release 21</a> </td>
+		<td>    KO</td>
+		<td> <br />
+|<a href="../developer-guide/release.html#release22">Release 22</a> </td>
+		<td>    KO</td>
+	</tr>
+</table>
+<h2>Spread the world</h2>
+<table>
+	<tr>
+		<td>Action                                                                      </td>
+		<td>v6.0.0</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release23">Release 23</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release24">Release 24</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release25">Release 25</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release26">Release 26</a> </td>
+		<td>    KO</td>
+		<td> <br />
+|<a href="../developer-guide/release.html#release27">Release 27</a> </td>
+		<td>    KO</td>
+	</tr>
+	<tr>
+		<td><a href="../developer-guide/release.html#release28">Release 28</a> </td>
+		<td>    KO</td>
+	</tr>
+</table>
+<h2>Actions details</h2>
+<h3 id="release0">Release 0</h3>
+<p>Update the &#8220;release checklist&#8221; page:&#8230;</p>
+<h3 id="release1">Release 1</h3>
+<p>Bump plugins version numbers in git: In <span class="caps">UML</span> Designer all the org.obeonetwork.dsl.uml2.xxx plugins are synchronized to the same version.</p>
+<h3 id="release2">Release 2</h3>
+<p>Bump <span class="caps">UML</span> product version:</p>
+<ul>
+	<li><a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/packaging/org.obeonetwork.dsl.uml2.product/sketcher.product">sketcher.product</a></li>
+	<li><a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/plugins/org.obeonetwork.dsl.uml2.branding/plugin.xml">branding/plugin.xml</a> the <code>aboutText</code>.</li>
+	<li>and for <em>major</em> version update also the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/plugins/org.obeonetwork.dsl.uml2.branding/" title="bmp, png">splash screen</a></li>
+</ul>
+<h3 id="release3">Release 3</h3>
+<p>Prepare the draft release notes in github: <a href="https://github.com/ObeoNetwork/UML-Designer/releases">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/releases</a></p>
+<h3 id="release4">Release 4</h3>
+<p>Update umldesigner.org <a href="http://www.umldesigner.org/download/">download</a> page to add the new release.<br />
+To do this, update in the documentation the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/download/index.textile">download page</a>.</p>
+<h3 id="release1">Release 5</h3>
+<p>Build and deploy the <span class="caps">UML</span> Designer nightly update site and products: The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">build</a> is automatically launched when a commit is pushed on the <a href="https://github.com/ObeoNetwork/UML-Designer">github repository</a>.<br />
+The nightly build results are available on S3: <a href="http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.x86_64.zip">http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.&#215;86_64.zip</a><br />
+For more details about the build, have a look to the <a href="../developer-guide/build.html">build section</a> of the developer guide.</p>
+<h3 id="release6">Release 6</h3>
+<p>Validate the unit tests: Check the results of the unit test in the nightly build: <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/builds">https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer/builds</a>.</p>
+<h3 id="release7">Release 7</h3>
+<p>Validate the product: Relaunch the <a href="https://travis-ci.org/ObeoNetwork/UML-Designer-UI-Tests">UI tests build</a> for the branch which must be validated. A <em>re-launch</em> button is available on the build/job page. The tests results are available on S3: https://s3-eu-west-1.amazonaws.com/umldesigner/nightly/${BRANCH_NAME}/test-results/${JOB_NUMBER}/rcpttTests.html:https://s3-eu-west-1.amazonaws.com/umldesigner/nightly/master/test-results/28.13/rcpttTests.html</p>
+<h3 id="release8">Release 8</h3>
+<p>Test install from jee (using nightly build update-site) : Download an Eclipse <span class="caps">JEE</span> and try to install the nightly build update-site.</p>
+<h3 id="release9">Release 9</h3>
+<p>Tag <span class="caps">UML</span> Designer version in git : <br />
+<code>git tag x.x.x</code></p>
+<h3 id="release10">Release 10</h3>
+<p><a href="https://github.com/ObeoNetwork/UML-Designer/releases">Release</a> the version in github.<br />
+Build and deploy the <span class="caps">UML</span> Designer released update site and products: The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">build</a> is automatically launched when a tag is pushed on the <a href="https://github.com/ObeoNetwork/UML-Designer">github repository</a>.<br />
+<code>git push origin master --tags</code></p>
+<p>The build results are available on S3: http://umldesigner.s3.amazonaws.com/x.&#215;.x/<br />
+For more details about the build, have a look to the <a href="../developer-guide/build.html">build section</a> of the developer guide.</p>
+<h3 id="release11">Release 11</h3>
+<p>Test check for updates from previous version. From a previous installed version of the <span class="caps">UML</span> Designer product, try to use check for updates to upadte to the new released version.</p>
+<h3 id="release12">Release 12</h3>
+<p>Close all the related <a href="https://github.com/ObeoNetwork/UML-Designer/issues">issues</a> in github.</p>
+<h3 id="release13">Release 13</h3>
+<p>Close all the related <a href="https://github.com/ObeoNetwork/UML-Designer/milestones">milestones</a> in github.</p>
+<h3 id="release14">Release 14</h3>
+<p>Test install from umldesigner.org <a href="http://www.umldesigner.org/download/">download</a> page :</p>
+<ul>
+	<li>Install product</li>
+	<li>Install update-site</li>
+</ul>
+<h3 id="release22">Release 15</h3>
+<p><a href="http://www.umldesigner.org/download/">Download</a> the update site zip and test to install it locally.</p>
+<h3 id="release15">Release 16</h3>
+<p>Update <span class="caps">UML</span> Designer description on the &#8220;Eclipse marketplace:http://marketplace.eclipse.org&#8221;</p>
+<h3 id="release16">Release 17</h3>
+<p>Test install from <a href="https://marketplace.eclipse.org/content/uml-designer-eclipse-luna-version">Eclipse marketplace</a>.</p>
+<h3 id="release17">Release 18</h3>
+<p>Modify aggregation network :<br />
+<code>git repo https://github.com/ObeoNetwork/Aggregation sirius_2_0 branch</code></p>
+<h3 id="release18">Release 19</h3>
+<p>Launch aggregation build : https://travis-ci.org/ObeoNetwork/Aggregation<br />
+Just push the updates on the repo. The build is launched automatically.</p>
+<h3 id="release19">Release 20</h3>
+<p>Synchronize the <a href="http://marketplace.obeonetwork.com/admin">obeonetwork marketplace</a></p>
+<h3 id="release20">Release 21</h3>
+<p>Synchronize the <a href="http://marketplace.obeonetwork.com/admin">obeonetwork jira</a></p>
+<h3 id="release21">Release 22</h3>
+<p>Test install from <a href="http://marketplace.obeonetwork.com/module/uml/download">Obeo marketplace</a> using the update site.</p>
+<h3 id="release23">Release 23</h3>
+<p>Send mail to Obeo.</p>
+<h3 id="release24">Release 24</h3>
+<p>Post message on <a href="http://www.obeonetwork.com/group/uml-designer/forum/">obeonetwork <span class="caps">UML</span> Designer forum</a>.</p>
+<h3 id="release25">Release 25</h3>
+<p>Post message on <a href="https://plus.google.com">G+</a>.</p>
+<h3 id="release26">Release 26</h3>
+<p>Post message on <a href="https://twitter.com/">twitter</a>.</p>
+<h3 id="release27">Release 27</h3>
+<p>Create <a href="https://www.google.com/analytics">google analytics</a> annotation for the web site and the usage plugin.</p>
+<h3 id="release28">Release 28</h3>
+<p>Update wikipedia pages:</p>
+<ul>
+	<li><a href="http://fr.wikipedia.org/w/index.php?title=Comparaison_des_logiciels_d%27UML&amp;veaction=edit&amp;vesection=1">Comparaison des logiciels d&#8217;UML</a>,</li>
+	<li><a href="https://en.wikipedia.org/wiki/List_of_Unified_Modeling_Language_tools">List of Unified Modeling Language tools</a>,</li>
+	<li><a href="https://en.wikipedia.org/wiki/UML_Designer"><span class="caps">UML</span> Designer</a></li>
+</ul>
+    </div>
+  </div>
+</div><!-- /.container -->
+
+</div><!-- /#mainbody -->
+
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
+<!-- JavaScript -->
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/modern-business.js"></script>
+
+  <!-- JavaScript -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52689660-1', 'auto');
+  ga('send', 'pageview');
+
+</script> 
+
+</body>
+</html>

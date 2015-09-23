@@ -17,6 +17,14 @@
   <!-- Add custom CSS here -->
   <link href="../css/style.css" rel="stylesheet">
   <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
 </head>
 
 
@@ -32,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href="..">UML Designer</a>
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -143,6 +151,14 @@
       	    	
             
             	
+      	    	<li><a href="../developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -218,35 +234,35 @@
 </nav>
 
 
-  <div class="container">
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Download <small>Get UML Designer</small></h1>
-      
-      <ol class="breadcrumb">
-        <li><a href="../index.html">Home</a></li>
-        <li class="active">Download</li>
-      </ol>
+      <h1 class="page-header">Download <small class="green1">Get UML Designer</small></h1>
     </div>
   </div>
-  
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Download &amp; Install</h1>
+      <h2>Download &amp; Install</h2>
 <table>
 	<tr>
 		<th>Version </th>
-		<th><a href="https://github.com/ObeoNetwork/UML-Designer/releases/">Release notes</a> </th>
-		<th><a href="../download/index.html#Bundles">Bundles</a> </th>
-		<th><a href="https://github.com/ObeoNetwork/UML-Designer">Source code</a></th>
-		<th><a href="../download/index.html#Update_Sites">Update site</a> </th>
+		<th>Release notes </th>
+		<th>Bundles </th>
+		<th>Source code </th>
+		<th>Update site </th>
 	</tr>
 	<tr>
 		<td> <em>Nightly</em></td>
 		<td><a href="https://github.com/ObeoNetwork/UML-Designer/milestones"><em>Sirius 3.0 / Mars</em></a></td>
-		<td> <a href="http://marketplace.obeonetwork.com/updates/nightly/uml/UMLDesigner-win32.win32.x86.zip"><em>Win32</em></a>, <a href="http://marketplace.obeonetwork.com/updates/nightly/uml/UMLDesigner-win32.win32.x86_64.zip"><em>Win64</em></a>, <a href="http://marketplace.obeonetwork.com/updates/nightly/uml/UMLDesigner-linux.gtk.x86.zip"><em>Linux32</em></a>, <a href="http://marketplace.obeonetwork.com/updates/nightly/uml/UMLDesigner-linux.gtk.x86_64.zip"><em>Linux64</em></a>, <a href="http://marketplace.obeonetwork.com/updates/nightly/uml/UMLDesigner-macosx.cocoa.x86_64.zip"><em>MacOs64</em></a></td>
+		<td> <a href="http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-win32.win32.x86.zip"><em>Win32</em></a>, <a href="http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-win32.win32.x86_64.zip"><em>Win64</em></a>, <a href="http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.x86.zip"><em>Linux32</em></a>, <a href="http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.x86_64.zip"><em>Linux64</em></a>, <a href="http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-macosx.cocoa.x86_64.zip"><em>MacOs64</em></a></td>
 		<td><a href="https://github.com/ObeoNetwork/UML-Designer/tree/master"><em>master</em></a></td>
-		<td><a href="../download/index.html#Update_Sites"><em>http://marketplace.obeonetwork.com/updates/nightly/uml/repository</em></a>, <a href="http://marketplace.obeonetwork.com/updates/nightly/uml/org.obeonetwork.dsl.uml2.update-nightly.zip"><em>zip</em></a> </td>
+		<td><a href="../download/index.html#Update_Sites"><em>http://umldesigner.s3.amazonaws.com/nightly/master/repository</em></a>, <a href="http://umldesigner.s3.amazonaws.com/nightly/master/org.obeonetwork.dsl.uml2.update-nightly.zip"><em>zip</em></a> </td>
 	</tr>
 	<tr>
 		<td> 5.0.0</td>
@@ -283,40 +299,30 @@
 	<li>get <span class="caps">UML</span> Designer in an existing Eclipse from the <a href="../download/index.html#Marketplace">marketplace</a> or from an <a href="../download/index.html#Update_Sites">update-site</a>. If you decide to install it like this, during the installation if you get the security warning saying that the authenticity or validity of the software can&#8217;t be established, just click <a href="../images/SecurityWarning.png">OK</a>.</li>
 </ul>
 <p><em>Pay attention that the nightly build is unstable, this build is for testing purposes only.</em></p>
-<h2 id="Bundles">Bundles</h2>
-<p>The bundles corresponding to the last release are available on the <a href="http://marketplace.obeonetwork.com/module/uml/download">Obeo marketplace</a> :</p>
-<ul>
-	<li><a href="http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86.zip">Windows 32bits</a></li>
-	<li><a href="http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86_64.zip">Windows 64bits</a></li>
-	<li><a href="http://www.obeo.fr/download/release/uml/latest/UMLDesigner-linux.gtk.x86.zip">Linux 32bits</a></li>
-	<li><a href="http://www.obeo.fr/download/release/uml/latest/UMLDesigner-linux.gtk.x86_64.zip">Linux 64bits</a></li>
-	<li><a href="http://www.obeo.fr/download/release/uml/latest/UMLDesigner-macosx.cocoa.x86_64.zip">MacOs 64bits</a></li>
-</ul>
-<h2 id="Marketplace">Marketplace</h2>
-<p>It is also possible to install <span class="caps">UML</span> Designer from the <a href="http://marketplace.eclipse.org/search/site/UML%2520Designer">Eclipse marketplace</a> or the Obeo marketplace <a href="http://marketplace.obeonetwork.com/module/uml/download">Obeo marketplace</a>. Don&#8217;t know how to install a module from the marketplace ? Have a look to the <a href="http://marketplace.eclipse.org/marketplace-client-intro">marketplace client introduction</a>.</p>
-<h2 id="Update_Sites">Update Sites</h2>
+<h3 id="Marketplace">Marketplace</h3>
+<p>It is also possible to install <span class="caps">UML</span> Designer from the <a href="http://marketplace.eclipse.org/search/site/UML%2520Designer">Eclipse marketplace</a> or the <a href="http://marketplace.obeonetwork.com/module/uml/download">Obeo marketplace</a>. Don&#8217;t know how to install a module from the marketplace ? Have a look to the <a href="http://marketplace.eclipse.org/marketplace-client-intro">marketplace client introduction</a>.</p>
+<h3 id="Update_Sites">Update Sites</h3>
 <p>The update-sites provide a p2 repository for <span class="caps">UML</span> Designer. Don&#8217;t know how to install a module from an Update Site ? Have a look to our <a href="http://www.youtube.com/watch?v=qYTrO7THer0">video</a> or to the full <a href="http://marketplace.eclipse.org/updatesite/help?url=http%3A//marketplace.obeonetwork.com/updates/od61/">procedure</a> description.</p>
-<h1>Releases</h1>
+<h2>Releases</h2>
 <p>All the releases and the corresponding code and issues are listed on the release page :<br />
 <a href="https://github.com/ObeoNetwork/UML-Designer/releases">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/releases</a></p>
-<h1>Roadmap</h1>
+<h2>Roadmap</h2>
 <p>To see the roadmap and the next available releases, you can have a look to the milestone page : <a href="https://github.com/ObeoNetwork/UML-Designer/milestones">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/milestones</a></p>
     </div>
   </div>
 </div><!-- /.container -->
 
+</div><!-- /#mainbody -->
 
-  <div class="container">
-  <hr>
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
-      </div>
-    </div>
-  </footer>
-</div><!-- /.container -->
-
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
 <!-- JavaScript -->
 <script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/bootstrap.js"></script>

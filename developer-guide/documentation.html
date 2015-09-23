@@ -17,6 +17,14 @@
   <!-- Add custom CSS here -->
   <link href="../css/style.css" rel="stylesheet">
   <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
 </head>
 
 
@@ -32,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href="..">UML Designer</a>
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -143,6 +151,14 @@
       	    	
             
             	
+      	    	<li><a href="../developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -218,18 +234,18 @@
 </nav>
 
 
-  <div class="container">
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Documentation <small>developer guide</small></h1>
-      
-      <ol class="breadcrumb">
-        <li><a href="../index.html">Home</a></li>
-        <li class="active">Documentation</li>
-      </ol>
+      <h1 class="page-header">Documentation <small class="green1">developer guide</small></h1>
     </div>
   </div>
-  
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
       <p>The <span class="caps">UML</span> Designer&#8217;s <strong>web site</strong> is hosted on Github: <br />
@@ -238,10 +254,10 @@
 <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation</a></p>
 <p>The documentation <strong>build</strong> is on Travis :<br />
 <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer/</a></p>
-<h1>Environment</h1>
+<h2>Environment</h2>
 <p>The documentation is built with <a href="http://jekyllrb.com/">Jekyll</a>.</p>
 <p>All the documentation is written with the <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">textile</a> syntax, in order that it is really easy to contribute.</p>
-<h1>Structure of the documentation</h1>
+<h2>Structure of the documentation</h2>
 <p>In a Jekyll-powered website, there are two basic kinds of resources, pages and posts. Both of those resources can be made visible on the navigation bar by modifying the file in <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/_data/pages.yml">_data/pages.yml</a>. If you want to create a top level link, add a &#8220;page&#8221; with the path of its &#8220;file&#8221; (without the extension). If you want to add a top level menu with submenus, add a &#8220;category&#8221; and child &#8220;pages&#8221; with their &#8220;title&#8221; and &#8220;file&#8221;. Then you just have to create your file in textile.</p>
 <div class="highlight"><pre><code class="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Overview</span>
   <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">overview</span>
@@ -265,7 +281,7 @@
     <span class="l-Scalar-Plain">anchor</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyAnchor</span>
 </code></pre></div></p>
 <p>Have a look the section below to see how to define an anchor in a page.</p>
-<h2>Page</h2>
+<h3>Page</h3>
 <p>When you create a page, you don&#8217;t need to create the whole file manually, you can just reuse existing components automatically. For example, in order to create a very basic page,</p>
 <ul>
 	<li>Modify the file pages.yml to add the following content: <code>- title: New Page file: newpage</code></li>
@@ -289,7 +305,7 @@ All the pages reused the same includes : <a href="https://github.com/ObeoNetwork
 	<li>Define an anchor in the page named <em>MyPage</em> and defined in the folder <em>path</em> : <code>h1(#MyAnchor). My title</code></li>
 	<li>Reference an anchor : <code>../path/MyPage.html#MyAnchor</code></li>
 </ul>
-<h2>Layouts</h2>
+<h3>Layouts</h3>
 <p>The available layouts are defined in the <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_layouts">_layouts</a> folder.</p>
 <p>There are several layout already available for the documentation. Those layouts may contain variables used to display some content in the page.</p>
 <ul>
@@ -319,20 +335,20 @@ All the pages reused the same includes : <a href="https://github.com/ObeoNetwork
 		<li>lead (optional): An introduction paragraph which will be highlighted at the top of the post.</li>
 	</ul></li>
 </ul>
-<h1>Build the documentation</h1>
-<h2>Locally</h2>
+<h2>Build the documentation</h2>
+<h3>Locally</h3>
 <p>To test and generate the documentation locally, go to the folder containing the documentation content <code>UML-Designer/documentation</code> in the git repository.<br />
 Then launch :</p>
 <p><code>jekyll build</code></p>
 <p>and the Jekyll server to see the result of your contribution</p>
 <p><code>jekyll serve</code></p>
 <p>The documentation will be available at <code>localhost:4000/index.html</code>. Use a web browser and go to this <span class="caps">URL</span> to browse the documentation. If you want to iterate and try new changes, modify the documentation then stop the <code>jekyll serve</code> by using <code>Ctrl+C</code> and relaunch it using <code>jekyll serve</code>.</p>
-<h2>Continuous integration</h2>
+<h3>Continuous integration</h3>
 <p>To build the documentation, commit and push the changes on the ObeoNetwork/<span class="caps">UML</span>-Designer <code>master</code> branch.<br />
 The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> is launched, it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.<br />
 The <a href="https://build.obeonetwork.com/hudson/job/UML--master/">Hudson build</a> is in charge of the integration of the web site inside the Eclipse Help Content.</p>
 <p>The different steps done by the builds are explained below.</p>
-<h3>Build the web-site</h3>
+<h4>Build the web-site</h4>
 <p>The Travis build :</p>
 <ul>
 	<li>Go to <code>UML-Designer/documentation</code> folder in your local repo.</li>
@@ -341,7 +357,7 @@ This operation will generate a new <code>_site</code> folder containing all the 
 	<li>To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.</li>
 </ul>
 <p>The new web site will be available immediately on : <a href="http://obeonetwork.github.io/UML-Designer/">http://obeonetwork.github.io/<span class="caps">UML</span>-Designer/</a></p>
-<h3>Integrate the documentation to Eclipse</h3>
+<h4>Integrate the documentation to Eclipse</h4>
 <p>The web site is integrated inside Eclipse as embedded documentation for <span class="caps">UML</span> Designer. This is done by the <a href="https://build.obeonetwork.com/hudson/job/UML--master/">Hudson build</a> which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the <code>gh-pages</code> is just copied to <code>UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html</code>.</p>
 <p>Pay attention when you update the documentation structure to update also the Eclipse toc. We defined an Eclipse specific <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml">toc.xml</a> file which is used to integrate the web site content into the Eclipse Help Content table of content.</p>
 <p>When a change is done in the documentation, the Travis build runs after the commit of the change. If you want to see this documentation update also in the Eclipse documentation, the Hudson build must be run manually after the end of the Travis build.</p>
@@ -355,18 +371,17 @@ This operation will generate a new <code>_site</code> folder containing all the 
   </div>
 </div><!-- /.container -->
 
+</div><!-- /#mainbody -->
 
-  <div class="container">
-  <hr>
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
-      </div>
-    </div>
-  </footer>
-</div><!-- /.container -->
-
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
 <!-- JavaScript -->
 <script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/bootstrap.js"></script>

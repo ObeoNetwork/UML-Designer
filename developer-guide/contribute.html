@@ -17,6 +17,14 @@
   <!-- Add custom CSS here -->
   <link href="../css/style.css" rel="stylesheet">
   <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
 </head>
 
 
@@ -32,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href="..">UML Designer</a>
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -143,6 +151,14 @@
       	    	
             
             	
+      	    	<li><a href="../developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -218,21 +234,21 @@
 </nav>
 
 
-  <div class="container">
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Contribute <small>developer guide</small></h1>
-      
-      <ol class="breadcrumb">
-        <li><a href="../index.html">Home</a></li>
-        <li class="active">Contribute</li>
-      </ol>
+      <h1 class="page-header">Contribute <small class="green1">developer guide</small></h1>
     </div>
   </div>
-  
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1>How you can help</h1>
+      <h2>How you can help</h2>
 <p><span class="caps">UML</span> Designer is an open source project and everyone is encouraged to get involved! There are lots of ways you can contribute:</p>
 <ul>
 	<li>join our <a href="../developer-guide/contribute.html#Forum">forum</a> on the <a href="http://www.obeonetwork.com/">obeonetwork</a></li>
@@ -243,7 +259,7 @@
 	<li><a href="../developer-guide/contribute.html#Contribute_to_code">fix bugs</a></li>
 	<li>fill our <a href="http://bit.ly/UMLDesignerSurvey">survey</a>.</li>
 </ul>
-<h1 id="Get_source_code">Get the source code</h1>
+<h3 id="Get_source_code">Get the source code</h3>
 <p>This <span class="caps">UML</span> modeling environment is based on the <a href="https://www.eclipse.org/sirius">Sirius</a>. It is under an<br />
 Open Source license (<strong><span class="caps">EPL</span></strong>) and the source code is hosted on <a href="https://github.com/ObeoNetwork/UML-Designer">github</a>. <br />
 It is intended to cover most use cases behind the usage of <span class="caps">UML</span>, and more importantly to be reused when you apply a <br />
@@ -253,26 +269,26 @@ model driven approach which uses both <strong><span class="caps">UML</span> and 
 	<li><span class="caps">SSH</span> : <a href="git@github.com:ObeoNetwork/UML-Designer.git">git@github.com:ObeoNetwork/<span class="caps">UML</span>-Designer.git</a></li>
 	<li><span class="caps">HTTPS</span> : <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master#</a>#</li>
 </ul>
-<h1>Contribute</h1>
-<h2 id="Contribute_to_code">Contribute to the code</h2>
+<h2>Contribute</h2>
+<h3 id="Contribute_to_code">Contribute to the code</h3>
 <p><span class="caps">UML</span> Designer&#8217;s code is hosted on Github. It&#8217;s easy to get the code and build <span class="caps">UML</span> Designer from source. Just clone our repository, make your changes, adapt it to your need and trigger a <a href="https://help.github.com/articles/using-pull-requests">pull request</a>.</p>
-<h2 id="Contribute_to_doc">Contribute to the documentation</h2>
+<h3 id="Contribute_to_doc">Contribute to the documentation</h3>
 <p>Found an error in this web-site or in the documentation? Please help us and contribute.<br />
 <span class="caps">UML</span> Designer&#8217;s documentation is hosted on Github: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation</a>. Just clone our repository, update the documentation and trigger a <a href="https://help.github.com/articles/using-pull-requests">pull request</a>. The documentation is written with the <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">textile</a> syntax, so it is really easy to contribute. Have a look to the <a href="../developer-guide/documentation.html">Documentation</a> section in the developer guide to learn more about how we build the <span class="caps">UML</span> Designer documentation.</p>
-<h1>Providing Feedback</h1>
+<h2>Providing Feedback</h2>
 <p>We&#8217;re constantly looking for feedback about this modeler, if you think something is missing, some behavior is weird or even just to tell us you are happy with it in its current state, <strong>please come and exchange</strong>.</p>
-<h2 id="Report_bugs">Report bugs</h2>
+<h3 id="Report_bugs">Report bugs</h3>
 <p>Bug reports are really important, so please report any issues you have. When you report bugs, make sure you include lots of detail, reproducible tests, example code or anything else you think might help!</p>
 <p>The <strong>bug tracker</strong> is available on github : <a href="https://github.com/ObeoNetwork/UML-Designer/issues">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/issues</a>. <br />
 We are using the github <a href="https://guides.github.com/features/issues/">integrated issue tracker</a>.</p>
 <p>To enter a <strong>new issue</strong> you just need to <a href="https://help.github.com/articles/signing-up-for-a-new-github-account">create a github account</a>.</p>
 <p>To <strong>search for issues</strong>, have a look to the github help page to learn the <a href="https://help.github.com/articles/searching-issues">searching issue syntax</a>.</p>
 <p>You can visualize also on which issues we are working on thanks to our <strong>card wall</strong>: <a href="https://waffle.io/obeonetwork/uml-designer">https://waffle.io/obeonetwork/uml-designer</a></p>
-<h2 id="Forum">Forum</h2>
+<h3 id="Forum">Forum</h3>
 <p>If you have any <strong>question</strong>, do not hesitate ask a question on the <a href="http://www.obeonetwork.com/group/uml-designer">Obeo Network</a>.</p>
-<h2 id="Survey">Survey</h2>
+<h3 id="Survey">Survey</h3>
 <p>Give us feedback by filling in our <a href="http://bit.ly/UMLDesignerSurvey">survey</a>!</p>
-<h1>Get the developer environment</h1>
+<h2>Get the developer environment</h2>
 <p>In <span class="caps">UML</span> Designer, we use target-platforms to define explicitly plugins and features available in the build context. We use it also to work on <span class="caps">UML</span> Designer in our Eclipse <span class="caps">IDE</span>.</p>
 <blockquote>
 <p>To use it, you should import the releng/org.obeonetwork.dsl.uml2.target project in your own <span class="caps">IDE</span> and set the &#8220;.target&#8221; as target-platform.</p>
@@ -281,18 +297,17 @@ We are using the github <a href="https://guides.github.com/features/issues/">int
   </div>
 </div><!-- /.container -->
 
+</div><!-- /#mainbody -->
 
-  <div class="container">
-  <hr>
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
-      </div>
-    </div>
-  </footer>
-</div><!-- /.container -->
-
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
 <!-- JavaScript -->
 <script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/bootstrap.js"></script>

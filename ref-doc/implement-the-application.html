@@ -17,6 +17,14 @@
   <!-- Add custom CSS here -->
   <link href="../css/style.css" rel="stylesheet">
   <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
 </head>
 
 
@@ -32,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href="..">UML Designer</a>
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -143,6 +151,14 @@
       	    	
             
             	
+      	    	<li><a href="../developer-guide/build.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -218,28 +234,28 @@
 </nav>
 
 
-  <div class="container">
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Implement the application <small>specification</small></h1>
-      
-      <ol class="breadcrumb">
-        <li><a href="../index.html">Home</a></li>
-        <li class="active">Implement the application</li>
-      </ol>
+      <h1 class="page-header">Implement the application <small class="green1">specification</small></h1>
     </div>
   </div>
-  
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
       <p>When John has finished the specification of the application, he gives it to Bob. From the existing application <span class="caps">UML</span> definition, Bob defines the application at a lower level.<br />
 At this point, Bob breaks the components out into classes and objects.</p>
-<h1 id="Class_Diagram">Define the implementation structure</h1>
+<h2 id="Class_Diagram">Define the implementation structure</h2>
 <p>The <strong>class diagram</strong> is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.</p>
 <p><img src="../images/ClassDiagram.png" alt="" /></p>
 <p>The class diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
-<h2>Manage elements</h2>
-<h3>Create element</h3>
+<h3>Manage elements</h3>
+<h4>Create element</h4>
 <p>It is possible to <strong>create an element</strong> by selecting the type creation tool from the palette and then clicking on the diagram or an element.<br />
 <img src="../images/ClassDiagramPalette.png" alt="" /></p>
 <p>A diagram is associated to a package and when the user clicks on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
@@ -287,7 +303,7 @@ If your pointer is on the diagram background, after a few seconds you should see
 		<td>Organize the model content</td>
 	</tr>
 </table>
-<h4>Generic Class</h4>
+<h5>Generic Class</h5>
 <p>To define a Generic Class, use the direct edit tool:</p>
 <p><img src="../images/using_class_diagram/generic_class.png" alt="" /></p>
 <p>To define a Binding, use the create edge tool called &#8220;Binding&#8221; from a Class to a Generic Class.<br />
@@ -295,9 +311,9 @@ You may notice that &#8220;?&#8221; refers to an undefined actual type:</p>
 <p><img src="../images/using_class_diagram/binding1_class.png" alt="" /></p>
 <p>To specify the binding association from the formal to the actual type use also the direct edit tool:</p>
 <p><img src="../images/using_class_diagram/binding2_class.png" alt="" /></p>
-<h3>Delete element</h3>
+<h4>Delete element</h4>
 <p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h3>Importing primitive types</h3>
+<h4>Importing primitive types</h4>
 <p>The contextual menu <code>Import primitive types</code> can import predefined types libraries from a <strong>right-click</strong> on the background of a class diagram. This menu allows to import primitives for :</p>
 <ul>
 	<li><span class="caps">UML</span></li>
@@ -308,7 +324,7 @@ You may notice that &#8220;?&#8221; refers to an undefined actual type:</p>
 <p>Then, the imported types can be used in the property&#8217;s definition.</p>
 <p>Another way to import primitive types is just by editing a property on a class (by typing directly on the selected property or by hitting F2) and type the wanted datatype. If it&#8217;s a known type, as String for example, the corresponding library is automatically imported : this library is visible in the model explorer when the project dependencies entry is expanded.<br />
 The case is not taken into account, so it is possible to type &#8220;string&#8221; and the &#8220;String&#8221; datatype of <span class="caps">UML</span> Primitive types library will be used.</p>
-<h2>Manage features</h2>
+<h3>Manage features</h3>
 <p>It is possible to <strong>create a feature</strong> by selecting the feature creation tool from the palette and then clicking on the diagram or an element.<br />
 If the user selects a container, the feature will be created under the corresponding semantic element in the <span class="caps">UML</span> model.</p>
 <p>Tooltip tools are also available to create any kind of features.<br />
@@ -341,8 +357,8 @@ Creation tools are available in the class diagram for the following features :</
 	</ul></li>
 </ul>
 <p>The user can also <strong>delete a feature</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h2>Manage relationships</h2>
-<h3>Create relationships</h3>
+<h3>Manage relationships</h3>
+<h4>Create relationships</h4>
 <p>It is possible to <strong>create a relationship</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element.<br />
 The following edge creation tools exist in the palette :</p>
 <ul>
@@ -357,7 +373,7 @@ The following edge creation tools exist in the palette :</p>
 	<li>usage : is represented by a dashed edge with <em>use</em> as label, it can be created between any classifiers.</li>
 	<li>nest classifier : is represented by a solid edge with an output fill closed arrow at start, it can be created between any classifiers.</li>
 </ul>
-<h3>Reconnect relationships</h3>
+<h4>Reconnect relationships</h4>
 <p>And finally, he can <strong>reconnect relationships</strong>. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :</p>
 <ul>
 	<li>association</li>
@@ -370,12 +386,12 @@ The following edge creation tools exist in the palette :</p>
 	<li>usage</li>
 	<li>nest classifier</li>
 </ul>
-<h3>Support for Broken Associations</h3>
+<h4>Support for Broken Associations</h4>
 <p>It might happen that for some reason you have an <strong>Association</strong> instance in your package which doesn&#8217;t have the proper <strong>ends</strong>. In that case<br />
 the class diagram will show the broken associations as nodes :</p>
 <p>!../images/features/class_pics/broken associations Class Diagram.jpg!</p>
 <p>You can use the <strong>Association</strong> tools in the palette <i>(Association, Reference, Composition and Aggregation)</i> to re-attach the Association to a classifier.</p>
-<h2>Manage existing elements</h2>
+<h3>Manage existing elements</h3>
 <p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
 It is possible to add existing elements by :</p>
 <ul>
@@ -399,21 +415,21 @@ It is possible to add existing elements by :</p>
 </ul>
 <p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the <span class="caps">UML</span> model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (<br />
 see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h2>Add related elements</h2>
+<h3>Add related elements</h3>
 <p>In the class diagram a contextual action is available to show on the diagram the element related to the selection.<br />
 The <strong>add related elements</strong> action is available from :</p>
 <ul>
 	<li>a class, an interface, a package, an enumeration, a datatype, a primitive type : shows all the elements that define a relationship (dependency, association, composition&#8230;) with the selected element</li>
 	<li>a class diagram : shows all the elements contained in the package associated to the diagram.</li>
 </ul>
-<h2>Edit labels</h2>
+<h3>Edit labels</h3>
 <p>In the class diagram, it is possible to edit the elements labels  (<br />
 			see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
 <ul>
 	<li>class, interface, package, enumeration, datatype, primitive type labels</li>
 	<li>relationships labels</li>
 </ul>
-<h2>Using <span class="caps">UML</span> in colors</h2>
+<h3>Using <span class="caps">UML</span> in colors</h3>
 <p><a href="http://en.wikipedia.org/wiki/UML_colors"><span class="caps">UML</span> in colors</a> is an object modeling technique proposed by <a href="http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html">Peter Coad</a>, Eric Lefebvre, and Jeff De Luca in a series of articles in 1999.<br />
 <img src="../images/uml_in_colors/example.png" alt="" /><br />
 An <code>Archetypes</code> layer is available in the <span class="caps">UML</span> Designer <code>class diagram</code>.<br />
@@ -436,21 +452,21 @@ The archetypes are stored in <span class="caps">UML</span> model as stereotyped 
 To change an existing class to an archetype just selects the tool from the palette and the existing class. The stereotype of the selected archetype is applied on the class which is colored.</p>
 <p><span class="caps">UML</span> in colors examples are available from Eclipse menu File &gt; New &gt; Example&#8230; &gt; <span class="caps">UML</span> &gt; Uml in colors.</p>
 <p>For more detailed explanation on <span class="caps">UML</span> in colors have a look to <a href="http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html">Peter Coad&#8217;s website</a>.</p>
-<h1 id="Object_Diagram">Instanciate the application</h1>
+<h2 id="Object_Diagram">Instanciate the application</h2>
 <p><i>This diagram is not yet implemented.</i></p>
 <p>The <strong>object diagram</strong> is used to describe the structure of the system by showing the objects at a specific time.</p>
 <p><img src="../images/ObjectDiagram.png" alt="" /></p>
 <p>The object diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
-<h2>Manage instances</h2>
+<h3>Manage instances</h3>
 <p>It is possible to create and delete instances in the object diagram.<br />
 <img src="../images/ObjectDiagramPalette.png" alt="" /></p>
-<h3>Create an instance</h3>
+<h4>Create an instance</h4>
 <p>It is possible to create an instance by selecting the creation tool from the palette and then clicking on the diagram or an element. 	A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
 If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
 Tooltip tools are also available to create instances.</p>
-<h3>Set default value</h3>
+<h4>Set default value</h4>
 <p>It is possible to set a default value to an instance property by selecting the tool from the palette and then clicking on an instance. This tool opens a wizard to ask the user to select a property of the selected instance type.</p>
-<h3>Manage existing elements</h3>
+<h4>Manage existing elements</h4>
 <p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
 It is possible to add existing elements by :</p>
 <ul>
@@ -464,26 +480,26 @@ It is possible to add existing elements by :</p>
 	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
 </ul>
 <p>The user can also <strong>delete an instance</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h3>Add related elements</h3>
+<h4>Add related elements</h4>
 <p>In the class diagram a contextual action is available to show on the diagram the element related to the selection.</p>
 <p>The <strong>Add related elements</strong> action is available from :</p>
 <ul>
 	<li>an instance : shows all the elements that define a relationship (dependency, association, composition&#8230;) with the selected element</li>
 	<li>an object diagram : shows all the elements contained in the package associated to the diagram.</li>
 </ul>
-<h3>Edit labels</h3>
+<h4>Edit labels</h4>
 <p>In the class diagram, it is possible to edit the elements labels (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
 <ul>
 	<li>class, interface, package, enumeration, datatype, primitive type labels</li>
 	<li>relationships labels</li>
 </ul>
-<h1>Define the application behavior</h1>
+<h2>Define the application behavior</h2>
 <p>Bob describes the application behavior thanks to <strong>Statemachine diagrams</strong> and <strong>Sequence diagrams</strong>.</p>
-<h2 id="State_Machine_Diagram">Statemachines</h2>
+<h3 id="State_Machine_Diagram">Statemachines</h3>
 <p>The <strong>statemachine diagram</strong> is used to represent the different states and transitions of a system.<br />
 <img src="../images/StatemachineDiagram.png" alt="" /></p>
 <p>The statemachine diagram is a synchronized diagram which means that any elements existing under a statemachine in the <span class="caps">UML</span> model will be visible automatically in the statemachine diagram.</p>
-<h3>Manage statemachines</h3>
+<h4>Manage statemachines</h4>
 <p>It is possible to <strong>create statemachine elements</strong> by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
 If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
 <img src="../images/StatemachineDiagramPalette.png" alt="" /></p>
@@ -506,20 +522,20 @@ If the user selects a container, the element will be created under the correspon
 	<li>Exit point = State machine exit.</li>
 </ul>
 <p>The user can also <strong>delete a statemachine element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h3>Manage transitions</h3>
+<h4>Manage transitions</h4>
 <p>It is possible to :</p>
 <ul>
 	<li><strong>create a transition</strong> : by selecting the edge creation tool from the palette and then clicking on a source element and a target element.</li>
 	<li><strong>delete a transition</strong> : by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</li>
 	<li><strong>reconnect transitions</strong> : to reconnect the source and the target of a transition in the statemachine diagram.</li>
 </ul>
-<h3>Edit labels</h3>
+<h4>Edit labels</h4>
 <p>In the statemachine diagram, it is possible to edit the elements labels (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit any statemachine elements labels.</p>
-<h2 id="Sequence_Diagram">Sequences</h2>
+<h3 id="Sequence_Diagram">Sequences</h3>
 <p>The <strong>sequence diagram</strong> is used to show how processes operate with one another and in what order.<br />
 <img src="../images/SequenceDiagram.png" alt="" /></p>
 <p>The sequence diagram is a synchronized diagram which means that any elements existing under an interaction in the <span class="caps">UML</span> model will be visible automatically in the sequence diagram.</p>
-<h3>Manage interaction elements</h3>
+<h4>Manage interaction elements</h4>
 <p>It is possible to create:</p>
 <ul>
 	<li>lifeline : is an individual participant in an interaction
@@ -555,31 +571,30 @@ If the user selects a container, the element will be created under the correspon
 	</ul></li>
 </ul>
 <p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h3>Reorder an interaction element</h3>
+<h4>Reorder an interaction element</h4>
 <p>It is possible to reorder the interaction elements :</p>
 <ul>
 	<li>lifeline can be reorder horizontally</li>
 	<li>other elements (execution, messages&#8230;) can be reordered vertically</li>
 </ul>
 <p>This tool updates the semantic element positioned in the interaction fragments list. If a representation is open, the view corresponding to the moved element is automatically updated.</p>
-<h3>Edit labels</h3>
+<h4>Edit labels</h4>
 <p>In the sequence diagram, it is possible to edit the elements labels  (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit any interaction elements labels.</p>
     </div>
   </div>
 </div><!-- /.container -->
 
+</div><!-- /#mainbody -->
 
-  <div class="container">
-  <hr>
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
-      </div>
-    </div>
-  </footer>
-</div><!-- /.container -->
-
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
 <!-- JavaScript -->
 <script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/bootstrap.js"></script>
