@@ -30,59 +30,59 @@ script:
 - ./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/nightly
 
 after_script:
-# Promote web site on gh-pages
+# Promote web site on gh-pages only for master branch
 - chmod a+x travis-promote.sh
-- ./travis-promote.sh
+- if [[ "$TRAVIS_BRANCH" == "master" ]]; then ./travis-promote.sh; fi
 
 deploy:
 # Deploy nightly on s3
   - provider: s3
-    access_key_id: AKIAJBMGYTQSRYMJHQKQ
+    access_key_id: AKIAJJVZATSVUD3VGHXA
     secret_access_key:
-      secure: e7nTVGAnegvoba6ucXEJwJnub8oeWSUVOShQ2XBpxr45/mIPLmF+HtTPN9JpZyG6hK2E5IqQ1bHndjPT9E7blXQKEHPYVzeJd7XBHyzEnS3LMMWeI/TxO73hxScereW/OHYalgTHJK6wynUyqvCf/uO7dqTvpd059Q9DILC6qTI=
-    bucket: umldesigner
+     secure: JR+FhCfNYeOp1kg6VsNFxDpXeI0MB27DZyzZ31krTrYhogtn5lPQZoRVc1e7/C/jaZqsbY3RZvjXnZOzTVxOgOV2VqbWGUzTwsnzLATiqtIvlq6MJvwDfaB/zRzYs3aVjss7QiVVsCsYh6rlihD4C3Xn2lRZIRMarTUYbVNYWyk=
+    bucket: obeo-umldesigner-nightly
     local-dir: "${TRAVIS_BUILD_DIR}/nightly"
     acl: public_read
     skip_cleanup: true
     region: eu-west-1
-    upload-dir: "nightly/${TRAVIS_BRANCH}"
+    upload-dir: "${TRAVIS_BRANCH}"
     on:
       branch: master 
   - provider: s3
-    access_key_id: AKIAJBMGYTQSRYMJHQKQ
+    access_key_id: AKIAJJVZATSVUD3VGHXA
     secret_access_key:
-      secure: e7nTVGAnegvoba6ucXEJwJnub8oeWSUVOShQ2XBpxr45/mIPLmF+HtTPN9JpZyG6hK2E5IqQ1bHndjPT9E7blXQKEHPYVzeJd7XBHyzEnS3LMMWeI/TxO73hxScereW/OHYalgTHJK6wynUyqvCf/uO7dqTvpd059Q9DILC6qTI=
-    bucket: umldesigner
+     secure: JR+FhCfNYeOp1kg6VsNFxDpXeI0MB27DZyzZ31krTrYhogtn5lPQZoRVc1e7/C/jaZqsbY3RZvjXnZOzTVxOgOV2VqbWGUzTwsnzLATiqtIvlq6MJvwDfaB/zRzYs3aVjss7QiVVsCsYh6rlihD4C3Xn2lRZIRMarTUYbVNYWyk=
+    bucket: obeo-umldesigner-nightly
     local-dir: "${TRAVIS_BUILD_DIR}/nightly"
     acl: public_read
     skip_cleanup: true
     region: eu-west-1
-    upload-dir: "nightly/${TRAVIS_BRANCH}"
+    upload-dir: "${TRAVIS_BRANCH}"
     on:
       branch: 5.0.x  
   - provider: s3
-    access_key_id: AKIAJBMGYTQSRYMJHQKQ
+    access_key_id: AKIAJJVZATSVUD3VGHXA
     secret_access_key:
-      secure: e7nTVGAnegvoba6ucXEJwJnub8oeWSUVOShQ2XBpxr45/mIPLmF+HtTPN9JpZyG6hK2E5IqQ1bHndjPT9E7blXQKEHPYVzeJd7XBHyzEnS3LMMWeI/TxO73hxScereW/OHYalgTHJK6wynUyqvCf/uO7dqTvpd059Q9DILC6qTI=
-    bucket: umldesigner
+     secure: JR+FhCfNYeOp1kg6VsNFxDpXeI0MB27DZyzZ31krTrYhogtn5lPQZoRVc1e7/C/jaZqsbY3RZvjXnZOzTVxOgOV2VqbWGUzTwsnzLATiqtIvlq6MJvwDfaB/zRzYs3aVjss7QiVVsCsYh6rlihD4C3Xn2lRZIRMarTUYbVNYWyk=
+    bucket: obeo-umldesigner-nightly
     local-dir: "${TRAVIS_BUILD_DIR}/nightly"
     acl: public_read
     skip_cleanup: true
     region: eu-west-1
-    upload-dir: "nightly/${TRAVIS_BRANCH}"
+    upload-dir: "${TRAVIS_BRANCH}"
     on:
-      branch: juno_3.8 
+      branch: 5.0.x_juno_3.8
 # Deploy release on s3
   - provider: s3
-    access_key_id: AKIAJBMGYTQSRYMJHQKQ
+    access_key_id: AKIAJJVZATSVUD3VGHXA
     secret_access_key:
-      secure: e7nTVGAnegvoba6ucXEJwJnub8oeWSUVOShQ2XBpxr45/mIPLmF+HtTPN9JpZyG6hK2E5IqQ1bHndjPT9E7blXQKEHPYVzeJd7XBHyzEnS3LMMWeI/TxO73hxScereW/OHYalgTHJK6wynUyqvCf/uO7dqTvpd059Q9DILC6qTI=
-    bucket: umldesigner
+     secure: JR+FhCfNYeOp1kg6VsNFxDpXeI0MB27DZyzZ31krTrYhogtn5lPQZoRVc1e7/C/jaZqsbY3RZvjXnZOzTVxOgOV2VqbWGUzTwsnzLATiqtIvlq6MJvwDfaB/zRzYs3aVjss7QiVVsCsYh6rlihD4C3Xn2lRZIRMarTUYbVNYWyk=
+    bucket: obeo-umldesigner-releases
     local-dir: "${TRAVIS_BUILD_DIR}/${TRAVIS_TAG}"
     acl: public_read
     skip_cleanup: true
     region: eu-west-1
-    upload-dir: "release/${TRAVIS_TAG}"
+    upload-dir: "${TRAVIS_TAG}"
     on:
       tags: true
       all_branches: true
