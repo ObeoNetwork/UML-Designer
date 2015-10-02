@@ -58,6 +58,9 @@ Contributors:
             <product>
               <id>${product-id}</id>
               <rootFolder>UMLDesigner</rootFolder>
+              <rootFolders>
+              	<macosx>UMLDesigner.app</macosx>
+              </rootFolders>
               <archiveFileName>UMLDesigner</archiveFileName>
             </product>
           </products>
