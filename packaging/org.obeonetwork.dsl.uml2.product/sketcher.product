@@ -39,7 +39,7 @@ Visit http://www.obeo.fr
       startupProgressRect="0,328,458,18"
       startupMessageRect="7,308,458,18"
       startupForegroundColor="000000" />
-   <launcher name="umldesigner">
+   <launcher name="UMLDesigner">
       <linux icon="/icons/logo_64.xpm"/>
       <macosx icon="/icons/Obeo_Designer.icns"/>
       <solaris/>
