@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UML Designer Mars" sequenceNumber="1435846963">
+<target name="UML Designer Mars" sequenceNumber="1445001494">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="15.0.0.v201403281430"/>
@@ -22,14 +22,14 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.uml2.uml.feature.group" version="5.1.0.v20150601-0733"/>
-      <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.1.0.v20150601-0733"/>
-      <unit id="org.eclipse.uml2.feature.group" version="5.1.0.v20150601-0733"/>
+      <unit id="org.eclipse.uml2.uml.feature.group" version="5.1.0.v20150906-1225"/>
+      <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.1.1.v20150906-1225"/>
+      <unit id="org.eclipse.uml2.feature.group" version="5.1.1.v20150906-1225"/>
       <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.epp.mpc.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.amalgam.discovery.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.edit.feature.group" version="2.11.0.v20150601-0402"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.11.1.v20150806-0404"/>
       <unit id="org.eclipse.emf.mapping.ecore.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.importer.ecore" version="0.0.0"/>
       <repository location="http://download.eclipse.org/releases/mars/"/>
