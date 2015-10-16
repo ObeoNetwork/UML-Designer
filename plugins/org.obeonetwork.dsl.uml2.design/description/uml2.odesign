@@ -3556,7 +3556,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
-          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(Node)">
+          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(uml::Node)">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="9" sizeComputationExpression="8" labelPosition="node" resizeKind="EAST_WEST" arcWidth="5" arcHeight="5" roundedCorner="true" workspacePath="/org.obeonetwork.dsl.uml2.design/images/boxGray.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <labelFormat>bold</labelFormat>
@@ -3578,7 +3578,7 @@
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(ExecutionEnvironment)">
+          <conditionnalStyles predicateExpression="aql:self.oclIsTypeOf(uml::ExecutionEnvironment)">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="9" sizeComputationExpression="8" labelPosition="node" resizeKind="EAST_WEST" arcWidth="5" arcHeight="5" roundedCorner="true" workspacePath="/org.obeonetwork.dsl.uml2.design/images/boxGreen.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <labelFormat>bold</labelFormat>
