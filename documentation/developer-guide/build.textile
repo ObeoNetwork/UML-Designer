@@ -40,7 +40,7 @@ We have a dedicated command for the product.
 
 bq. You will retrieve product in: *packaging/org.obeonetwork.dsl.uml2.product/target/products/*
 
-This command build:
+This command builds:
 
 !{{page.relativePath}}/images/UMLDesignerBuildProduct.png!
 
@@ -77,7 +77,7 @@ in org.obeonetwork.dsl.uml2.parent and add a `pom.xml` in your plugin with the f
 
 h2. Continuous integration
 
-Two continuous integration builds exist to build UML Designer. These builds run on "Travis-ci":https://travis-ci.org/.
+One continuous integration builds exists to build UML Designer. This build runs on "Travis-ci":https://travis-ci.org/.
 
 h3(#Build). UML-Designer build
 
@@ -88,20 +88,20 @@ This Travis "build": https://travis-ci.org/ObeoNetwork/UML-Designer/ is used to 
 * update the gh-pages (umldesigner.org web site), 
 * create the UML Designer update site and products. 
 
-This build deploys automatically the build artifacts on "S3":http://aws.amazon.com/fr/s3/ : "http://umldesigner.s3.amazonaws.com":http://umldesigner.s3.amazonaws.co
+This build deploys automatically the build artifacts on "S3":http://aws.amazon.com/fr/s3/ : "http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/":http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com
 
 The build is configured thanks to the "@.travis.yml@":https://github.com/ObeoNetwork/UML-Designer/blob/master/.travis.yml file.
 
 Each time a commit is integrated on the github repository a nightly build is executed and the resulting update-site and products are deployed on s3:
-http://s3.amazonaws.com/umldesigner/nightly/$BRANCH_NAME.
+http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/$BRANCH_NAME.
 
-The build deploys in S3 @umldesigner@ bucket:
+The build deploys in S3 @obeo-umldesigner-nightly@ bucket:
 * the @repository@ folder: the UML Designer nightly update site.
 * the @org.obeonetwork.dsl.uml2.update-nightly.zip@ : a zip of the nightly update site.
-* the @bundles@ folder: the nightly products.
+* the @bundles@: the nightly products.
 * the @umldesigner-xxx.tpd@: the target platform used to build the update site and products.
 
-The deploy phase is active only for specific branches: "@master@":https://github.com/ObeoNetwork/UML-Designer/tree/master, "@5.0.x@":https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x.
+The deploy phase is active only for specific branches: "@master@":https://github.com/ObeoNetwork/UML-Designer/tree/master, "@5.0.x@":https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x, "@5.0.x_juno3.8@":https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x_juno3.8.
 
 The "umldesigner.org":http://www.umldesigner.org web site is also updated and deployed thanks to this build. For more details about the web site have a look to the "documentation section":{{page.relativePath}}/developer-guide/documentation.html of the developer guide.
 
@@ -113,4 +113,9 @@ h3(#UI_Tests_build). UML-Designer-UI-Tests build
 
 The Travis "UI tests build": https://travis-ci.org/ObeoNetwork/UML-Designer-UI-Tests is used to launch the UI tests.
 This build deploys the tests results on S3: 
-http://s3.amazonaws.com/umldesigner/nightly/$BRANCH_NAME/test-results/$JOB_NUMBER.
+http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/$BRANCH_NAME/test-results/$JOB_NUMBER.
+
+h4. Make a release
+
+When a new tag is pushed on the git repository a release is deployed on the S3 : http://obeo-umldesigner-releases.s3-website-eu-west-1.amazonaws.com/$TAG. The same tag must be added on the test project in order that the UI tests are relaunched and the results will be provided in: 
+http://obeo-umldesigner-releases.s3-website-eu-west-1.amazonaws.com/$TAG/test-results.

@@ -65,6 +65,10 @@ Give us feedback by filling in our "survey":http://bit.ly/UMLDesignerSurvey!
 
 h2. Get the developer environment
 
-In UML Designer, we use target-platforms to define explicitly plugins and features available in the build context. We use it also to work on UML Designer in our Eclipse IDE.
+An "Oomph":https://projects.eclipse.org/projects/tools.oomph setup is provided to ease the installation of the developer environment : "UMLDesigner.setup":https://github.com/ObeoNetwork/UML-Designer/blob/master/releng/org.obeonetwork.dsl.uml2.settings/UMLDesigner.setup
 
-bq. To use it, you should import the releng/org.obeonetwork.dsl.uml2.target project in your own IDE and set the ".target" as target-platform.
+1. Download "Oomph installer":https://wiki.eclipse.org/Eclipse_Oomph_Installer and launch it. 
+2. Launch Oomph installer and switched to the _Advanced mode_, Select an Eclipse platform and click on _Next_
+3. Add the "UML Designer setup file":https://github.com/ObeoNetwork/UML-Designer/blob/master/releng/org.obeonetwork.dsl.uml2.settings/UMLDesigner.setup into _User_ folder. Select the UMLDesigner *AND* double-click on it to be sure that it is listed in the bottom projects listing. Then click _Next_. Then select where you want to install the UML Designer development environment.
+4. When the installation is finished, you need to activate manually the target platform to use : releng/org.obeonetwork.dsl.uml2.target. We use target-platforms to define explicitly plugins and features available in the build context the same are used also to work on UML Designer in our Eclipse IDE.
+5. Let's go contributing to UML Designer!

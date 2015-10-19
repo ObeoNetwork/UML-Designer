@@ -9,31 +9,31 @@ This table lists all the steps to follow to release a new UML Designer version.
 
 h2. Prepare/validate nightly
 
-|Action                                                                    |         v6.0.0|
-|"Release 0":{{ page.relativePath }}/developer-guide/release.html#release0 |    In progress|
-|"Release 1":{{ page.relativePath }}/developer-guide/release.html#release1 |             KO| 
-|"Release 2":{{ page.relativePath }}/developer-guide/release.html#release2 |             KO|
-|"Release 3":{{ page.relativePath }}/developer-guide/release.html#release3 |             KO|
-|"Release 4":{{ page.relativePath }}/developer-guide/release.html#release4 |             KO|
-|"Release 5":{{ page.relativePath }}/developer-guide/release.html#release5 |             KO|
-|"Release 6":{{ page.relativePath }}/developer-guide/release.html#release6 |             KO| 
-|"Release 7":{{ page.relativePath }}/developer-guide/release.html#release7 |             KO|
-|"Release 8":{{ page.relativePath }}/developer-guide/release.html#release8 |             KO|
+|Action                                                                    |v6.0.0|
+|"Release 0":{{ page.relativePath }}/developer-guide/release.html#release0 |    OK|
+|"Release 1":{{ page.relativePath }}/developer-guide/release.html#release1 |    OK| 
+|"Release 2":{{ page.relativePath }}/developer-guide/release.html#release2 |    OK|
+|"Release 3":{{ page.relativePath }}/developer-guide/release.html#release3 |    OK|
+|"Release 4":{{ page.relativePath }}/developer-guide/release.html#release4 |    OK|
+|"Release 5":{{ page.relativePath }}/developer-guide/release.html#release5 |    OK|
+|"Release 6":{{ page.relativePath }}/developer-guide/release.html#release6 |    OK| 
+|"Release 7":{{ page.relativePath }}/developer-guide/release.html#release7 |    OK|
+|"Release 8":{{ page.relativePath }}/developer-guide/release.html#release8 |    OK|
 
 h1. Deploy on umldesigner.org
 
 |Action                                                                      |v6.0.0|
-|"Release 9":{{ page.relativePath }}/developer-guide/release.html#release9   |    KO|
-|"Release 10":{{ page.relativePath }}/developer-guide/release.html#release10 |    KO|
+|"Release 9":{{ page.relativePath }}/developer-guide/release.html#release9   |    OK|
+|"Release 10":{{ page.relativePath }}/developer-guide/release.html#release10 |    OK|
 |"Release 11":{{ page.relativePath }}/developer-guide/release.html#release11 |    KO| 
-|"Release 12":{{ page.relativePath }}/developer-guide/release.html#release12 |    KO|
-|"Release 13":{{ page.relativePath }}/developer-guide/release.html#release13 |    KO|
-|"Release 14":{{ page.relativePath }}/developer-guide/release.html#release14 |    KO|
+|"Release 12":{{ page.relativePath }}/developer-guide/release.html#release12 |    OK|
+|"Release 13":{{ page.relativePath }}/developer-guide/release.html#release13 |    OK|
+|"Release 14":{{ page.relativePath }}/developer-guide/release.html#release14 |    OK|
 
 h2. Deploy on Eclipse marketplace
 
 |Action                                                                      |v6.0.0|
-|"Release 15":{{ page.relativePath }}/developer-guide/release.html#release15 |    KO|
+|"Release 15":{{ page.relativePath }}/developer-guide/release.html#release15 |    OK|
 |"Release 16":{{ page.relativePath }}/developer-guide/release.html#release16 |    KO| 
 
 h2. Deploy on the obeonetwork
