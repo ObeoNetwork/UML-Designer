@@ -268,7 +268,7 @@ Code coverage is captured thanks to Jacoco.</p>
 <blockquote>
 <p>You will retrieve product in: <strong>packaging/org.obeonetwork.dsl.uml2.product/target/products/</strong></p>
 </blockquote>
-<p>This command build:</p>
+<p>This command builds:</p>
 <p><img src="../images/UMLDesignerBuildProduct.png" alt="" /></p>
 <h2>Maven Tycho</h2>
 <p>Technically, we use Maven Tycho to build these Eclipse artifacts.</p>
@@ -295,7 +295,7 @@ All <span class="caps">UML</span> designer plugins/features/update-sites refers 
     <span class="nt">&lt;/project&gt;</span>
 </code></pre></div></p>
 <h2>Continuous integration</h2>
-<p>Two continuous integration builds exist to build <span class="caps">UML</span> Designer. These builds run on <a href="https://travis-ci.org/">Travis-ci</a>.</p>
+<p>One continuous integration builds exists to build <span class="caps">UML</span> Designer. This build runs on <a href="https://travis-ci.org/">Travis-ci</a>.</p>
 <h3 id="Build"><span class="caps">UML</span>-Designer build</h3>
 <h4>Building branches</h4>
 <p>This Travis &#8220;build&#8221;: https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer/ is used to :</p>
@@ -304,25 +304,28 @@ All <span class="caps">UML</span> designer plugins/features/update-sites refers 
 	<li>update the gh-pages (umldesigner.org web site),</li>
 	<li>create the <span class="caps">UML</span> Designer update site and products.</li>
 </ul>
-<p>This build deploys automatically the build artifacts on <a href="http://aws.amazon.com/fr/s3/">S3</a> : <a href="http://umldesigner.s3.amazonaws.co">http://umldesigner.s3.amazonaws.com</a></p>
+<p>This build deploys automatically the build artifacts on <a href="http://aws.amazon.com/fr/s3/">S3</a> : <a href="http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com">http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/</a></p>
 <p>The build is configured thanks to the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/.travis.yml"><code>.travis.yml</code></a> file.</p>
 <p>Each time a commit is integrated on the github repository a nightly build is executed and the resulting update-site and products are deployed on s3:<br />
-http://s3.amazonaws.com/umldesigner/nightly/$BRANCH_NAME.</p>
-<p>The build deploys in S3 <code>umldesigner</code> bucket:</p>
+http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/$BRANCH_NAME.</p>
+<p>The build deploys in S3 <code>obeo-umldesigner-nightly</code> bucket:</p>
 <ul>
 	<li>the <code>repository</code> folder: the <span class="caps">UML</span> Designer nightly update site.</li>
 	<li>the <code>org.obeonetwork.dsl.uml2.update-nightly.zip</code> : a zip of the nightly update site.</li>
-	<li>the <code>bundles</code> folder: the nightly products.</li>
+	<li>the <code>bundles</code>: the nightly products.</li>
 	<li>the <code>umldesigner-xxx.tpd</code>: the target platform used to build the update site and products.</li>
 </ul>
-<p>The deploy phase is active only for specific branches: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master"><code>master</code></a>, <a href="https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x"><code>5.0.x</code></a>.</p>
+<p>The deploy phase is active only for specific branches: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master"><code>master</code></a>, <a href="https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x"><code>5.0.x</code></a>, <a href="https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x_juno3.8"><code>5.0.x_juno3.8</code></a>.</p>
 <p>The <a href="http://www.umldesigner.org">umldesigner.org</a> web site is also updated and deployed thanks to this build. For more details about the web site have a look to the <a href="../developer-guide/documentation.html">documentation section</a> of the developer guide.</p>
 <h4>Pull-requests</h4>
 <p>When a pull request is sent, a build is automatically launched. In this case, the deploy phase and the web site updates phases are not performed. The pull request build results is directly <a href="http://blog.travis-ci.com/2012-09-04-pull-requests-just-got-even-more-awesome/">visible in the github interface</a>.</p>
 <h3 id="UI_Tests_build"><span class="caps">UML</span>-Designer-UI-Tests build</h3>
 <p>The Travis &#8220;UI tests build&#8221;: https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer-UI-Tests is used to launch the UI tests.<br />
 This build deploys the tests results on S3: <br />
-http://s3.amazonaws.com/umldesigner/nightly/$BRANCH_NAME/test-results/$JOB_NUMBER.</p>
+http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/$BRANCH_NAME/test-results/$JOB_NUMBER.</p>
+<h4>Make a release</h4>
+<p>When a new tag is pushed on the git repository a release is deployed on the S3 : http://obeo-umldesigner-releases.s3-website-eu-west-1.amazonaws.com/$<span class="caps">TAG</span>. The same tag must be added on the test project in order that the UI tests are relaunched and the results will be provided in: <br />
+http://obeo-umldesigner-releases.s3-website-eu-west-1.amazonaws.com/$<span class="caps">TAG</span>/test-results.</p>
     </div>
   </div>
 </div><!-- /.container -->
