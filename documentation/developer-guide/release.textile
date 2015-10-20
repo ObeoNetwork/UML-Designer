@@ -142,12 +142,12 @@ Update UML Designer description on the "Eclipse marketplace:http://marketplace.e
 
 h3(#release16). Release 17
 
-Test install from "Eclipse marketplace":https://marketplace.eclipse.org/content/uml-designer-eclipse-luna-version.
+Test install from "Eclipse marketplace":https://marketplace.eclipse.org/content/uml-designer-eclipse-luna-version
 
 h3(#release17). Release 18
 
 Modify aggregation network :
-@git repo https://github.com/ObeoNetwork/Aggregation sirius_2_0 branch@
+@git repo https://github.com/ObeoNetwork/Aggregation sirius_x_x branch@
 
 h3(#release18). Release 19
 
