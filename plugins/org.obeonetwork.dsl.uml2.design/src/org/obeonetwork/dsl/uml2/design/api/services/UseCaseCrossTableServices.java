@@ -13,8 +13,6 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.UseCase;
 
-
-
 /**
  * A set of services to handle the Use case cross table.
  *

@@ -75,8 +75,8 @@ public class StereotypeServices {
 				// Register metamodel
 				for (final ProfileApplication profileApplication : profile.getAllProfileApplications()) {
 					final Set<MetamodelDescriptor> descriptorsForInterpreter = Sets.newLinkedHashSet();
-					descriptorsForInterpreter.add(new EcoreMetamodelDescriptor(profileApplication
-							.getAppliedDefinition()));
+					descriptorsForInterpreter
+							.add(new EcoreMetamodelDescriptor(profileApplication.getAppliedDefinition()));
 					session.getInterpreter().activateMetamodels(descriptorsForInterpreter);
 				}
 			}
@@ -96,8 +96,8 @@ public class StereotypeServices {
 	 * @return Base class
 	 */
 	public Element getBaseClass(EObject stereotypeApplication) {
-		return (Element)stereotypeApplication.eGet(stereotypeApplication.eClass().getEStructuralFeature(
-				"base_Class")); //$NON-NLS-1$
+		return (Element)stereotypeApplication
+				.eGet(stereotypeApplication.eClass().getEStructuralFeature("base_Class")); //$NON-NLS-1$
 	}
 
 	/**
@@ -128,7 +128,8 @@ public class StereotypeServices {
 			for (final Stereotype stereotype : baseClass.getAppliedStereotypes()) {
 				// Get profile
 				if (stereotype.getProfile().equals(profile)) {
-					// If stereotypes are still applied return else unapply profile on package
+					// If stereotypes are still applied return else unapply
+					// profile on package
 					return;
 				}
 			}

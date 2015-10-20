@@ -77,9 +77,10 @@ public class CallActionPinListener extends ResourceSetListenerImpl {
 							} else if ("type".equals(feature.getName())) { //$NON-NLS-1$
 								pinType = (Type)notification.getOldValue();
 							}
-							// Find parameter associated to the modified pin thanks to the name and type
-							final org.eclipse.uml2.uml.Parameter paramToUpdate = operation.getOwnedParameter(
-									pinName, pinType);
+							// Find parameter associated to the modified pin
+							// thanks to the name and type
+							final org.eclipse.uml2.uml.Parameter paramToUpdate = operation
+									.getOwnedParameter(pinName, pinType);
 
 							final Session session = SessionManager.INSTANCE.getSession(updatedPin);
 							final TransactionalEditingDomain editingDomain = session
@@ -101,7 +102,8 @@ public class CallActionPinListener extends ResourceSetListenerImpl {
 				// A parameter is updated
 				final Parameter updatedParameter = (Parameter)notifier;
 
-				// Only respond to changes to structural features of the parameter
+				// Only respond to changes to structural features of the
+				// parameter
 				if (notification.getFeature() instanceof EStructuralFeature) {
 					final EStructuralFeature feature = (EStructuralFeature)notification.getFeature();
 
@@ -125,7 +127,8 @@ public class CallActionPinListener extends ResourceSetListenerImpl {
 								} else if ("type".equals(feature.getName())) { //$NON-NLS-1$
 									paramType = (Type)notification.getOldValue();
 								}
-								// Find pins associated to the modified parameter thanks to the name and type
+								// Find pins associated to the modified
+								// parameter thanks to the name and type
 								final Pin inputPinToUpdate = callOperationAction.getArgument(paramName,
 										paramType);
 								final Pin outputPinToUpdate = callOperationAction.getResult(paramName,

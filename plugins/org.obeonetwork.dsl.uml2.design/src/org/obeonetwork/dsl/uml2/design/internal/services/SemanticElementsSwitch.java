@@ -135,7 +135,9 @@ public class SemanticElementsSwitch extends UMLSwitch<Object> {
 
 	/**
 	 * Get semantics elements.
-	 * @param cur Element
+	 * 
+	 * @param cur
+	 *            Element
 	 * @return Semantic elements
 	 */
 	public Collection<EObject> getSemanticElements(EObject cur) {

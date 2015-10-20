@@ -23,7 +23,7 @@ import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
 /**
  * An extension to provide UML designer custom provider in model content view.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  */
 public abstract class AbstractUmlModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 
@@ -65,8 +65,7 @@ public abstract class AbstractUmlModelWizardNewFileCreationPage extends WizardNe
 			final String requiredExt = getRequiredExtension();
 			final String enteredExt = new Path(getFileName()).getFileExtension();
 			if (enteredExt == null || !enteredExt.equals(requiredExt)) {
-				setErrorMessage(NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-						requiredExt));
+				setErrorMessage(NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension, requiredExt));
 				return false;
 			}
 			return true;

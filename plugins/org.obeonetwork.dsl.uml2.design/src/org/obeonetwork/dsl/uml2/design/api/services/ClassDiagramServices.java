@@ -106,8 +106,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * With the given {@link EObject} iterate over root elements to find a {@link Type} element with the
-	 * given name.
+	 * With the given {@link EObject} iterate over root elements to find a {@link Type} element with the given
+	 * name.
 	 *
 	 * @param object
 	 *            the elements to inspect
@@ -170,7 +170,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @return Abstract label format
 	 */
 	public FontFormat getAbstractBoldLabelFormat(EObject object) {
-	// Fix to return bold/italic when bug will be fixed on sirius
+		// Fix to return bold/italic when bug will be fixed on sirius
 		return FontFormat.BOLD_LITERAL;
 	}
 
@@ -221,8 +221,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *
 	 * @param container
 	 *            the current container.
-	 * @return a list of association which might be considered as "broken", we are not able to display
-	 *         them as edges.
+	 * @return a list of association which might be considered as "broken", we are not able to display them as
+	 *         edges.
 	 */
 	public Collection<Association> getBrokenAssociations(EObject container) {
 		final Collection<Association> result = new ArrayList<Association>();
@@ -237,9 +237,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a
-	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
-	 * property.
+	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
 	 *
 	 * @param diagram
 	 *            a diagram.
@@ -263,9 +262,9 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the interface realization of all the UML elements displayed as
-	 * node in a Diagram. Note that a Property cross reference will lead to retrieve the cross references
-	 * of this property.
+	 * Retrieve the cross references of the interface realization of all the UML elements displayed as node in
+	 * a Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
 	 *
 	 * @param diagram
 	 *            a diagram.
@@ -382,8 +381,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the template binding of all the UML elements displayed as node in
-	 * a Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * Retrieve the cross references of the template binding of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
 	 * property.
 	 *
 	 * @param diagram

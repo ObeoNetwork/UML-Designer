@@ -90,8 +90,8 @@ public class UseCaseDiagramServices extends AbstractDiagramServices {
 	 */
 	public Collection<EObject> getRelatedForUseCase(EObject cur) {
 		if (!(cur instanceof UseCase || cur instanceof Actor)) {
-			final List<EObject> result = ImmutableList.copyOf(Iterables.filter(
-					RelatedServices.INSTANCE.getRelated(cur), new Predicate<EObject>() {
+			final List<EObject> result = ImmutableList.copyOf(
+					Iterables.filter(RelatedServices.INSTANCE.getRelated(cur), new Predicate<EObject>() {
 
 						public boolean apply(EObject input) {
 							return input instanceof UseCase || input instanceof Actor;

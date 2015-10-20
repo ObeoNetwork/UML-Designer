@@ -33,20 +33,16 @@ import org.eclipse.ui.progress.IProgressService;
 import org.obeonetwork.dsl.uml2.discovery.UmlDiscoveryActivator;
 
 /**
- * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlDiscovery extends DiscoveryContentProvider {
 	private static final String CATALOG_URI = "http://obeonetwork.github.io/UML-Designer/discovery.xmi";
 
 	@Override
-	public DiscoveryDefinition load(IProgressMonitor monitor)
-			throws InterruptedException {
+	public DiscoveryDefinition load(IProgressMonitor monitor) throws InterruptedException {
 		URI catalogURI = URI.createURI(CATALOG_URI);
 		UmlDiscoveryActivator.getDefault().prepareProxySettings(CATALOG_URI);
-		CancellableXMIResourceImpl res = new CancellableXMIResourceImpl(
-				catalogURI, monitor);
+		CancellableXMIResourceImpl res = new CancellableXMIResourceImpl(catalogURI, monitor);
 		try {
 			res.load(Collections.EMPTY_MAP);
 		} catch (IOException e) {
@@ -54,18 +50,15 @@ public class UmlDiscovery extends DiscoveryContentProvider {
 		} catch (OperationCanceledException e) {
 			throw new InterruptedException();
 		}
-		DiscoveryDefinition result = (DiscoveryDefinition) res.getContents()
-				.get(0);
+		DiscoveryDefinition result = (DiscoveryDefinition)res.getContents().get(0);
 		this.disco = result;
 		return result;
 	}
 
 	private void errorDialog(final IWorkbenchWindow window, Exception e) {
-		String message = "We can't connect to the discovery source: \n"
-				+ CATALOG_URI
+		String message = "We can't connect to the discovery source: \n" + CATALOG_URI
 				+ "\n Make sure you're connected to internet and try again.";
-		MessageDialog.openError(window.getShell(),
-				"Can't connect to discovery source", message);
+		MessageDialog.openError(window.getShell(), "Can't connect to discovery source", message);
 		throw new RuntimeException(e);
 	}
 
@@ -100,19 +93,14 @@ public class UmlDiscovery extends DiscoveryContentProvider {
 			if (provider.getDiscovery() != null) {
 				DiscoveryWizard wizard = new DiscoveryWizard(provider);
 
-				WizardDialog dialog = new WizardDialog(window.getShell(),
-						wizard);
+				WizardDialog dialog = new WizardDialog(window.getShell(), wizard);
 				dialog.setMinimumPageSize(600, 400);
 				dialog.open();
 			}
 		} catch (InvocationTargetException e1) {
 			if (!(e1.getCause() instanceof OperationCanceledException)) {
-				UmlDiscoveryActivator
-						.getDefault()
-						.getLog()
-						.log(new Status(IStatus.ERROR,
-								UmlDiscoveryActivator.PLUGIN_ID, e1
-										.getMessage(), e1));
+				UmlDiscoveryActivator.getDefault().getLog()
+						.log(new Status(IStatus.ERROR, UmlDiscoveryActivator.PLUGIN_ID, e1.getMessage(), e1));
 			}
 		} catch (InterruptedException e1) {
 			/*

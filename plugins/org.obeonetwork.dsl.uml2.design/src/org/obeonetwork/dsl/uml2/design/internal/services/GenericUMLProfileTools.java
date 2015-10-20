@@ -42,9 +42,8 @@ import org.eclipse.uml2.uml.ValueSpecification;
 /**
  * A Generic UML Profile tools.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class GenericUMLProfileTools {
 	/**
@@ -64,35 +63,35 @@ public class GenericUMLProfileTools {
 		}
 
 		if (object instanceof ValueSpecification) {
-			label = getLabel((ValueSpecification) object);
+			label = getLabel((ValueSpecification)object);
 
 		} else if (object instanceof Element) {
-			final Element cE = (Element) object;
+			final Element cE = (Element)object;
 			String cName = null;
 			String suffix = ""; //$NON-NLS-1$
 			String cComLabel = ""; //$NON-NLS-1$
 
 			NamedElement cNE = null;
 			if (object instanceof NamedElement) {
-				cNE = (NamedElement) object;
+				cNE = (NamedElement)object;
 
 			} else if (object instanceof PackageImport) {
-				final PackageImport cPI = (PackageImport) object;
+				final PackageImport cPI = (PackageImport)object;
 				suffix = " (PackageImport)"; //$NON-NLS-1$
 				cNE = cPI.getImportedPackage();
 
 			} else if (object instanceof ElementImport) {
-				final ElementImport cEI = (ElementImport) object;
+				final ElementImport cEI = (ElementImport)object;
 				suffix = " (ElementImport)"; //$NON-NLS-1$
 				cNE = cEI.getImportedElement();
 
 			} else if (object instanceof ProfileApplication) {
-				final ProfileApplication cPA = (ProfileApplication) object;
+				final ProfileApplication cPA = (ProfileApplication)object;
 				suffix = " (ProfileApplication)"; //$NON-NLS-1$
 				cNE = cPA.getAppliedProfile();
 
 			} else if (object instanceof Comment) {
-				final Comment cCom = (Comment) object;
+				final Comment cCom = (Comment)object;
 				suffix = " (Comment)"; //$NON-NLS-1$
 				final String cComBody = cCom.getBody();
 				if (cComBody.length() >= 10) {
@@ -171,8 +170,7 @@ public class GenericUMLProfileTools {
 		if (type instanceof org.eclipse.uml2.uml.Class && type.getAppliedStereotypes() != null
 				&& type.getAppliedStereotypes().size() > 0) {
 
-			final Stereotype firstStereotype = type.getAppliedStereotypes()
-					.get(0);
+			final Stereotype firstStereotype = type.getAppliedStereotypes().get(0);
 
 			if (firstStereotype.getName().equals("Metaclass")) { //$NON-NLS-1$
 				isMetaclass = true;
@@ -195,9 +193,8 @@ public class GenericUMLProfileTools {
 		try {
 			final Resource resource = resourceSet.getResource(uri, true);
 
-			package_ = (org.eclipse.uml2.uml.Package) EcoreUtil
-					.getObjectByType(resource.getContents(),
-							UMLPackage.Literals.PACKAGE);
+			package_ = (org.eclipse.uml2.uml.Package)EcoreUtil.getObjectByType(resource.getContents(),
+					UMLPackage.Literals.PACKAGE);
 		} catch (final WrappedException we) {
 			LogServices.INSTANCE.error("load(" + uri.getClass() + ") not handled", //$NON-NLS-1$ //$NON-NLS-2$
 					we);
@@ -223,11 +220,9 @@ public class GenericUMLProfileTools {
 		try {
 			final Resource resource = resourceSet.getResource(uri, true);
 
-			package_ = (EPackage) EcoreUtil.getObjectByType(
-					resource.getContents(), type);
+			package_ = (EPackage)EcoreUtil.getObjectByType(resource.getContents(), type);
 		} catch (final WrappedException we) {
-			LogServices.INSTANCE.error(
-					"load(" + uri.getClass() + "," + type.getClass() //$NON-NLS-1$ //$NON-NLS-2$
+			LogServices.INSTANCE.error("load(" + uri.getClass() + "," + type.getClass() //$NON-NLS-1$ //$NON-NLS-2$
 					+ ") not handled", we); //$NON-NLS-1$
 			System.exit(1);
 		}
@@ -244,11 +239,8 @@ public class GenericUMLProfileTools {
 	 */
 	public static IFile resourceToIFile(final Resource resource) {
 		final URI uriEcoreProfile = resource.getURI();
-		final URI resolvedUriEcoreProfile = CommonPlugin
-				.resolve(uriEcoreProfile);
-		final IFile ecoreProfileIFile = ResourcesPlugin
-				.getWorkspace()
-				.getRoot()
+		final URI resolvedUriEcoreProfile = CommonPlugin.resolve(uriEcoreProfile);
+		final IFile ecoreProfileIFile = ResourcesPlugin.getWorkspace().getRoot()
 				.getFileForLocation(new Path(resolvedUriEcoreProfile.toFileString()));
 		return ecoreProfileIFile;
 	}
@@ -278,16 +270,14 @@ public class GenericUMLProfileTools {
 	 * @param uri
 	 *            of the file
 	 */
-	public static void save(final org.eclipse.uml2.uml.Package package_,
-			final URI uri) {
+	public static void save(final org.eclipse.uml2.uml.Package package_, final URI uri) {
 		final Resource resource = new ResourceSetImpl().createResource(uri);
 		resource.getContents().add(package_);
 
 		try {
 			resource.save(null);
 		} catch (final IOException ioe) {
-			LogServices.INSTANCE.error(
-					"save(" + package_.getClass() + "," + uri.getClass() //$NON-NLS-1$ //$NON-NLS-2$
+			LogServices.INSTANCE.error("save(" + package_.getClass() + "," + uri.getClass() //$NON-NLS-1$ //$NON-NLS-2$
 					+ ") not handled", ioe); //$NON-NLS-1$
 		}
 	}

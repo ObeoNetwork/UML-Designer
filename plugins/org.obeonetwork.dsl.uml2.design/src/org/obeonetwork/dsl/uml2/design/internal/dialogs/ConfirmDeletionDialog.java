@@ -141,7 +141,8 @@ public class ConfirmDeletionDialog extends MessageDialog {
 	public ConfirmDeletionDialog(final Map<EObject, Object> allDetachedObjects) {
 		super(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Deletion", null, //$NON-NLS-1$
 				"The following red elements will be updated/deleted. Confirm deletion ?", 0, new String[] { //$NON-NLS-1$
-			IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL}, 1);
+						IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL},
+				1);
 		initContentProvider(allDetachedObjects.values());
 		labelProvider = new ConfirmDeletionTreeLabelProvider();
 		final Predicate<Object> isDeletedPredicate = new Predicate<Object>() {

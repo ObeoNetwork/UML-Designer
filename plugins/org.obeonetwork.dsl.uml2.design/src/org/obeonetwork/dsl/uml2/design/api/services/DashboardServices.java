@@ -209,8 +209,8 @@ public class DashboardServices {
 
 	protected void createRepresentation(NamedElement namedElement, String representationId) {
 		final Session session = SessionManager.INSTANCE.getSession(namedElement);
-		final RepresentationDescription representationDescription = getRepresentationDescription(
-				namedElement, session, representationId);
+		final RepresentationDescription representationDescription = getRepresentationDescription(namedElement,
+				session, representationId);
 		createRepresentation(namedElement, namedElement.getName() + " " + representationId, //$NON-NLS-1$
 				representationDescription);
 	}
@@ -360,7 +360,7 @@ public class DashboardServices {
 			final String contextId = "org.obeonetwork.dsl.uml2.design.doc." + contextID; //$NON-NLS-1$
 
 			PlatformUI.getWorkbench().getHelpSystem()
-			.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
+					.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
 			PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 		}
 	}
@@ -372,8 +372,8 @@ public class DashboardServices {
 	 *            The representation to open
 	 */
 	public void openRepresentation(final DRepresentation representation) {
-		final Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator)representation)
-				.getTarget());
+		final Session session = SessionManager.INSTANCE
+				.getSession(((DSemanticDecorator)representation).getTarget());
 
 		try {
 			PlatformUI.getWorkbench().getActiveWorkbenchWindow().run(true, true, new IRunnableWithProgress() {

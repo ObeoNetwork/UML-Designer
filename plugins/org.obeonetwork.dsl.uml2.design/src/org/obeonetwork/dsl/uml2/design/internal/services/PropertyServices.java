@@ -27,7 +27,7 @@ import org.eclipse.uml2.uml.resource.UMLResource;
 /**
  * Utility services to manage edges direct label edition on properties.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
@@ -219,7 +219,7 @@ public final class PropertyServices {
 	}
 
 	/**
-	 * Parse the edited label content and update the underlying {@link Property}.
+	 * Parse the edited label content and update the underlying {@link Property} .
 	 *
 	 * @param property
 	 *            the context {@link Property} object.
@@ -228,11 +228,12 @@ public final class PropertyServices {
 	 * @return Property name
 	 */
 	public String parseInputLabel(Property property, String inputLabel) {
-		// Smart edit multiplicity : x, x y, x..y, [x], [x y], [x..y], x..*, [x..*], *, [*], -1, [-1]
+		// Smart edit multiplicity : x, x y, x..y, [x], [x y], [x..y], x..*,
+		// [x..*], *, [*], -1, [-1]
 		Pattern p = Pattern.compile("\\[?([0-9]*)[ .]*(([0-9 \\* \\-1]*)?)\\]?"); //$NON-NLS-1$
 		Matcher m = p.matcher(inputLabel.trim());
-		if (m.find() && m.group(1) != null && m.group(1).length() > 0 || m.group(2) != null
-				&& m.group(2).length() > 0) {
+		if (m.find() && m.group(1) != null && m.group(1).length() > 0
+				|| m.group(2) != null && m.group(2).length() > 0) {
 			final String lower = m.group(1).trim();
 			final String upper = m.group(2).trim();
 			if (upper != null && upper.length() > 0) {
@@ -256,7 +257,8 @@ public final class PropertyServices {
 			// - a "/" at the beginning for a derived property
 			// - a ":" between the name and the type
 			// - a "=" preceding the default value
-			// Between these signs who all are optional one can find any character
+			// Between these signs who all are optional one can find any
+			// character
 			p = Pattern.compile("^(/?)([^:]*):?([^=]*)=?(.*)$"); //$NON-NLS-1$
 			m = p.matcher(inputLabel.trim());
 

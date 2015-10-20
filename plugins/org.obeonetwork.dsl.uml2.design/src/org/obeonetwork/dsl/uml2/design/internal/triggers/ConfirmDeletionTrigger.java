@@ -47,9 +47,9 @@ public class ConfirmDeletionTrigger extends DanglingRefRemovalTrigger {
 
 	/**
 	 * Filter {@link Notification}s which are not touch. More filtering work is done later in
-	 * localChangesAboutToCommit, see isImpactingNotification(Collection<Notification>) which return true
-	 * as soon as an impacting notification is found. This is not done here for performance reason: we
-	 * need the container resource of the notifier.
+	 * localChangesAboutToCommit, see isImpactingNotification(Collection<Notification>) which return true as
+	 * soon as an impacting notification is found. This is not done here for performance reason: we need the
+	 * container resource of the notifier.
 	 */
 	public static final NotificationFilter IS_IMPACTING = new NotificationFilter.Custom() {
 		@Override

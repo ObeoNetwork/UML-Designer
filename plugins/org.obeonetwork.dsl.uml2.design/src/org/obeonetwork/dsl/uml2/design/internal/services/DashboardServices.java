@@ -52,7 +52,8 @@ public class DashboardServices {
 		// Get all available dashboards
 		final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
 		for (final Session session : sessions) {
-			// Check if the dashboard viewpoint is active for the current session
+			// Check if the dashboard viewpoint is active for the current
+			// session
 			final Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
 			boolean isDashboardViewpointActive = false;
 			for (final Viewpoint viewpoint : selectedViewpoints) {
@@ -62,7 +63,8 @@ public class DashboardServices {
 				}
 			}
 			if (isDashboardViewpointActive) {
-				// Check if a dashboard representation exists for the current session
+				// Check if a dashboard representation exists for the current
+				// session
 				final Collection<DRepresentation> representations = DialectManager.INSTANCE
 						.getAllRepresentations(session);
 				final Iterator<DRepresentation> iterator = representations.iterator();

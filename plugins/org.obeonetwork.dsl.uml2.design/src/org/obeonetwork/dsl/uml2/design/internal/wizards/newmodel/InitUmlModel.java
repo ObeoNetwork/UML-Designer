@@ -22,7 +22,7 @@ import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 /**
  * An operation to create and initialize a new session with empty semantic UML model.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class InitUmlModel extends WorkspaceModifyOperation {
@@ -68,8 +68,8 @@ public class InitUmlModel extends WorkspaceModifyOperation {
 
 				public void run() {
 					// Create default empty UML model
-					org.obeonetwork.dsl.uml2.design.internal.wizards.UmlProjectUtils.createSemanticResource(
-							project, rootObjectName, umlFileName);
+					org.obeonetwork.dsl.uml2.design.internal.wizards.UmlProjectUtils
+							.createSemanticResource(project, rootObjectName, umlFileName);
 
 					// Enable UML viewpoints
 					final ModelingProject modelingProject = created.get();

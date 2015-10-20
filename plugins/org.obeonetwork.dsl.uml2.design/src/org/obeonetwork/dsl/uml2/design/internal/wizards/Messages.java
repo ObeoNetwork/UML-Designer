@@ -126,6 +126,7 @@ public class Messages extends NLS {
 	 * Call operation pin action error.
 	 */
 	public static String UmlValidationErrorOnCallOperationActionPin;
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

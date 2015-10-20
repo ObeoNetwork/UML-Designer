@@ -21,9 +21,8 @@ import org.eclipse.emf.codegen.util.CodeGenUtil;
 /**
  * This class provide a method to generate a Mode Code from a genmodel.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class GenerateModelCode {
 

@@ -49,12 +49,10 @@ public class SequenceServices {
 	 */
 	public final String EXECUTION_END_SUFFIX = "_finish"; //$NON-NLS-1$
 
-
 	/**
 	 * Signal name suffix.
 	 */
 	public final String SIGNAL_SUFFIX = "_signal"; //$NON-NLS-1$
-
 
 	/**
 	 * Sender message name suffix.
@@ -65,8 +63,6 @@ public class SequenceServices {
 	 * Receiver message name suffix.
 	 */
 	public final String RECEIVER_MESSAGE_SUFFIX = "_receiver"; //$NON-NLS-1$
-
-
 
 	private boolean combinedFragmentStartPredecessorChanged(CombinedFragment combinedFragment,
 			InteractionFragment startingEndPredecessorAfter) {
@@ -153,7 +149,8 @@ public class SequenceServices {
 			Element finishingEndPredecessor, Operation operation) {
 		final Lifeline target = getLifeline(targetFragment);
 
-		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
+		final BehaviorExecutionSpecification predecessorExecution = getExecution(
+				(InteractionFragment)startingEndPredecessor);
 
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 		final EList<InteractionFragment> fragments = interaction.getFragments();
@@ -194,7 +191,8 @@ public class SequenceServices {
 			execution.setFinish(endExec);
 		}
 
-		// If predecessor is the beginning of an execution add message after the execution
+		// If predecessor is the beginning of an execution add message after the
+		// execution
 		if (startingEndPredecessor != null && startingEndPredecessor instanceof OccurrenceSpecification
 				&& predecessorExecution != null
 				&& startingEndPredecessor.equals(predecessorExecution.getStart())) {
@@ -293,15 +291,17 @@ public class SequenceServices {
 		// Ordered fragments
 		fragments.add(startExec);
 
-		// If execution starts from an execution, add the new execution start after the execution
+		// If execution starts from an execution, add the new execution start
+		// after the execution
 		// specification
 		if (startingEndPredecessor instanceof OccurrenceSpecification
 				&& getExecution((OccurrenceSpecification)startingEndPredecessor) != null
 				&& startingEndPredecessor
-				.equals(getExecution((OccurrenceSpecification)startingEndPredecessor).getStart())) {
+						.equals(getExecution((OccurrenceSpecification)startingEndPredecessor).getStart())) {
 			fragments.move(fragments.indexOf(startingEndPredecessor) + 2, startExec);
 		} else {
-			// Message starts from a lifeline, add the message start after the last starting predecessor
+			// Message starts from a lifeline, add the message start after the
+			// last starting predecessor
 			// (message)
 			fragments.move(fragments.indexOf(startingEndPredecessor) + 1, startExec);
 		}
@@ -320,7 +320,9 @@ public class SequenceServices {
 	 *            Message
 	 * @return Execution
 	 */
-	public BehaviorExecutionSpecification createExecution(/* Operation operation, */
+	public BehaviorExecutionSpecification createExecution(/*
+															 * Operation operation,
+															 */
 			final Lifeline covered, final Message message) {
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 		final OpaqueBehavior behavior = factory.createOpaqueBehavior();
@@ -410,7 +412,8 @@ public class SequenceServices {
 			NamedElement targetFragment, boolean createExecution, Element startingEndPredecessor,
 			Element finishingEndPredecessor, Operation operation) {
 		final Lifeline target = getLifeline(targetFragment);
-		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
+		final BehaviorExecutionSpecification predecessorExecution = getExecution(
+				(InteractionFragment)startingEndPredecessor);
 
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 		final EList<InteractionFragment> fragments = interaction.getFragments();
@@ -447,7 +450,8 @@ public class SequenceServices {
 		}
 
 		// Add and order fragments under the interaction
-		// If predecessor is the beginning of an execution add message after the execution
+		// If predecessor is the beginning of an execution add message after the
+		// execution
 		if (startingEndPredecessor != null && startingEndPredecessor instanceof OccurrenceSpecification
 				&& predecessorExecution != null
 				&& startingEndPredecessor.equals(predecessorExecution.getStart())) {
@@ -464,8 +468,7 @@ public class SequenceServices {
 
 		fragments.add((MessageOccurrenceSpecification)replyMessage.getSendEvent());
 		if (execution != null) {
-			fragments.add(fragments.indexOf(message.getReceiveEvent()) + 1,
-					execution);
+			fragments.add(fragments.indexOf(message.getReceiveEvent()) + 1, execution);
 			fragments.move(fragments.indexOf(execution) + 1,
 					(MessageOccurrenceSpecification)replyMessage.getSendEvent());
 		} else {
@@ -665,7 +668,6 @@ public class SequenceServices {
 		return behaviors.get(occurence);
 	}
 
-
 	/**
 	 * Get the execution associated to a fragment.
 	 *
@@ -804,10 +806,6 @@ public class SequenceServices {
 		return true;
 	}
 
-
-
-
-
 	private boolean isStartOfExecution(InteractionFragment startingEndPredecessorAfter,
 			EList<InteractionFragment> fragments) {
 		if (startingEndPredecessorAfter instanceof ExecutionOccurrenceSpecification) {
@@ -843,7 +841,6 @@ public class SequenceServices {
 		return !initialPredecessor.equals(startingEndPredecessorAfter);
 
 	}
-
 
 	/**
 	 * Reorder combined fragment.
@@ -953,9 +950,10 @@ public class SequenceServices {
 							(MessageOccurrenceSpecification)message.getSendEvent());
 				}
 
-				fragments
-				.add(getFragmentIndex((MessageOccurrenceSpecification)message.getSendEvent(),
-						fragments) + 1, (MessageOccurrenceSpecification)message.getReceiveEvent());
+				fragments.add(
+						getFragmentIndex((MessageOccurrenceSpecification)message.getSendEvent(), fragments)
+								+ 1,
+						(MessageOccurrenceSpecification)message.getReceiveEvent());
 			}
 
 			// Move reply for synchronous message
@@ -964,26 +962,26 @@ public class SequenceServices {
 				fragments.remove(replyMessage.getSendEvent());
 				fragments.remove(replyMessage.getReceiveEvent());
 
-				if (isStartOfExecution((MessageOccurrenceSpecification)message.getReceiveEvent(), fragments)) {
+				if (isStartOfExecution((MessageOccurrenceSpecification)message.getReceiveEvent(),
+						fragments)) {
 					fragments.add(
 							getFragmentIndex((MessageOccurrenceSpecification)message.getReceiveEvent(),
-									fragments) + 2, (MessageOccurrenceSpecification)replyMessage
-									.getSendEvent());
+									fragments) + 2,
+							(MessageOccurrenceSpecification)replyMessage.getSendEvent());
 				} else {
 					fragments.add(
 							getFragmentIndex((MessageOccurrenceSpecification)message.getReceiveEvent(),
-									fragments) + 1, (MessageOccurrenceSpecification)replyMessage
-									.getSendEvent());
+									fragments) + 1,
+							(MessageOccurrenceSpecification)replyMessage.getSendEvent());
 				}
 
 				fragments.add(
 						getFragmentIndex((MessageOccurrenceSpecification)replyMessage.getSendEvent(),
-								fragments) + 1, (MessageOccurrenceSpecification)replyMessage
-								.getReceiveEvent());
+								fragments) + 1,
+						(MessageOccurrenceSpecification)replyMessage.getReceiveEvent());
 
 			}
 		}
 	}
-
 
 }

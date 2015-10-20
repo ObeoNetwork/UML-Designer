@@ -49,24 +49,22 @@ import org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor;
  */
 public class UmlCommonActionProvider extends CommonActionProvider {
 	private Collection<IAction> createChildActions;
+
 	private Map<String, Collection<IAction>> createChildSubmenuActions;
+
 	private ICommonViewerWorkbenchSite viewSite;
 
 	/**
-	 * Overridden to have a reference to the model explorer view.
-	 * 
-	 * {@inheritDoc}
+	 * Overridden to have a reference to the model explorer view. {@inheritDoc}
 	 */
 	@Override
 	public void init(final ICommonActionExtensionSite aSite) {
 		super.init(aSite);
-		viewSite = (ICommonViewerWorkbenchSite) aSite.getViewSite();
+		viewSite = (ICommonViewerWorkbenchSite)aSite.getViewSite();
 	}
 
 	/**
-	 * Overridden to add to the <code>menuManager</code> "New Child" sub menu to
-	 * create model elements.
-	 * 
+	 * Overridden to add to the <code>menuManager</code> "New Child" sub menu to create model elements.
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -77,47 +75,35 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 				UMLEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
 		menuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
 		ISelection selection = getContext().getSelection();
-		if (selection instanceof IStructuredSelection
-				&& ((IStructuredSelection) selection).size() == 1) {
-			Object object = ((IStructuredSelection) selection)
-					.getFirstElement();
+		if (selection instanceof IStructuredSelection && ((IStructuredSelection)selection).size() == 1) {
+			Object object = ((IStructuredSelection)selection).getFirstElement();
 
 			if (object instanceof EObject) {
-				EObject eObject = (EObject) object;
-				EditingDomain domain = TransactionUtil
-						.getEditingDomain(eObject);
-				if (domain != null
-						&& UMLPackage.eINSTANCE == eObject.eClass()
-								.eContainer()) {
-					Collection<?> newChildDescriptors = domain
-							.getNewChildDescriptors(object, null);
+				EObject eObject = (EObject)object;
+				EditingDomain domain = TransactionUtil.getEditingDomain(eObject);
+				if (domain != null && UMLPackage.eINSTANCE == eObject.eClass().eContainer()) {
+					Collection<?> newChildDescriptors = domain.getNewChildDescriptors(object, null);
 
 					if (newChildDescriptors != null) {
 						// Code duplicated from
 						// UMLActionBarContributor#selectionChanged
 						if (createChildMenuManager != null) {
-							depopulateManager(createChildMenuManager,
-									createChildSubmenuActions);
-							depopulateManager(createChildMenuManager,
-									createChildActions);
+							depopulateManager(createChildMenuManager, createChildSubmenuActions);
+							depopulateManager(createChildMenuManager, createChildActions);
 						}
 
 						// Generate actions for selection; populate and redraw
 						// the menus.
-						createChildActions = generateCreateChildActions(
-								newChildDescriptors, selection);
+						createChildActions = generateCreateChildActions(newChildDescriptors, selection);
 						createChildSubmenuActions = extractSubmenuActions(createChildActions);
 						if (createChildMenuManager != null) {
-							populateManager(createChildMenuManager,
-									createChildSubmenuActions, null);
-							populateManager(createChildMenuManager,
-									createChildActions, null);
+							populateManager(createChildMenuManager, createChildSubmenuActions, null);
+							populateManager(createChildMenuManager, createChildActions, null);
 							createChildMenuManager.update(true);
 						}
 					}
 					if (isRenamableUmlModelElement(eObject)) {
-						menuManager.add(new RenameUmlModelElementAction(domain,
-								eObject));
+						menuManager.add(new RenameUmlModelElementAction(domain, eObject));
 					}
 				}
 			}
@@ -132,15 +118,12 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 	/**
 	 * This removes from the specified <code>manager</code> all
 	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
-	 * {@link org.eclipse.jface.action.IAction}s contained in the
-	 * <code>actions</code> collection.
-	 * 
-	 * Code duplicated from UMLActionBarContributor
+	 * {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection. Code
+	 * duplicated from UMLActionBarContributor
 	 * 
 	 * @see UMLActionBarContributor#depopulateManager
 	 */
-	private void depopulateManager(IContributionManager manager,
-			Collection<? extends IAction> actions) {
+	private void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
 		if (actions != null) {
 			IContributionItem[] items = manager.getItems();
 			for (int i = 0; i < items.length; i++) {
@@ -148,15 +131,13 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 				//
 				IContributionItem contributionItem = items[i];
 				while (contributionItem instanceof SubContributionItem) {
-					contributionItem = ((SubContributionItem) contributionItem)
-							.getInnerItem();
+					contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
 				}
 
 				// Delete the ActionContributionItems with matching action.
 				//
 				if (contributionItem instanceof ActionContributionItem) {
-					IAction action = ((ActionContributionItem) contributionItem)
-							.getAction();
+					IAction action = ((ActionContributionItem)contributionItem).getAction();
 					if (actions.contains(action)) {
 						manager.remove(contributionItem);
 					}
@@ -166,29 +147,22 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 	}
 
 	/**
-	 * This extracts those actions in the <code>submenuActions</code> collection
-	 * whose text is qualified and returns a map of these actions, keyed by
-	 * submenu text.
-	 * 
-	 * Code duplicated from UMLActionBarContributor
+	 * This extracts those actions in the <code>submenuActions</code> collection whose text is qualified and
+	 * returns a map of these actions, keyed by submenu text. Code duplicated from UMLActionBarContributor
 	 * 
 	 * @see UMLActionBarContributor#extractSubmenuActions
 	 */
-	private Map<String, Collection<IAction>> extractSubmenuActions(
-			Collection<IAction> createActions) {
+	private Map<String, Collection<IAction>> extractSubmenuActions(Collection<IAction> createActions) {
 		Map<String, Collection<IAction>> createSubmenuActions = new LinkedHashMap<String, Collection<IAction>>();
 		if (createActions != null) {
-			for (Iterator<IAction> actions = createActions.iterator(); actions
-					.hasNext();) {
+			for (Iterator<IAction> actions = createActions.iterator(); actions.hasNext();) {
 				IAction action = actions.next();
 				StringTokenizer st = new StringTokenizer(action.getText(), "|"); //$NON-NLS-1$
 				if (st.countTokens() == 2) {
 					String text = st.nextToken().trim();
-					Collection<IAction> submenuActions = createSubmenuActions
-							.get(text);
+					Collection<IAction> submenuActions = createSubmenuActions.get(text);
 					if (submenuActions == null) {
-						createSubmenuActions.put(text,
-								submenuActions = new ArrayList<IAction>());
+						createSubmenuActions.put(text, submenuActions = new ArrayList<IAction>());
 					}
 					action.setText(st.nextToken().trim());
 					submenuActions.add(action);
@@ -200,24 +174,19 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 	}
 
 	/**
-	 * This populates the specified <code>manager</code> with
-	 * {@link org.eclipse.jface.action.MenuManager}s containing
-	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
-	 * {@link org.eclipse.jface.action.IAction}s contained in the
-	 * <code>submenuActions</code> collection, by inserting them before the
-	 * specified contribution item <code>contributionID</code>. If
-	 * <code>contributionID</code> is <code>null</code>, they are simply added.
-	 * 
-	 * Code duplicated from UMLActionBarContributor
+	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.MenuManager}s
+	 * containing {@link org.eclipse.jface.action.ActionContributionItem}s based on the
+	 * {@link org.eclipse.jface.action.IAction}s contained in the <code>submenuActions</code> collection, by
+	 * inserting them before the specified contribution item <code>contributionID</code>. If
+	 * <code>contributionID</code> is <code>null</code>, they are simply added. Code duplicated from
+	 * UMLActionBarContributor
 	 * 
 	 * @see UMLActionBarContributor#populateManager
 	 */
 	private void populateManager(IContributionManager manager,
-			Map<String, Collection<IAction>> submenuActions,
-			String contributionID) {
+			Map<String, Collection<IAction>> submenuActions, String contributionID) {
 		if (submenuActions != null) {
-			for (Map.Entry<String, Collection<IAction>> entry : submenuActions
-					.entrySet()) {
+			for (Map.Entry<String, Collection<IAction>> entry : submenuActions.entrySet()) {
 				MenuManager submenuManager = new MenuManager(entry.getKey());
 				if (contributionID != null) {
 					manager.insertBefore(contributionID, submenuManager);
@@ -230,13 +199,10 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 	}
 
 	/**
-	 * This removes from the specified <code>manager</code> all
-	 * {@link org.eclipse.jface.action.MenuManager}s and their
-	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
-	 * {@link org.eclipse.jface.action.IAction}s contained in the
-	 * <code>submenuActions</code> map.
-	 * 
-	 * Code duplicated from UMLActionBarContributor
+	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.MenuManager}s
+	 * and their {@link org.eclipse.jface.action.ActionContributionItem}s based on the
+	 * {@link org.eclipse.jface.action.IAction}s contained in the <code>submenuActions</code> map. Code
+	 * duplicated from UMLActionBarContributor
 	 * 
 	 * @see UMLActionBarContributor#depopulateManager
 	 */
@@ -247,11 +213,9 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 			for (int i = 0; i < items.length; i++) {
 				IContributionItem contributionItem = items[i];
 				if (contributionItem instanceof MenuManager) {
-					MenuManager submenuManager = (MenuManager) contributionItem;
-					if (submenuActions
-							.containsKey(submenuManager.getMenuText())) {
-						depopulateManager(submenuManager,
-								submenuActions.get(contributionItem));
+					MenuManager submenuManager = (MenuManager)contributionItem;
+					if (submenuActions.containsKey(submenuManager.getMenuText())) {
+						depopulateManager(submenuManager, submenuActions.get(contributionItem));
 						manager.remove(contributionItem);
 					}
 				}
@@ -262,17 +226,15 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 	/**
 	 * This populates the specified <code>manager</code> with
 	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
-	 * {@link org.eclipse.jface.action.IAction}s contained in the
-	 * <code>actions</code> collection, by inserting them before the specified
-	 * contribution item <code>contributionID</code>. If
-	 * <code>contributionID</code> is <code>null</code>, they are simply added.
-	 * 
-	 * Code duplicated from UMLActionBarContributor
+	 * {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection, by
+	 * inserting them before the specified contribution item <code>contributionID</code>. If
+	 * <code>contributionID</code> is <code>null</code>, they are simply added. Code duplicated from
+	 * UMLActionBarContributor
 	 * 
 	 * @see UMLActionBarContributor#populateManager
 	 */
-	private void populateManager(IContributionManager manager,
-			Collection<? extends IAction> actions, String contributionID) {
+	private void populateManager(IContributionManager manager, Collection<? extends IAction> actions,
+			String contributionID) {
 		if (actions != null) {
 			for (IAction action : actions) {
 				if (contributionID != null) {
@@ -285,21 +247,18 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 	}
 
 	/**
-	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction}
-	 * for each object in <code>descriptors</code>, and returns the collection
-	 * of these actions.
-	 * 
-	 * Code duplicated from UMLActionBarContributor
+	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in
+	 * <code>descriptors</code>, and returns the collection of these actions. Code duplicated from
+	 * UMLActionBarContributor
 	 * 
 	 * @see UMLActionBarContributor#generateCreateChildActionsGen
 	 */
-	private Collection<IAction> generateCreateChildActionsGen(
-			Collection<?> descriptors, ISelection selection) {
+	private Collection<IAction> generateCreateChildActionsGen(Collection<?> descriptors,
+			ISelection selection) {
 		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
 			for (Object descriptor : descriptors) {
-				actions.add(new CreateChildAction(viewSite.getPart(),
-						selection, descriptor));
+				actions.add(new CreateChildAction(viewSite.getPart(), selection, descriptor));
 			}
 		}
 		return actions;
@@ -310,19 +269,16 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 	 * 
 	 * @see UMLActionBarContributor#generateCreateChildActionsGen
 	 */
-	private Collection<IAction> generateCreateChildActions(
-			Collection<?> descriptors, ISelection selection) {
-		List<IAction> createChildActions = (List<IAction>) generateCreateChildActionsGen(
-				descriptors, selection);
+	private Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
+		List<IAction> createChildActions = (List<IAction>)generateCreateChildActionsGen(descriptors,
+				selection);
 
-		Collections.<IAction> sort(createChildActions,
-				new Comparator<IAction>() {
+		Collections.<IAction> sort(createChildActions, new Comparator<IAction>() {
 
-					public int compare(IAction a1, IAction a2) {
-						return CommonPlugin.INSTANCE.getComparator().compare(
-								a1.getText(), a2.getText());
-					}
-				});
+			public int compare(IAction a1, IAction a2) {
+				return CommonPlugin.INSTANCE.getComparator().compare(a1.getText(), a2.getText());
+			}
+		});
 
 		return createChildActions;
 	}

@@ -202,8 +202,10 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseCallBehaviorAction(CallBehaviorAction object) {
-		// A CallBehaviorAction shall be notated as an Action with the name of the invoked Behavior placed
-		// inside the Action symbol. If the name of the Action is non-empty and different than the Behavior
+		// A CallBehaviorAction shall be notated as an Action with the name of
+		// the invoked Behavior placed
+		// inside the Action symbol. If the name of the Action is non-empty and
+		// different than the Behavior
 		// name, then the Action name shall appear in the symbol instead.
 		final String actionName = object.getName();
 
@@ -224,11 +226,16 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseCallOperationAction(CallOperationAction object) {
-		// A CallOperationAction is notated as an Action with the name of the invoked Operation placed inside
-		// the Action symbol. If the name of the Action is non-empty and different than the Operation name,
-		// then the Action name shall appear in the symbol instead. The name of the owner of the Operation may
-		// optionally appear below the name of the Operation, in parentheses post fixed by double colon. If
-		// the Action name is shown instead of the Operation name, then the Operation name may be shown after
+		// A CallOperationAction is notated as an Action with the name of the
+		// invoked Operation placed inside
+		// the Action symbol. If the name of the Action is non-empty and
+		// different than the Operation name,
+		// then the Action name shall appear in the symbol instead. The name of
+		// the owner of the Operation may
+		// optionally appear below the name of the Operation, in parentheses
+		// post fixed by double colon. If
+		// the Action name is shown instead of the Operation name, then the
+		// Operation name may be shown after
 		// the double colon.
 		if (object.getOperation() != null) {
 			final String callOperationName = caseNamedElement(object);

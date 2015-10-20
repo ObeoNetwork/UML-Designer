@@ -30,7 +30,7 @@ import org.obeonetwork.dsl.uml2.design.internal.wizards.UmlProjectUtils;
 /**
  * The model initialization wizard page.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  */
 public class UmlModelWizardInitModelPage extends WizardPage {
 

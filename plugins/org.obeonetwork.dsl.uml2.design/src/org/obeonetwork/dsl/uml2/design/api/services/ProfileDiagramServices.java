@@ -105,8 +105,8 @@ import org.xml.sax.SAXException;
 /**
  * A set of services to handle the Package containment diagram.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 @SuppressWarnings("restriction")
@@ -196,12 +196,12 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 
 					final String xmiIdownedPackage = ownedProfile.eResource().getURIFragment(ownedProfile);
 					extensionForGeneratedPackage = document.createElement(EXTENSION);
-					extensionForGeneratedPackage
-					.setAttribute(POINT, "org.eclipse.uml2.uml.generated_package"); //$NON-NLS-1$
+					extensionForGeneratedPackage.setAttribute(POINT,
+							"org.eclipse.uml2.uml.generated_package"); //$NON-NLS-1$
 					profile = document.createElement(DEFAULT_PROFILE_NAME);
-					profile.setAttribute("location", PLATFORM_PLUGIN //$NON-NLS-1$
-							+ ownedProfile.eResource().getURI() + "#" //$NON-NLS-1$
-							+ xmiIdownedPackage);
+					profile.setAttribute("location", //$NON-NLS-1$
+							PLATFORM_PLUGIN + ownedProfile.eResource().getURI() + "#" //$NON-NLS-1$
+									+ xmiIdownedPackage);
 					profile.setAttribute("uri", ownedProfile.getURI()); //$NON-NLS-1$
 					extensionForGeneratedPackage.appendChild(profile);
 					racine.appendChild(extensionForGeneratedPackage);
@@ -380,7 +380,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	 *            stereotype target.
 	 * @return the created association.
 	 */
-	public Association createAssociation(final Stereotype stereotypeSource, final Stereotype stereotypeTarget) {
+	public Association createAssociation(final Stereotype stereotypeSource,
+			final Stereotype stereotypeTarget) {
 		return createAssociation(stereotypeSource, stereotypeTarget, stereotypeSource.getName() + "To" //$NON-NLS-1$
 				+ stereotypeTarget.getName());
 	}
@@ -487,9 +488,9 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	public void createExtraAssociationDialog(final Stereotype stereotypeSource, final Element targetElement,
 			final Profile profile) {
 
-		final ExtraAssociationSelectionDialog dialog = new ExtraAssociationSelectionDialog(PlatformUI
-				.getWorkbench().getDisplay().getActiveShell(), profile, stereotypeSource, targetElement,
-				false);
+		final ExtraAssociationSelectionDialog dialog = new ExtraAssociationSelectionDialog(
+				PlatformUI.getWorkbench().getDisplay().getActiveShell(), profile, stereotypeSource,
+				targetElement, false);
 		dialog.open();
 		if (dialog.getResult() != null) {
 			if (targetElement instanceof Stereotype) {
@@ -512,16 +513,15 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 		final IProject[] profilePlugin = new IProject[1];
 
 		final IRunnableWithProgress validationRunnable = new IRunnableWithProgress() {
-			public void run(final IProgressMonitor progressMonitor) throws InvocationTargetException,
-			InterruptedException {
+			public void run(final IProgressMonitor progressMonitor)
+					throws InvocationTargetException, InterruptedException {
 				try {
-					profilePlugin[0] = newPluginProject.createPluginProject(
-							pluginName,
+					profilePlugin[0] = newPluginProject.createPluginProject(pluginName,
 							new ArrayList<String>(Arrays.asList("src")), //$NON-NLS-1$
 							new ArrayList<IProject>(), new HashSet<String>(),
 							new ArrayList<String>(Arrays.asList("org.eclipse.ui", //$NON-NLS-1$
 									"org.eclipse.core.runtime")), //$NON-NLS-1$
-									new NullProgressMonitor(), shell);
+							new NullProgressMonitor(), shell);
 
 				} finally {
 					progressMonitor.done();
@@ -821,8 +821,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 								&& property.getAssociation() instanceof Extension) {
 							extension = (Extension)property.getAssociation();
 						}
-						if (extension != null
-								&& ((Profile)oldContainer).getElementImport(extension.getMetaclass()) != null) {
+						if (extension != null && ((Profile)oldContainer)
+								.getElementImport(extension.getMetaclass()) != null) {
 							final ElementImport elementImport = ((Profile)oldContainer)
 									.getElementImport(extension.getMetaclass());
 							dropFromDiagramProfileService(newContainer, extension, containerView);
@@ -874,7 +874,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 							+ ") not handled", e); //$NON-NLS-1$
 				}
 
-				// make a copy of the profile into the new plug-in used for the creation of static profile
+				// make a copy of the profile into the new plug-in used for the
+				// creation of static profile
 				final IFile profileCopyIFile = modelFolder.getFile(profileName + "." //$NON-NLS-1$
 						+ UMLResource.FILE_EXTENSION);
 
@@ -887,8 +888,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 							+ ") not handled", e); //$NON-NLS-1$
 				}
 
-				final Resource profileCopyResource = new ResourceSetImpl().createResource(URI
-						.createURI(profileCopyIFile.getFullPath().toString()));
+				final Resource profileCopyResource = new ResourceSetImpl()
+						.createResource(URI.createURI(profileCopyIFile.getFullPath().toString()));
 
 				final Profile profileCopy = (Profile)GenericUMLProfileTools
 						.load(profileCopyResource.getURI());
@@ -919,8 +920,9 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 					try {
 						profilePlugin.build(IncrementalProjectBuilder.FULL_BUILD, new NullProgressMonitor());
 					} catch (final CoreException e) {
-						LogServices.INSTANCE.error("exportProfile(" //$NON-NLS-1$
-								+ rootProfile.getClass() + ") not handled", //$NON-NLS-1$
+						LogServices.INSTANCE.error(
+								"exportProfile(" //$NON-NLS-1$
+										+ rootProfile.getClass() + ") not handled", //$NON-NLS-1$
 								e);
 					}
 					final IWorkbenchWizard wizard = new PluginExportWizard();
@@ -950,8 +952,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 			}
 		} else {
 			if (!isProfile) {
-				MessageDialog
-				.openError(activeShell, "Exportation error", //$NON-NLS-1$
+				MessageDialog.openError(activeShell, "Exportation error", //$NON-NLS-1$
 						"The root element of this model is not a profile. Due to the error, the exportation will be stopped."); //$NON-NLS-1$
 			} else {
 				MessageDialog.openError(activeShell, "Exportation error", //$NON-NLS-1$
@@ -1104,8 +1105,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 		final List<PackageableElement> alreadyOnProfile = new ArrayList<PackageableElement>();
 		final List<String> alreadyOnProfileNames = new ArrayList<String>();
 
-		final ImportMetaclassDialog dialog = new ImportMetaclassDialog(PlatformUI.getWorkbench().getDisplay()
-				.getActiveShell(), profile, true);
+		final ImportMetaclassDialog dialog = new ImportMetaclassDialog(
+				PlatformUI.getWorkbench().getDisplay().getActiveShell(), profile, true);
 		dialog.setHeaderMessageText("Select the UML Metaclasses to import."); //$NON-NLS-1$
 		dialog.open();
 
@@ -1114,8 +1115,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 			for (final Object object : selectedObjects) {
 				if (object instanceof Class) {
 					final Class selectedMetaclass = (Class)object;
-					final PackageableElement importedMember = profile.getImportedMember(selectedMetaclass
-							.getName());
+					final PackageableElement importedMember = profile
+							.getImportedMember(selectedMetaclass.getName());
 					if (importedMember == null) {
 						profile.createMetaclassReference(selectedMetaclass);
 					} else {
@@ -1128,10 +1129,11 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 		}
 		if (alreadyOnProfile.size() > 0) {
 			final String[] buttonList = {"Ok"}; //$NON-NLS-1$
-			final MessageDialog msgDialog = new MessageDialog(PlatformUI.getWorkbench().getDisplay()
-					.getActiveShell(), "Already imported Metaclasses", null, //$NON-NLS-1$
-					"The following Metaclasses are already imported:" + "\n" //$NON-NLS-1$ //$NON-NLS-2$
-					+ alreadyOnProfileNames, MessageDialog.INFORMATION, buttonList, 0);
+			final MessageDialog msgDialog = new MessageDialog(
+					PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Already imported Metaclasses", //$NON-NLS-1$
+					null, "The following Metaclasses are already imported:" + "\n" //$NON-NLS-2$
+							+ alreadyOnProfileNames,
+					MessageDialog.INFORMATION, buttonList, 0);
 			msgDialog.open();
 		}
 		return alreadyOnProfile;
@@ -1146,8 +1148,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	private void initEPackageStereotype(final Profile profile) {
 		final EList<Element> allOwningPackages = profile.allOwnedElements();
 		// allOwningPackages.add(profile);
-		final Profile ecoreProfile = (Profile)GenericUMLProfileTools.load(URI
-				.createURI("pathmap://UML_PROFILES/Ecore.profile.uml")); //$NON-NLS-1$
+		final Profile ecoreProfile = (Profile)GenericUMLProfileTools
+				.load(URI.createURI("pathmap://UML_PROFILES/Ecore.profile.uml")); //$NON-NLS-1$
 		profile.applyProfile(ecoreProfile);
 		final Stereotype ePackage = ecoreProfile.getOwnedStereotype("EPackage"); //$NON-NLS-1$
 		profile.applyStereotype(ePackage);
@@ -1279,12 +1281,14 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 			if (diagResult == 0) {
 				undefineProfile(rootProfile);
 				msgDialogYes = new MessageDialog(activeShell, UNDEFINE_PROFILE, null,
-						"The profile is undefined", MessageDialog.INFORMATION, buttonYes, 0); //$NON-NLS-1$
+						"The profile is undefined", //$NON-NLS-1$
+						MessageDialog.INFORMATION, buttonYes, 0);
 				msgDialogYes.open();
 			}
 		} else {
 			msgDialogYes = new MessageDialog(activeShell, UNDEFINE_PROFILE, null,
-					"The profile is not defined !", MessageDialog.WARNING, buttonYes, 0); //$NON-NLS-1$
+					"The profile is not defined !", //$NON-NLS-1$
+					MessageDialog.WARNING, buttonYes, 0);
 			msgDialogYes.open();
 		}
 	}
@@ -1300,8 +1304,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 		final ValidateEmfElement validateAction = new ValidateEmfElement();
 		final IStructuredSelection selection = new StructuredSelection(eObject);
 		validateAction.updateSelection(selection);
-		validateAction.setActiveWorkbenchPart(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getActivePage().getActiveEditor());
+		validateAction.setActiveWorkbenchPart(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
 		validateAction.run();
 		return validateAction.getDiagnosticResult();
 	}

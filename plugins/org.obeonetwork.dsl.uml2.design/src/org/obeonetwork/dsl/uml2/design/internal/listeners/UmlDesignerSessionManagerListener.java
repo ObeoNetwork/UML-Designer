@@ -99,7 +99,7 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 		partService.addPartListener(openedEditorListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(callActionPinListener);
 		newSession.getTransactionalEditingDomain().getCommandStack()
-		.addCommandStackListener(createNewChildListener);
+				.addCommandStackListener(createNewChildListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(descendantCacheListener);
 		final UmlDesignerSessionListener sessionListener = new UmlDesignerSessionListener(newSession);
 		sessionListeners.put(newSession, sessionListener);
@@ -110,7 +110,7 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 		partService.removePartListener(openedEditorListener);
 		removedSession.getTransactionalEditingDomain().removeResourceSetListener(callActionPinListener);
 		removedSession.getTransactionalEditingDomain().getCommandStack()
-		.removeCommandStackListener(createNewChildListener);
+				.removeCommandStackListener(createNewChildListener);
 		removedSession.getTransactionalEditingDomain().removeResourceSetListener(descendantCacheListener);
 		removedSession.removeListener(sessionListeners.get(removedSession));
 		sessionListeners.remove(removedSession);

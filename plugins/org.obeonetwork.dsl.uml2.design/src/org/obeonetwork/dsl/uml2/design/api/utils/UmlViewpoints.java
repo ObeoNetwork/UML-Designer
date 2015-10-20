@@ -34,28 +34,28 @@ public class UmlViewpoints {
 	public static void enable(final Session session) {
 		if (session != null) {
 			session.getTransactionalEditingDomain().getCommandStack()
-			.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-				@Override
-				protected void doExecute() {
-					final ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
-					for (final Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
-						selection.deselectViewpoint(previouslySelected, session,
-								new NullProgressMonitor());
-					}
-					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().reused(),
-							session, new NullProgressMonitor());
-					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().capture(),
-							session, new NullProgressMonitor());
-					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().design(),
-							session, new NullProgressMonitor());
-					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().review(),
-							session, new NullProgressMonitor());
-					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().dashboard(),
-							session, new NullProgressMonitor());
-					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extend(),
-							session, new NullProgressMonitor());
-				}
-			});
+					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+						@Override
+						protected void doExecute() {
+							final ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
+							for (final Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
+								selection.deselectViewpoint(previouslySelected, session,
+										new NullProgressMonitor());
+							}
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().reused(), session,
+									new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().capture(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().design(), session,
+									new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().review(), session,
+									new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().dashboard(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extend(), session,
+									new NullProgressMonitor());
+						}
+					});
 		}
 	}
 
@@ -68,20 +68,20 @@ public class UmlViewpoints {
 	public static void enableReused(final Session session) {
 		if (session != null) {
 			session.getTransactionalEditingDomain().getCommandStack()
-			.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-				@Override
-				protected void doExecute() {
-					final ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
-					final Viewpoint reused = UmlViewpoints.fromViewpointRegistry().reused();
-					for (final Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
+					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+						@Override
+						protected void doExecute() {
+							final ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
+							final Viewpoint reused = UmlViewpoints.fromViewpointRegistry().reused();
+							for (final Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
 								if (previouslySelected.getName().equals(reused.getName())) {
-							return;
+									return;
+								}
+							}
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().reused(), session,
+									new NullProgressMonitor());
 						}
-					}
-					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().reused(),
-							session, new NullProgressMonitor());
-				}
-			});
+					});
 		}
 	}
 

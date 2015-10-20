@@ -56,20 +56,21 @@ public class OpenHelpContextListener implements IPartListener2 {
 	public void partOpened(IWorkbenchPartReference partRef) {
 		final IWorkbenchPart part = partRef.getPart(false);
 		if (part instanceof DialectEditor) {
-			final String representationId = DialectManager.INSTANCE.getDescription(
-					((DialectEditor)part).getRepresentation()).getName();
+			final String representationId = DialectManager.INSTANCE
+					.getDescription(((DialectEditor)part).getRepresentation()).getName();
 
 			if (!preferenceStore.getBoolean(representationId)) {
 				preferenceStore.setValue(representationId, true);
 
 				// Context ids are defined in the html/contexts.xml file in
 				// org.obeonetwork.dsl.uml2.design.doc project.
-				// The representationId is equal to the id defined in the uml.odesign
+				// The representationId is equal to the id defined in the
+				// uml.odesign
 				// description.
 				final String contextId = "org.obeonetwork.dsl.uml2.design.doc." + representationId; //$NON-NLS-1$
 
 				PlatformUI.getWorkbench().getHelpSystem()
-				.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
+						.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
 				PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 			}
 		}

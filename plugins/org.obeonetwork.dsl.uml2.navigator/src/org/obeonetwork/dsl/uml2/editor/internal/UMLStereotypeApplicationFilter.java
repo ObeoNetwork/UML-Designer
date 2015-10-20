@@ -18,11 +18,9 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
- * Filter to enable the user to hide Stereotype applications displayed as
- * children of UML resources.
+ * Filter to enable the user to hide Stereotype applications displayed as children of UML resources.
  * 
  * @author <a href="mailto:cedric.notot@obeo.fr">Cédric Notot</a>
- * 
  */
 public class UMLStereotypeApplicationFilter extends ViewerFilter {
 
@@ -32,11 +30,10 @@ public class UMLStereotypeApplicationFilter extends ViewerFilter {
 
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
-		return !(element instanceof EObject 
-				&& ((EObject)element).eContainer() == null
+		return !(element instanceof EObject && ((EObject)element).eContainer() == null
 				&& containsBaseReference(((EObject)element).eClass().getEAllReferences()));
 	}
-	
+
 	private boolean containsBaseReference(List<EReference> references) {
 		for (EReference eReference : references) {
 			if (eReference.getName().startsWith("base_")) {

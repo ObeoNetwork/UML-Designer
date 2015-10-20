@@ -103,8 +103,8 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 		final boolean fromInterfaceToClassOrPort = preSource instanceof org.eclipse.uml2.uml.Interface
 				&& (preTarget instanceof org.eclipse.uml2.uml.Class || preTarget instanceof Port);
 
-		final boolean fromClassOrPortToInterface = (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port)
-				&& preTarget instanceof org.eclipse.uml2.uml.Interface;
+		final boolean fromClassOrPortToInterface = (preSource instanceof org.eclipse.uml2.uml.Class
+				|| preSource instanceof Port) && preTarget instanceof org.eclipse.uml2.uml.Interface;
 
 		return fromInterfaceToClassOrPort || fromClassOrPortToInterface;
 	}
@@ -172,9 +172,9 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 			// The name is computed by the item provider.
 			result = behavioredClassifier.createInterfaceRealization(null, contract);
 		} else {
-			LogServices.INSTANCE.error(
-					"CompositeStructureServices.createInterfaceRealization(" + context.getClass() //$NON-NLS-1$
-					+ ") not handled", null); //$NON-NLS-1$
+			LogServices.INSTANCE
+					.error("CompositeStructureServices.createInterfaceRealization(" + context.getClass() //$NON-NLS-1$
+							+ ") not handled", null); //$NON-NLS-1$
 		}
 
 		return result;
@@ -533,8 +533,8 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 	 *            the target view
 	 * @return true if valid to display
 	 */
-	public boolean validSourceTarget4Dependency(Element source, DSemanticDecorator sourceView,
-			Element target, DSemanticDecorator targetView) {
+	public boolean validSourceTarget4Dependency(Element source, DSemanticDecorator sourceView, Element target,
+			DSemanticDecorator targetView) {
 		boolean result = false;
 
 		if (source instanceof org.eclipse.uml2.uml.Class) {

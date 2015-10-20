@@ -84,7 +84,8 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 					return "current container : " + ((NamedElement)container).getName(); //$NON-NLS-1$
 				}
 			} else {
-				// ['current container : '+self.oclAsType(uml::Lifeline).represents.eContainer().name+'\n
+				// ['current container :
+				// '+self.oclAsType(uml::Lifeline).represents.eContainer().name+'\n
 				// context dependency:
 				// '+self.oclAsType(uml::Lifeline).clientDependency.supplier.name->sep('::')/]
 				if (container != null && container instanceof NamedElement) {
@@ -181,12 +182,14 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 	 *            Instance specification or property associated to lifeline
 	 */
 	public void createLifeline(Interaction interaction, NamedElement element) {
-		// If the element selected in the selection wizard is not an instance specification or a property,
+		// If the element selected in the selection wizard is not an instance
+		// specification or a property,
 		// return a warning in error log view
 		if (!(element instanceof org.eclipse.uml2.uml.Class) && !(element instanceof Property)) {
 			LogServices.INSTANCE.warning(
 					"An instance specification or a property must be selected to import a lifeline but you have selected " //$NON-NLS-1$
-					+ element.getName() + " which is a " + element.getClass().getSimpleName(), null); //$NON-NLS-1$
+							+ element.getName() + " which is a " + element.getClass().getSimpleName(), //$NON-NLS-1$
+					null);
 		}
 
 		// Create lifeline
@@ -452,7 +455,8 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 		final Interaction interaction = (Interaction)message.eContainer();
 		final List<InteractionFragment> fragments = interaction.getFragments();
 
-		// Delete start and finish message and if an execution is associated to the message remove also the
+		// Delete start and finish message and if an execution is associated to
+		// the message remove also the
 		// execution
 		final MessageOccurrenceSpecification receiveMessage = (MessageOccurrenceSpecification)message
 				.getReceiveEvent();
@@ -519,7 +523,8 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 	 *            the context.
 	 * @return the {@link ExecutionSpecification} semantic candidates.
 	 */
-	public List<OccurrenceSpecification> executionSemanticCandidateOccurences(ExecutionSpecification execution) {
+	public List<OccurrenceSpecification> executionSemanticCandidateOccurences(
+			ExecutionSpecification execution) {
 		final List<ExecutionSpecification> executions = executionSemanticCandidates(execution);
 		final List<OccurrenceSpecification> occurrences = new ArrayList<OccurrenceSpecification>();
 		occurrences.add(execution.getStart());
@@ -586,8 +591,8 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 	 * @return Occurrence specification context
 	 */
 	public NamedElement findOccurrenceSpecificationContextForReceiveEvent(Message message) {
-		return internalService.findOccurrenceSpecificationContext((OccurrenceSpecification)message
-				.getReceiveEvent());
+		return internalService
+				.findOccurrenceSpecificationContext((OccurrenceSpecification)message.getReceiveEvent());
 	}
 
 	/**
@@ -598,8 +603,8 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 	 * @return Occurrence specification context
 	 */
 	public NamedElement findOccurrenceSpecificationContextForSendEvent(Message message) {
-		return internalService.findOccurrenceSpecificationContext((OccurrenceSpecification)message
-				.getSendEvent());
+		return internalService
+				.findOccurrenceSpecificationContext((OccurrenceSpecification)message.getSendEvent());
 	}
 
 	/**
@@ -912,13 +917,14 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 	 */
 	public boolean isValidMessageEnd(Element element) {
 		// [preTarget->filter(uml::Lifeline).represents.type<>null or
-		// preTarget->filter(uml::ExecutionSpecification).covered.represents.type<>null or
+		// preTarget->filter(uml::ExecutionSpecification).covered.represents.type<>null
+		// or
 		// preTarget->filter(uml::Lifeline).clientDependency.supplier.oclAsType(uml::Property).classifier<>null
 		// or
 		// preTarget->filter(uml::ExecutionSpecification).covered.clientDependency.supplier.classifier<>null/]
 		return element instanceof Lifeline && ((Lifeline)element).getRepresents() != null
 				|| element instanceof ExecutionSpecification
-				&& internalService.isCoveredTypeSet((ExecutionSpecification)element)
+						&& internalService.isCoveredTypeSet((ExecutionSpecification)element)
 				|| element instanceof Lifeline && ((Lifeline)element).getRepresents() != null;
 	}
 
@@ -1003,7 +1009,8 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 	 * @param predecessorAfter
 	 *            lifeline predecessor after
 	 */
-	public void reorderLifeline(Lifeline movedLifeline, Lifeline predecessorBefore, Lifeline predecessorAfter) {
+	public void reorderLifeline(Lifeline movedLifeline, Lifeline predecessorBefore,
+			Lifeline predecessorAfter) {
 		final Interaction ownedInteraction = movedLifeline.getInteraction();
 		final EList<Lifeline> lifelines = ownedInteraction.getLifelines();
 		final int movedLifelineIndex = lifelines.indexOf(movedLifeline);

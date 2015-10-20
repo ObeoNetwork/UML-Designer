@@ -41,8 +41,7 @@ public class RenameUmlModelElementAction extends Action {
 	 * @param selection
 	 *            the selection to rename
 	 */
-	public RenameUmlModelElementAction(EditingDomain editingDomain,
-			EObject selection) {
+	public RenameUmlModelElementAction(EditingDomain editingDomain, EObject selection) {
 		super("Rename");
 		this.editingDomain = editingDomain;
 		this.selection = selection;
@@ -54,7 +53,7 @@ public class RenameUmlModelElementAction extends Action {
 			String oldName = null;
 			EAttribute eAttribute = null;
 			if (selection instanceof NamedElement) {
-				NamedElement element = (NamedElement) selection;
+				NamedElement element = (NamedElement)selection;
 				oldName = element.getName();
 				eAttribute = UMLPackage.Literals.NAMED_ELEMENT__NAME;
 			}
@@ -62,14 +61,13 @@ public class RenameUmlModelElementAction extends Action {
 				oldName = "";
 			}
 
-			final RenameDialog dialog = new RenameDialog(Display.getCurrent()
-					.getActiveShell(), true, oldName);
+			final RenameDialog dialog = new RenameDialog(Display.getCurrent().getActiveShell(), true,
+					oldName);
 			dialog.create();
 			if (dialog.open() == Window.OK) {
 				final String newName = dialog.getNewName();
 				if (!oldName.equals(newName)) {
-					Command setNameCmd = SetCommand.create(editingDomain,
-							selection, eAttribute, newName);
+					Command setNameCmd = SetCommand.create(editingDomain, selection, eAttribute, newName);
 					editingDomain.getCommandStack().execute(setNameCmd);
 				}
 			}

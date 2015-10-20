@@ -31,11 +31,9 @@ import org.obeonetwork.dsl.uml2.usage.analytics.EclipseUserAgent;
 /**
  * Usage preference page.
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
-public class UsagePreferencesPage extends FieldEditorPreferencePage implements
-		IWorkbenchPreferencePage {
+public class UsagePreferencesPage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public UsagePreferencesPage() {
 		super(GRID);
@@ -44,15 +42,14 @@ public class UsagePreferencesPage extends FieldEditorPreferencePage implements
 	@Override
 	protected Control createContents(Composite parent) {
 		Control control = super.createContents(parent);
-		createReportingData((Composite) control);
+		createReportingData((Composite)control);
 		return control;
 	}
 
 	private void createReportingData(Composite parent) {
 		Group group = new Group(parent, SWT.NONE);
 		group.setText(PreferencesMessages.Usage_PreferencePage_ReportedValues);
-		GridDataFactory.fillDefaults().grab(true, true)
-				.hint(SWT.FILL, SWT.FILL).applyTo(group);
+		GridDataFactory.fillDefaults().grab(true, true).hint(SWT.FILL, SWT.FILL).applyTo(group);
 		FillLayout fillLayout = new FillLayout();
 		fillLayout.marginHeight = 4;
 		fillLayout.marginWidth = 8;
@@ -70,16 +67,13 @@ public class UsagePreferencesPage extends FieldEditorPreferencePage implements
 		appendLabeledValue(PreferencesMessages.Usage_PreferencePage_ProductId,
 				eclipseUserAgent.getApplicationName(), builder, styles);
 
-		appendLabeledValue(
-				PreferencesMessages.Usage_PreferencePage_ProductVersion,
+		appendLabeledValue(PreferencesMessages.Usage_PreferencePage_ProductVersion,
 				eclipseUserAgent.getApplicationVersion(), builder, styles);
 		builder.append(StringUtils.getLineSeparator());
 
-		appendLabeledValue(
-				PreferencesMessages.Usage_PreferencePage_OperatingSystem,
-				eclipseUserAgent.getOS(), builder, styles);
-		appendLabeledValue(
-				PreferencesMessages.Usage_PreferencePage_OperatingSystemVersion,
+		appendLabeledValue(PreferencesMessages.Usage_PreferencePage_OperatingSystem, eclipseUserAgent.getOS(),
+				builder, styles);
+		appendLabeledValue(PreferencesMessages.Usage_PreferencePage_OperatingSystemVersion,
 				eclipseUserAgent.getOSVersion(), builder, styles);
 		builder.append(StringUtils.getLineSeparator());
 
@@ -87,11 +81,8 @@ public class UsagePreferencesPage extends FieldEditorPreferencePage implements
 				eclipseUserAgent.getBrowserLanguage(), builder, styles);
 		builder.append(StringUtils.getLineSeparator());
 
-		appendLabeledValue(
-				PreferencesMessages.Usage_PreferencePage_Diagrams,
-				UMLDesignerPlugin.getDefault().getPreferenceStore()
-						.getString(UsagePreferences.USAGE_DIAGRAMS_ID),
-				builder, styles);
+		appendLabeledValue(PreferencesMessages.Usage_PreferencePage_Diagrams, UMLDesignerPlugin.getDefault()
+				.getPreferenceStore().getString(UsagePreferences.USAGE_DIAGRAMS_ID), builder, styles);
 		builder.append(StringUtils.getLineSeparator());
 
 		text.setText(builder.toString());
@@ -103,8 +94,8 @@ public class UsagePreferencesPage extends FieldEditorPreferencePage implements
 	}
 
 	/**
-	 * Appends a labeled value to the given string builder and adds a bold font
-	 * style range to the given styles.
+	 * Appends a labeled value to the given string builder and adds a bold font style range to the given
+	 * styles.
 	 * 
 	 * @param label
 	 *            the label to append
@@ -115,8 +106,8 @@ public class UsagePreferencesPage extends FieldEditorPreferencePage implements
 	 * @param styles
 	 *            the styles list to add the style range to
 	 */
-	private void appendLabeledValue(String label, String value,
-			StringBuilder builder, List<StyleRange> styles) {
+	private void appendLabeledValue(String label, String value, StringBuilder builder,
+			List<StyleRange> styles) {
 		StyleRange styleRange = startLabelStyleRange(builder);
 		builder.append(label);
 		finishLabelStyleRange(builder, styleRange);
@@ -131,16 +122,14 @@ public class UsagePreferencesPage extends FieldEditorPreferencePage implements
 		return styleRange;
 	}
 
-	private StyleRange finishLabelStyleRange(StringBuilder builder,
-			StyleRange styleRange) {
+	private StyleRange finishLabelStyleRange(StringBuilder builder, StyleRange styleRange) {
 		styleRange.length = builder.length() - styleRange.start;
 		return styleRange;
 	}
 
 	public void createFieldEditors() {
 		addField(new BooleanFieldEditor(UsagePreferences.USAGE_ENABLED_ID,
-				PreferencesMessages.Usage_PreferencePage_AllowReporting,
-				getFieldEditorParent()));
+				PreferencesMessages.Usage_PreferencePage_AllowReporting, getFieldEditorParent()));
 	}
 
 	public void init(IWorkbench workbench) {

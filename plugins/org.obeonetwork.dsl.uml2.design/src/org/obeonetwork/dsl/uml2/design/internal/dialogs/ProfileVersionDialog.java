@@ -38,9 +38,8 @@ import org.obeonetwork.dsl.uml2.design.internal.services.Version;
 /**
  * A dialog message for the versioning information of a profile.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class ProfileVersionDialog extends TitleAreaDialog {
 
@@ -125,8 +124,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 	 * @param targetProfile
 	 *            the target profile.
 	 */
-	public ProfileVersionDialog(final Shell parentShell,
-			final Profile targetProfile) {
+	public ProfileVersionDialog(final Shell parentShell, final Profile targetProfile) {
 		super(parentShell);
 		setShellStyle(getShellStyle() | SWT.RESIZE);
 		this.targetProfile = targetProfile;
@@ -137,13 +135,11 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 	 */
 	private void computeVersionValues() {
 		final UMLDesignerProfileVersion profileVersion = new UMLDesignerProfileVersion();
-		oldUMLDesignerProfileVersion = profileVersion
-				.getProfileVersion(targetProfile);
+		oldUMLDesignerProfileVersion = profileVersion.getProfileVersion(targetProfile);
 		oldVersionValue = oldUMLDesignerProfileVersion.getVersion();
-		revisionVersionValue = new Version(oldVersionValue.getMajor(),
-				oldVersionValue.getMinor(), oldVersionValue.getMicro() + 1);
-		minorVersionValue = new Version(oldVersionValue.getMajor(),
-				oldVersionValue.getMinor() + 1, 0);
+		revisionVersionValue = new Version(oldVersionValue.getMajor(), oldVersionValue.getMinor(),
+				oldVersionValue.getMicro() + 1);
+		minorVersionValue = new Version(oldVersionValue.getMajor(), oldVersionValue.getMinor() + 1, 0);
 		majorVersionValue = new Version(oldVersionValue.getMajor() + 1, 0, 0);
 		customVersionValue = revisionVersionValue;
 		newVersionValue = revisionVersionValue;
@@ -172,8 +168,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		group.setLayout(layout);
 
 		// new comment area
-		commentText = new Text(group, SWT.MULTI | SWT.BORDER | SWT.WRAP
-				| SWT.V_SCROLL);
+		commentText = new Text(group, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		commentText.setText(oldUMLDesignerProfileVersion.getComment());
 		final GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, true);
 		gd.heightHint = 60;
@@ -195,8 +190,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		group.setLayout(layout);
 
 		// new copyright area
-		copyrightText = new Text(group, SWT.MULTI | SWT.BORDER | SWT.WRAP
-				| SWT.V_SCROLL);
+		copyrightText = new Text(group, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		copyrightText.setText(oldUMLDesignerProfileVersion.getCopyright());
 		final GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, true);
 		gd.heightHint = 60;
@@ -211,8 +205,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 	protected Control createDialogArea(final Composite parent) {
 
 		// top level composite.
-		final Composite parentComposite = (Composite) super
-				.createDialogArea(parent);
+		final Composite parentComposite = (Composite)super.createDialogArea(parent);
 
 		setTitle("Information about profile versioning"); //$NON-NLS-1$
 
@@ -276,8 +269,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		dateLabel.setLayoutData(gd);
 		dateText = new Text(group, SWT.SINGLE | SWT.BORDER);
-		final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-				"yyyy-MM-dd"); //$NON-NLS-1$
+		final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); //$NON-NLS-1$
 		final TimeZone local = TimeZone.getDefault();
 		simpleDateFormat.setTimeZone(local);
 		final String dateString = simpleDateFormat.format(new Date());
@@ -314,8 +306,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		oldVersionLabel.setText("Previous Version"); //$NON-NLS-1$
 		GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		oldVersionLabel.setLayoutData(gd);
-		final Text oldVersionText = new Text(versionGroup, SWT.SINGLE
-				| SWT.READ_ONLY | SWT.BORDER);
+		final Text oldVersionText = new Text(versionGroup, SWT.SINGLE | SWT.READ_ONLY | SWT.BORDER);
 		oldVersionText.setText(oldVersionValue.toString());
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		oldVersionText.setLayoutData(gd);
@@ -339,8 +330,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 				revisionVersionButtonPressed();
 			}
 		});
-		final Text devVersionText = new Text(versionGroup, SWT.SINGLE
-				| SWT.READ_ONLY | SWT.BORDER);
+		final Text devVersionText = new Text(versionGroup, SWT.SINGLE | SWT.READ_ONLY | SWT.BORDER);
 		devVersionText.setText(revisionVersionValue.toString());
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		devVersionText.setLayoutData(gd);
@@ -359,8 +349,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 				minorVersionButtonPressed();
 			}
 		});
-		final Text releaseVersionText = new Text(versionGroup, SWT.SINGLE
-				| SWT.READ_ONLY | SWT.BORDER);
+		final Text releaseVersionText = new Text(versionGroup, SWT.SINGLE | SWT.READ_ONLY | SWT.BORDER);
 		releaseVersionText.setText(minorVersionValue.toString());
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		releaseVersionText.setLayoutData(gd);
@@ -379,8 +368,7 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 				majorVersionButtonPressed();
 			}
 		});
-		final Text majorReleaseVersionText = new Text(versionGroup, SWT.SINGLE
-				| SWT.READ_ONLY | SWT.BORDER);
+		final Text majorReleaseVersionText = new Text(versionGroup, SWT.SINGLE | SWT.READ_ONLY | SWT.BORDER);
 		majorReleaseVersionText.setText(majorVersionValue.toString());
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		majorReleaseVersionText.setLayoutData(gd);
@@ -411,13 +399,11 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 
 			public void focusLost(final FocusEvent e) {
 				try {
-					customVersionValue = Version.parseVersion(customVersionText
-							.getText());
+					customVersionValue = Version.parseVersion(customVersionText.getText());
 					newVersionValue = customVersionValue;
 					setErrorMessage(null);
 				} catch (final IllegalArgumentException iae) {
-					LogServices.INSTANCE.warning(
-							"Custom version number format should be X.Y.Z, not " //$NON-NLS-1$
+					LogServices.INSTANCE.warning("Custom version number format should be X.Y.Z, not " //$NON-NLS-1$
 							+ customVersionText.getText(), iae);
 					customVersionValue = revisionVersionValue; // default value
 					revisionVersionButtonPressed();
@@ -489,9 +475,8 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 	protected void okPressed() {
 
 		// creates the new UMLDesigner profile version information
-		umlDesignerProfileVersion = new UMLDesignerProfileVersion(
-				newVersionValue, dateText.getText(), authorText.getText(),
-				copyrightText.getText(), commentText.getText());
+		umlDesignerProfileVersion = new UMLDesignerProfileVersion(newVersionValue, dateText.getText(),
+				authorText.getText(), copyrightText.getText(), commentText.getText());
 		super.okPressed();
 	}
 

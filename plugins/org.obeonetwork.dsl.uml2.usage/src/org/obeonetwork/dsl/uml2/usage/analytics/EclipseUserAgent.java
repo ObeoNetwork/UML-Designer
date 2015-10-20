@@ -17,8 +17,7 @@ import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
 
 /**
- * Emulates a Firefox Browser User-Agent String but reports eclipse related
- * informations.
+ * Emulates a Firefox Browser User-Agent String but reports eclipse related informations.
  * 
  * @author Andre Dietisheim
  */
@@ -31,10 +30,12 @@ public class EclipseUserAgent {
 	private static final String ECLIPSE_RUNTIME_BULDEID = "org.eclipse.core.runtime"; //$NON-NLS-1$
 
 	private static final String USERAGENT_WIN = "{0}/{1} (Windows; U; Windows NT {2}; {3})"; //$NON-NLS-1$
+
 	private static final String USERAGENT_MAC = "{0}/{1} (Macintosh; U; Intel Mac OS X {2}; {3})"; //$NON-NLS-1$
+
 	private static final String USERAGENT_LINUX = "{0}/{1} (X11; U; Linux i686; {3})"; //$NON-NLS-1$
 
-	public static final char VERSION_DELIMITER = '.'; //$NON-NLS-1$
+	public static final char VERSION_DELIMITER = '.'; // $NON-NLS-1$
 
 	private static final String PROP_OS_VERSION = "os.version"; //$NON-NLS-1$
 
@@ -46,7 +47,7 @@ public class EclipseUserAgent {
 			return ""; //$NON-NLS-1$
 		}
 
-		int indexOf = nl.indexOf(JAVA_LOCALE_DELIMITER); //$NON-NLS-1$
+		int indexOf = nl.indexOf(JAVA_LOCALE_DELIMITER); // $NON-NLS-1$
 		if (indexOf <= 0) {
 			return nl;
 		}
@@ -73,8 +74,8 @@ public class EclipseUserAgent {
 		String productId = getApplicationName();
 		String productVersion = getApplicationVersion();
 
-		return MessageFormat.format(getUserAgentPattern(getOS()), productId,
-				productVersion, getOSVersion(), getBrowserLanguage());
+		return MessageFormat.format(getUserAgentPattern(getOS()), productId, productVersion, getOSVersion(),
+				getBrowserLanguage());
 	}
 
 	public String getOS() {

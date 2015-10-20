@@ -26,12 +26,10 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * This class provide an interface to initiate the parameters of profile plug-in
- * creation.
+ * This class provide an interface to initiate the parameters of profile plug-in creation.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class InitProfilePluginDialog extends TitleAreaDialog {
 
@@ -68,8 +66,8 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 	 * @param profilePluginName
 	 *            the profile plug-in name.
 	 */
-	public InitProfilePluginDialog(final String profileName,
-			final String rootProfileURI, final String profilePluginName) {
+	public InitProfilePluginDialog(final String profileName, final String rootProfileURI,
+			final String profilePluginName) {
 		super(Display.getCurrent().getActiveShell());
 		this.profileName = profileName;
 		this.rootProfileURI = rootProfileURI;
@@ -84,8 +82,8 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 	private void applyButtonFilter() {
 		final Control button = getButton(IDialogConstants.OK_ID);
 		if (button != null) {
-			button.setEnabled(profileNameFieldState && rootProfileURIFieldState
-					&& profilePluginNameFieldState);
+			button.setEnabled(
+					profileNameFieldState && rootProfileURIFieldState && profilePluginNameFieldState);
 		}
 	}
 
@@ -98,15 +96,14 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 
 	@Override
 	protected Control createContents(final Composite parent) {
-		final Composite composite = (Composite) super.createContents(parent);
+		final Composite composite = (Composite)super.createContents(parent);
 		return composite;
 	}
 
 	@Override
 	protected Control createDialogArea(final Composite parent) {
 
-		final Composite parentComposite = (Composite) super
-				.createDialogArea(parent);
+		final Composite parentComposite = (Composite)super.createDialogArea(parent);
 
 		setTitle("Information about profile versioning"); //$NON-NLS-1$
 
@@ -156,14 +153,13 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 		header2.setText("All text zones must be specified."); //$NON-NLS-1$
 
 		final Label profileNameLabel = new Label(group, SWT.SEARCH);
-		profileNameLabel
-.setText("profile name, editable in the profile (model/diagrams):"); //$NON-NLS-1$
+		profileNameLabel.setText("profile name, editable in the profile (model/diagrams):"); //$NON-NLS-1$
 
 		profileNameField = new Text(group, SWT.SINGLE | SWT.BORDER);
 		profileNameField.addModifyListener(new ModifyListener() {
 			public void modifyText(final ModifyEvent e) {
 				if (e.getSource() instanceof Text) {
-					profileName = ((Text) e.getSource()).getText();
+					profileName = ((Text)e.getSource()).getText();
 				}
 				profileNameFieldState = isEmpty(e);
 				applyButtonFilter();
@@ -182,7 +178,7 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 		rootProfileURIField.addModifyListener(new ModifyListener() {
 			public void modifyText(final ModifyEvent e) {
 				if (e.getSource() instanceof Text) {
-					rootProfileURI = ((Text) e.getSource()).getText();
+					rootProfileURI = ((Text)e.getSource()).getText();
 				}
 				rootProfileURIFieldState = isEmpty(e);
 				applyButtonFilter();
@@ -199,7 +195,7 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 		profilePluginNameField.addModifyListener(new ModifyListener() {
 			public void modifyText(final ModifyEvent e) {
 				if (e.getSource() instanceof Text) {
-					profilePluginName = ((Text) e.getSource()).getText();
+					profilePluginName = ((Text)e.getSource()).getText();
 				}
 				profilePluginNameFieldState = isEmpty(e);
 				applyButtonFilter();
@@ -214,6 +210,7 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 
 	/**
 	 * Get profile name.
+	 * 
 	 * @return Name
 	 */
 	public String getProfileName() {
@@ -241,7 +238,7 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 	private boolean isEmpty(final ModifyEvent e) {
 		final Object src = e.getSource();
 		if (src instanceof Text) {
-			final Text txt = (Text) src;
+			final Text txt = (Text)src;
 			return txt.getText().length() != 0 && txt.getText().length() != 0;
 		}
 

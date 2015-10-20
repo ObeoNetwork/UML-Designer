@@ -27,16 +27,16 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 
 /**
- * UML Designer 3.0 to UML Designer 4.0 migration operation. It converts the
- * existing project to a sirius modeling project, activates all the new
- * viewpoints.
+ * UML Designer 3.0 to UML Designer 4.0 migration operation. It converts the existing project to a sirius
+ * modeling project, activates all the new viewpoints.
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlProjectMigrationOperation extends WorkspaceModifyOperation {
 	private IProject project;
+
 	private IWorkbenchPage page;
+
 	private IWorkbenchWindow window;
 
 	public UmlProjectMigrationOperation(IProject project) {
@@ -45,8 +45,8 @@ public class UmlProjectMigrationOperation extends WorkspaceModifyOperation {
 		page = window.getActivePage();
 	}
 
-	protected void execute(IProgressMonitor monitor) throws CoreException,
-			InvocationTargetException, InterruptedException {
+	protected void execute(IProgressMonitor monitor)
+			throws CoreException, InvocationTargetException, InterruptedException {
 		try {
 			monitor.beginTask("Migrate the project : ", 100);
 			// Convert to modeling project
@@ -77,14 +77,11 @@ public class UmlProjectMigrationOperation extends WorkspaceModifyOperation {
 		}
 	}
 
-	private Option<ModelingProject> convertToModelingProject(
-			IProgressMonitor monitor) {
+	private Option<ModelingProject> convertToModelingProject(IProgressMonitor monitor) {
 		/* Convert the existing UML project to a modeling project. */
 		try {
-			ModelingProjectManager.INSTANCE.convertToModelingProject(project,
-					monitor);
-			Option<ModelingProject> optionalModelingProject = ModelingProject
-					.asModelingProject(project);
+			ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
+			Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(project);
 			if (optionalModelingProject.some()) {
 				return optionalModelingProject;
 			}

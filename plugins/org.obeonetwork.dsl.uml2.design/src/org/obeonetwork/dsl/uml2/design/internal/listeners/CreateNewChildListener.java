@@ -60,7 +60,8 @@ public class CreateNewChildListener implements CommandStackListener {
 			final Iterator<?> iterator = affectedObjects.iterator();
 			while (iterator.hasNext()) {
 				final Object object = iterator.next();
-				if (object instanceof NamedElement && Strings.isNullOrEmpty(((NamedElement)object).getName())) {
+				if (object instanceof NamedElement
+						&& Strings.isNullOrEmpty(((NamedElement)object).getName())) {
 					// compute default name
 					final String defaultName = LabelServices.INSTANCE
 							.computeDefaultName((NamedElement)object);

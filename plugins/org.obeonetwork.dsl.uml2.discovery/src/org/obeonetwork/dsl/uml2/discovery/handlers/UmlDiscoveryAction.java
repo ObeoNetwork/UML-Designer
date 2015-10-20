@@ -15,9 +15,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlDiscoveryAction extends Action {
 
@@ -30,8 +28,7 @@ public class UmlDiscoveryAction extends Action {
 	@Override
 	public void run() {
 
-		final IWorkbenchWindow window = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow();
+		final IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		UmlDiscovery.openUmlDiscoveryWizard(window);
 
 	}

@@ -41,8 +41,8 @@ import org.obeonetwork.dsl.uml2.design.internal.services.ProfileServices;
 /**
  * This class provides a dialog message for the creation of an extra association between two stereotypes.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 	/**
@@ -103,8 +103,8 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 		this.target = target;
 		setTitle("Extend existing RelationShip"); //$NON-NLS-1$
 		refresh();
-		possibleMetaClassRelationShip = (ArrayList<EObject>)getAllPossibleMetaclassRelationShip(
-				(Class)source, (Class)target);
+		possibleMetaClassRelationShip = (ArrayList<EObject>)getAllPossibleMetaclassRelationShip((Class)source,
+				(Class)target);
 	}
 
 	/**
@@ -118,15 +118,16 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 	 */
 	protected String basicAssociationName(final Element sourceStereotype, final Element targetStereotype) {
 		if (sourceStereotype instanceof NamedElement && targetStereotype instanceof NamedElement) {
-			associationName = ((NamedElement)sourceStereotype).getName()
-					+ "To" + ((NamedElement)targetStereotype).getName(); //$NON-NLS-1$
+			associationName = ((NamedElement)sourceStereotype).getName() + "To" //$NON-NLS-1$
+					+ ((NamedElement)targetStereotype).getName();
 		}
 		return associationName;
 	}
 
 	@Override
 	protected Control createDialogArea(final Composite parent) {
-		setHeaderMessageText("Give a name to the stereotype and select the relationship metaclass that will be extended by this stereotype."); //$NON-NLS-1$
+		setHeaderMessageText(
+				"Give a name to the stereotype and select the relationship metaclass that will be extended by this stereotype."); //$NON-NLS-1$
 		final Composite dialogArea1 = (Composite)super.createDialogArea(parent);
 
 		final Composite compositeHeaderMessage = getCompositeHeaderMessage();
@@ -231,8 +232,8 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 	protected List<EObject> getAllPossibleMetaclassRelationShip(final Type stereotypeSource,
 			final Type stereotypeTarget) {
 		final List<EObject> eligibleRelationShips = new ArrayList<EObject>();
-		final List<Class> relationShipSubClasses = getAllSubClasses((Class)super.getUmlMetamodel().getMember(
-				"Relationship")); //$NON-NLS-1$
+		final List<Class> relationShipSubClasses = getAllSubClasses(
+				(Class)super.getUmlMetamodel().getMember("Relationship")); //$NON-NLS-1$
 		relationShipSubClasses.add((Class)super.getUmlMetamodel().getMember("Relationship")); //$NON-NLS-1$
 
 		final List<Class> mataclassesSource = getAllExtendedMetaClasses((Class)stereotypeSource);
@@ -293,7 +294,7 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 
 			if (superClassOfItem.equals(superClass)
 					|| !superClassOfItem.getName().equalsIgnoreCase(ProfileServices.ELEMENT)
-					&& isSubClass(superClassOfItem, superClass)) {
+							&& isSubClass(superClassOfItem, superClass)) {
 				return true;
 			}
 		}

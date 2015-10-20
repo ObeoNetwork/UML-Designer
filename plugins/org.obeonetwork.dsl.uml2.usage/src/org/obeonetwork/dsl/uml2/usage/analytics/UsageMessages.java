@@ -15,19 +15,23 @@ import org.eclipse.osgi.util.NLS;
 /**
  * Messages used in usage enablement dialog.
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UsageMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.usage.analytics.messages"; //$NON-NLS-1$
 
 	public static String Usage_GoogleAnalytics;
+
 	public static String Usage_ActivationPageURL;
+
 	public static String Usage_ActivationPageTitle;
+
 	public static String Usage_OpenPageURL;
+
 	public static String Usage_OpenPageTitle;
 
 	public static String Error_CreatingGoogleAnalyticsConfig;
+
 	public static String Error_OpeningUsageHyperlink;
 
 	static {

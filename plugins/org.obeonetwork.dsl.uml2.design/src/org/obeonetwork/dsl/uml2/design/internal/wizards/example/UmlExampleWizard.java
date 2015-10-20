@@ -35,8 +35,7 @@ public class UmlExampleWizard extends ExampleInstallerWizard {
 
 	@Override
 	/**
-	 * Import selected example and switch to modeling perspective.
-	 * {@inheritDoc}
+	 * Import selected example and switch to modeling perspective. {@inheritDoc}
 	 */
 	public boolean performFinish() {
 
@@ -73,8 +72,8 @@ public class UmlExampleWizard extends ExampleInstallerWizard {
 		// Select it in the explorer
 		for (final ProjectDescriptor projectDescriptor : getProjectDescriptors()) {
 			final IProject project = projectDescriptor.getProject();
-			BasicNewResourceWizard.selectAndReveal(project, PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow());
+			BasicNewResourceWizard.selectAndReveal(project,
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 		}
 
 		return true;

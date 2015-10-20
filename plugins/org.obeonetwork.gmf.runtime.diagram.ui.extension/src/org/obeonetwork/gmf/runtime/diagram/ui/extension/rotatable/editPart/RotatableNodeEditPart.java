@@ -26,8 +26,7 @@ import org.eclipse.sirius.viewpoint.DStylizable;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure.RotatableNodeFigure;
 
 /**
- * @author Hugo Marchadour <a
- *         href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
+ * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class RotatableNodeEditPart extends DNodeEditPart {
 
@@ -50,15 +49,12 @@ public class RotatableNodeEditPart extends DNodeEditPart {
 		DefaultSizeNodeFigure result = null;
 		final EObject eObj = resolveSemanticElement();
 		if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
-			final DStylizable viewNode = (DStylizable) eObj;
+			final DStylizable viewNode = (DStylizable)eObj;
 			final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE
-					.getStyleConfiguration(
-							((DDiagramElement) eObj).getDiagramElementMapping(),
+					.getStyleConfiguration(((DDiagramElement)eObj).getDiagramElementMapping(),
 							viewNode.getStyle());
-			final AnchorProvider anchorProvider = styleConfiguration
-					.getAnchorProvider();
-			result = new RotatableNodeFigure(getMapMode().DPtoLP(5),
-					getMapMode().DPtoLP(5), anchorProvider);
+			final AnchorProvider anchorProvider = styleConfiguration.getAnchorProvider();
+			result = new RotatableNodeFigure(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), anchorProvider);
 			nodePlate = result;
 		}
 		return result;
@@ -68,8 +64,7 @@ public class RotatableNodeEditPart extends DNodeEditPart {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(
-			ConnectionEditPart connEditPart) {
+	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connEditPart) {
 		return nodePlate.getTargetConnectionAnchorAt(null);
 	}
 

@@ -106,8 +106,8 @@ public class ExtensionServices {
 			final Extension extension = (Extension)element;
 			if (target instanceof ElementImport) {
 				final Class newPointedMetaClass = (Class)((ElementImport)target).getImportedElement();
-				final NamedElement baseProperty = extension.getStereotype().getMember(
-						BASE + newPointedMetaClass.getName());
+				final NamedElement baseProperty = extension.getStereotype()
+						.getMember(BASE + newPointedMetaClass.getName());
 				if (baseProperty == null) {
 					return true;
 				} else if (baseProperty instanceof Property) {
@@ -117,8 +117,8 @@ public class ExtensionServices {
 				}
 			}
 			if (target instanceof Stereotype) {
-				final NamedElement baseProperty = ((Stereotype)target).getMember(BASE
-						+ extension.getMetaclass().getName());
+				final NamedElement baseProperty = ((Stereotype)target)
+						.getMember(BASE + extension.getMetaclass().getName());
 				if (baseProperty == null) {
 					return true;
 				} else if (baseProperty instanceof Property) {
@@ -173,7 +173,8 @@ public class ExtensionServices {
 	 *            of the extension.
 	 * @return new extension.
 	 */
-	public Extension createMetaclassExtension(final Stereotype stereotype, final ElementImport elementImport) {
+	public Extension createMetaclassExtension(final Stereotype stereotype,
+			final ElementImport elementImport) {
 		Extension extension = null;
 		final PackageableElement importedElement = elementImport.getImportedElement();
 		if (importedElement != null && importedElement instanceof Type

@@ -81,9 +81,7 @@ public class ExtensionActivator extends AbstractUIPlugin {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
+	 * {@inheritDoc} @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;

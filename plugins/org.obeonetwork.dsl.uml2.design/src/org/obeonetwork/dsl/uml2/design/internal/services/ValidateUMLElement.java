@@ -20,9 +20,8 @@ import org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor;
 /**
  * Used to invoke UML validator from UMLActionBarContributor.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class ValidateUMLElement extends UMLActionBarContributor {
 	protected static class UMLValidateActionWithResult extends UMLValidateAction {
@@ -69,11 +68,10 @@ public class ValidateUMLElement extends UMLActionBarContributor {
 	public void validateUMLmodel(EObject model) {
 		final IStructuredSelection selection = new StructuredSelection(model);
 		validateAction.updateSelection(selection);
-		validateAction.setActiveWorkbenchPart(PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActiveEditor());
+		validateAction.setActiveWorkbenchPart(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
 		validateAction.run();
 		diagnosticResult = ((UMLValidateActionWithResult)validateAction).getDiagnosticResult();
 	}
 
 }
-

@@ -39,8 +39,8 @@ public class PackageContainmentServices extends AbstractDiagramServices {
 		final List<Package> rootPkgs = getAllAvailableRootPackages(element);
 		result.addAll(rootPkgs);
 		for (final Package pkg : rootPkgs) {
-			Iterators.addAll(result, Iterators.filter(pkg.eAllContents(),
-					Predicates.instanceOf(PackageableElement.class)));
+			Iterators.addAll(result,
+					Iterators.filter(pkg.eAllContents(), Predicates.instanceOf(PackageableElement.class)));
 		}
 		if (element instanceof Package) {
 			result.removeAll(((Package)element).getPackagedElements());

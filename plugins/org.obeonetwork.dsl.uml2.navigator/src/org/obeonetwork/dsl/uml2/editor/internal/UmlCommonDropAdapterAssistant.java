@@ -43,15 +43,12 @@ import org.eclipse.uml2.uml.UMLPackage;
 public class UmlCommonDropAdapterAssistant extends CommonDropAdapterAssistant {
 
 	@Override
-	public IStatus validateDrop(Object target, int operation,
-			TransferData transferType) {
+	public IStatus validateDrop(Object target, int operation, TransferData transferType) {
 		IStatus status = Status.CANCEL_STATUS;
-		if (DND.DROP_MOVE == operation
-				&& target instanceof EObject
-				&& UMLPackage.eINSTANCE == ((EObject) target).eClass()
-						.getEPackage()) {
-			Collection<EObject> extractDragSource = extractDragSource(LocalSelectionTransfer
-					.getTransfer().getSelection());
+		if (DND.DROP_MOVE == operation && target instanceof EObject
+				&& UMLPackage.eINSTANCE == ((EObject)target).eClass().getEPackage()) {
+			Collection<EObject> extractDragSource = extractDragSource(
+					LocalSelectionTransfer.getTransfer().getSelection());
 			if (!extractDragSource.isEmpty()) {
 				status = Status.OK_STATUS;
 			}
@@ -61,20 +58,17 @@ public class UmlCommonDropAdapterAssistant extends CommonDropAdapterAssistant {
 	}
 
 	@Override
-	public IStatus handleDrop(CommonDropAdapter aDropAdapter,
-			DropTargetEvent aDropTargetEvent, Object aTarget) {
+	public IStatus handleDrop(CommonDropAdapter aDropAdapter, DropTargetEvent aDropTargetEvent,
+			Object aTarget) {
 		IStatus status = Status.CANCEL_STATUS;
 		if (aTarget instanceof EObject) {
-			EObject target = (EObject) aTarget;
-			TransactionalEditingDomain domain = TransactionUtil
-					.getEditingDomain(target);
-			if (domain != null
-					&& UMLPackage.eINSTANCE == target.eClass().getEPackage()) {
+			EObject target = (EObject)aTarget;
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(target);
+			if (domain != null && UMLPackage.eINSTANCE == target.eClass().getEPackage()) {
 				Collection<EObject> droppedEObjects = extractDragSource(aDropTargetEvent.data);
 				if (!droppedEObjects.isEmpty()) {
-					Command dragAndDropCmd = DragAndDropCommand.create(domain,
-							target, getLocation(aDropTargetEvent),
-							aDropTargetEvent.operations, DND.DROP_MOVE,
+					Command dragAndDropCmd = DragAndDropCommand.create(domain, target,
+							getLocation(aDropTargetEvent), aDropTargetEvent.operations, DND.DROP_MOVE,
 							droppedEObjects);
 					domain.getCommandStack().execute(dragAndDropCmd);
 				}
@@ -84,10 +78,8 @@ public class UmlCommonDropAdapterAssistant extends CommonDropAdapterAssistant {
 	}
 
 	/**
-	 * This returns the location of the mouse in the vertical direction,
-	 * relative to the item widget, from 0 (top) to 1 (bottom).
-	 * 
-	 * NOTE : Copied from DragAndDropCommand.
+	 * This returns the location of the mouse in the vertical direction, relative to the item widget, from 0
+	 * (top) to 1 (bottom). NOTE : Copied from DragAndDropCommand.
 	 * 
 	 * @param event
 	 *            the {@link DropTargetEvent}
@@ -96,27 +88,25 @@ public class UmlCommonDropAdapterAssistant extends CommonDropAdapterAssistant {
 	protected float getLocation(DropTargetEvent event) {
 		float result = 0.0F;
 		if (event.item instanceof TreeItem) {
-			TreeItem treeItem = (TreeItem) event.item;
+			TreeItem treeItem = (TreeItem)event.item;
 			Control control = treeItem.getParent();
 			Point point = control.toControl(new Point(event.x, event.y));
 			Rectangle bounds = treeItem.getBounds();
-			result = (float) (point.y - bounds.y) / (float) bounds.height;
+			result = (float)(point.y - bounds.y) / (float)bounds.height;
 		} else if (event.item instanceof TableItem) {
-			TableItem tableItem = (TableItem) event.item;
+			TableItem tableItem = (TableItem)event.item;
 			Control control = tableItem.getParent();
 			Point point = control.toControl(new Point(event.x, event.y));
 			Rectangle bounds = tableItem.getBounds(0);
-			result = (float) (point.y - bounds.y) / (float) bounds.height;
+			result = (float)(point.y - bounds.y) / (float)bounds.height;
 		}
 		return result;
 	}
 
 	/**
-	 * This extracts a collection of dragged source objects from the given
-	 * object retrieved from the transfer agent. This default implementation
-	 * converts a structured selection into a collection of elements.
-	 * 
-	 * NOTE : Copied from DragAndDropCommand
+	 * This extracts a collection of dragged source objects from the given object retrieved from the transfer
+	 * agent. This default implementation converts a structured selection into a collection of elements. NOTE
+	 * : Copied from DragAndDropCommand
 	 * 
 	 * @param object
 	 *            the object representing the selection in drag
@@ -125,10 +115,10 @@ public class UmlCommonDropAdapterAssistant extends CommonDropAdapterAssistant {
 	protected Collection<EObject> extractDragSource(Object object) {
 		Collection<EObject> droppedEObjects = new ArrayList<EObject>();
 		if (object instanceof IStructuredSelection) {
-			List<?> list = ((IStructuredSelection) object).toList();
+			List<?> list = ((IStructuredSelection)object).toList();
 			for (Object obj : list) {
 				if (obj instanceof EObject) {
-					EObject eObject = (EObject) obj;
+					EObject eObject = (EObject)obj;
 					if (UMLPackage.eINSTANCE == eObject.eClass().getEPackage()) {
 						droppedEObjects.add(eObject);
 					}

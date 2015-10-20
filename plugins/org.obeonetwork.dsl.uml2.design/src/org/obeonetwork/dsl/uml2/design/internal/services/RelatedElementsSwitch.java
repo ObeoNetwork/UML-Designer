@@ -242,7 +242,8 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		for (final Setting xRef : xRefs) {
 			if (xRef.getEObject() instanceof Property) {
 				if (((Property)xRef.getEObject()).getAssociation() != null) {
-					for (final Property pro : ((Property)xRef.getEObject()).getAssociation().getMemberEnds()) {
+					for (final Property pro : ((Property)xRef.getEObject()).getAssociation()
+							.getMemberEnds()) {
 						relateds.add(pro);
 						relateds.add(pro.getType());
 					}

@@ -27,8 +27,7 @@ import com.google.common.collect.Lists;
 /**
  * Handle the migrate project action.
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class MigrateUMLProject extends AbstractHandler {
 
@@ -36,19 +35,17 @@ public class MigrateUMLProject extends AbstractHandler {
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
 		List<IProject> projectsToMigrate = Lists.newArrayList();
 		if (selection instanceof StructuredSelection) {
-			for (Object obj : ((StructuredSelection) selection).toArray()) {
+			for (Object obj : ((StructuredSelection)selection).toArray()) {
 				if (obj instanceof IProject) {
-					projectsToMigrate.add((IProject) obj);
+					projectsToMigrate.add((IProject)obj);
 				}
 			}
 		}
 
 		for (IProject project : projectsToMigrate) {
-			UmlProjectMigrationOperation migrate = new UmlProjectMigrationOperation(
-					project);
+			UmlProjectMigrationOperation migrate = new UmlProjectMigrationOperation(project);
 			try {
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.run(true, false, migrate);
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().run(true, false, migrate);
 			} catch (InvocationTargetException e) {
 				Activator.getDefault().logError(e);
 			} catch (InterruptedException e) {

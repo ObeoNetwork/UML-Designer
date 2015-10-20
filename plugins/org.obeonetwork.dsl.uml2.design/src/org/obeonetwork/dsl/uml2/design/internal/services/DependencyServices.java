@@ -41,8 +41,8 @@ public class DependencyServices {
 	 */
 	public List<NamedElement> getClient(Dependency dependency) {
 		final List<NamedElement> result = new ArrayList<NamedElement>();
-		final List<NamedElement> clients = Lists.newArrayList(Iterables.filter(dependency.getClients(),
-				new Predicate<EObject>() {
+		final List<NamedElement> clients = Lists
+				.newArrayList(Iterables.filter(dependency.getClients(), new Predicate<EObject>() {
 					public boolean apply(EObject input) {
 						return !(input instanceof Connector);
 					}
@@ -59,7 +59,8 @@ public class DependencyServices {
 					if (port.getType() != null) {
 						if (port.eContainer() instanceof StructuredClassifier
 								&& port.getType().equals(port.eContainer())) {
-							// when the port type is the container type, add directly the container.
+							// when the port type is the container type, add
+							// directly the container.
 							result.add(port.getType());
 						} else if (port.isConjugated()) {
 							// if conjugated add the port type and the port.

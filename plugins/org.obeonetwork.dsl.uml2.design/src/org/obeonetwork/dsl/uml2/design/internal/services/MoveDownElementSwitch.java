@@ -37,7 +37,8 @@ public class MoveDownElementSwitch extends UMLSwitch<Boolean> {
 		final EObject eContainer = enumerationLiteral.eContainer();
 
 		if (eContainer instanceof Enumeration) {
-			final EList<EnumerationLiteral> enumerationLiterals = ((Enumeration)eContainer).getOwnedLiterals();
+			final EList<EnumerationLiteral> enumerationLiterals = ((Enumeration)eContainer)
+					.getOwnedLiterals();
 			moveDownList(enumerationLiterals, enumerationLiteral);
 			return success;
 		}

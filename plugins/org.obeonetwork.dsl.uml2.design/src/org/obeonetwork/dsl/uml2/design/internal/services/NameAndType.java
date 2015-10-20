@@ -15,7 +15,7 @@ import org.eclipse.uml2.uml.Type;
 /**
  * Utility class used to handle information about a name and a type.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  */
 public class NameAndType {
 	/**
@@ -31,8 +31,10 @@ public class NameAndType {
 	/**
 	 * Constructor.
 	 *
-	 * @param name the name.
-	 * @param type the type.
+	 * @param name
+	 *            the name.
+	 * @param type
+	 *            the type.
 	 */
 	public NameAndType(String name, Type type) {
 		this.name = name;

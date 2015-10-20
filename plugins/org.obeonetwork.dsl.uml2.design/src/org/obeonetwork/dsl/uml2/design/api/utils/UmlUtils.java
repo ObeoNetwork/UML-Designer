@@ -134,9 +134,8 @@ public class UmlUtils {
 		for (final EStructuralFeature.Setting inverseReference : new ArrayList<EStructuralFeature.Setting>(
 				getInverseReferences(eObject))) {
 
-			if (inverseReference.getEStructuralFeature().isChangeable()
-					&& (ancestorEObject == null || !EcoreUtil.isAncestor(ancestorEObject,
-							inverseReference.getEObject()))) {
+			if (inverseReference.getEStructuralFeature().isChangeable() && (ancestorEObject == null
+					|| !EcoreUtil.isAncestor(ancestorEObject, inverseReference.getEObject()))) {
 				EcoreUtil.remove(inverseReference, eObject);
 				if (inverseReference.getEObject() instanceof Relationship) {
 					destroy(inverseReference.getEObject());
@@ -154,7 +153,8 @@ public class UmlUtils {
 					for (int i = 0; i < values.size(); i++) {
 						final Object value = values.get(i);
 
-						if (ancestorEObject == null || !EcoreUtil.isAncestor(ancestorEObject, (EObject)value)) {
+						if (ancestorEObject == null
+								|| !EcoreUtil.isAncestor(ancestorEObject, (EObject)value)) {
 
 							values.remove(i);
 						}

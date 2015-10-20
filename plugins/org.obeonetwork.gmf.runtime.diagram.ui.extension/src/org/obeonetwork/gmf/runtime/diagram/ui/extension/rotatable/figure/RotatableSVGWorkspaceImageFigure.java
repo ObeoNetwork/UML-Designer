@@ -22,8 +22,8 @@ import org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.NodeImageExtension;
 
 /**
- * Rotatable Workspace Image Figure : switch mode ROTATION or IMAGE, rotate the
- * specific image or display four images in North South East and West.
+ * Rotatable Workspace Image Figure : switch mode ROTATION or IMAGE, rotate the specific image or display four
+ * images in North South East and West.
  * 
  * @author nlepine
  * @author hmarchadour
@@ -46,8 +46,8 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 * @param path
 	 *            the path of the top image.
 	 */
-	public RotatableSVGWorkspaceImageFigure(int mode, String topImgPath,
-			String leftImgPath, String bottomImgPath, String rightImgPath) {
+	public RotatableSVGWorkspaceImageFigure(int mode, String topImgPath, String leftImgPath,
+			String bottomImgPath, String rightImgPath) {
 		super();
 
 		this.topImgPath = topImgPath;
@@ -67,12 +67,11 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 */
 	public void refreshFigure(final CustomStyle imageStyle) {
 		boolean found = false;
-		Iterator<NodeImageExtension> iterator = ExtensionActivator.getDefault()
-				.getImageExtensions().iterator();
+		Iterator<NodeImageExtension> iterator = ExtensionActivator.getDefault().getImageExtensions()
+				.iterator();
 		while (iterator.hasNext() && !found) {
-			NodeImageExtension desc = (NodeImageExtension) iterator.next();
-			if (imageStyle.getId() != null
-					&& imageStyle.getId().equals(desc.getId())) {
+			NodeImageExtension desc = (NodeImageExtension)iterator.next();
+			if (imageStyle.getId() != null && imageStyle.getId().equals(desc.getId())) {
 				if (currentImgPath != null) {
 					if (currentImgPath.equals(bottomImgPath)) {
 						currentImgPath = desc.getBottomImage();
@@ -98,8 +97,7 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	}
 
 	private void refreshFigure() {
-		WorkspaceImage createWorkspaceImage = DiagramFactory.eINSTANCE
-				.createWorkspaceImage();
+		WorkspaceImage createWorkspaceImage = DiagramFactory.eINSTANCE.createWorkspaceImage();
 		createWorkspaceImage.setWorkspacePath(currentImgPath);
 		refreshFigure(createWorkspaceImage);
 	}
@@ -113,7 +111,7 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	public void refreshFigure(final ContainerStyle containerStyle) {
 
 		if (containerStyle instanceof CustomStyle) {
-			refreshFigure((CustomStyle) containerStyle);
+			refreshFigure((CustomStyle)containerStyle);
 		}
 	}
 

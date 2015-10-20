@@ -72,7 +72,8 @@ public class MoveUpElementSwitch extends UMLSwitch<Boolean> {
 			moveUpList(packageableElements, packageableElement);
 			return success;
 		} else if (eContainer instanceof Component) {
-			final EList<PackageableElement> packageableElements = ((Component)eContainer).getPackagedElements();
+			final EList<PackageableElement> packageableElements = ((Component)eContainer)
+					.getPackagedElements();
 			moveUpList(packageableElements, packageableElement);
 			return success;
 		}

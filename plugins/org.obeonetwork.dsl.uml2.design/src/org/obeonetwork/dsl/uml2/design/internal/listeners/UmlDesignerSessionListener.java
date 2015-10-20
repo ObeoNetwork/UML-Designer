@@ -33,9 +33,12 @@ public class UmlDesignerSessionListener implements SessionListener {
 	}
 
 	public void notify(int changeKind) {
-		if (changeKind == SessionListener.OPENED || changeKind == SessionListener.SELECTED_VIEWS_CHANGE_KIND) {
-			// The Reused viewpoint must not be disabled by the user as other viewpoints depend on it, so it
-			// is re-enabled automatically at the session opening or when the user change the viewpoint
+		if (changeKind == SessionListener.OPENED
+				|| changeKind == SessionListener.SELECTED_VIEWS_CHANGE_KIND) {
+			// The Reused viewpoint must not be disabled by the user as other
+			// viewpoints depend on it, so it
+			// is re-enabled automatically at the session opening or when the
+			// user change the viewpoint
 			// selection
 			UmlViewpoints.enableReused(session);
 		}

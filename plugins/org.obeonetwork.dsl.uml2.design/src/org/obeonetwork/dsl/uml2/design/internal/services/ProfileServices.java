@@ -36,8 +36,8 @@ import com.google.common.collect.Lists;
 /**
  * Services to handle typed Profile concerns.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class ProfileServices {
@@ -131,8 +131,8 @@ public class ProfileServices {
 	public boolean defineProfile(final Profile rootProfile, final List<Profile> allContentProfile) {
 		boolean result = false;
 
-		final ProfileVersionDialog versionDialog = new ProfileVersionDialog(PlatformUI.getWorkbench()
-				.getDisplay().getActiveShell(), rootProfile);
+		final ProfileVersionDialog versionDialog = new ProfileVersionDialog(
+				PlatformUI.getWorkbench().getDisplay().getActiveShell(), rootProfile);
 		versionDialog.open();
 
 		if (versionDialog.getReturnCode() == IDialogConstants.OK_ID) {
@@ -162,8 +162,8 @@ public class ProfileServices {
 	 * @return a list all sub profile.
 	 */
 	public List<Profile> getAllSubProfiles(final Profile rootProfile) {
-		final List<Profile> allSubProfiles = Lists.newArrayList(Iterators.filter(rootProfile.eAllContents(),
-				Profile.class));
+		final List<Profile> allSubProfiles = Lists
+				.newArrayList(Iterators.filter(rootProfile.eAllContents(), Profile.class));
 		allSubProfiles.remove(rootProfile);
 
 		return allSubProfiles;

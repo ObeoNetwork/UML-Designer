@@ -14,11 +14,9 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.NamedElement;
 
 /**
- * A switch that handle the label computation for each UML types for direct edit
- * operation.
+ * A switch that handle the label computation for each UML types for direct edit operation.
  *
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class DirectEditLabelSwitch extends DisplayLabelSwitch {
 	/**
@@ -26,8 +24,7 @@ public class DirectEditLabelSwitch extends DisplayLabelSwitch {
 	 */
 	@Override
 	public String caseClass(Class object) {
-		final String templateParameters = LabelServices.INSTANCE
-				.getTemplatedParameters(object);
+		final String templateParameters = LabelServices.INSTANCE.getTemplatedParameters(object);
 		if (templateParameters != null) {
 			return object.getName() + templateParameters;
 		}

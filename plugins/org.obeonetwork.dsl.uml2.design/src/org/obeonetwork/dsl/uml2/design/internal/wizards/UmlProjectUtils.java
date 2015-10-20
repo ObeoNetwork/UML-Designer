@@ -66,30 +66,30 @@ public class UmlProjectUtils {
 		final Session session = modelingProject.get().getSession();
 		final String platformPath = getNewUmlModelFilePath(project, newUmlFileName);
 		session.getTransactionalEditingDomain().getCommandStack()
-		.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-			@Override
-			protected void doExecute() {
+				.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+					@Override
+					protected void doExecute() {
 
-				final URI semanticModelURI = URI.createPlatformResourceURI(platformPath, true);
-				final Resource res = new ResourceSetImpl().createResource(semanticModelURI);
-				/* Add the initial model object to the contents. */
-				final EObject rootObject = UmlProjectUtils.createInitialModel(rootObjectName);
+						final URI semanticModelURI = URI.createPlatformResourceURI(platformPath, true);
+						final Resource res = new ResourceSetImpl().createResource(semanticModelURI);
+						/* Add the initial model object to the contents. */
+						final EObject rootObject = UmlProjectUtils.createInitialModel(rootObjectName);
 
-				if (rootObject != null) {
-					res.getContents().add(rootObject);
-				}
-				try {
-					res.save(Maps.newHashMap());
-				} catch (final IOException e) {
-					UMLDesignerPlugin.log(IStatus.ERROR,
-							Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
-				}
+						if (rootObject != null) {
+							res.getContents().add(rootObject);
+						}
+						try {
+							res.save(Maps.newHashMap());
+						} catch (final IOException e) {
+							UMLDesignerPlugin.log(IStatus.ERROR,
+									Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
+						}
 
-				session.addSemanticResource(semanticModelURI, new NullProgressMonitor());
+						session.addSemanticResource(semanticModelURI, new NullProgressMonitor());
 
-				session.save(new NullProgressMonitor());
-			}
-		});
+						session.save(new NullProgressMonitor());
+					}
+				});
 		return Options.newSome(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformPath)));
 	}
 

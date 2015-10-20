@@ -71,6 +71,7 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 		}
 		return null;
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */

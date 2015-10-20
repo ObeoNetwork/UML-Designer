@@ -16,8 +16,8 @@ import java.util.StringTokenizer;
 /**
  * Profile version.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class Version {
 	/**
@@ -28,8 +28,7 @@ public class Version {
 	 * @return the version value corresponding to the String
 	 * @throws IllegalArgumentException
 	 */
-	public static Version parseVersion(String version)
-			throws IllegalArgumentException {
+	public static Version parseVersion(String version) throws IllegalArgumentException {
 		if (version == null) {
 			return EMPTY_VERSION;
 		}
@@ -42,8 +41,7 @@ public class Version {
 	}
 
 	/**
-	 * The empty version "0.0.0". Equivalent to calling
-	 * <code>new Version(0,0,0)</code>
+	 * The empty version "0.0.0". Equivalent to calling <code>new Version(0,0,0)</code>
 	 */
 	public static final Version EMPTY_VERSION = new Version(0, 0, 0);
 
@@ -55,8 +53,6 @@ public class Version {
 
 	/** minor version number. */
 	private int minor;
-
-
 
 	/** major version number. */
 	private int major;
@@ -95,8 +91,7 @@ public class Version {
 	 */
 	public Version(final String value) throws IllegalArgumentException {
 		try {
-			final StringTokenizer st = new StringTokenizer(value, SEPARATOR,
-					true);
+			final StringTokenizer st = new StringTokenizer(value, SEPARATOR, true);
 			major = Integer.parseInt(st.nextToken());
 
 			if (st.hasMoreTokens()) {
@@ -108,8 +103,7 @@ public class Version {
 					micro = Integer.parseInt(st.nextToken());
 
 					if (st.hasMoreTokens()) {
-						throw new IllegalArgumentException(
-								"invalid version format"); //$NON-NLS-1$
+						throw new IllegalArgumentException("invalid version format"); //$NON-NLS-1$
 					}
 				}
 			}

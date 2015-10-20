@@ -40,7 +40,7 @@ public class RotatableImageEditPartProvider extends AbstractEditPartProvider {
 	protected Class<?> getNodeEditPartClass(final View view) {
 		final EObject semanticElement = ViewUtil.resolveSemanticElement(view);
 		if (semanticElement instanceof CustomStyle) {
-			final CustomStyle customStyle = (CustomStyle) semanticElement;
+			final CustomStyle customStyle = (CustomStyle)semanticElement;
 			if (customStyleSupported(customStyle)) {
 				return RotatableImageBasedOnFirstSourceConnectionEditPart.class;
 			}
@@ -48,10 +48,9 @@ public class RotatableImageEditPartProvider extends AbstractEditPartProvider {
 			List<Object> children = view.getChildren();
 			for (Object child : children) {
 				if (child instanceof View) {
-					final EObject childSemanticElement = ViewUtil
-							.resolveSemanticElement((View) child);
+					final EObject childSemanticElement = ViewUtil.resolveSemanticElement((View)child);
 					if (childSemanticElement instanceof CustomStyle) {
-						final CustomStyle customStyle = (CustomStyle) childSemanticElement;
+						final CustomStyle customStyle = (CustomStyle)childSemanticElement;
 						if (customStyleSupported(customStyle)) {
 							return RotatableNodeEditPart.class;
 						}
@@ -65,10 +64,8 @@ public class RotatableImageEditPartProvider extends AbstractEditPartProvider {
 	private boolean customStyleSupported(CustomStyle customStyle) {
 
 		boolean ret = false;
-		for (NodeImageExtension desc : ExtensionActivator.getDefault()
-				.getImageExtensions()) {
-			if (customStyle.getId() != null
-					&& customStyle.getId().equals(desc.getId())) {
+		for (NodeImageExtension desc : ExtensionActivator.getDefault().getImageExtensions()) {
+			if (customStyle.getId() != null && customStyle.getId().equals(desc.getId())) {
 				ret = true;
 				break;
 			}

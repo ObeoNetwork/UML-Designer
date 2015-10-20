@@ -88,8 +88,8 @@ public abstract class AbstractCreateDiagram<T extends PackageableElement> extend
 						// Create activity
 						final T semanticElement = createSemanticObject();
 						pkg.getPackagedElements().add(semanticElement);
-						semanticElement.setName(new CreateElementLabelFromModelExplorerSwitch()
-						.getNewLabel(semanticElement));
+						semanticElement.setName(
+								new CreateElementLabelFromModelExplorerSwitch().getNewLabel(semanticElement));
 
 						// Get sequence diagram representation description
 						final RepresentationDescription diagDescription = getDiagramDescription(session,
@@ -100,11 +100,12 @@ public abstract class AbstractCreateDiagram<T extends PackageableElement> extend
 						if (representationName != null) {
 							// Create representation
 							final DRepresentation representation = DialectManager.INSTANCE
-									.createRepresentation(representationName, semanticElement, diagDescription,
-											session, new NullProgressMonitor());
+									.createRepresentation(representationName, semanticElement,
+											diagDescription, session, new NullProgressMonitor());
 
 							// Open diagram
-							DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+							DialectUIManager.INSTANCE.openEditor(session, representation,
+									new NullProgressMonitor());
 						}
 					}
 				}
@@ -160,10 +161,10 @@ public abstract class AbstractCreateDiagram<T extends PackageableElement> extend
 		final InputDialog askViewPointName = new InputDialog(Display.getDefault().getActiveShell(),
 				Messages.createRepresentationInputDialog_Title, descriptionLabel, defaultName,
 				new IInputValidator() {
-			public String isValid(final String newText) {
-				return null;
-			}
-		});
+					public String isValid(final String newText) {
+						return null;
+					}
+				});
 		if (askViewPointName.open() == Window.OK) {
 			return askViewPointName.getValue();
 		}

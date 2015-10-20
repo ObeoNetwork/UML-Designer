@@ -22,10 +22,8 @@ import org.eclipse.ui.PlatformUI;
 /**
  * Activates listener on Sirius editors at startup.
  * 
- * @author Cedric Brun <a
- *         href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UsageStartup extends Stub {
 
@@ -39,10 +37,9 @@ public class UsageStartup extends Stub {
 	@Override
 	public void notify(Session updated, int notification) {
 		/*
-		 * we could filter for SessionListener.OPENED events but it might be
-		 * possible that this event even before the workbench is up and ready.
-		 * It sounds more fit to keeps being notified for all the events but
-		 * only doing something once and checking that swiftly.
+		 * we could filter for SessionListener.OPENED events but it might be possible that this event even
+		 * before the workbench is up and ready. It sounds more fit to keeps being notified for all the events
+		 * but only doing something once and checking that swiftly.
 		 */
 		if (windowListener == null && PlatformUI.getWorkbench() != null) {
 			windowListener = new IWindowListener() {
@@ -57,27 +54,21 @@ public class UsageStartup extends Stub {
 				}
 
 				public void windowActivated(IWorkbenchWindow window) {
-					if (usageListener == null
-							&& PlatformUI.getWorkbench() != null
-							&& PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow() != null) {
-						
+					if (usageListener == null && PlatformUI.getWorkbench() != null
+							&& PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
+
 						usageListener = new SiriusEditorsListener();
-						
+
 						SessionManager.INSTANCE.addSessionsListener(usageListener);
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.getPartService()
-						.addPartListener(usageListener);
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService()
+								.addPartListener(usageListener);
 						/*
-						 * a Dialect editor might be opened before arriving
-						 * here, for instance if Eclipse was restarted with an
-						 * opened editor. To make sure we count this we go
-						 * through all the pages and all the corresponding
-						 * editor references and "pretend" they got opened.
+						 * a Dialect editor might be opened before arriving here, for instance if Eclipse was
+						 * restarted with an opened editor. To make sure we count this we go through all the
+						 * pages and all the corresponding editor references and "pretend" they got opened.
 						 */
 						for (IWorkbenchPage page : window.getPages()) {
-							for (IEditorReference ref : page
-									.getEditorReferences()) {
+							for (IEditorReference ref : page.getEditorReferences()) {
 								usageListener.partOpened(ref);
 							}
 						}

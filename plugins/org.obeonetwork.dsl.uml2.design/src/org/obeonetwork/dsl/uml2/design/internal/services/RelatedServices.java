@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 
-
 /**
  * Utilities to get related elements.
  *

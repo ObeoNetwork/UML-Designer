@@ -23,6 +23,6 @@ public class UmlDesignerPreferenceInitializer extends AbstractPreferenceInitiali
 	@Override
 	public void initializeDefaultPreferences() {
 		UMLDesignerPlugin.getDefault().getPreferenceStore()
-		.setDefault(UmlDesignerPreferences.DELETION_CONFIRMATION_ENABLED_ID, true);
+				.setDefault(UmlDesignerPreferences.DELETION_CONFIRMATION_ENABLED_ID, true);
 	}
 }

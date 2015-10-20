@@ -22,9 +22,8 @@ import org.eclipse.emf.importer.ecore.EcoreImporter;
 /**
  * This class provide a method to generate a genmodel from an ecore model.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class EcoreToGenmodel {
 
@@ -46,20 +45,16 @@ public class EcoreToGenmodel {
 		final BasicMonitor basicMonitor = new BasicMonitor();
 		basicMonitor.beginTask("Creating Genmodel", 4); //$NON-NLS-1$
 
-		final IFile ecoreProfileIFile = GenericUMLProfileTools
-				.resourceToIFile(ecoreResource);
-		final EPackage ePckageProflie = (EPackage) ecoreResource.getContents()
-				.get(0);
+		final IFile ecoreProfileIFile = GenericUMLProfileTools.resourceToIFile(ecoreResource);
+		final EPackage ePckageProflie = (EPackage)ecoreResource.getContents().get(0);
 
 		final EcoreImporter modelImporter = new EcoreImporter();
 		modelImporter.setModelFile(ecoreProfileIFile);
 		modelImporter.setModelLocation(ecoreResource.getURI().toString());
 		modelImporter.setGenModelFileName(modelImporter.computeDefaultGenModelFileName());
-		final IPath genModelContainerPath = ecoreProfileIFile.getParent()
-				.getFullPath();
+		final IPath genModelContainerPath = ecoreProfileIFile.getParent().getFullPath();
 		modelImporter.setGenModelContainerPath(genModelContainerPath);
-		final IPath genModelProjectLocation = ecoreProfileIFile.getParent()
-				.getParent().getFullPath();
+		final IPath genModelProjectLocation = ecoreProfileIFile.getParent().getParent().getFullPath();
 		modelImporter.setGenModelProjectLocation(genModelProjectLocation);
 		modelImporter.addGenModelToResource(true);
 
@@ -71,9 +66,9 @@ public class EcoreToGenmodel {
 		}
 
 		for (final EPackage ePackage : modelImporter.getEPackages()) {
-			modelImporter.getEPackageConvertInfo(ePackage).setConvert(
-					ePckageProflie.getName().equals(ePackage.getName())
-					&& ePckageProflie.getNsPrefix().equals(ePackage.getNsPrefix()));
+			modelImporter.getEPackageConvertInfo(ePackage)
+					.setConvert(ePckageProflie.getName().equals(ePackage.getName())
+							&& ePckageProflie.getNsPrefix().equals(ePackage.getNsPrefix()));
 		}
 
 		modelImporter.adjustEPackages(basicMonitor);
@@ -93,6 +88,5 @@ public class EcoreToGenmodel {
 		}
 		return modelImporter.getGenModel();
 	}
-
 
 }

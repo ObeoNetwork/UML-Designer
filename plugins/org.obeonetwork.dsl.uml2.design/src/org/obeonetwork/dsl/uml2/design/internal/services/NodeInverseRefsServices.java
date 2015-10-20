@@ -202,8 +202,8 @@ public class NodeInverseRefsServices {
 			while (it.hasNext()) {
 				final EObject displayedAsANode = it.next();
 				if (displayedAsANode != null) {
-					for (final Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
-							displayedAsANode)) {
+					for (final Setting xRef : sess.getSemanticCrossReferencer()
+							.getInverseReferences(displayedAsANode)) {
 						final EObject eObject = xRef.getEObject();
 
 						if (xRef instanceof DerivedUnionEObjectEList) {
@@ -260,8 +260,8 @@ public class NodeInverseRefsServices {
 		while (it.hasNext()) {
 			final EObject displayedAsANode = it.next();
 			if (displayedAsANode != null) {
-				for (final Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
-						displayedAsANode)) {
+				for (final Setting xRef : sess.getSemanticCrossReferencer()
+						.getInverseReferences(displayedAsANode)) {
 					final EObject eObject = xRef.getEObject();
 					if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
 						result.add(eObject);

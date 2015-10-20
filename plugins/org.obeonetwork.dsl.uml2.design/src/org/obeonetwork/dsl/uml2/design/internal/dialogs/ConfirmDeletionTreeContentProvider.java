@@ -38,7 +38,8 @@ public class ConfirmDeletionTreeContentProvider extends AdapterFactoryContentPro
 	 * @param notifications
 	 *            Deletion notifications
 	 */
-	public ConfirmDeletionTreeContentProvider(AdapterFactory adapterFactory, Collection<Object> notifications) {
+	public ConfirmDeletionTreeContentProvider(AdapterFactory adapterFactory,
+			Collection<Object> notifications) {
 		super(adapterFactory);
 		this.notifications = notifications;
 	}

@@ -225,7 +225,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		// Edit associated instance name
 		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0) {
 			((InstanceSpecification)lifeline.getClientDependencies().get(0).getSuppliers().get(0))
-			.setName(name);
+					.setName(name);
 		}
 		// Edit lifeline name
 		lifeline.setName(name);
@@ -345,8 +345,8 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 */
 	public void caseRole(Property property) {
 		/*
-		 * We need to find roles names, end user might type: "aRoleName"
-		 * "aRoleName - aRoleName "aRoleName[cardinality]
+		 * We need to find roles names, end user might type: "aRoleName" "aRoleName - aRoleName "
+		 * aRoleName[cardinality]
 		 */
 		String escapedLabel = editedLabelContent;
 		if (editedLabelContent.indexOf('/') > -1) {
@@ -514,7 +514,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 						final TemplateParameter templateParameter = templateParameters.get(i);
 						if (templateParameter.getParameteredElement() instanceof NamedElement) {
 							((NamedElement)templateParameter.getParameteredElement())
-							.setName(templateParamLabel);
+									.setName(templateParamLabel);
 						}
 					} catch (final IndexOutOfBoundsException e) {
 						final ClassifierTemplateParameter createNewClassifierTemplateParameter = createNewClassifierTemplateParameter(

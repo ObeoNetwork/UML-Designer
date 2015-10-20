@@ -51,7 +51,7 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
 /**
  * A switch that handle the edge reconnections for each UML types.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class ReconnectSwitch extends UMLSwitch<Element> {
@@ -455,7 +455,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 		}
 	}
 
-	private boolean isReconnectable(Element element){
+	private boolean isReconnectable(Element element) {
 		final ReconnectPreconditionSwitch reconnectPreconditionService = new ReconnectPreconditionSwitch();
 		reconnectPreconditionService.setReconnectKind(reconnectKind);
 		reconnectPreconditionService.setNewPointedElement(newPointedElement);

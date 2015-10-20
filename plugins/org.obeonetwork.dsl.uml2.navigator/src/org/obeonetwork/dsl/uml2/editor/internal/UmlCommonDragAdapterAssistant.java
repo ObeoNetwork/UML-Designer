@@ -27,7 +27,7 @@ import org.eclipse.ui.navigator.CommonDragAdapterAssistant;
 public class UmlCommonDragAdapterAssistant extends CommonDragAdapterAssistant {
 
 	private static final Transfer[] SUPPORTED_TRANSFERS = new Transfer[] {
-			LocalSelectionTransfer.getTransfer(), LocalTransfer.getInstance() };
+			LocalSelectionTransfer.getTransfer(), LocalTransfer.getInstance()};
 
 	/**
 	 * Default constructor.
@@ -41,8 +41,7 @@ public class UmlCommonDragAdapterAssistant extends CommonDragAdapterAssistant {
 	}
 
 	@Override
-	public boolean setDragData(DragSourceEvent event,
-			IStructuredSelection selection) {
+	public boolean setDragData(DragSourceEvent event, IStructuredSelection selection) {
 		boolean canBeSet = false;
 		Object o = selection.getFirstElement();
 		if (o instanceof EObject) {

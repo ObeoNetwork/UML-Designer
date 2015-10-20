@@ -29,7 +29,7 @@ import org.obeonetwork.dsl.uml2.design.internal.wizards.UmlProjectUtils;
 /**
  * The wizard to create a new UML designer model.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlModelWizard extends AbstractNewUmlModelWizard {
@@ -61,7 +61,8 @@ public class UmlModelWizard extends AbstractNewUmlModelWizard {
 		initModelPage.setDescription(Messages.UmlModelWizard_UI_InitModelPageDescription);
 		addPage(initModelPage);
 
-		// Try and get the resource selection to determine a current directory for the file dialog.
+		// Try and get the resource selection to determine a current directory
+		// for the file dialog.
 		if (selection != null && !selection.isEmpty()) {
 			// Get the resource...
 			//

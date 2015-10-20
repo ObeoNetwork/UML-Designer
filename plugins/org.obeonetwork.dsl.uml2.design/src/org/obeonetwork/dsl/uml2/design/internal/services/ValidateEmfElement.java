@@ -16,9 +16,8 @@ import org.eclipse.emf.edit.ui.action.ValidateAction;
 /**
  * Used to invoke EMF validator.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class ValidateEmfElement extends ValidateAction {
 	boolean diagnosticResult = false;

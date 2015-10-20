@@ -160,7 +160,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 					connectableElements.add(role);
 				}
 			} else {
-				// Interface layer is inactive provide connector between ports, parts, and components
+				// Interface layer is inactive provide connector between ports,
+				// parts, and components
 				/*
 				 * A connector could be connect to a port or to an interface. An interface could be connect to
 				 * a component throw a port or directly. In this case a "public" port was created but is not
@@ -184,8 +185,7 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 					for (final ConnectorEnd locConnectorEnd : connectorEnds) {
 						if (locConnectorEnd.getRole() instanceof Port
 								&& locConnectorEnd.getRole().getType() instanceof StructuredClassifier) {
-							if (listOfInterfaceRealization
-									.contains(locConnectorEnd.getRole().getOwner())) {
+							if (listOfInterfaceRealization.contains(locConnectorEnd.getRole().getOwner())) {
 								connectableElements.add(locConnectorEnd.getRole().getOwner());
 							} else {
 								connectableElements.add(locConnectorEnd.getOwner());
@@ -236,7 +236,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 					connectableElements.add(role2);
 				}
 			} else {
-				// Interface layer is inactive provide connector between ports, parts, and components
+				// Interface layer is inactive provide connector between ports,
+				// parts, and components
 				/*
 				 * A connector could be connect to a port or to an interface. An interface could be connect to
 				 * a component throw a port or directly. In this case a "public" port was created but is not
@@ -246,26 +247,26 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 				 * If several components have usage or interface realization link to the same interface in
 				 * this case the connector will have several ends.
 				 */
-		final List<NamedElement> listOfUsage = new ArrayList<NamedElement>();
+				final List<NamedElement> listOfUsage = new ArrayList<NamedElement>();
 				for (final Dependency dependency : connector.getClientDependencies()) {
 					if (dependency instanceof Usage) {
 						for (final NamedElement elem : getClient(dependency)) {
 							if (elem instanceof Port || elem instanceof StructuredClassifier) {
-				listOfUsage.add(elem);
+								listOfUsage.add(elem);
 							}
 						}
 					}
 				}
-		if (listOfUsage.size() > 0) {
+				if (listOfUsage.size() > 0) {
 					for (final ConnectorEnd locConnectorEnd : connectorEnds) {
 						if (locConnectorEnd.getRole() instanceof Port
 								&& locConnectorEnd.getRole().getType() instanceof StructuredClassifier) {
-				if (listOfUsage.contains(locConnectorEnd.getRole().getOwner())) {
+							if (listOfUsage.contains(locConnectorEnd.getRole().getOwner())) {
 								connectableElements.add(locConnectorEnd.getRole().getOwner());
 							} else {
 								connectableElements.add(locConnectorEnd.getOwner());
 							}
-			} else if (listOfUsage.contains(locConnectorEnd.getRole())) {
+						} else if (listOfUsage.contains(locConnectorEnd.getRole())) {
 							connectableElements.add(locConnectorEnd.getRole());
 						}
 					}
@@ -293,7 +294,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		final Set<EObject> returnList = new HashSet<EObject>();
 		if (diagram.getTarget() instanceof StructuredClassifier) {
 			// this case is for diagram create under a StructuredClassifier
-			if (EcoreUtil.isAncestor(diagram.getTarget(), element) && element instanceof StructuredClassifier) {
+			if (EcoreUtil.isAncestor(diagram.getTarget(), element)
+					&& element instanceof StructuredClassifier) {
 				// only children of the Structured Classifier could be displayed
 				final TreeIterator<Object> iterator = EcoreUtil.getAllContents(diagram.getTarget(), true);
 				while (iterator.hasNext()) {
@@ -430,8 +432,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the usage of all the UML elements displayed as node in a Diagram.
-	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * Retrieve the cross references of the usage of all the UML elements displayed as node in a Diagram. Note
+	 * that a Property cross reference will lead to retrieve the cross references of this property.
 	 *
 	 * @param diagram
 	 *            a diagram.
@@ -472,8 +474,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Check that source and target are connectable. We explore recursively source generalizations to
-	 * handle super type cases.
+	 * Check that source and target are connectable. We explore recursively source generalizations to handle
+	 * super type cases.
 	 *
 	 * @param source
 	 *            the source element
@@ -553,8 +555,7 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 							if (port1Provideds.contains(source) && port2Requireds.contains(target)
 									|| port1Provideds.contains(target) && port2Requireds.contains(source)
 									|| port2Provideds.contains(source) && port1Requireds.contains(target)
-									|| port2Provideds.contains(target)
-									&& port1Requireds.contains(source)) {
+									|| port2Provideds.contains(target) && port1Requireds.contains(source)) {
 								return true;
 							}
 						}
@@ -569,7 +570,6 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		}
 		return true;
 	}
-
 
 	/**
 	 * Check if the selected element is a valid port container.

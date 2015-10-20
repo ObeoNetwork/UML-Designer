@@ -25,8 +25,7 @@ import org.osgi.util.tracker.ServiceTracker;
 /**
  * The activator class controls the plug-in life cycle
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlDiscoveryActivator extends AbstractUIPlugin {
 
@@ -42,18 +41,15 @@ public class UmlDiscoveryActivator extends AbstractUIPlugin {
 	 * The constructor
 	 */
 	public UmlDiscoveryActivator() {
-		proxyTracker = new ServiceTracker<Object, Object>(FrameworkUtil.getBundle(
-				this.getClass()).getBundleContext(),
-				IProxyService.class.getName(), null);
+		proxyTracker = new ServiceTracker<Object, Object>(
+				FrameworkUtil.getBundle(this.getClass()).getBundleContext(), IProxyService.class.getName(),
+				null);
 		proxyTracker.open();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
-	 * )
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext )
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
@@ -62,10 +58,7 @@ public class UmlDiscoveryActivator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
-	 * )
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext )
 	 */
 	public void stop(BundleContext context) throws Exception {
 		proxyTracker.close();
@@ -86,8 +79,7 @@ public class UmlDiscoveryActivator extends AbstractUIPlugin {
 		URI uri;
 		try {
 			uri = new URI(uriString);
-			IProxyService proxyService = UmlDiscoveryActivator.getDefault()
-					.getProxyService();
+			IProxyService proxyService = UmlDiscoveryActivator.getDefault().getProxyService();
 			IProxyData[] proxyDataForHost = proxyService.select(uri);
 			for (IProxyData data : proxyDataForHost) {
 				if (data.getHost() != null) {
@@ -95,20 +87,18 @@ public class UmlDiscoveryActivator extends AbstractUIPlugin {
 					System.setProperty("http.proxyHost", data.getHost());
 				}
 				if (data.getHost() != null) {
-					System.setProperty("http.proxyPort",
-							String.valueOf(data.getPort()));
+					System.setProperty("http.proxyPort", String.valueOf(data.getPort()));
 				}
 			}
 			// Close the service and close the service tracker
 			proxyService = null;
 		} catch (URISyntaxException e) {
-			getLog().log(
-					new Status(IStatus.WARNING, PLUGIN_ID, e.getMessage(), e));
+			getLog().log(new Status(IStatus.WARNING, PLUGIN_ID, e.getMessage(), e));
 		}
 	}
 
 	public IProxyService getProxyService() {
-		return (IProxyService) proxyTracker.getService();
+		return (IProxyService)proxyTracker.getService();
 	}
 
 }

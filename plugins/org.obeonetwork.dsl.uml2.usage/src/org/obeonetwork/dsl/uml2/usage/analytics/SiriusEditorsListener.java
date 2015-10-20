@@ -45,18 +45,21 @@ import com.google.common.io.Files;
 /**
  * Detect when a Sirius editor is used and send information to google analytics.
  * 
- * @author Cedric Brun <a
- *         href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SiriusEditorsListener extends Stub implements IPartListener2 {
 
 	private static final String ANALYTICS_ID = UsageMessages.Usage_GoogleAnalytics;
+
 	private JGoogleAnalyticsTracker tracker;
+
 	private EclipseUserAgent eclipseUserAgent;
+
 	private String hostname;
+
 	private UsagePreferences preferences = new UsagePreferences();
+
 	private String bundleVersion = "";
 
 	public SiriusEditorsListener() {
@@ -64,8 +67,7 @@ public class SiriusEditorsListener extends Stub implements IPartListener2 {
 		// if you want to set your own config parameters:
 		eclipseUserAgent = new EclipseUserAgent();
 		config.setUserAgent(eclipseUserAgent.toString());
-		tracker = new JGoogleAnalyticsTracker(config,
-				GoogleAnalyticsVersion.V_4_7_2);
+		tracker = new JGoogleAnalyticsTracker(config, GoogleAnalyticsVersion.V_4_7_2);
 		hostname = getOrCreateHostname();
 		bundleVersion = readableVersion();
 	}
@@ -87,23 +89,20 @@ public class SiriusEditorsListener extends Stub implements IPartListener2 {
 		try {
 			found = retrieveMarker(found);
 		} catch (IOException e) {
-			UsageActivator.log(IStatus.ERROR,
-					UsageMessages.Error_CreatingGoogleAnalyticsConfig, e);
+			UsageActivator.log(IStatus.ERROR, UsageMessages.Error_CreatingGoogleAnalyticsConfig, e);
 		}
 		return found;
 	}
 
 	private String retrieveMarker(String found) throws IOException {
-		IPath path = Platform.getStateLocation(UsageActivator.getDefault()
-				.getBundle());
+		IPath path = Platform.getStateLocation(UsageActivator.getDefault().getBundle());
 		if (path != null) {
 			path = path.append("hostname");
 			if (!path.toFile().exists()) {
 				Files.write(found, path.toFile(), Charset.forName("UTF-8"));
 			} else {
 				if (path.toFile().canRead()) {
-					return Files.readFirstLine(path.toFile(),
-							Charset.forName("UTF-8"));
+					return Files.readFirstLine(path.toFile(), Charset.forName("UTF-8"));
 				}
 			}
 		}
@@ -132,21 +131,17 @@ public class SiriusEditorsListener extends Stub implements IPartListener2 {
 
 			if (!preferences.isEnabled())
 				return;
-			DialectEditor dEditor = (DialectEditor) part;
+			DialectEditor dEditor = (DialectEditor)part;
 			DRepresentation rep = dEditor.getRepresentation();
-			if (rep != null
-					&& DialectManager.INSTANCE.getDescription(rep) != null) {
-				RepresentationDescription description = DialectManager.INSTANCE
-						.getDescription(rep);
+			if (rep != null && DialectManager.INSTANCE.getDescription(rep) != null) {
+				RepresentationDescription description = DialectManager.INSTANCE.getDescription(rep);
 				if (description != null) {
 					String diagURI = EcoreUtil.getURI(description).toString();
 					String diagTypeName = description.getName();
-					String viewpointName = ((Viewpoint) description
-							.eContainer()).getName();
+					String viewpointName = ((Viewpoint)description.eContainer()).getName();
 					preferences.storeDiagramsUsage(diagTypeName);
-					tracker.trackPageViewFromReferrer(viewpointName + "/"
-							+ diagTypeName, diagURI.toString(), hostname,
-							eclipseUserAgent.getApplicationName() + ":"
+					tracker.trackPageViewFromReferrer(viewpointName + "/" + diagTypeName, diagURI.toString(),
+							hostname, eclipseUserAgent.getApplicationName() + ":"
 									+ eclipseUserAgent.getApplicationVersion(),
 							"");
 				}
@@ -165,8 +160,7 @@ public class SiriusEditorsListener extends Stub implements IPartListener2 {
 	}
 
 	/**
-	 * Ask to user if it is ok to send some statistics about its usage of UML
-	 * Designer.
+	 * Ask to user if it is ok to send some statistics about its usage of UML Designer.
 	 */
 	private void askUser() {
 		// Check preference to see if user already answer the question
@@ -175,8 +169,7 @@ public class SiriusEditorsListener extends Stub implements IPartListener2 {
 		}
 
 		// User does not answer to the question, ask him
-		Shell shell = PlatformUI.getWorkbench().getModalDialogShellProvider()
-				.getShell();
+		Shell shell = PlatformUI.getWorkbench().getModalDialogShellProvider().getShell();
 		UsageDialog dialog = new UsageDialog(shell);
 		int answer = dialog.open();
 
@@ -188,11 +181,10 @@ public class SiriusEditorsListener extends Stub implements IPartListener2 {
 
 		// Send to google analytics information of usage report activation
 		if (preferences.isEnabled()) {
-			tracker.trackPageViewFromReferrer(
-					UsageMessages.Usage_ActivationPageURL + "/" + bundleVersion,
+			tracker.trackPageViewFromReferrer(UsageMessages.Usage_ActivationPageURL + "/" + bundleVersion,
 					UsageMessages.Usage_ActivationPageTitle, hostname,
-					eclipseUserAgent.getApplicationName() + ":"
-							+ eclipseUserAgent.getApplicationVersion(), "");
+					eclipseUserAgent.getApplicationName() + ":" + eclipseUserAgent.getApplicationVersion(),
+					"");
 		}
 	}
 
@@ -200,11 +192,10 @@ public class SiriusEditorsListener extends Stub implements IPartListener2 {
 	public void notify(Session updated, int notification) {
 		if (notification == SessionListener.OPENED) {
 			if (preferences.isEnabled()) {
-				tracker.trackPageViewFromReferrer(
-						UsageMessages.Usage_OpenPageURL + "/" + bundleVersion,
-						UsageMessages.Usage_OpenPageTitle, hostname,
-						eclipseUserAgent.getApplicationName() + ":"
-								+ eclipseUserAgent.getApplicationVersion(), "");
+				tracker.trackPageViewFromReferrer(UsageMessages.Usage_OpenPageURL + "/" + bundleVersion,
+						UsageMessages.Usage_OpenPageTitle, hostname, eclipseUserAgent.getApplicationName()
+								+ ":" + eclipseUserAgent.getApplicationVersion(),
+						"");
 			}
 
 		}

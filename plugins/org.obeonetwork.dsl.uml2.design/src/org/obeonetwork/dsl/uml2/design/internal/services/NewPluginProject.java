@@ -44,15 +44,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
 /**
- * This class provide some static methods for the creation of plug-in project
- * programmatically.
+ * This class provide some static methods for the creation of plug-in project programmatically.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class NewPluginProject {
 	String newLine = "\n"; //$NON-NLS-1$
+
 	/**
 	 * Manifest builder.
 	 */
@@ -77,11 +76,9 @@ public class NewPluginProject {
 			}
 			if (c instanceof IFolder) {
 				try {
-					((IFolder) c)
-					.create(false, true, new NullProgressMonitor());
+					((IFolder)c).create(false, true, new NullProgressMonitor());
 				} catch (final CoreException e) {
-					LogServices.INSTANCE
-					.error("create(false, true,NullProgressMonitor) not handled", //$NON-NLS-1$
+					LogServices.INSTANCE.error("create(false, true,NullProgressMonitor) not handled", //$NON-NLS-1$
 							e);
 				}
 			}
@@ -90,12 +87,10 @@ public class NewPluginProject {
 
 	}
 
-	private void createBuildProps(final IProgressMonitor progressMonitor,
-			final IProject project,
+	private void createBuildProps(final IProgressMonitor progressMonitor, final IProject project,
 			final List<String> srcFolders) {
 		final StringBuilder bpContent = new StringBuilder("source.. = "); //$NON-NLS-1$
-		for (final Iterator<String> iterator = srcFolders.iterator(); iterator
-				.hasNext();) {
+		for (final Iterator<String> iterator = srcFolders.iterator(); iterator.hasNext();) {
 			bpContent.append(iterator.next()).append('/');
 			if (iterator.hasNext()) {
 				bpContent.append(","); //$NON-NLS-1$
@@ -119,8 +114,7 @@ public class NewPluginProject {
 	 *            progress monitor
 	 * @return A new file
 	 */
-	public IFile createFile(final String name, final IContainer container,
-			final String content,
+	public IFile createFile(final String name, final IContainer container, final String content,
 			final IProgressMonitor progressMonitor) {
 		final IFile file = container.getFile(new Path(name));
 		assertExist(file.getParent());
@@ -158,8 +152,7 @@ public class NewPluginProject {
 	 * @return a new file
 	 * @throws CoreException
 	 */
-	public IFile createFile(final String name, final IContainer container,
-			final String content,
+	public IFile createFile(final String name, final IContainer container, final String content,
 			final String charSet, final IProgressMonitor progressMonitor) throws CoreException {
 		final IFile file = createFile(name, container, content, progressMonitor);
 		if (file != null && charSet != null) {
@@ -179,12 +172,10 @@ public class NewPluginProject {
 	 * @param contentUrl
 	 *            Url pointing to the src of the content
 	 * @param progressMonitor
-	 *            used to interact with and show the user the current operation
-	 *            status
+	 *            used to interact with and show the user the current operation status
 	 * @return a new file
 	 */
-	public IFile createFile(final String name, final IContainer container,
-			final URL contentUrl,
+	public IFile createFile(final String name, final IContainer container, final URL contentUrl,
 			final IProgressMonitor progressMonitor) {
 
 		final IFile file = container.getFile(new Path(name));
@@ -217,8 +208,7 @@ public class NewPluginProject {
 		return file;
 	}
 
-	private void createManifest(final String projectName,
-			final Set<String> requiredBundles,
+	private void createManifest(final String projectName, final Set<String> requiredBundles,
 			final List<String> exportedPackages, final IProgressMonitor progressMonitor,
 			final IProject project) throws CoreException {
 		final StringBuilder maniContent = new StringBuilder("Manifest-Version: 1.0\n"); //$NON-NLS-1$
@@ -267,10 +257,10 @@ public class NewPluginProject {
 	 *            shell
 	 * @return a new project.
 	 */
-	public IProject createPluginProject(final String pluginProjectName,
-			final List<String> srcFolders,
+	public IProject createPluginProject(final String pluginProjectName, final List<String> srcFolders,
 			final List<IProject> referencedProjects, final Set<String> requiredBundles,
-			final List<String> exportedPackages, final IProgressMonitor progressMonitor, final Shell theShell) {
+			final List<String> exportedPackages, final IProgressMonitor progressMonitor,
+			final Shell theShell) {
 		IProject project = null;
 		try {
 			progressMonitor.beginTask("", 10); //$NON-NLS-1$
@@ -290,8 +280,8 @@ public class NewPluginProject {
 			project.create(projectDescription, new SubProgressMonitor(progressMonitor, 1));
 			final List<IClasspathEntry> classpathEntries = new ArrayList<IClasspathEntry>();
 			if (referencedProjects.size() != 0) {
-				projectDescription.setReferencedProjects(referencedProjects
-						.toArray(new IProject[referencedProjects.size()]));
+				projectDescription.setReferencedProjects(
+						referencedProjects.toArray(new IProject[referencedProjects.size()]));
 				for (final IProject referencedProject : referencedProjects) {
 					final IClasspathEntry referencedProjectClasspathEntry = JavaCore
 							.newProjectEntry(referencedProject.getFullPath());
@@ -299,8 +289,8 @@ public class NewPluginProject {
 				}
 			}
 
-			projectDescription.setNatureIds(new String[] { JavaCore.NATURE_ID,
-					IBundleProjectDescription.PLUGIN_NATURE });
+			projectDescription
+					.setNatureIds(new String[] {JavaCore.NATURE_ID, IBundleProjectDescription.PLUGIN_NATURE});
 
 			final ICommand java = projectDescription.newCommand();
 			java.setBuilderName(JavaCore.BUILDER_ID);
@@ -310,8 +300,6 @@ public class NewPluginProject {
 
 			final ICommand schema = projectDescription.newCommand();
 			schema.setBuilderName(PDE_SCHEMA_BUILDER);
-
-
 
 			projectDescription.setBuildSpec(new ICommand[] {java, manifest, schema});
 
@@ -328,12 +316,10 @@ public class NewPluginProject {
 				classpathEntries.add(0, srcClasspathEntry);
 			}
 
+			classpathEntries.add(JavaCore.newContainerEntry(new Path(
+					"org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"))); //$NON-NLS-1$
 			classpathEntries
-			.add(JavaCore
-					.newContainerEntry(new Path(
-							"org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"))); //$NON-NLS-1$
-			classpathEntries
-			.add(JavaCore.newContainerEntry(new Path("org.eclipse.pde.core.requiredPlugins"))); //$NON-NLS-1$
+					.add(JavaCore.newContainerEntry(new Path("org.eclipse.pde.core.requiredPlugins"))); //$NON-NLS-1$
 
 			javaProject.setRawClasspath(
 					classpathEntries.toArray(new IClasspathEntry[classpathEntries.size()]),
@@ -344,8 +330,7 @@ public class NewPluginProject {
 			createManifest(pluginProjectName, requiredBundles, exportedPackages, progressMonitor, project);
 			createBuildProps(progressMonitor, project, srcFolders);
 		} catch (final Exception exception) {
-			LogServices.INSTANCE.error(
-					"createPluginProject(" + pluginProjectName.getClass() + "," //$NON-NLS-1$ //$NON-NLS-2$
+			LogServices.INSTANCE.error("createPluginProject(" + pluginProjectName.getClass() + "," //$NON-NLS-1$ //$NON-NLS-2$
 					+ srcFolders.getClass() + "," //$NON-NLS-1$
 					+ referencedProjects.getClass() + "," //$NON-NLS-1$
 					+ requiredBundles.getClass() + "," //$NON-NLS-1$
@@ -356,7 +341,6 @@ public class NewPluginProject {
 		} finally {
 			progressMonitor.done();
 		}
-
 
 		return project;
 	}

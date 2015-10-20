@@ -226,8 +226,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 	 *            Old context
 	 * @return the given partition object
 	 */
-	private InterruptibleActivityRegion dropNode(Element context,
-			InterruptibleActivityRegion interruptRegion, Element oldContext) {
+	private InterruptibleActivityRegion dropNode(Element context, InterruptibleActivityRegion interruptRegion,
+			Element oldContext) {
 		if (context instanceof Activity) {
 			((Activity)context).getOwnedGroups().add(interruptRegion);
 		}
@@ -385,8 +385,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 		final List<org.eclipse.uml2.uml.Package> rootPkgs = getAllAvailableRootPackages(element);
 		final Predicate<EObject> predicate = new Predicate<EObject>() {
 			public boolean apply(EObject eObj) {
-				return eObj instanceof Operation
-						&& (((Operation)eObj).getMethods() == null || ((Operation)eObj).getMethods().size() == 0);
+				return eObj instanceof Operation && (((Operation)eObj).getMethods() == null
+						|| ((Operation)eObj).getMethods().size() == 0);
 			}
 		};
 		for (final org.eclipse.uml2.uml.Package pkg : rootPkgs) {
@@ -449,7 +449,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			if (ParameterDirectionKind.IN_LITERAL.equals(param.getDirection())) {
 				final Pin pin = callOperationAction.getArgument(param.getName(), param.getType());
 				if (pin == null) {
-					// Can't find a param associated to the current pin we ignore the target pin
+					// Can't find a param associated to the current pin we
+					// ignore the target pin
 					final Object[] params = new Object[] {callOperationAction.getQualifiedName(),
 							param.getName(), operation.getQualifiedName()};
 					message = NLS.bind(Messages.UmlValidationErrorOnCallOperationAction2, params);
@@ -458,7 +459,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 					|| ParameterDirectionKind.RETURN_LITERAL.equals(param.getDirection())) {
 				final Pin pin = callOperationAction.getResult(param.getName(), param.getType());
 				if (pin == null) {
-					// Can't find a param associated to the current pin we ignore the target pin
+					// Can't find a param associated to the current pin we
+					// ignore the target pin
 					final Object[] params = new Object[] {callOperationAction.getQualifiedName(),
 							param.getName(), operation.getQualifiedName()};
 					message = NLS.bind(Messages.UmlValidationErrorOnCallOperationAction2, params);
@@ -466,14 +468,16 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			} else {
 				final Pin inputPin = callOperationAction.getArgument(param.getName(), param.getType());
 				if (inputPin == null) {
-					// Can't find a param associated to the current pin we ignore the target pin
+					// Can't find a param associated to the current pin we
+					// ignore the target pin
 					final Object[] params = new Object[] {callOperationAction.getQualifiedName(),
 							param.getName(), operation.getQualifiedName()};
 					message = NLS.bind(Messages.UmlValidationErrorOnCallOperationAction2, params);
 				}
 				final Pin outputPin = callOperationAction.getResult(param.getName(), param.getType());
 				if (outputPin == null) {
-					// Can't find a param associated to the current pin we ignore the target pin
+					// Can't find a param associated to the current pin we
+					// ignore the target pin
 					final Object[] params = new Object[] {callOperationAction.getQualifiedName(),
 							param.getName(), operation.getQualifiedName()};
 					message = NLS.bind(Messages.UmlValidationErrorOnCallOperationAction2, params);
@@ -502,10 +506,12 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			if (callAction instanceof CallOperationAction) {
 				final CallOperationAction callOperationAction = (CallOperationAction)callAction;
 				final Operation operation = callOperationAction.getOperation();
-				// Find parameter associated to the pin thanks to the name and type
+				// Find parameter associated to the pin thanks to the name and
+				// type
 				final org.eclipse.uml2.uml.Parameter param = operation.getOwnedParameter(pinName, pinType);
 				if (param == null && !"target".equals(pinName)) { //$NON-NLS-1$
-					// Can't find a param associated to the current pin we ignore the target pin
+					// Can't find a param associated to the current pin we
+					// ignore the target pin
 					final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
 							operation.getQualifiedName()};
 					message = NLS.bind(Messages.UmlValidationErrorOnCallOperationAction, params);
@@ -518,25 +524,23 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
 					} else if (param.isOrdered() != pin.isOrdered()) {
 						final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-						"ordered"}; //$NON-NLS-1$
+								"ordered"}; //$NON-NLS-1$
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
-					} else if (param.getLowerValue() == null
-							&& pin.getLowerValue() != null
-							|| param.getLowerValue() != null
-							&& pin.getLowerValue() == null
-							|| !(param.getLowerValue() == null && pin.getLowerValue() == null || param
-							.getLowerValue().stringValue().equals(pin.getLowerValue().stringValue()))) {
+					} else if (param.getLowerValue() == null && pin.getLowerValue() != null
+							|| param.getLowerValue() != null && pin.getLowerValue() == null
+							|| !(param.getLowerValue() == null && pin.getLowerValue() == null
+									|| param.getLowerValue().stringValue()
+											.equals(pin.getLowerValue().stringValue()))) {
 						final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-						"lower value"}; //$NON-NLS-1$
+								"lower value"}; //$NON-NLS-1$
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
-					} else if (param.getUpperValue() == null
-							&& pin.getUpperValue() != null
-							|| param.getUpperValue() != null
-							&& pin.getUpperValue() == null
-							|| !(param.getUpperValue() == null && pin.getUpperValue() == null || param
-							.getUpperValue().stringValue().equals(pin.getUpperValue().stringValue()))) {
+					} else if (param.getUpperValue() == null && pin.getUpperValue() != null
+							|| param.getUpperValue() != null && pin.getUpperValue() == null
+							|| !(param.getUpperValue() == null && pin.getUpperValue() == null
+									|| param.getUpperValue().stringValue()
+											.equals(pin.getUpperValue().stringValue()))) {
 						final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-						"upper value"}; //$NON-NLS-1$
+								"upper value"}; //$NON-NLS-1$
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
 					}
 				}
@@ -718,7 +722,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 	 * @return True if source is a valid control flow start
 	 */
 	public boolean isValidControlFlowStart(Element preSource) {
-		// ForkNode, JoinNode, MergeNode, DecisionNode : if the incoming edge is a ControlFlow, then all
+		// ForkNode, JoinNode, MergeNode, DecisionNode : if the incoming edge is
+		// a ControlFlow, then all
 		// outgoing edges shall be ControlFlows
 		if (preSource instanceof ActivityNode) {
 			for (final ActivityEdge incoming : ((ActivityNode)preSource).getIncomings()) {
@@ -750,7 +755,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			return false;
 		}
 
-		// A ForkNode shall have exactly one incoming ActivityEdge, though it may have multiple outgoing
+		// A ForkNode shall have exactly one incoming ActivityEdge, though it
+		// may have multiple outgoing
 		// ActivityEdges.
 		if (preTarget instanceof ForkNode) {
 			final List<ActivityEdge> incomings = ((ForkNode)preTarget).getIncomings();
@@ -759,7 +765,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			}
 		}
 
-		// A DecisionNode shall have at least one and at most two incoming ActivityEdges
+		// A DecisionNode shall have at least one and at most two incoming
+		// ActivityEdges
 		if (preTarget instanceof DecisionNode) {
 			final List<ActivityEdge> incomings = ((DecisionNode)preTarget).getIncomings();
 			if (incomings != null && incomings.size() == 2) {
@@ -776,7 +783,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			return false;
 		}
 
-		// A JoinNode/MergeNode shall have exactly one outgoing ActivityEdge but may have
+		// A JoinNode/MergeNode shall have exactly one outgoing ActivityEdge but
+		// may have
 		// multiple incoming ActivityEdges.
 		if (preSource instanceof JoinNode || preSource instanceof MergeNode) {
 			final List<ActivityEdge> outgoing = ((ActivityNode)preSource).getOutgoings();
@@ -825,7 +833,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 		if (preSource instanceof InputPin) {
 			return false;
 		}
-		// ForkNode, JoinNode, MergeNode, DecisionNode : if the incoming edge is an ObjectFlow, then all
+		// ForkNode, JoinNode, MergeNode, DecisionNode : if the incoming edge is
+		// an ObjectFlow, then all
 		// outgoing edges shall be ObjectFlows
 		if (preSource instanceof ActivityNode) {
 			for (final ActivityEdge incoming : ((ActivityNode)preSource).getIncomings()) {

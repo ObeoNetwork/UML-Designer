@@ -25,7 +25,6 @@ public class Messages extends NLS {
 	 */
 	public static String UmlModelExplorer_UI_ErrorMsg_NotFound;
 
-
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

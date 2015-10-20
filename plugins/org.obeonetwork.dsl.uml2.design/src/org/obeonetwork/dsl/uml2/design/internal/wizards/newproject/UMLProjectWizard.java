@@ -24,7 +24,7 @@ import org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel.UmlModelWizardI
 /**
  * The wizard to create a new UML designer project.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UMLProjectWizard extends AbstractNewUmlModelWizard {
@@ -34,7 +34,8 @@ public class UMLProjectWizard extends AbstractNewUmlModelWizard {
 
 	@Override
 	public void addPages() {
-		// we're not calling the super as we want to control the project creation, we don't want the default
+		// we're not calling the super as we want to control the project
+		// creation, we don't want the default
 		// page.
 		// super.addPages();
 

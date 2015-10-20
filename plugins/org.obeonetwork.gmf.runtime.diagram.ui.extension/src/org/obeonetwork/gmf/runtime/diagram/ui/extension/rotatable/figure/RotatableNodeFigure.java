@@ -17,8 +17,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 
 /**
- * @author Hugo Marchadour <a
- *         href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
+ * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class RotatableNodeFigure extends AirDefaultSizeNodeFigure {
 
@@ -32,8 +31,7 @@ public class RotatableNodeFigure extends AirDefaultSizeNodeFigure {
 		super(defSize, anchorProvider);
 	}
 
-	public RotatableNodeFigure(final int width, final int height,
-			final AnchorProvider anchorProvider) {
+	public RotatableNodeFigure(final int width, final int height, final AnchorProvider anchorProvider) {
 		super(width, height, anchorProvider);
 	}
 

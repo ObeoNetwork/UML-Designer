@@ -15,20 +15,27 @@ import org.eclipse.osgi.util.NLS;
 /**
  * Messages used in usage report preferences.
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class PreferencesMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.usage.preferences.messages"; //$NON-NLS-1$
 
 	public static String Usage_PreferencePage_ReportedValues;
+
 	public static String Usage_PreferencePage_Locale;
+
 	public static String Usage_PreferencePage_OperatingSystem;
+
 	public static String Usage_PreferencePage_OperatingSystemVersion;
+
 	public static String Usage_PreferencePage_ProductId;
+
 	public static String Usage_PreferencePage_ProductVersion;
+
 	public static String Usage_PreferencePage_Diagrams;
+
 	public static String Usage_PreferencePage_AllowReporting;
+
 	public static String Usage_PreferencePage_Description;
 
 	static {

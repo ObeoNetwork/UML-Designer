@@ -164,7 +164,8 @@ public class ModelElementsSelectionDialog {
 		 *            Add action
 		 * @return Add button
 		 */
-		private Button addButton(Composite parent, String toolTipText, Image image, SelectionListener action) {
+		private Button addButton(Composite parent, String toolTipText, Image image,
+				SelectionListener action) {
 			final Button button = new Button(parent, SWT.PUSH);
 			button.setToolTipText(toolTipText);
 			button.setImage(image);
@@ -347,45 +348,41 @@ public class ModelElementsSelectionDialog {
 
 			data = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.GRAB_HORIZONTAL);
 			data.grabExcessHorizontalSpace = true;
-			addButton(buttonComposite,
-					"Check All", //$NON-NLS-1$
+			addButton(buttonComposite, "Check All", //$NON-NLS-1$
 					DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.CHECK_ALL_ICON),
 					new SelectionAdapter() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					checkAll();
-				}
-			}).setLayoutData(data);
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							checkAll();
+						}
+					}).setLayoutData(data);
 
-			addButton(buttonComposite,
-					"Uncheck All", //$NON-NLS-1$
+			addButton(buttonComposite, "Uncheck All", //$NON-NLS-1$
 					DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNCHECK_ALL_ICON),
 					new SelectionAdapter() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					uncheckAll();
-				}
-			}).setLayoutData(data);
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							uncheckAll();
+						}
+					}).setLayoutData(data);
 
-			addButton(buttonComposite,
-					"Expand All", //$NON-NLS-1$
+			addButton(buttonComposite, "Expand All", //$NON-NLS-1$
 					DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.EXPAND_ALL_ICON),
 					new SelectionAdapter() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					expandAll();
-				}
-			}).setLayoutData(data);
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							expandAll();
+						}
+					}).setLayoutData(data);
 
-			addButton(buttonComposite,
-					"Collapse All", //$NON-NLS-1$
+			addButton(buttonComposite, "Collapse All", //$NON-NLS-1$
 					DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.COLLAPSE_ALL_ICON),
 					new SelectionAdapter() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					collapseAll();
-				}
-			}).setLayoutData(data);
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							collapseAll();
+						}
+					}).setLayoutData(data);
 
 			return buttonComposite;
 		}
@@ -476,8 +473,8 @@ public class ModelElementsSelectionDialog {
 		 *         expression, false otherwise.
 		 */
 		public boolean isMatchingExpregOrHasMatchingExpregDescendantsUncheckedMode(Object element) {
-			final Predicate<Object> isUncheckedElementPredicate = Predicates.not(Predicates
-					.in(checkedElements));
+			final Predicate<Object> isUncheckedElementPredicate = Predicates
+					.not(Predicates.in(checkedElements));
 			final Predicate<Object> isMatchinExpregPredicate = getRegexpMatchPredicate();
 			return isOrHasDescendant(element,
 					Predicates.and(isUncheckedElementPredicate, isMatchinExpregPredicate));
@@ -497,8 +494,8 @@ public class ModelElementsSelectionDialog {
 				@SuppressWarnings("rawtypes")
 				final Collection existingElementsOnDiagram = UIServices.INSTANCE.getDisplayedNodes(diagram);
 				@SuppressWarnings("unchecked")
-				final Predicate<Object> isSubElementPredicate = Predicates.not(Predicates
-						.in(existingElementsOnDiagram));
+				final Predicate<Object> isSubElementPredicate = Predicates
+						.not(Predicates.in(existingElementsOnDiagram));
 				final Predicate<Object> isMatchinExpregPredicate = getRegexpMatchPredicate();
 				return isOrHasDescendant(element,
 						Predicates.and(isSubElementPredicate, isMatchinExpregPredicate));
@@ -523,10 +520,10 @@ public class ModelElementsSelectionDialog {
 			}
 			return Iterables.any(Arrays.asList(contentProvider.getChildren(element)),
 					new Predicate<Object>() {
-				public boolean apply(Object input) {
-					return isOrHasDescendant(input, pred);
-				}
-			});
+						public boolean apply(Object input) {
+							return isOrHasDescendant(input, pred);
+						}
+					});
 		}
 
 		/**
@@ -539,8 +536,8 @@ public class ModelElementsSelectionDialog {
 		@Override
 		public void setInitialElementSelections(@SuppressWarnings("rawtypes") List selectedElements) {
 			@SuppressWarnings("unchecked")
-			final List<Object> filteredSeletection = Lists.newArrayList(Iterables.filter(selectedElements,
-					Predicates.not(isGrayed)));
+			final List<Object> filteredSeletection = Lists
+					.newArrayList(Iterables.filter(selectedElements, Predicates.not(isGrayed)));
 			checkedElements.addAll(filteredSeletection);
 			super.setInitialElementSelections(filteredSeletection);
 		}
@@ -887,7 +884,8 @@ public class ModelElementsSelectionDialog {
 
 			public boolean apply(Object input) {
 				if (input instanceof StructuredClassifier) {
-					return !(input instanceof Interaction || input instanceof StateMachine || input instanceof Activity);
+					return !(input instanceof Interaction || input instanceof StateMachine
+							|| input instanceof Activity);
 				}
 				return input instanceof Package || input instanceof Interface
 						|| "Port".equals(((EObject)input).eClass().getName()) //$NON-NLS-1$

@@ -77,12 +77,12 @@ public class AutosizeTrigger implements ModelChangeTrigger {
 			final Node nd = (Node)notif.getNewValue();
 			if (nd.getElement() instanceof DSemanticDecorator) {
 				final EObject semanticObject = ((DSemanticDecorator)nd.getElement()).getTarget();
-				final UnmodifiableIterator<Adapter> filter = Iterators.filter(semanticObject.eAdapters()
-						.iterator(), new Predicate<Adapter>() {
-					public boolean apply(Adapter input) {
-						return input == AUTO_SIZE_MARKER;
-					}
-				});
+				final UnmodifiableIterator<Adapter> filter = Iterators
+						.filter(semanticObject.eAdapters().iterator(), new Predicate<Adapter>() {
+							public boolean apply(Adapter input) {
+								return input == AUTO_SIZE_MARKER;
+							}
+						});
 
 				if (filter.hasNext()) {
 					semanticObject.eAdapters().remove(filter.next());

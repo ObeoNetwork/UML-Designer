@@ -32,8 +32,7 @@ import org.obeonetwork.dsl.uml2.usage.analytics.UsageMessages;
 /**
  * Dialog about enabling usage report through google analytics.
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UsageDialog extends Dialog {
 	public UsageDialog(Shell parentShell) {
@@ -48,7 +47,7 @@ public class UsageDialog extends Dialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		Composite composite = (Composite)super.createDialogArea(parent);
 		Link link = new Link(composite, SWT.NONE);
 		String message = UsageDialogMessages.Usage_Dialog_Message;
 		link.setText(message);
@@ -57,21 +56,17 @@ public class UsageDialog extends Dialog {
 			public void widgetSelected(SelectionEvent e) {
 				try {
 					// Open default external browser
-					PlatformUI.getWorkbench().getBrowserSupport()
-							.getExternalBrowser().openURL(new URL(e.text));
+					PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser()
+							.openURL(new URL(e.text));
 				} catch (PartInitException ex) {
-					UsageActivator.log(IStatus.ERROR,
-							UsageMessages.Error_OpeningUsageHyperlink, ex);
+					UsageActivator.log(IStatus.ERROR, UsageMessages.Error_OpeningUsageHyperlink, ex);
 				} catch (MalformedURLException ex) {
-					UsageActivator.log(IStatus.ERROR,
-							UsageMessages.Error_OpeningUsageHyperlink, ex);
+					UsageActivator.log(IStatus.ERROR, UsageMessages.Error_OpeningUsageHyperlink, ex);
 				}
 			}
 		});
-		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.CENTER)
-				.grab(true, false)
-				.hint(IDialogConstants.MINIMUM_MESSAGE_AREA_WIDTH, SWT.DEFAULT)
-				.applyTo(link);
+		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.CENTER).grab(true, false)
+				.hint(IDialogConstants.MINIMUM_MESSAGE_AREA_WIDTH, SWT.DEFAULT).applyTo(link);
 		applyDialogFont(composite);
 
 		return composite;
@@ -79,10 +74,8 @@ public class UsageDialog extends Dialog {
 
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.YES_ID,
-				IDialogConstants.YES_LABEL, false);
-		createButton(parent, IDialogConstants.NO_ID, IDialogConstants.NO_LABEL,
-				false);
+		createButton(parent, IDialogConstants.YES_ID, IDialogConstants.YES_LABEL, false);
+		createButton(parent, IDialogConstants.NO_ID, IDialogConstants.NO_LABEL, false);
 	}
 
 	@Override

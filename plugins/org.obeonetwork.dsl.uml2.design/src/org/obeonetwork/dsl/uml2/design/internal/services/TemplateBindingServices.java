@@ -51,8 +51,8 @@ public final class TemplateBindingServices {
 	 *            Template class name
 	 * @return Template parameter
 	 */
-	private ClassifierTemplateParameter createNewClassifierTemplateParameter(
-			ParameterableElement context, TemplateSignature templateSignature, String newTemplateClassName) {
+	private ClassifierTemplateParameter createNewClassifierTemplateParameter(ParameterableElement context,
+			TemplateSignature templateSignature, String newTemplateClassName) {
 		final ClassifierTemplateParameter result = UMLFactory.eINSTANCE.createClassifierTemplateParameter();
 		final Class newGenericClass = UMLFactory.eINSTANCE.createClass();
 		newGenericClass.setName(newTemplateClassName);
@@ -62,7 +62,6 @@ public final class TemplateBindingServices {
 		templateSignature.getOwnedParameters().add(result);
 		return result;
 	}
-
 
 	/**
 	 * Parse the edited label content and update the underlying {@link TemplateBinding}.
@@ -95,12 +94,13 @@ public final class TemplateBindingServices {
 					final TemplateParameter formal = templateParamSubstitution.getFormal();
 					if (formal == null) {
 						if (templateSignature.getOwnedParameters().size() > i) {
-							final TemplateParameter templateParam = templateSignature.getOwnedParameters().get(i);
+							final TemplateParameter templateParam = templateSignature.getOwnedParameters()
+									.get(i);
 							templateParamSubstitution.setFormal(templateParam);
 						} else {
 							final ClassifierTemplateParameter createTemplateParam = createNewClassifierTemplateParameter(
-									(ParameterableElement) templateSignature.getTemplate(),
-									templateSignature, formalLabel);
+									(ParameterableElement)templateSignature.getTemplate(), templateSignature,
+									formalLabel);
 
 							templateParamSubstitution.setFormal(createTemplateParam);
 						}
@@ -108,7 +108,7 @@ public final class TemplateBindingServices {
 					} else {
 						final ParameterableElement ownedDefault = formal.getOwnedDefault();
 						if (ownedDefault instanceof NamedElement) {
-							((NamedElement) ownedDefault).setName(formalLabel);
+							((NamedElement)ownedDefault).setName(formalLabel);
 						}
 					}
 					// set or replace the actual binding

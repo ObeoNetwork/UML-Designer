@@ -131,8 +131,8 @@ public class ModelElementSelectionDialog extends org.eclipse.ui.dialogs.Selectio
 		 * @return Selectable predicate
 		 */
 		public Predicate<Object> setSelectablePredicate(Predicate<Object> isSelectablePredicate) {
-			return isSelectable = isSelectablePredicate != null ? isSelectablePredicate : Predicates
-					.alwaysFalse();
+			return isSelectable = isSelectablePredicate != null ? isSelectablePredicate
+					: Predicates.alwaysFalse();
 		}
 	}
 

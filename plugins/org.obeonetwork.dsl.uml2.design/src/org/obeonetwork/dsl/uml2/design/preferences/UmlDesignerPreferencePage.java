@@ -30,7 +30,6 @@ public class UmlDesignerPreferencePage extends FieldEditorPreferencePage impleme
 		super(GRID);
 	}
 
-
 	@Override
 	protected void createFieldEditors() {
 		addField(new BooleanFieldEditor(UmlDesignerPreferences.DELETION_CONFIRMATION_ENABLED_ID,

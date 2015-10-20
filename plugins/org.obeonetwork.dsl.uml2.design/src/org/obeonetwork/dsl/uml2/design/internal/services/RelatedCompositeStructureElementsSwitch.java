@@ -46,7 +46,6 @@ public class RelatedCompositeStructureElementsSwitch extends UMLSwitch<List<EObj
 
 	private Set<EObject> relateds;
 
-
 	/**
 	 * Constructor.
 	 */
@@ -113,7 +112,8 @@ public class RelatedCompositeStructureElementsSwitch extends UMLSwitch<List<EObj
 		final List<Element> ownedElements = object.getOwnedElements();
 		for (final Element ownedElement : ownedElements) {
 			if (ownedElement instanceof StructuredClassifier) {
-				if (!(ownedElement instanceof Interaction || ownedElement instanceof StateMachine || ownedElement instanceof Activity)) {
+				if (!(ownedElement instanceof Interaction || ownedElement instanceof StateMachine
+						|| ownedElement instanceof Activity)) {
 					relateds.add(ownedElement);
 				}
 			}

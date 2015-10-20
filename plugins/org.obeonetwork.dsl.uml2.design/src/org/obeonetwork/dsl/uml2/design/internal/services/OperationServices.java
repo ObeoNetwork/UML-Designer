@@ -28,7 +28,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 /**
  * Services to handle typed Element concerns.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class OperationServices {
@@ -117,7 +117,8 @@ public class OperationServices {
 	 *            the parsed parameter informations.
 	 */
 	private void handleParameters(Operation operation, List<NameAndType> paramsToBeCreated) {
-		// Keep only the non-return params and detach them from the operation (only temporarily for some of
+		// Keep only the non-return params and detach them from the operation
+		// (only temporarily for some of
 		// them)
 		final List<Parameter> existingParams = new ArrayList<Parameter>(operation.getOwnedParameters());
 		final List<Parameter> existingNonReturnParams = new ArrayList<Parameter>();
@@ -142,8 +143,8 @@ public class OperationServices {
 			for (int j = 0; j < existingNonReturnParams.size(); j++) {
 				final Parameter existingParam = existingNonReturnParams.get(j);
 				final String oldName = existingParam.getName();
-				if (newName == null && oldName == null || newName != null
-						&& newName.equalsIgnoreCase(oldName)) {
+				if (newName == null && oldName == null
+						|| newName != null && newName.equalsIgnoreCase(oldName)) {
 					tabParameters[i] = existingNonReturnParams.remove(j);
 					updateType(tabParameters[i], paramInfo.getType());
 					tabMarkers[i] = true;
@@ -189,10 +190,12 @@ public class OperationServices {
 	 *            the user edited label content for parameters.
 	 */
 	private void handleParameters(Operation operation, String parametersInfo) {
-		// Regexp used to extract name and type from a string as "name : type" or "name" or ":type"
+		// Regexp used to extract name and type from a string as "name : type"
+		// or "name" or ":type"
 		final Pattern ptnParam = Pattern.compile("^([^:]*)\\s*:?\\s*(.*)$"); //$NON-NLS-1$
 
-		// Used to store the name and types of the parameters we'll have to create
+		// Used to store the name and types of the parameters we'll have to
+		// create
 		final List<NameAndType> paramsToBeCreated = new ArrayList<NameAndType>();
 
 		// Let's compile information on the parameters

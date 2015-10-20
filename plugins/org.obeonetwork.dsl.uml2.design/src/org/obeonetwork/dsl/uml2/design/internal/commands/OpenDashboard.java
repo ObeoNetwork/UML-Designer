@@ -36,7 +36,8 @@ public class OpenDashboard extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// Get for which project we should open the dashboard representation
-		final String paramModel = event.getParameter(DashboardContributionItems.OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY);
+		final String paramModel = event
+				.getParameter(DashboardContributionItems.OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY);
 		final UmlElementConverter converter = new UmlElementConverter();
 		try {
 			final EObject eObj = (EObject)converter.convertToObject(paramModel);
@@ -47,8 +48,8 @@ public class OpenDashboard extends AbstractHandler {
 				for (final DRepresentation representation : representations) {
 					if (representation instanceof DSemanticDiagram) {
 						final DSemanticDiagram diagram = (DSemanticDiagram)representation;
-						if (DashboardServices.DASHBOARD_DIAGRAM_DESCRIPTION_ID.equals(diagram
-								.getDescription().getName())) {
+						if (DashboardServices.DASHBOARD_DIAGRAM_DESCRIPTION_ID
+								.equals(diagram.getDescription().getName())) {
 							DialectUIManager.INSTANCE.openEditor(session, representation,
 									new NullProgressMonitor());
 						}

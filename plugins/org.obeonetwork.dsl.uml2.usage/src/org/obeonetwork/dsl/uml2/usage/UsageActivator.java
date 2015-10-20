@@ -18,10 +18,8 @@ import org.osgi.framework.BundleContext;
 /**
  * Activator.
  * 
- * @author Cedric Brun <a
- *         href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UsageActivator extends Plugin implements BundleActivator {
 	/**
@@ -42,10 +40,7 @@ public class UsageActivator extends Plugin implements BundleActivator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
-	 * )
+	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		UsageActivator.context = bundleContext;
@@ -54,9 +49,7 @@ public class UsageActivator extends Plugin implements BundleActivator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		UsageActivator.context = null;
@@ -82,7 +75,6 @@ public class UsageActivator extends Plugin implements BundleActivator {
 	 *            the error exception.
 	 */
 	public static void log(int severity, String message, Throwable exception) {
-		getDefault().getLog().log(
-				new Status(severity, PLUGIN_ID, message, exception));
+		getDefault().getLog().log(new Status(severity, PLUGIN_ID, message, exception));
 	}
 }

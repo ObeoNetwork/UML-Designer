@@ -78,9 +78,9 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 
 	@Override
 	/**
-	 * Create a default UML model then select it in the explorer and switch to modeling perspective.
-	 * The project, the rootObjectName and the newUmlModelFileName must be initialized before calling the performFinish method.
-	 * {@inheritDoc}
+	 * Create a default UML model then select it in the explorer and switch to modeling perspective. The
+	 * project, the rootObjectName and the newUmlModelFileName must be initialized before calling the
+	 * performFinish method. {@inheritDoc}
 	 */
 	public boolean performFinish() {
 		if (project == null || rootObjectName == null || newUmlModelFileName == null) {
@@ -90,17 +90,20 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 		final IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 			@Override
 			protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
-				// Do not call super as we don't want to use the super perform method to create the project,
-				// in our case the project was created using the modeling project api, we need to extends the
-				// BasicNewProjectResourceWizard to implement the perspective switch easily.
+				// Do not call super as we don't want to use the super perform
+				// method to create the project,
+				// in our case the project was created using the modeling
+				// project api, we need to extends the
+				// BasicNewProjectResourceWizard to implement the perspective
+				// switch easily.
 				final InitUmlModel init = new InitUmlModel(project, rootObjectName, newUmlModelFileName);
 				try {
 					getContainer().run(false, true, init);
 				} catch (final InterruptedException e) {
 					// Ignore.
 				} catch (final InvocationTargetException e) {
-					UMLDesignerPlugin
-					.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
+					UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel,
+							e);
 				}
 
 				// Get the newly created UML file
@@ -120,7 +123,7 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 				// org.obeonetwork.dsl.uml2.design.doc project.
 				final String contextId = "org.obeonetwork.dsl.uml2.design.doc.Dashboard"; //$NON-NLS-1$
 				PlatformUI.getWorkbench().getHelpSystem()
-				.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
+						.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
 				PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 			}
 		};

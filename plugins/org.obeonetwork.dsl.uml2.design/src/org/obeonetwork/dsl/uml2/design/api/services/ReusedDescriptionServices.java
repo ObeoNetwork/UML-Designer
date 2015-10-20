@@ -326,10 +326,12 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 					public Object caseProfile(Profile profile) {
 						if (profile.isDefined()) {
 							packageUML.getProfileApplication(profile);
-							// use this condition in order to not add the already applied profiles to the
+							// use this condition in order to not add the
+							// already applied profiles to the
 							// result list
 							// if (profileApplication == null
-							// || profileApplication.getAppliedDefinition() != profile
+							// || profileApplication.getAppliedDefinition() !=
+							// profile
 							// .getDefinition()) {
 							// roots.add(profile);
 							// }
@@ -476,7 +478,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *            Element view
 	 * @return Container view
 	 */
-	public DSemanticDecorator getContainerView(Element semanticElement, DDiagramElementContainer elementView) {
+	public DSemanticDecorator getContainerView(Element semanticElement,
+			DDiagramElementContainer elementView) {
 		final DSemanticDecorator diagram = (DSemanticDecorator)elementView.getParentDiagram();
 		return getContainerView(semanticElement, diagram);
 	}
@@ -493,9 +496,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	private DSemanticDecorator getContainerView(Element semanticElement, final DSemanticDecorator diagram) {
 		final List<DDiagramElementContainer> containerViews = ((DDiagram)diagram).getContainers();
 		for (final DDiagramElementContainer containerView : containerViews) {
-			if (containerView.getTarget().equals(semanticElement.getOwner())
-					&& !ContainerLayout.LIST.equals(containerView.getActualMapping()
-							.getChildrenPresentation())) {
+			if (containerView.getTarget().equals(semanticElement.getOwner()) && !ContainerLayout.LIST
+					.equals(containerView.getActualMapping().getChildrenPresentation())) {
 				return containerView;
 			}
 		}
@@ -741,8 +743,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 */
 	public boolean isValidContainerMapping(EObject containerView) {
 		if (containerView instanceof DDiagramElementContainer) {
-			return !ContainerLayout.LIST.equals(((DDiagramElementContainer)containerView).getActualMapping()
-					.getChildrenPresentation());
+			return !ContainerLayout.LIST.equals(
+					((DDiagramElementContainer)containerView).getActualMapping().getChildrenPresentation());
 		}
 		if (containerView instanceof DDiagram) {
 			return true;
@@ -760,7 +762,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 */
 	public void moveDownEnumerationLiterals(EnumerationLiteral currentEnumerationLiteral,
 			List<EnumerationLiteral> enumerationLiteralsToMove) {
-		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = retrieveTheRightOrderForEnumerationLiteral(enumerationLiteralsToMove);
+		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = retrieveTheRightOrderForEnumerationLiteral(
+				enumerationLiteralsToMove);
 		final Object[] operationsArray = enumerationLiteralsInRightOrder.toArray();
 		final MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
 		for (int i = operationsArray.length - 1; i >= 0; i--) {
@@ -801,7 +804,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			List<PackageableElement> packageableElementsToMove) {
 
 		final MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
-		final List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrderForPackageableElement(packageableElementsToMove);
+		final List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrderForPackageableElement(
+				packageableElementsToMove);
 		final Object[] elementsArray = packageableElementsInRightOrder.toArray();
 		for (int i = elementsArray.length - 1; i >= 0; i--) {
 			if (elementsArray[i] instanceof Element) {
@@ -841,7 +845,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	public void moveUpEnumerationLiterals(EnumerationLiteral currentEnumerationLiteral,
 			List<EnumerationLiteral> enumerationLiteralsToMove) {
 
-		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = retrieveTheRightOrderForEnumerationLiteral(enumerationLiteralsToMove);
+		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = retrieveTheRightOrderForEnumerationLiteral(
+				enumerationLiteralsToMove);
 		final MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
 		final Iterator<EnumerationLiteral> iterator = enumerationLiteralsInRightOrder.iterator();
 		while (iterator.hasNext()) {
@@ -880,7 +885,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	public void moveUpPackageableElements(PackageableElement packageableElement,
 			List<PackageableElement> packageableElementsToMove) {
 		final MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
-		final List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrderForPackageableElement(packageableElementsToMove);
+		final List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrderForPackageableElement(
+				packageableElementsToMove);
 		final Iterator<PackageableElement> iterator = packageableElementsInRightOrder.iterator();
 		while (iterator.hasNext()) {
 			final Element element = iterator.next();
@@ -900,7 +906,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 
 		final List<Property> propertiesInRightOrder = retrieveTheRightOrderForProperties(propertiesToMove);
 		final MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
-		// move all properties contain in propertiesInRightOrder (to move in the right order)
+		// move all properties contain in propertiesInRightOrder (to move in the
+		// right order)
 		final Iterator<Property> iterator = propertiesInRightOrder.iterator();
 		while (iterator.hasNext()) {
 			final Property property = iterator.next();
@@ -927,7 +934,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
 				selectedContainer, diagram, true);
 		if (elementsToAdd.size() > 0) {
-			addExistingElements(selectedContainerView, elementsToAdd, "[self.getContainerView(elementView)/]"); //$NON-NLS-1$
+			addExistingElements(selectedContainerView, elementsToAdd,
+					"[self.getContainerView(elementView)/]"); //$NON-NLS-1$
 		}
 	}
 
@@ -1017,7 +1025,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 				final EList<EnumerationLiteral> enumerationLiterals = ((Enumeration)eContainer)
 						.getOwnedLiterals();
 
-				// add all enumeration literals contain in enumerationLiteralsInWrongOrder (to retrieve the
+				// add all enumeration literals contain in
+				// enumerationLiteralsInWrongOrder (to retrieve the
 				// right order)
 				final Iterator<EnumerationLiteral> iterator = enumerationLiterals.iterator();
 				while (iterator.hasNext()) {
@@ -1036,7 +1045,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 
 		final List<Operation> operationsInRightOrder = new ArrayList<Operation>();
 
-		// retrieve all eContainers (operation could be in different eContainers)
+		// retrieve all eContainers (operation could be in different
+		// eContainers)
 		final List<EObject> eContainers = new ArrayList<EObject>();
 		for (final Operation operation : operationsInWrongOrder) {
 			final EObject eContainer = operation.eContainer();
@@ -1058,7 +1068,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 					operations = eInterface.getOwnedOperations();
 				}
 
-				// add all operations contain in operationsInWrongOrder (to retrieve the right order)
+				// add all operations contain in operationsInWrongOrder (to
+				// retrieve the right order)
 				final Iterator<Operation> iterator = operations.iterator();
 				while (iterator.hasNext()) {
 					final Operation operation = iterator.next();
@@ -1077,7 +1088,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 
 		final List<PackageableElement> packageableElementsInRightOrder = new ArrayList<PackageableElement>();
 
-		// retrieve all eContainers (packageableElement could be in different eContainers)
+		// retrieve all eContainers (packageableElement could be in different
+		// eContainers)
 		final List<EObject> eContainers = new ArrayList<EObject>();
 		for (final PackageableElement packageableElement : packageableElementsInWrongOrder) {
 			final EObject eContainer = packageableElement.eContainer();
@@ -1099,7 +1111,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 					packageableElements = component.getPackagedElements();
 				}
 
-				// add all packageableElements contain in packageableElementsInWrongOrder (to retrieve the
+				// add all packageableElements contain in
+				// packageableElementsInWrongOrder (to retrieve the
 				// right order)
 				final Iterator<PackageableElement> iterator = packageableElements.iterator();
 				while (iterator.hasNext()) {
@@ -1133,7 +1146,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 				// get all properties for a specific eContainer
 				final EList<Property> properties = ((StructuredClassifier)eContainer).getOwnedAttributes();
 
-				// add all properties contain in propertiesInWrongOrder (to retrieve the right order)
+				// add all properties contain in propertiesInWrongOrder (to
+				// retrieve the right order)
 				final Iterator<Property> iterator = properties.iterator();
 				while (iterator.hasNext()) {
 					final Property property = iterator.next();

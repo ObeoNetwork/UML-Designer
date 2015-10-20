@@ -16,7 +16,7 @@ import org.obeonetwork.dsl.uml2.design.internal.wizards.UmlProjectUtils;
 /**
  * The semantic model file creation page.
  *
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo .fr</a>
  */
 public class UmlModelWizardNewModelFilePage extends AbstractUmlModelWizardNewFileCreationPage {
 

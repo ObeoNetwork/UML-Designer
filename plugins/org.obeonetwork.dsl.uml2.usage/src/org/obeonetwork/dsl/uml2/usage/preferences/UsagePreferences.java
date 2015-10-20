@@ -23,18 +23,19 @@ import com.google.common.base.Splitter;
 /**
  * Preferences for usage report through google analytics.
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UsagePreferences {
 	/**
 	 * Key for user answer preference in preference store.
 	 */
 	public static final String USAGE_USER_ANSWER_ID = "usage_user_answer_preference";
+
 	/**
 	 * Key for usage report enabled preference in preference store.
 	 */
 	public static final String USAGE_ENABLED_ID = "usage_enabled_preference";
+
 	/**
 	 * Key for diagrams usage preference in preference store.
 	 */
@@ -43,8 +44,7 @@ public class UsagePreferences {
 	/**
 	 * The preference store.
 	 */
-	private IPreferenceStore preferenceStore = UMLDesignerPlugin.getDefault()
-			.getPreferenceStore();
+	private IPreferenceStore preferenceStore = UMLDesignerPlugin.getDefault().getPreferenceStore();
 
 	/**
 	 * Check if the user has answered to the question.
@@ -74,10 +74,9 @@ public class UsagePreferences {
 	 * Store if the user as answer to the question.
 	 * 
 	 * @param answerId
-	 *            The answer could be {@link IDialogConstants.YES_ID} if the
-	 *            user clicked on yes, {@link IDialogConstants.NO_ID} if he
-	 *            clicked on no or {@link IDialogConstants.OK_ID} if he does not
-	 *            answered
+	 *            The answer could be {@link IDialogConstants.YES_ID} if the user clicked on yes,
+	 *            {@link IDialogConstants.NO_ID} if he clicked on no or {@link IDialogConstants.OK_ID} if he
+	 *            does not answered
 	 */
 	public void storeUserAnswer(int answerId) {
 		preferenceStore.setValue(USAGE_USER_ANSWER_ID, answerId);
@@ -88,8 +87,8 @@ public class UsagePreferences {
 	}
 
 	/**
-	 * Store the diagrams usage. It is stored as a string with format : Diagram
-	 * Type Name1=42;Diagram Type Name2=1;Diagram Type Name3=24.
+	 * Store the diagrams usage. It is stored as a string with format : Diagram Type Name1=42;Diagram Type
+	 * Name2=1;Diagram Type Name3=24.
 	 * 
 	 * @param diagramName
 	 *            Diagram Name
@@ -105,9 +104,8 @@ public class UsagePreferences {
 
 		if (storedDiagrams.length() > 0) {
 			// Split string to map
-			Map<String, String> unmodifiableMap = Splitter.on(keySeparator)
-					.trimResults().withKeyValueSeparator(valueSeparator)
-					.split(storedDiagrams);
+			Map<String, String> unmodifiableMap = Splitter.on(keySeparator).trimResults()
+					.withKeyValueSeparator(valueSeparator).split(storedDiagrams);
 			map.putAll(unmodifiableMap);
 		}
 
@@ -121,8 +119,7 @@ public class UsagePreferences {
 		map.put(diagramName, String.valueOf(value));
 
 		// Join string to map
-		storedDiagrams = Joiner.on(keySeparator)
-				.withKeyValueSeparator(valueSeparator).join(map);
+		storedDiagrams = Joiner.on(keySeparator).withKeyValueSeparator(valueSeparator).join(map);
 
 		// Set new preference
 		preferenceStore.setValue(USAGE_DIAGRAMS_ID, storedDiagrams);
@@ -131,9 +128,8 @@ public class UsagePreferences {
 	/**
 	 * Get diagrams usage.
 	 * 
-	 * @return String representing the diagrams usage, see
-	 *         {@link UsagePreferences#storeDiagramsUsage(String)} to get the
-	 *         string format
+	 * @return String representing the diagrams usage, see {@link UsagePreferences#storeDiagramsUsage(String)}
+	 *         to get the string format
 	 */
 	public String getDiagramsUsage() {
 		return preferenceStore.getString(USAGE_DIAGRAMS_ID);

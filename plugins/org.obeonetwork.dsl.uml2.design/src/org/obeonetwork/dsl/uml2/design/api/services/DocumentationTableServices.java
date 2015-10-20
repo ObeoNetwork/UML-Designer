@@ -13,7 +13,6 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 
-
 /**
  * A set of services to handle the Documentation table.
  *

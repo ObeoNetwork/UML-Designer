@@ -80,7 +80,8 @@ public class ConnectorServices {
 						final ConnectorEnd connectorEnd = connector.createEnd();
 						connectorEnd.setRole((ConnectableElement)model);
 					} else if (model instanceof EncapsulatedClassifier) {
-						final Port publicPort = getStructuredClassifierPublicPort((EncapsulatedClassifier)model);
+						final Port publicPort = getStructuredClassifierPublicPort(
+								(EncapsulatedClassifier)model);
 						final ConnectorEnd connectorEnd = connector.createEnd();
 						connectorEnd.setRole(publicPort);
 					} else {
@@ -89,8 +90,10 @@ public class ConnectorServices {
 					}
 
 					// Add this dependency on the connector clientDependencies
-					// Since UML 2.5 clientDependencies is derived so we have to add the connector as client
-					// and automatically it will be calculated as client dependency
+					// Since UML 2.5 clientDependencies is derived so we have to
+					// add the connector as client
+					// and automatically it will be calculated as client
+					// dependency
 					dependency.getClients().add(connector);
 
 				} else if (dependency instanceof InterfaceRealization) {
@@ -102,7 +105,8 @@ public class ConnectorServices {
 						final ConnectorEnd connectorEnd = connector.createEnd();
 						connectorEnd.setRole((ConnectableElement)model);
 					} else if (model instanceof EncapsulatedClassifier) {
-						final Port publicPort = getStructuredClassifierPublicPort((EncapsulatedClassifier)model);
+						final Port publicPort = getStructuredClassifierPublicPort(
+								(EncapsulatedClassifier)model);
 						final ConnectorEnd connectorEnd = connector.createEnd();
 						connectorEnd.setRole(publicPort);
 					} else {
@@ -111,8 +115,10 @@ public class ConnectorServices {
 					}
 
 					// Add this dependency on the connector clientDependencies
-					// Since UML 2.5 clientDependencies is derived so we have to add the connector as client
-					// and automatically it will be calculated as client dependency
+					// Since UML 2.5 clientDependencies is derived so we have to
+					// add the connector as client
+					// and automatically it will be calculated as client
+					// dependency
 					dependency.getClients().add(connector);
 				}
 			} else if (target instanceof Port) {
@@ -143,7 +149,8 @@ public class ConnectorServices {
 	protected Connector connectInterface2Interface(DNode sourceView, Interface iSource, DNode targetView,
 			Interface iTarget) {
 
-		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(sourceView);
+		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(
+				sourceView);
 		final Connector connector = createConnector(structuredClassifier, iSource, iTarget);
 
 		// add ConnectorEnds and clientDependencies
@@ -173,7 +180,8 @@ public class ConnectorServices {
 	protected Connector connectInterface2Port(DNode sourceView, Interface iSource, DNode targetView,
 			Port pTarget) {
 
-		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(sourceView);
+		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(
+				sourceView);
 		final Connector connector = createConnector(structuredClassifier, iSource, pTarget);
 
 		final Set<DEdge> edges = new HashSet<DEdge>();
@@ -204,7 +212,8 @@ public class ConnectorServices {
 	protected Connector connectPort2Interface(DNode sourceView, Port pSource, DNode targetView,
 			Interface iTarget) {
 
-		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2SubInterfaceView(targetView);
+		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2SubInterfaceView(
+				targetView);
 		final Connector connector = createConnector(structuredClassifier, pSource, iTarget);
 
 		final Set<DEdge> edges = new HashSet<DEdge>();
@@ -222,7 +231,8 @@ public class ConnectorServices {
 	protected Connector connectPortInterface2PortInterface(DNode sourceView, Interface iSource,
 			DNode targetView, Interface iTarget) {
 
-		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(targetView);
+		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(
+				targetView);
 		final Connector connector = createConnector(structuredClassifier, iTarget, iSource);
 
 		// add ConnectorEnds and clientDependencies
@@ -353,11 +363,11 @@ public class ConnectorServices {
 		} else if (source instanceof Property && target instanceof Property) {
 			// Make a new connector From Port to Interface
 			new org.obeonetwork.dsl.uml2.design.internal.services.ConnectorServices()
-			.connectProperty2Property(sourceView, (Property)source, targetView, (Property)target);
+					.connectProperty2Property(sourceView, (Property)source, targetView, (Property)target);
 		} else {
-			LogServices.INSTANCE.error(
-					"ConnectorServices.createConnector(" + source.getClass() + ", " + target.getClass() //$NON-NLS-1$ //$NON-NLS-2$
-					+ ") not handled", null); //$NON-NLS-1$
+			LogServices.INSTANCE
+					.error("ConnectorServices.createConnector(" + source.getClass() + ", " + target.getClass() //$NON-NLS-1$ //$NON-NLS-2$
+							+ ") not handled", null); //$NON-NLS-1$
 		}
 	}
 
@@ -397,8 +407,8 @@ public class ConnectorServices {
 				return port;
 			}
 		}
-		final Port newPort = encapsulatedClassifier.createOwnedPort(
-				encapsulatedClassifier.getName() + "Port", encapsulatedClassifier); //$NON-NLS-1$
+		final Port newPort = encapsulatedClassifier.createOwnedPort(encapsulatedClassifier.getName() + "Port", //$NON-NLS-1$
+				encapsulatedClassifier);
 		return newPort;
 	}
 

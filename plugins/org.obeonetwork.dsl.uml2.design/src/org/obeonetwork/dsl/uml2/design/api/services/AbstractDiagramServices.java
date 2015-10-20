@@ -146,44 +146,46 @@ public abstract class AbstractDiagramServices {
 			createViewOp.setContainerViewExpression(containerViewExpression);
 
 			session.getTransactionalEditingDomain().getCommandStack()
-			.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 
-				@Override
-				protected void doExecute() {
-					try {
-						// Get the command context
-						DRepresentation representation = null;
-						if (containerView instanceof DRepresentation) {
-							representation = (DRepresentation)containerView;
-						} else if (containerView instanceof DDiagramElement) {
-							representation = ((DDiagramElement)containerView).getParentDiagram();
+						@Override
+						protected void doExecute() {
+							try {
+								// Get the command context
+								DRepresentation representation = null;
+								if (containerView instanceof DRepresentation) {
+									representation = (DRepresentation)containerView;
+								} else if (containerView instanceof DDiagramElement) {
+									representation = ((DDiagramElement)containerView).getParentDiagram();
+								}
+
+								final CommandContext context = new CommandContext(semanticElement,
+										representation);
+
+								// Execute the create view task
+								final CreateViewTask task = new CreateViewTask(context,
+										session.getModelAccessor(), createViewOp, session.getInterpreter());
+								task.execute();
+
+								final Object createdView = session.getInterpreter()
+										.getVariable(createViewOp.getVariableName());
+								if (createdView instanceof DDiagramElement) {
+									final DDiagramElement element = (DDiagramElement)createdView;
+									HideFilterHelper.INSTANCE.reveal(element);
+								}
+							} catch (final MetaClassNotFoundException e) {
+								UMLDesignerPlugin.log(IStatus.ERROR,
+										NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+												semanticElement),
+										e);
+							} catch (final FeatureNotFoundException e) {
+								UMLDesignerPlugin.log(IStatus.ERROR,
+										NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+												semanticElement),
+										e);
+							}
 						}
-
-						final CommandContext context = new CommandContext(semanticElement,
-								representation);
-
-						// Execute the create view task
-						final CreateViewTask task = new CreateViewTask(context, session
-								.getModelAccessor(), createViewOp, session.getInterpreter());
-						task.execute();
-
-						final Object createdView = session.getInterpreter().getVariable(
-								createViewOp.getVariableName());
-						if (createdView instanceof DDiagramElement) {
-							final DDiagramElement element = (DDiagramElement)createdView;
-							HideFilterHelper.INSTANCE.reveal(element);
-						}
-					} catch (final MetaClassNotFoundException e) {
-						UMLDesignerPlugin.log(IStatus.ERROR, NLS
-								.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-										semanticElement), e);
-					} catch (final FeatureNotFoundException e) {
-						UMLDesignerPlugin.log(IStatus.ERROR, NLS
-								.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-										semanticElement), e);
-					}
-				}
-			});
+					});
 		}
 	}
 
@@ -291,7 +293,8 @@ public abstract class AbstractDiagramServices {
 					cmd.execute();
 				}
 			}
-			// Apply stereotypes on dropped element and apply the necessary profiles automatically
+			// Apply stereotypes on dropped element and apply the necessary
+			// profiles automatically
 			StereotypeServices.INSTANCE.applyAllStereotypes(semanticElement, stereotypesToApply);
 
 			// Check if profile should be unapplied
@@ -343,11 +346,12 @@ public abstract class AbstractDiagramServices {
 	 */
 	public List<Package> getAllAvailableRootPackages(Element element) {
 		// <%script type="uml.Element" name="allAvailableRootPackages"%>
-		// <%(getRootContainer().filter("Package") + rootPackagesFromImportedModel).nMinimize()%>
+		// <%(getRootContainer().filter("Package") +
+		// rootPackagesFromImportedModel).nMinimize()%>
 		final List<Package> packages = Lists.newArrayList();
 		packages.add(element.getModel());
-		packages.addAll(Lists.newArrayList(Iterables.filter(element.getModel().getImportedPackages(),
-				Model.class)));
+		packages.addAll(
+				Lists.newArrayList(Iterables.filter(element.getModel().getImportedPackages(), Model.class)));
 		return packages;
 	}
 
@@ -382,7 +386,8 @@ public abstract class AbstractDiagramServices {
 					if (query.isHidden()) {
 						existingDiagramElements.add(element);
 					}
-					// Get the hidden parent container of the element to reveal, in order to reveal all the
+					// Get the hidden parent container of the element to reveal,
+					// in order to reveal all the
 					// hierarchy
 					existingDiagramElements.addAll(getHiddenParentContainerViews(element));
 				}
@@ -420,7 +425,8 @@ public abstract class AbstractDiagramServices {
 	 *            Session
 	 * @return List of mappings which could not be null
 	 */
-	protected List<DiagramElementMapping> getMappings(final DSemanticDecorator containerView, Session session) {
+	protected List<DiagramElementMapping> getMappings(final DSemanticDecorator containerView,
+			Session session) {
 		final List<DiagramElementMapping> mappings = new ArrayList<DiagramElementMapping>();
 
 		if (containerView instanceof DSemanticDiagram) {
@@ -548,14 +554,13 @@ public abstract class AbstractDiagramServices {
 	public boolean isDiagramEmpty(DDiagram diagram) {
 		final List<EObject> elements = new ArrayList<EObject>();
 		for (final EObject object : diagram.getDiagramElements()) {
-			if (!(object instanceof DSemanticDiagram)){
-				if (object instanceof DNodeSpec){
+			if (!(object instanceof DSemanticDiagram)) {
+				if (object instanceof DNodeSpec) {
 					// ignore empty diagram image
-					if (!((DNodeSpec)object).getActualMapping().getName()
-							.equals("Empty Diagram")) { //$NON-NLS-1$
+					if (!((DNodeSpec)object).getActualMapping().getName().equals("Empty Diagram")) { //$NON-NLS-1$
 						elements.add(object);
 					}
-				}else{
+				} else {
 					elements.add(object);
 				}
 			}
@@ -937,7 +942,8 @@ public abstract class AbstractDiagramServices {
 	 */
 	protected void showView(final EObject semanticElement, final DSemanticDecorator containerView,
 			final Session session, String containerViewExpression) {
-		// Check if the dropped element already exists in the diagram but is hidden
+		// Check if the dropped element already exists in the diagram but is
+		// hidden
 		final List<DDiagramElement> hiddenDiagramElements = getHiddenExistingDiagramElements(semanticElement,
 				containerView);
 		if (!hiddenDiagramElements.isEmpty()) {

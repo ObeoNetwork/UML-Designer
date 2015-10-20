@@ -45,14 +45,13 @@ import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure.Rotatab
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure.listener.RotatableImageListener;
 
 /**
- * Edit Part for rotatable image : switch mode ROTATION or IMAGE, rotate the
- * specific image or display four images in North South East and West.
+ * Edit Part for rotatable image : switch mode ROTATION or IMAGE, rotate the specific image or display four
+ * images in North South East and West.
  * 
  * @author nlepine
  * @author hmarchadour
  */
-public abstract class AbstractRotatableImageEditPart extends
-		AbstractNotSelectableShapeNodeEditPart implements IStyleEditPart {
+public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectableShapeNodeEditPart implements IStyleEditPart {
 
 	/**
 	 * @generated
@@ -118,13 +117,10 @@ public abstract class AbstractRotatableImageEditPart extends
 
 		EObject element = this.resolveSemanticElement();
 		if (element instanceof CustomStyle) {
-			CustomStyle imageStyle = (CustomStyle) element;
+			CustomStyle imageStyle = (CustomStyle)element;
 			figure.refreshFigure(imageStyle);
-			((GraphicalEditPart) this.getParent()).setLayoutConstraint(
-					this,
-					this.getFigure(),
-					new Rectangle(0, 0, figure.getPreferredSize().width, figure
-							.getPreferredSize().height));
+			((GraphicalEditPart)this.getParent()).setLayoutConstraint(this, this.getFigure(),
+					new Rectangle(0, 0, figure.getPreferredSize().width, figure.getPreferredSize().height));
 		}
 	}
 
@@ -135,8 +131,7 @@ public abstract class AbstractRotatableImageEditPart extends
 		LayoutEditPolicy lep = new LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -158,14 +153,13 @@ public abstract class AbstractRotatableImageEditPart extends
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		CustomStyle imageStyle = (CustomStyle) resolveSemanticElement();
+		CustomStyle imageStyle = (CustomStyle)resolveSemanticElement();
 
 		NodeImageExtension imageExtension = ExtensionActivator.getDefault()
 				.getBestImageExtension(imageStyle.getId());
 
-		primaryShape = new RotatableSVGWorkspaceImageFigure(
-				imageExtension.getMode(), imageExtension.getTopImage(),
-				imageExtension.getLeftImage(), imageExtension.getBottomImage(),
+		primaryShape = new RotatableSVGWorkspaceImageFigure(imageExtension.getMode(),
+				imageExtension.getTopImage(), imageExtension.getLeftImage(), imageExtension.getBottomImage(),
 				imageExtension.getRightImage());
 
 		listener = new RotatableImageListener(this);
@@ -173,9 +167,8 @@ public abstract class AbstractRotatableImageEditPart extends
 
 		EditPart parentEditPart = getParent();
 		if (parentEditPart instanceof GraphicalEditPart) {
-			GraphicalEditPart parentGraphicalEditPart = (GraphicalEditPart) parentEditPart;
-			NodeListener dEdgeEditPartListener = new PropagateFigureListenerAtConnectionFigure(
-					listener);
+			GraphicalEditPart parentGraphicalEditPart = (GraphicalEditPart)parentEditPart;
+			NodeListener dEdgeEditPartListener = new PropagateFigureListenerAtConnectionFigure(listener);
 			parentGraphicalEditPart.addNodeListener(dEdgeEditPartListener);
 		}
 
@@ -198,15 +191,15 @@ public abstract class AbstractRotatableImageEditPart extends
 	 * @generated
 	 */
 	public RotatableSVGWorkspaceImageFigure getPrimaryShape() {
-		return (RotatableSVGWorkspaceImageFigure) primaryShape;
+		return (RotatableSVGWorkspaceImageFigure)primaryShape;
 	}
 
 	/**
 	 * @generated.
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new AirStyleDefaultSizeNodeFigure(
-				getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
+		DefaultSizeNodeFigure result = new AirStyleDefaultSizeNodeFigure(getMapMode().DPtoLP(40),
+				getMapMode().DPtoLP(40));
 		return result;
 	}
 
@@ -216,16 +209,15 @@ public abstract class AbstractRotatableImageEditPart extends
 	public EditPolicy getPrimaryDragEditPolicy() {
 		EditPolicy result = super.getPrimaryDragEditPolicy();
 		if (result instanceof ResizableEditPolicy) {
-			ResizableEditPolicy ep = (ResizableEditPolicy) result;
+			ResizableEditPolicy ep = (ResizableEditPolicy)result;
 			ep.setResizeDirections(PositionConstants.NONE);
 		}
 		return result;
 	}
 
 	/**
-	 * Creates figure for this edit part. Body of this method does not depend on
-	 * settings in generation model so you may safely remove <i>generated</i>
-	 * tag and modify it.
+	 * Creates figure for this edit part. Body of this method does not depend on settings in generation model
+	 * so you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -239,8 +231,8 @@ public abstract class AbstractRotatableImageEditPart extends
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane. Respects
-	 * layout one may have set for generated figure.
+	 * Default implementation treats passed figure as content pane. Respects layout one may have set for
+	 * generated figure.
 	 * 
 	 * @param nodeShape
 	 *            instance of generated figure class
@@ -289,8 +281,7 @@ public abstract class AbstractRotatableImageEditPart extends
 	 * @param polylineConnection
 	 * @return the angle in degrees.
 	 */
-	public static double getFirstSegmentAngle(
-			PolylineConnection polylineConnection) {
+	public static double getFirstSegmentAngle(PolylineConnection polylineConnection) {
 
 		PointList points = polylineConnection.getPoints();
 		PrecisionPoint firstPoint = new PrecisionPoint(points.getFirstPoint());

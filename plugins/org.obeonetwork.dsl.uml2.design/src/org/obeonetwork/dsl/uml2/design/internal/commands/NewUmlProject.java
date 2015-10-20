@@ -28,8 +28,8 @@ public class NewUmlProject extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// Open the new uml project wizard
 		IWizard wizard = new UMLProjectWizard();
-		WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getShell(), wizard);
+		WizardDialog dialog = new WizardDialog(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 		dialog.open();
 		return null;
 	}

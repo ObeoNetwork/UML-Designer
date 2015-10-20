@@ -98,8 +98,8 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		viewpoints = new HashSet<Viewpoint>();
-		viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(
-				PLUGIN_ID + "/description/uml2.odesign")); //$NON-NLS-1$
+		viewpoints.addAll(
+				ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/uml2.odesign")); //$NON-NLS-1$
 	}
 
 	/**

@@ -24,9 +24,8 @@ import org.obeonetwork.dsl.uml2.design.internal.services.GenericUMLProfileTools;
 /**
  * This class check the the stereotype extend a metaclass/stereotype or not.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class CheckStereotypeExtension extends AbstractModelConstraint {
 
@@ -62,8 +61,7 @@ public class CheckStereotypeExtension extends AbstractModelConstraint {
 	 *
 	 * @param ctx
 	 *            a stereotype to test
-	 * @return SuccessStatus if the stereotype ctx extend a metaclass or an
-	 *         other stereotype.
+	 * @return SuccessStatus if the stereotype ctx extend a metaclass or an other stereotype.
 	 * @see org.eclipse.emf.validation.AbstractModelConstraint
 	 *      #validate(org.eclipse.emf.validation.IValidationContext )
 	 */
@@ -73,7 +71,7 @@ public class CheckStereotypeExtension extends AbstractModelConstraint {
 		final EObject eObject = ctx.getTarget();
 		IStatus result = null;
 		if (eObject instanceof Stereotype) {
-			final Stereotype stereotype = (Stereotype) eObject;
+			final Stereotype stereotype = (Stereotype)eObject;
 			// check if the stereotype extend a classifier element
 			result = isExtendClassifier(stereotype);
 			// check if the stereotype extend a meta-class
@@ -81,8 +79,7 @@ public class CheckStereotypeExtension extends AbstractModelConstraint {
 				result = isExtandMetaclass(stereotype);
 			}
 		} else {
-			result = ctx.createFailureStatus(GenericUMLProfileTools.getLabel(
-					ctx, true));
+			result = ctx.createFailureStatus(GenericUMLProfileTools.getLabel(ctx, true));
 		}
 		return result;
 	}

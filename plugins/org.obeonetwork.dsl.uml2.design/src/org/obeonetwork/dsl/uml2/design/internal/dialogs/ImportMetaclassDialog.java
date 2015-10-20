@@ -68,8 +68,8 @@ import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 /**
  * A selection dialog message which provide a list of metaclass.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
@@ -91,8 +91,8 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 				if (element instanceof Classifier) {
 					final Classifier classifier = (Classifier)element;
 					if (!classifier.isAbstract()) {
-						final Image image = new Image(Display.getCurrent(), umlIconPath
-								+ ((Classifier)element).getName() + ".gif"); //$NON-NLS-1$
+						final Image image = new Image(Display.getCurrent(),
+								umlIconPath + ((Classifier)element).getName() + ".gif"); //$NON-NLS-1$
 						return image;
 					}
 					return null;
@@ -143,8 +143,8 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
 	 * Filter to show juste concrete and/or sub metaclass.
 	 *
-	 * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
-	 *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+	 * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-
+	 *         lamine.boukhanoufa@obeo.fr</a>
 	 */
 	private class MetaclassFilter extends ItemsFilter {
 		private final boolean concreteMetaclassFilter = concrete;
@@ -202,8 +202,8 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
 	 * Action to show only the concrete metaclass.
 	 *
-	 * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
-	 *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+	 * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-
+	 *         lamine.boukhanoufa@obeo.fr</a>
 	 */
 	private class ShowOnlyConcreteMetaclassAction extends Action {
 		/**
@@ -248,8 +248,9 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 
 	static {
 		try {
-			umlIconPath = FileLocator.toFileURL(
-					Platform.getBundle("org.eclipse.uml2.uml.edit").getResource("icons/full/obj16")) //$NON-NLS-1$ //$NON-NLS-2$
+			umlIconPath = FileLocator
+					.toFileURL(
+							Platform.getBundle("org.eclipse.uml2.uml.edit").getResource("icons/full/obj16")) //$NON-NLS-1$ //$NON-NLS-2$
 					.getPath();
 		} catch (final IOException e) {
 			LogServices.INSTANCE.error("FileLocator.toFileURL in ImportMetaclassDialog() not handled", e); //$NON-NLS-1$

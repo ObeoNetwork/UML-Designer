@@ -17,9 +17,8 @@ import org.eclipse.uml2.uml.Profile;
 /**
  * Information about Profile Version: Version, date, Author, Copyright, Comment.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
- *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr" >mohamed-lamine.
+ *         boukhanoufa@obeo.fr</a>
  */
 public class UMLDesignerProfileVersion {
 
@@ -76,8 +75,8 @@ public class UMLDesignerProfileVersion {
 	 * @param comment
 	 *            of version
 	 */
-	public UMLDesignerProfileVersion(final Version version, final String date,
-			final String author, final String copyRight, final String comment) {
+	public UMLDesignerProfileVersion(final Version version, final String date, final String author,
+			final String copyRight, final String comment) {
 		this.version = version;
 		this.date = date;
 		this.author = author;
@@ -133,8 +132,7 @@ public class UMLDesignerProfileVersion {
 		UMLDesignerProfileVersion uMLDesignerProfileVersion = null;
 		final EPackage profileDefinition = profile.getDefinition();
 		if (profileDefinition != null
-				&& profileDefinition
-				.getEAnnotation(UML_DESIGNER_PROFILE_EANNOTATION_SOURCE) != null) {
+				&& profileDefinition.getEAnnotation(UML_DESIGNER_PROFILE_EANNOTATION_SOURCE) != null) {
 			final EAnnotation profileEAnnotation = profileDefinition
 					.getEAnnotation(UML_DESIGNER_PROFILE_EANNOTATION_SOURCE);
 			uMLDesignerProfileVersion = parseEAnnotationVersion(profileEAnnotation);
@@ -147,6 +145,7 @@ public class UMLDesignerProfileVersion {
 
 	/**
 	 * Get version
+	 * 
 	 * @return version
 	 */
 	public Version getVersion() {
@@ -165,36 +164,26 @@ public class UMLDesignerProfileVersion {
 	public EAnnotation initEAnnotationVersion(final EAnnotation eAnnotation,
 			final UMLDesignerProfileVersion uMLDesignerProfileVersion) {
 
-		eAnnotation
-		.setSource(UML_DESIGNER_PROFILE_EANNOTATION_SOURCE);
+		eAnnotation.setSource(UML_DESIGNER_PROFILE_EANNOTATION_SOURCE);
 
-		eAnnotation.getDetails().put(
-				UML_DESIGNER_PROFILE_VERSION_KEY,
+		eAnnotation.getDetails().put(UML_DESIGNER_PROFILE_VERSION_KEY,
 				uMLDesignerProfileVersion.getVersion().toString());
 
-		eAnnotation.getDetails().put(
-				UML_DESIGNER_PROFILE_DATE_KEY,
-				uMLDesignerProfileVersion.getDate());
+		eAnnotation.getDetails().put(UML_DESIGNER_PROFILE_DATE_KEY, uMLDesignerProfileVersion.getDate());
 
-		eAnnotation.getDetails().put(
-				UML_DESIGNER_PROFILE_AUTHOR_KEY,
-				uMLDesignerProfileVersion.getAuthor());
+		eAnnotation.getDetails().put(UML_DESIGNER_PROFILE_AUTHOR_KEY, uMLDesignerProfileVersion.getAuthor());
 
-		eAnnotation.getDetails().put(
-				UML_DESIGNER_PROFILE_COPYRIGHT_KEY,
+		eAnnotation.getDetails().put(UML_DESIGNER_PROFILE_COPYRIGHT_KEY,
 				uMLDesignerProfileVersion.getCopyright());
 
-		eAnnotation.getDetails().put(
-				UML_DESIGNER_PROFILE_COMMENT_KEY,
+		eAnnotation.getDetails().put(UML_DESIGNER_PROFILE_COMMENT_KEY,
 				uMLDesignerProfileVersion.getComment());
 
 		return eAnnotation;
 	}
 
-	private UMLDesignerProfileVersion parseEAnnotationVersion(
-			final EAnnotation profileEAnnotation) {
-		final String versionValue = profileEAnnotation.getDetails().get(
-				UML_DESIGNER_PROFILE_VERSION_KEY);
+	private UMLDesignerProfileVersion parseEAnnotationVersion(final EAnnotation profileEAnnotation) {
+		final String versionValue = profileEAnnotation.getDetails().get(UML_DESIGNER_PROFILE_VERSION_KEY);
 
 		Version versionFromAnnotation;
 		try {
@@ -203,27 +192,22 @@ public class UMLDesignerProfileVersion {
 			versionFromAnnotation = Version.EMPTY_VERSION;
 		}
 
-		final String dateFromAnnotation = profileEAnnotation.getDetails().get(
-				UML_DESIGNER_PROFILE_DATE_KEY);
+		final String dateFromAnnotation = profileEAnnotation.getDetails().get(UML_DESIGNER_PROFILE_DATE_KEY);
 
 		final String authorFromAnnotation = profileEAnnotation.getDetails()
-				.get(
-						UML_DESIGNER_PROFILE_AUTHOR_KEY);
+				.get(UML_DESIGNER_PROFILE_AUTHOR_KEY);
 
 		final String copyRightFromAnnotation = profileEAnnotation.getDetails()
-				.get(
-						UML_DESIGNER_PROFILE_COPYRIGHT_KEY);
+				.get(UML_DESIGNER_PROFILE_COPYRIGHT_KEY);
 
 		final String commentFromAnnotation = profileEAnnotation.getDetails()
-				.get(
-						UML_DESIGNER_PROFILE_COMMENT_KEY);
+				.get(UML_DESIGNER_PROFILE_COMMENT_KEY);
 
 		final UMLDesignerProfileVersion uMLDesignerProfileVersion = new UMLDesignerProfileVersion(
 				versionFromAnnotation, dateFromAnnotation,
 				authorFromAnnotation != null ? authorFromAnnotation : "", //$NON-NLS-1$
-						copyRightFromAnnotation != null ? copyRightFromAnnotation
-								: "", //$NON-NLS-1$
-								commentFromAnnotation != null ? commentFromAnnotation : ""); //$NON-NLS-1$
+				copyRightFromAnnotation != null ? copyRightFromAnnotation : "", //$NON-NLS-1$
+				commentFromAnnotation != null ? commentFromAnnotation : ""); //$NON-NLS-1$
 		return uMLDesignerProfileVersion;
 	}
 
@@ -269,7 +253,9 @@ public class UMLDesignerProfileVersion {
 
 	/**
 	 * Set version
-	 * @param version Version
+	 * 
+	 * @param version
+	 *            Version
 	 */
 	public void setVersion(final Version version) {
 		this.version = version;

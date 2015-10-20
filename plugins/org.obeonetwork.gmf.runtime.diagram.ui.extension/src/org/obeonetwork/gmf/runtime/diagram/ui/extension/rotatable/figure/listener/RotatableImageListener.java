@@ -19,17 +19,15 @@ import org.eclipse.draw2d.IFigure;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.editPart.AbstractRotatableImageEditPart;
 
 /**
- * Listener on rotatable image : refresh the image if figure moves or
- * changes.
+ * Listener on rotatable image : refresh the image if figure moves or changes.
  * 
  * @author nlepine
  * @author hmarchadour
- * 
  */
-public class RotatableImageListener implements FigureListener,
-PropertyChangeListener, AncestorListener {
+public class RotatableImageListener implements FigureListener, PropertyChangeListener, AncestorListener {
 
 	AbstractRotatableImageEditPart editpart;
+
 	/**
 	 * Constructor
 	 * 
@@ -39,15 +37,14 @@ PropertyChangeListener, AncestorListener {
 	public RotatableImageListener(AbstractRotatableImageEditPart editpart) {
 		this.editpart = editpart;
 	}
-	
 
 	/**
-	 * Notify the edit part that 
+	 * Notify the edit part that
 	 */
 	public void notifyEditPart() {
 		editpart.figureHasChanged();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 

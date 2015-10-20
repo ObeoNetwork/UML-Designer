@@ -144,29 +144,32 @@ public class ArchetypeServices {
 
 		if (isDescription(end1Type) && isRole(end2Type) || isDescription(end2Type) && isRole(end1Type)) {
 			return true;
-		} else if (isDescription(end1Type) && isMomentInterval(end2Type) || isDescription(end2Type)
-				&& isMomentInterval(end1Type)) {
+		} else if (isDescription(end1Type) && isMomentInterval(end2Type)
+				|| isDescription(end2Type) && isMomentInterval(end1Type)) {
 			return true;
-		} else if (isThing(end1Type) && isMomentInterval(end2Type) || isThing(end2Type)
-				&& isMomentInterval(end1Type)) {
+		} else if (isThing(end1Type) && isMomentInterval(end2Type)
+				|| isThing(end2Type) && isMomentInterval(end1Type)) {
 			return true;
-		} else if (isRole(end1Type) && isDescription(end2Type) || isRole(end2Type) && isDescription(end1Type)) {
+		} else if (isRole(end1Type) && isDescription(end2Type)
+				|| isRole(end2Type) && isDescription(end1Type)) {
 			return true;
 		} else if (isRole(end1Type) && isRole(end2Type) || isRole(end2Type) && isRole(end1Type)) {
 			return true;
-		} else if (isMomentInterval(end1Type) && isDescription(end2Type) || isMomentInterval(end2Type)
-				&& isDescription(end1Type)) {
+		} else if (isMomentInterval(end1Type) && isDescription(end2Type)
+				|| isMomentInterval(end2Type) && isDescription(end1Type)) {
 			return true;
-		} else if (isMomentInterval(end1Type) && isThing(end2Type) || isMomentInterval(end2Type)
-				&& isThing(end1Type)) {
+		} else if (isMomentInterval(end1Type) && isThing(end2Type)
+				|| isMomentInterval(end2Type) && isThing(end1Type)) {
 			return true;
 		} else if (isDescription(end1Type) && isThing(end2Type)
-				&& !end1.getAggregation().equals(AggregationKind.NONE_LITERAL) || isDescription(end2Type)
-				&& isThing(end1Type) && !end2.getAggregation().equals(AggregationKind.NONE_LITERAL)) {
+				&& !end1.getAggregation().equals(AggregationKind.NONE_LITERAL)
+				|| isDescription(end2Type) && isThing(end1Type)
+						&& !end2.getAggregation().equals(AggregationKind.NONE_LITERAL)) {
 			return true;
 		} else if (isThing(end1Type) && isRole(end2Type)
-				&& !end1.getAggregation().equals(AggregationKind.NONE_LITERAL) || isThing(end2Type)
-				&& isRole(end1Type) && !end2.getAggregation().equals(AggregationKind.NONE_LITERAL)) {
+				&& !end1.getAggregation().equals(AggregationKind.NONE_LITERAL)
+				|| isThing(end2Type) && isRole(end1Type)
+						&& !end2.getAggregation().equals(AggregationKind.NONE_LITERAL)) {
 			return true;
 		}
 		return false;

@@ -17,19 +17,15 @@ import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 /**
  * Initialize default preferences value.
  * 
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UsagePreferenceInitializer extends AbstractPreferenceInitializer {
 
 	@Override
 	public void initializeDefaultPreferences() {
-		UMLDesignerPlugin
-				.getDefault()
-				.getPreferenceStore()
-				.setDefault(UsagePreferences.USAGE_USER_ANSWER_ID,
-						IDialogConstants.ABORT_ID);
-		UMLDesignerPlugin.getDefault().getPreferenceStore()
-				.setDefault(UsagePreferences.USAGE_ENABLED_ID, false);
+		UMLDesignerPlugin.getDefault().getPreferenceStore().setDefault(UsagePreferences.USAGE_USER_ANSWER_ID,
+				IDialogConstants.ABORT_ID);
+		UMLDesignerPlugin.getDefault().getPreferenceStore().setDefault(UsagePreferences.USAGE_ENABLED_ID,
+				false);
 	}
 }

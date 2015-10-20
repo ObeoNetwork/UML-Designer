@@ -208,8 +208,8 @@ public class LabelServices {
 			}
 		}
 
-		final List<EObject> existingElements = Lists.newArrayList(Iterables.filter(element.eContainer()
-				.eContents(), predicate));
+		final List<EObject> existingElements = Lists
+				.newArrayList(Iterables.filter(element.eContainer().eContents(), predicate));
 
 		return name + existingElements.size();
 	}

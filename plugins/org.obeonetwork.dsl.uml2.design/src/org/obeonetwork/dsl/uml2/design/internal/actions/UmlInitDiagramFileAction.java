@@ -52,10 +52,7 @@ public class UmlInitDiagramFileAction implements IObjectActionDelegate {
 		dialog.getShell().setText("Create Representation File"); //$NON-NLS-1$
 		if (dialog.open() == Window.OK) {
 
-			wizard.getCreatedSession()
-			.getTransactionalEditingDomain()
-			.getCommandStack()
-			.execute(
+			wizard.getCreatedSession().getTransactionalEditingDomain().getCommandStack().execute(
 					new RecordingCommand(wizard.getCreatedSession().getTransactionalEditingDomain()) {
 
 						@Override
