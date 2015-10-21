@@ -38,6 +38,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ext.base.Option;
@@ -77,7 +78,9 @@ import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.UseCase;
@@ -695,14 +698,14 @@ public class ModelElementsSelectionDialog {
 		}
 	}
 
-	final Map<EObject, Boolean> isOrHasDescendantCache = UmlDesignerSessionManagerListener
-			.getDescendantCache();
-
 	private static final Function<Object, Void> DO_NOTHING = new Function<Object, Void>() {
 		public Void apply(Object from) {
 			return null;
 		}
 	};
+
+	final Map<EObject, Boolean> isOrHasDescendantCache = UmlDesignerSessionManagerListener
+			.getDescendantCache();
 
 	/**
 	 * The internal dialog used by this dialog.
@@ -900,8 +903,14 @@ public class ModelElementsSelectionDialog {
 		final Predicate<Object> validForCompositeDiagram = new Predicate<Object>() {
 
 			public boolean apply(Object input) {
-				if (input instanceof StructuredClassifier && container instanceof StructuredClassifier) {
+
+				if (input instanceof StructuredClassifier && container instanceof StructuredClassifier
+						|| input instanceof Property && ((Property)input).getOwner().equals(eObject)
+								&& !(input instanceof Port) && container instanceof StructuredClassifier) {
 					return EcoreUtil.isAncestor(container, (EObject)input);
+				}
+				if (input instanceof Interface && isInterfacesLayerActive()) {
+					return true;
 				}
 				return input instanceof StructuredClassifier;
 			}
@@ -960,6 +969,20 @@ public class ModelElementsSelectionDialog {
 	protected void initContentProvider() {
 		final AdapterFactory adapterFactory = getAdapterFactory();
 		contentProvider = new ModelFilteredTreeContentProvider(adapterFactory, getDisplayablePredicate());
+	}
+
+	/**
+	 * Is the interfaces layer active. Diagram element
+	 * 
+	 * @return True if the layer named "Interfaces" is active otherwise false
+	 */
+	private boolean isInterfacesLayerActive() {
+		for (final Layer activeLayer : diagram.getActivatedLayers()) {
+			if ("Interfaces".equals(activeLayer.getName())) { //$NON-NLS-1$
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
