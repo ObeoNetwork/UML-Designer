@@ -84,6 +84,26 @@ import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConstants {
 
 	/**
+	 * Spaced column constant.
+	 */
+	private static final String SPACED_COLUMN = " : "; //$NON-NLS-1$
+
+	/**
+	 * Spaced column constant.
+	 */
+	private static final String SPACED_COMMA = ", "; //$NON-NLS-1$
+
+	/**
+	 * Closing brace constant.
+	 */
+	private static final String CLOSING_BRACE = "]"; //$NON-NLS-1$
+
+	/**
+	 * Opening brace constant.
+	 */
+	private static final String OPENING_BRACE = "["; //$NON-NLS-1$
+
+	/**
 	 * Compute the {@link Stereotype} label part for the given {@link Element}.
 	 *
 	 * @param element
@@ -118,26 +138,6 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 
 		return stereotypeLabel.toString();
 	}
-
-	/**
-	 * Spaced column constant.
-	 */
-	private static final String SPACED_COLUMN = " : "; //$NON-NLS-1$
-
-	/**
-	 * Spaced column constant.
-	 */
-	private static final String SPACED_COMMA = ", "; //$NON-NLS-1$
-
-	/**
-	 * Closing brace constant.
-	 */
-	private static final String CLOSING_BRACE = "]"; //$NON-NLS-1$
-
-	/**
-	 * Opening brace constant.
-	 */
-	private static final String OPENING_BRACE = "["; //$NON-NLS-1$
 
 	/**
 	 * Label provider.
@@ -802,7 +802,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		if (templateParameters != null) {
 			return computeStereotypes(object) + caseNamedElement((NamedElement)object) + templateParameters;
 		}
-		return computeStereotypes(object) + caseNamedElement((NamedElement)object);
+		return caseNamedElement((NamedElement)object);
 	}
 
 	/**
