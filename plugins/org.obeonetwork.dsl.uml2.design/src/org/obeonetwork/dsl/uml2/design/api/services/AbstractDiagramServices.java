@@ -75,6 +75,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
+import org.obeonetwork.dsl.uml2.design.internal.services.AddElementToDiagramServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectPreconditionSwitch;
@@ -146,46 +147,46 @@ public abstract class AbstractDiagramServices {
 			createViewOp.setContainerViewExpression(containerViewExpression);
 
 			session.getTransactionalEditingDomain().getCommandStack()
-					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+			.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 
-						@Override
-						protected void doExecute() {
-							try {
-								// Get the command context
-								DRepresentation representation = null;
-								if (containerView instanceof DRepresentation) {
-									representation = (DRepresentation)containerView;
-								} else if (containerView instanceof DDiagramElement) {
-									representation = ((DDiagramElement)containerView).getParentDiagram();
-								}
-
-								final CommandContext context = new CommandContext(semanticElement,
-										representation);
-
-								// Execute the create view task
-								final CreateViewTask task = new CreateViewTask(context,
-										session.getModelAccessor(), createViewOp, session.getInterpreter());
-								task.execute();
-
-								final Object createdView = session.getInterpreter()
-										.getVariable(createViewOp.getVariableName());
-								if (createdView instanceof DDiagramElement) {
-									final DDiagramElement element = (DDiagramElement)createdView;
-									HideFilterHelper.INSTANCE.reveal(element);
-								}
-							} catch (final MetaClassNotFoundException e) {
-								UMLDesignerPlugin.log(IStatus.ERROR,
-										NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-												semanticElement),
-										e);
-							} catch (final FeatureNotFoundException e) {
-								UMLDesignerPlugin.log(IStatus.ERROR,
-										NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-												semanticElement),
-										e);
-							}
+				@Override
+				protected void doExecute() {
+					try {
+						// Get the command context
+						DRepresentation representation = null;
+						if (containerView instanceof DRepresentation) {
+							representation = (DRepresentation)containerView;
+						} else if (containerView instanceof DDiagramElement) {
+							representation = ((DDiagramElement)containerView).getParentDiagram();
 						}
-					});
+
+						final CommandContext context = new CommandContext(semanticElement,
+								representation);
+
+						// Execute the create view task
+						final CreateViewTask task = new CreateViewTask(context,
+								session.getModelAccessor(), createViewOp, session.getInterpreter());
+						task.execute();
+
+						final Object createdView = session.getInterpreter()
+								.getVariable(createViewOp.getVariableName());
+						if (createdView instanceof DDiagramElement) {
+							final DDiagramElement element = (DDiagramElement)createdView;
+							HideFilterHelper.INSTANCE.reveal(element);
+						}
+					} catch (final MetaClassNotFoundException e) {
+						UMLDesignerPlugin.log(IStatus.ERROR,
+								NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+										semanticElement),
+								e);
+					} catch (final FeatureNotFoundException e) {
+						UMLDesignerPlugin.log(IStatus.ERROR,
+								NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+										semanticElement),
+								e);
+					}
+				}
+			});
 		}
 	}
 
@@ -479,21 +480,8 @@ public abstract class AbstractDiagramServices {
 		final List<DiagramElementMapping> mappings = new ArrayList<DiagramElementMapping>();
 
 		if (containerView instanceof DSemanticDiagram) {
-
-			for (final DiagramElementMapping mapping : ((DSemanticDiagram)containerView).getDescription()
-					.getAllContainerMappings()) {
-				final String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass) && !mapping.isCreateElements()) {
-					mappings.add(mapping);
-				}
-			}
-			for (final DiagramElementMapping mapping : ((DSemanticDiagram)containerView).getDescription()
-					.getAllNodeMappings()) {
-				final String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass) && !mapping.isCreateElements()) {
-					mappings.add(mapping);
-				}
-			}
+			mappings.addAll(AddElementToDiagramServices.INSTANCE.getValidMappingForDiagram(semanticElement,
+					(DSemanticDiagram)containerView, session));
 		} else if (containerView instanceof DNodeContainerSpec) {
 			for (final DiagramElementMapping mapping : ((DNodeContainerSpec)containerView).getActualMapping()
 					.getAllContainerMappings()) {
