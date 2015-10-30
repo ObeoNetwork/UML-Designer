@@ -75,6 +75,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
+import org.obeonetwork.dsl.uml2.design.internal.services.AddElementToDiagramServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectPreconditionSwitch;
@@ -479,21 +480,8 @@ public abstract class AbstractDiagramServices {
 		final List<DiagramElementMapping> mappings = new ArrayList<DiagramElementMapping>();
 
 		if (containerView instanceof DSemanticDiagram) {
-
-			for (final DiagramElementMapping mapping : ((DSemanticDiagram)containerView).getDescription()
-					.getAllContainerMappings()) {
-				final String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass) && !mapping.isCreateElements()) {
-					mappings.add(mapping);
-				}
-			}
-			for (final DiagramElementMapping mapping : ((DSemanticDiagram)containerView).getDescription()
-					.getAllNodeMappings()) {
-				final String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass) && !mapping.isCreateElements()) {
-					mappings.add(mapping);
-				}
-			}
+			mappings.addAll(AddElementToDiagramServices.INSTANCE.getValidMappingsForDiagram(semanticElement,
+					(DSemanticDiagram)containerView, session));
 		} else if (containerView instanceof DNodeContainerSpec) {
 			for (final DiagramElementMapping mapping : ((DNodeContainerSpec)containerView).getActualMapping()
 					.getAllContainerMappings()) {
