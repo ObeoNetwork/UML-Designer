@@ -59,7 +59,8 @@ public class AssociationCustomPropertiesEditionComponent extends AssociationProp
                 Property property = (Property) event.getNewValue();
                 Association association = property.getAssociation();
                 if (wasOwned) {
-                    ((org.eclipse.uml2.uml.Class) property.getType()).getOwnedAttributes().add(property);
+                	((org.eclipse.uml2.uml.Class)property.getOtherEnd().getType()).getOwnedAttributes()
+					.add(property);
                 } else {
                     association.getOwnedEnds().add(property);
                 }
