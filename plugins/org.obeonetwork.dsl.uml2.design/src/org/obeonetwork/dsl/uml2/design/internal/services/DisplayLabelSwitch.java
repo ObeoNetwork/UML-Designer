@@ -853,8 +853,10 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			for (final Trigger trigger : object.getTriggers()) {
 				if (triggersLabel != null) {
 					triggersLabel += ","; //$NON-NLS-1$
+				} else {
+					triggersLabel = "";
 				}
-				triggersLabel = LabelServices.INSTANCE.computeUmlLabel(trigger);
+				triggersLabel += LabelServices.INSTANCE.computeUmlLabel(trigger);
 			}
 		}
 		// Guard

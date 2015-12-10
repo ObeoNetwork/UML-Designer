@@ -10,15 +10,19 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.internal.services;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Behavior;
@@ -34,8 +38,10 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.FunctionBehavior;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
+import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LiteralInteger;
@@ -43,18 +49,22 @@ import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.Slot;
+import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -95,6 +105,13 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 * The raw label content edited by the user.
 	 */
 	private String editedLabelContent;
+
+	@Override
+	public Element caseActivity(Activity object) {
+		// Implemented for direct edit Transition
+		object.setName(editedLabelContent);
+		return object;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -147,7 +164,6 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		LabelServices.INSTANCE.editUmlLabel(operation, editedLabelContent);
 		return execution;
 	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -157,6 +173,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		editedLabelContent = parseInputLabel(object, editedLabelContent);
 		return caseNamedElement(object);
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -164,6 +181,14 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	public Element caseComment(Comment comment) {
 		comment.setBody(editedLabelContent);
 		return comment;
+	}
+
+	@Override
+	public Element caseConstraint(Constraint object) {
+		// this case was implemlented for transition direct edit from StateMachineDiagram
+		setEditedLabelContent(editedLabelContent);
+		doSwitch(object.getSpecification());
+		return object;
 	}
 
 	/**
@@ -216,6 +241,20 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return execution;
 	}
 
+	@Override
+	public Element caseFunctionBehavior(FunctionBehavior object) {
+		// Implemented for direct edit Transition
+		object.setName(editedLabelContent);
+		return object;
+	}
+
+	@Override
+	public Element caseInteraction(Interaction object) {
+		// Implemented for direct edit Transition
+		object.setName(editedLabelContent);
+		return object;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -225,7 +264,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		// Edit associated instance name
 		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0) {
 			((InstanceSpecification)lifeline.getClientDependencies().get(0).getSuppliers().get(0))
-					.setName(name);
+			.setName(name);
 		}
 		// Edit lifeline name
 		lifeline.setName(name);
@@ -267,7 +306,6 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		LabelServices.INSTANCE.editUmlLabel(message.getReceiveEvent(), editedLabelContent);
 		return message;
 	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -299,6 +337,22 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return object;
 	}
 
+	@Override
+	public Element caseOpaqueBehavior(OpaqueBehavior object) {
+		// Implemented for direct edit Transition
+		object.setName(editedLabelContent);
+		return object;
+	}
+
+	@Override
+	public Element caseOpaqueExpression(OpaqueExpression object) {
+		// This case was implemented in the case of direct editing of transition in StateMachineDiagram
+		object.getBodies().clear();
+		object.getBodies().add(editedLabelContent);
+
+		return object;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -314,6 +368,13 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	@Override
 	public Element caseProperty(Property object) {
 		PropertyServices.INSTANCE.parseInputLabel(object, editedLabelContent);
+		return object;
+	}
+
+	@Override
+	public Element caseProtocolStateMachine(ProtocolStateMachine object) {
+		// Implemented for direct edit Transition
+		object.setName(editedLabelContent);
 		return object;
 	}
 
@@ -420,6 +481,13 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	}
 
 	@Override
+	public Element caseStateMachine(StateMachine object) {
+		// Implemented for direct edit Transition
+		object.setName(editedLabelContent);
+		return object;
+	}
+
+	@Override
 	public Element caseTemplateableElement(TemplateableElement object) {
 		editedLabelContent = parseInputLabel(object, editedLabelContent);
 		return super.caseTemplateableElement(object);
@@ -440,32 +508,23 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 */
 	@Override
 	public Element caseTransition(Transition object) {
-		OpaqueExpression expr;
-		Constraint constraint = object.getGuard();
-		if (constraint != null) {
-			expr = (OpaqueExpression)constraint.getSpecification();
-			if (expr == null) {
-				expr = UMLFactory.eINSTANCE.createOpaqueExpression();
-				expr.setName(object.getName() + GUARD_SUFFIX);
-				constraint.setSpecification(expr);
-			}
-		} else {
-			constraint = UMLFactory.eINSTANCE.createConstraint();
-			constraint.setName(object.getName() + "_transition"); //$NON-NLS-1$
-			expr = UMLFactory.eINSTANCE.createOpaqueExpression();
-			expr.setName(object.getName() + GUARD_SUFFIX);
-			constraint.setSpecification(expr);
-			object.setGuard(constraint);
-		}
+		final String newLabel = editedLabelContent;
 
-		if (editedLabelContent.matches("\\[.*\\]")) { //$NON-NLS-1$
-			// Remove the first & last bracket character.
-			editedLabelContent = editedLabelContent.substring(1, editedLabelContent.length() - 1);
-		}
+		// Edit guard if not exist create it
+		editTransitionGuard(object, newLabel);
 
-		expr.getBodies().clear();
-		expr.getBodies().add(editedLabelContent);
+		// Edit behaviorExpression if not exist create it
+		editTransitionBehaviorExpression(object, newLabel);
 
+		// Edit triggers if not exist create it
+		editTransitionTrigger(object, newLabel);
+		return object;
+	}
+
+	@Override
+	public Element caseTrigger(Trigger object) {
+		// Implemented for direct edit Transition
+		object.setName(editedLabelContent);
 		return object;
 	}
 
@@ -486,6 +545,137 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return object;
 	}
 
+	private void editTransitionBehaviorExpression(Transition object, String newLabel){
+		final int behaviorStartIndex = newLabel.lastIndexOf("/");//$NON-NLS-1$
+
+		if (behaviorStartIndex != -1) {
+			int guardEndIndex = -1;
+			if (newLabel.matches(".*\\[.*\\].*")) {//$NON-NLS-1$
+				guardEndIndex = newLabel.lastIndexOf("]");//$NON-NLS-1$
+			}
+			if (behaviorStartIndex > guardEndIndex) { // to be sure "/" is not in guard
+				final String behaviorLabelContent = newLabel.substring(behaviorStartIndex + 1);
+				if (!behaviorLabelContent.isEmpty()) {// no change if string is empty
+					Behavior effect = object.getEffect();
+					if (effect == null) {
+						effect = UMLFactory.eINSTANCE.createOpaqueBehavior();
+						object.setEffect(effect);
+					}
+					setEditedLabelContent(behaviorLabelContent);
+					doSwitch(effect);
+				}
+			}
+		} else {
+			if (object.getEffect() != null) {
+				object.getEffect().destroy();
+			}
+		}
+
+	}
+
+	private void editTransitionGuard(Transition object, String newLabel){
+		final int guardStartIndex = newLabel.indexOf("[");//$NON-NLS-1$
+
+		if (newLabel.matches(".*\\[.*\\].*")) { //$NON-NLS-1$
+			String editedGuardLabelContent = newLabel;
+			final int guardEndIndex = editedGuardLabelContent.lastIndexOf("]");//$NON-NLS-1$
+			editedGuardLabelContent = editedGuardLabelContent.substring(guardStartIndex+1, guardEndIndex);
+			if (!editedGuardLabelContent.isEmpty()) {// no change if string is empty
+				OpaqueExpression expr;
+				Constraint constraint = object.getGuard();
+				if (constraint == null) {
+					// Create new constraint
+					constraint = UMLFactory.eINSTANCE.createConstraint();
+					constraint.setName(object.getName() + "_transition"); //$NON-NLS-1$
+					// With opaque expression
+					expr = UMLFactory.eINSTANCE.createOpaqueExpression();
+					expr.setName(object.getName() + GUARD_SUFFIX);
+					constraint.setSpecification(expr);
+					object.setGuard(constraint);
+				}
+				setEditedLabelContent(editedGuardLabelContent);
+				doSwitch(constraint);
+			}
+		} else {
+			// Check a guard was removed from model
+			if (object.getGuard() != null) {
+				// Delete constaint and sub elements
+				object.getGuard().destroy();
+			}
+		}
+	}
+
+	private void editTransitionTrigger(Transition object, String newLabel){
+		final int guardStartIndex = newLabel.indexOf("[");//$NON-NLS-1$
+		final int behaviorStartIndex = newLabel.lastIndexOf("/");//$NON-NLS-1$
+
+		// Find trigger part label
+		int triggerEndIndex = -1;
+		if (behaviorStartIndex >= 0 && guardStartIndex >= 0) {
+			triggerEndIndex = guardStartIndex;
+			if (guardStartIndex > behaviorStartIndex) {
+				triggerEndIndex = behaviorStartIndex;
+			}
+		} else if (behaviorStartIndex != -1) { // String don't start with behaviorExpression
+			triggerEndIndex = behaviorStartIndex;
+		} else if (guardStartIndex != -1) {// String don't start with guard
+			triggerEndIndex = guardStartIndex;
+		} else {// String don't have guard or behavior expression
+			triggerEndIndex = newLabel.length();
+		}
+		// Get a list of trigger labels
+		final List<String> triggersLabels = new ArrayList<String>();
+
+		if (!newLabel.isEmpty() && triggerEndIndex > 0) {
+			final String triggerEditedLabel = newLabel.substring(0,triggerEndIndex);
+
+			// String[] triggersLabels = {triggerEditedLabel};
+			if (triggerEditedLabel.contains(",")) {//$NON-NLS-1$
+				triggersLabels.addAll(Arrays.asList(triggerEditedLabel.split(",")));//$NON-NLS-1$
+			} else {
+				triggersLabels.add(triggerEditedLabel);
+			}
+		}
+
+		// For each label edit trigger
+		if (triggersLabels.size() > 0) {
+			// Find existing trigger
+			final List<String> existingTriggersNames = new ArrayList<String>();
+			for (final Trigger trigger : object.getTriggers()) {
+				existingTriggersNames.add(trigger.getName());
+			}
+			// Find trigger to create and trigger to delete
+			final List<String> toBeCreated = new ArrayList<String>();
+			for (final String label : triggersLabels) {
+				if (existingTriggersNames.contains(label.trim())) {
+					existingTriggersNames.remove(label.trim());
+				} else {
+					toBeCreated.add(label.trim());
+				}
+			}
+			// delete no not found trigger
+			for (final String label : existingTriggersNames) {
+				object.getTrigger(label).destroy();
+			}
+			// Create and add new trigger to transition
+			for (final String label : toBeCreated) {
+				final Trigger trigger = UMLFactory.eINSTANCE.createTrigger();
+				object.getTriggers().add(trigger);
+				setEditedLabelContent(label.trim());
+				doSwitch(trigger);
+			}
+
+		}else{
+			//remove all triggers
+			final EList<Trigger> triggers = object.getTriggers();
+			if (triggers.size()>0){
+				for (final Trigger trigger : triggers){
+					trigger.destroy();
+				}
+			}
+		}
+	}
+
 	/**
 	 * Parse the edited label content and update the underlying {@link Class}.
 	 *
@@ -495,7 +685,8 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 *            the user edited label content.
 	 * @return Class name
 	 */
-	private String parseInputLabel(org.eclipse.uml2.uml.TemplateableElement aTemplateableElement, String inputLabel) {
+	private String parseInputLabel(org.eclipse.uml2.uml.TemplateableElement aTemplateableElement,
+			String inputLabel) {
 		String result = inputLabel;
 		final String validLabel = "[a-zA-Z_0-9]+((\\s)*<[a-zA-Z_0-9]+(,(\\s)*[a-zA-Z_0-9]+)*>)?"; //$NON-NLS-1$
 		final String templatedLabel = "[a-zA-Z_0-9]+((\\s)*<[a-zA-Z_0-9]+(,(\\s)*[a-zA-Z_0-9]+)*>)"; //$NON-NLS-1$
@@ -520,7 +711,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 						final TemplateParameter templateParameter = templateParameters.get(i);
 						if (templateParameter.getParameteredElement() instanceof NamedElement) {
 							((NamedElement)templateParameter.getParameteredElement())
-									.setName(templateParamLabel);
+							.setName(templateParamLabel);
 						}
 					} catch (final IndexOutOfBoundsException e) {
 						final TemplateParameter createNewClassifierTemplateParameter;
