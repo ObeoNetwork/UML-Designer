@@ -10,14 +10,19 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.api.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.PseudostateKind;
+import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
+import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
+import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.Vertex;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 
 import com.google.common.collect.Lists;
@@ -28,6 +33,68 @@ import com.google.common.collect.Lists;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class StateMachineDiagramServices extends AbstractDiagramServices {
+	/**
+	 * Human Actor.
+	 */
+	public static final String VERTICAL = "Vertical"; //$NON-NLS-1$
+
+	/**
+	 * Add to a state the vertical keyword.
+	 *
+	 * @param state
+	 *            State
+	 * @param type
+	 *            Keyword
+	 */
+	private void addKeyword(Element element, String type) {
+		clearVerticalKeyword(element);
+		element.addKeyword(type);
+	}
+
+	/**
+	 * Set as Vertical.
+	 *
+	 * @param state
+	 *            state to set
+	 */
+	public void addVerticalKeyword(State state) {
+		addKeyword(state, VERTICAL);
+	}
+
+	/**
+	 * Set as Vertical.
+	 *
+	 * @param stateMachine
+	 *            state machine to set
+	 */
+	public void addVerticalKeyword(StateMachine stateMachine) {
+		addKeyword(stateMachine, VERTICAL);
+	}
+
+	private void clearVerticalKeyword(Element element) {
+		element.removeKeyword(VERTICAL);
+	}
+
+	/**
+	 * Unset as Vertical.
+	 *
+	 * @param state
+	 *            state to unset
+	 */
+	public void clearVerticalKeyword(State state) {
+		clearVerticalKeyword((Element)state);
+	}
+
+	/**
+	 * Unset as Vertical.
+	 *
+	 * @param stateMachine
+	 *            state machine to unset
+	 */
+	public void clearVerticalKeyword(StateMachine stateMachine) {
+		clearVerticalKeyword((Element)stateMachine);
+	}
+
 	/**
 	 * Get label for the 'do' instruction.
 	 *
@@ -59,6 +126,55 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 	 */
 	public String computeExitLabel(Element element) {
 		return "exit " + LabelServices.INSTANCE.computeUmlLabel(element); //$NON-NLS-1$
+	}
+
+	/**
+	 * Create a transition.
+	 * 
+	 * @param self
+	 *            region
+	 * @param source_p
+	 *            element source
+	 * @param target_p
+	 *            element target
+	 */
+	public void createTransition(Element  self, Element source_p, Element target_p){
+		Element source = source_p;
+		Element target = target_p;
+		if (source instanceof Region){
+			source = source.getOwner();
+		}
+		if (target instanceof Region){
+			target = target.getOwner();
+		}
+		if (source instanceof Vertex
+				&& target instanceof Vertex
+				&& source.eContainer() == target.eContainer()) {
+			createTransition((Region)source.eContainer(), (Vertex)source, (Vertex)target);
+		}
+
+	}
+	private void createTransition(Region region, Vertex source, Vertex target) {
+		final Transition transition = UMLFactory.eINSTANCE.createTransition();
+		transition.setSource(source);
+		transition.setTarget(target);
+		region.getTransitions().add(transition);
+	}
+
+
+	/**
+	 * Get connection point to display for a state machine.
+	 *
+	 * @param stateMachine
+	 *            the state machine
+	 * @return list of connection point or empty list
+	 */
+	public List<Pseudostate> getConnectionPoints(StateMachine stateMachine) {
+		final List<Pseudostate> connectionPoints = new ArrayList<Pseudostate>();
+		if (!stateMachine.getConnectionPoints().isEmpty()) {
+			connectionPoints.addAll(stateMachine.getConnectionPoints());
+		}
+		return connectionPoints;
 	}
 
 	/**
@@ -122,6 +238,10 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 		return state.getExit() != null;
 	}
 
+	private boolean hasKeyword(Element element, String keyword) {
+		return element.getKeywords().contains(keyword);
+	}
+
 	/**
 	 * Check if a state has no do activity defined.
 	 *
@@ -164,6 +284,28 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 	 */
 	public boolean isChoiceState(Pseudostate state) {
 		return state.getKind().equals(PseudostateKind.CHOICE_LITERAL);
+	}
+
+	/**
+	 * Check if a state is a composite horizontal container.
+	 *
+	 * @param state
+	 *            state
+	 * @return True if element is horizontal
+	 */
+	public boolean isCompositeHorizontal(State state) {
+		return !state.isSimple() && !isVertical(state);
+	}
+
+	/**
+	 * Check if a state is a vertical container.
+	 *
+	 * @param state
+	 *            state
+	 * @return True if element is vertical
+	 */
+	public boolean isCompositeVertical(State state) {
+		return !state.isSimple() && isVertical(state);
 	}
 
 	/**
@@ -221,6 +363,7 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 		return state.getKind().equals(PseudostateKind.INITIAL_LITERAL);
 	}
 
+
 	/**
 	 * Is a join state.
 	 *
@@ -244,6 +387,28 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Check if a State is a vertical container.
+	 *
+	 * @param state
+	 *            element
+	 * @return True if element is vertical
+	 */
+	public boolean isNotVertical(State state) {
+		return !isVertical(state);
+	}
+
+	/**
+	 * Check if an StateMachine is an horizontal container.
+	 *
+	 * @param stateMachine
+	 *            element
+	 * @return True if element is vertical
+	 */
+	public boolean isNotVertical(StateMachine stateMachine) {
+		return !isVertical(stateMachine);
+	}
+
+	/**
 	 * Is a shallow history state.
 	 *
 	 * @param state
@@ -263,5 +428,53 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 	 */
 	public boolean isTerminateState(Pseudostate state) {
 		return state.getKind().equals(PseudostateKind.TERMINATE_LITERAL);
+	}
+
+	/**
+	 * Verify if selected elements to create transition are valid.
+	 *
+	 * @param self
+	 *            region
+	 * @param preSource
+	 *            source element
+	 * @param preTarget
+	 *            target element
+	 * @return true if valid
+	 */
+	public boolean isValidTransitionTarget(Element self, Element preSource, Element preTarget) {
+		Element source = preSource;
+		Element target = preTarget;
+		if (source instanceof Region) {
+			source = preSource.getOwner();
+		}
+		if (target instanceof Region) {
+			target = preTarget.getOwner();
+		}
+		if (source.eContainer() == target.eContainer()) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Check if an element is a vertical container.
+	 *
+	 * @param element
+	 *            element
+	 * @return True if element is vertical
+	 */
+	private boolean isVertical(Element element) {
+		return hasKeyword(element, VERTICAL);
+	}
+
+	/**
+	 * Check if a StateMachine is a vertical container.
+	 *
+	 * @param stateMachine
+	 *            element
+	 * @return True if element is vertical
+	 */
+	public boolean isVertical(StateMachine stateMachine) {
+		return isVertical((Element)stateMachine);
 	}
 }

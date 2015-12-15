@@ -21,10 +21,13 @@ import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateableElement;
+import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 /**
@@ -142,6 +145,18 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 				&& oldPointedElement instanceof TemplateableElement
 				&& oldPointedElement instanceof Classifier) {
 			return tmplBinding;
+		}
+		return null;
+	}
+
+	@Override
+	public Element caseTransition(Transition transition) {
+		Element newElement = newPointedElement;
+		if (newElement instanceof Region) {
+			newElement = (Element)newElement.eContainer();
+		}
+		if (newElement instanceof Vertex && newElement.eContainer() == oldPointedElement.eContainer()) {
+			return transition;
 		}
 		return null;
 	}

@@ -147,46 +147,46 @@ public abstract class AbstractDiagramServices {
 			createViewOp.setContainerViewExpression(containerViewExpression);
 
 			session.getTransactionalEditingDomain().getCommandStack()
-					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+			.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 
-						@Override
-						protected void doExecute() {
-							try {
-								// Get the command context
-								DRepresentation representation = null;
-								if (containerView instanceof DRepresentation) {
-									representation = (DRepresentation)containerView;
-								} else if (containerView instanceof DDiagramElement) {
-									representation = ((DDiagramElement)containerView).getParentDiagram();
-								}
-
-								final CommandContext context = new CommandContext(semanticElement,
-										representation);
-
-								// Execute the create view task
-								final CreateViewTask task = new CreateViewTask(context,
-										session.getModelAccessor(), createViewOp, session.getInterpreter());
-								task.execute();
-
-								final Object createdView = session.getInterpreter()
-										.getVariable(createViewOp.getVariableName());
-								if (createdView instanceof DDiagramElement) {
-									final DDiagramElement element = (DDiagramElement)createdView;
-									HideFilterHelper.INSTANCE.reveal(element);
-								}
-							} catch (final MetaClassNotFoundException e) {
-								UMLDesignerPlugin.log(IStatus.ERROR,
-										NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-												semanticElement),
-										e);
-							} catch (final FeatureNotFoundException e) {
-								UMLDesignerPlugin.log(IStatus.ERROR,
-										NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-												semanticElement),
-										e);
-							}
+				@Override
+				protected void doExecute() {
+					try {
+						// Get the command context
+						DRepresentation representation = null;
+						if (containerView instanceof DRepresentation) {
+							representation = (DRepresentation)containerView;
+						} else if (containerView instanceof DDiagramElement) {
+							representation = ((DDiagramElement)containerView).getParentDiagram();
 						}
-					});
+
+						final CommandContext context = new CommandContext(semanticElement,
+								representation);
+
+						// Execute the create view task
+						final CreateViewTask task = new CreateViewTask(context,
+								session.getModelAccessor(), createViewOp, session.getInterpreter());
+						task.execute();
+
+						final Object createdView = session.getInterpreter()
+								.getVariable(createViewOp.getVariableName());
+						if (createdView instanceof DDiagramElement) {
+							final DDiagramElement element = (DDiagramElement)createdView;
+							HideFilterHelper.INSTANCE.reveal(element);
+						}
+					} catch (final MetaClassNotFoundException e) {
+						UMLDesignerPlugin.log(IStatus.ERROR,
+								NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+										semanticElement),
+								e);
+					} catch (final FeatureNotFoundException e) {
+						UMLDesignerPlugin.log(IStatus.ERROR,
+								NLS.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+										semanticElement),
+								e);
+					}
+				}
+			});
 		}
 	}
 
@@ -871,7 +871,7 @@ public abstract class AbstractDiagramServices {
 		// The edge view represents the new graphical edge
 		// with testing of its source and target nodes we can
 		// know if the user reconnected the source or the target of the edge
-		if (edgeView.getSourceNode().equals(targetView)) {
+		if (edgeView.getSourceNode().equals(sourceView)) {
 			reconnectService.setReconnectKind(ReconnectSwitch.RECONNECT_SOURCE);
 		} else {
 			reconnectService.setReconnectKind(ReconnectSwitch.RECONNECT_TARGET);

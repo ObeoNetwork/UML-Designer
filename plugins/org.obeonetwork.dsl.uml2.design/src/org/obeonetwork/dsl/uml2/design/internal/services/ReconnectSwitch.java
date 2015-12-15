@@ -38,14 +38,17 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
+import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 /**
@@ -337,6 +340,24 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 		return tmplBinding;
 	}
 
+	@Override
+	public Element caseTransition(Transition transition) {
+		if (isReconnectable(transition)) {
+			Element newElement = newPointedElement;
+			if (newElement instanceof Region) {
+				newElement = (Element)newElement.eContainer();
+			}
+			if (newElement instanceof Vertex) {
+				if (RECONNECT_SOURCE == reconnectKind) {
+					transition.setSource((Vertex)newElement);
+				} else {
+					transition.setTarget((Vertex)newElement);
+				}
+			}
+		}
+		return transition;
+	}
+
 	/**
 	 * The new TemplateableElement hasn't a template signature. We need to create with the same signature as
 	 * on the old TemplateableElement and update the binding.
@@ -448,7 +469,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 			} else {
 				// the model is dirty
 				LogServices.INSTANCE.error("ReconnectSwitch.caseTemplateBinding(" + tmplBinding.getClass() //$NON-NLS-1$
-						+ ") dirty TemplateBinding model.", null); //$NON-NLS-1$
+				+ ") dirty TemplateBinding model.", null); //$NON-NLS-1$
 				break;
 			}
 			i++;
