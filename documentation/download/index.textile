@@ -28,7 +28,7 @@ It is also possible to install UML Designer from the "Eclipse marketplace":http:
 
 h3(#Update_Sites). Update Sites
 
-The update-sites provide a p2 repository for UML Designer. Don't know how to install a module from an Update Site ? Have a look to our "video":http://www.youtube.com/watch?v=qYTrO7THer0 or to the full "procedure":http://marketplace.eclipse.org/updatesite/help?url=http%3A//marketplace.obeonetwork.com/updates/od61/ description.
+The update-sites provide a p2 repository for UML Designer. Don't know how to install a module from an Update Site ? Have a look to our "video":http://www.youtube.com/watch?v=qYTrO7THer0.
 
 h2. Releases
 
