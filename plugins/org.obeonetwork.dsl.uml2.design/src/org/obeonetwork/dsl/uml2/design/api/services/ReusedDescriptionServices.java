@@ -466,7 +466,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			}
 		}
 
-		for (final DDiagramElement elt : diagram.getOwnedDiagramElements()) {
+
+		for (final DDiagramElement elt : diagram.getDiagramElements()) {
 			if (elt.isVisible() && elt.getTarget() instanceof Element
 					&& !((Element)elt.getTarget()).getOwnedComments().isEmpty()) {
 				result.addAll(((Element)elt.getTarget()).getOwnedComments());
