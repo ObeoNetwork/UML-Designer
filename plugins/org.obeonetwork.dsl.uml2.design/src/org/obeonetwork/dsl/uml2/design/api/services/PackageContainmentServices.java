@@ -13,7 +13,11 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.internal.Workbench;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 
@@ -47,5 +51,26 @@ public class PackageContainmentServices extends AbstractDiagramServices {
 		}
 
 		return result;
+	}
+
+	public boolean isValidSelection(Element selection, Element container) {
+		// To avoid circular references, check if selection is not an ancestor of container
+		if (EcoreUtil.isAncestor(selection, container)) {
+			String selName = "Selection";
+			String contName = "container";
+
+			if (selection instanceof NamedElement) {
+				selName = ((NamedElement)selection).getName();
+			}
+			if (container instanceof NamedElement) {
+				contName = ((NamedElement)container).getName();
+			}
+
+			MessageDialog.openError(Workbench.getInstance().getDisplay().getActiveShell(), "Selection Error",
+					selName + " is an ancestor of " + contName + ", it could not be moved in " + contName
+							+ ".");
+			return false;
+		}
+		return true;
 	}
 }

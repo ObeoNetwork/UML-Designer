@@ -5812,7 +5812,9 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:For" expression="var:elements" iteratorName="element">
-                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:container" featureName="packagedElement"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="service:isValidSelection(container)">
+                    <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:container" featureName="packagedElement"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
