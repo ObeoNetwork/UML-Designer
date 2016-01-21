@@ -32,13 +32,13 @@
         description="The UML to Java generator provides an Acceleo generator to produce Java from an UML model."
         license="EPL"
         image32="images/Uml2Java.png">
-      <sitesURLS>http://marketplace.obeonetwork.com/updates/od61/</sitesURLS>
+      <sitesURLS>http://download.eclipse.org/umlgen/updates/releases/1.0.0/mars</sitesURLS>
       <overview
           summary="This generator allows you to produce Java source code from a UML model. This module uses the standard UML2 metamodel provided by Eclipse Foundation and as such is compatible with any UML tools using this standard like the UML Designer. It's based on the award winning code generation project, Acceleo."
           screenshot="images/uml2java-screenshot-320x240.png"
-          url="http://marketplace.obeonetwork.com/module/uml2java-generator"/>
-      <id>org.obeonetwork.pim.uml2.gen.java.feature</id>
-      <id>org.obeonetwork.pim.uml2.gen.java.ui.feature</id>
+          url="https://wiki.eclipse.org/Eclipse_UML_Generators"/>
+      <id>org.eclipse.umlgen.java.ui.feature</id>
+      <id>org.eclipse.umlgen.java.feature</id>
     </components>
   </categories>
   <filters name="Incubation"/>
