@@ -37,8 +37,8 @@
           summary="This generator allows you to produce Java source code from a UML model. This module uses the standard UML2 metamodel provided by Eclipse Foundation and as such is compatible with any UML tools using this standard like the UML Designer. It's based on the award winning code generation project, Acceleo."
           screenshot="images/uml2java-screenshot-320x240.png"
           url="https://wiki.eclipse.org/Eclipse_UML_Generators"/>
-      <id>org.eclipse.umlgen.java.ui.feature</id>
-      <id>org.eclipse.umlgen.java.feature</id>
+      <id>org.eclipse.umlgen.gen.java.feature.feature.group</id>
+      <id>org.eclipse.umlgen.gen.java.ui.feature.feature.group</id>
     </components>
   </categories>
   <filters name="Incubation"/>
