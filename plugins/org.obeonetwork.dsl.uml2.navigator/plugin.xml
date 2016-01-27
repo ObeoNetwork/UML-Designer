@@ -159,21 +159,25 @@
      <key
            commandId="org.obeonetwork.dsl.uml2.navigator.commands.copy"
            contextId="org.eclipse.ui.contexts.window"
-           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+           schemeId="org.obeonetwork.dsl.uml2.navigator.scheme"
            sequence="M1+C">
      </key>
      <key
            commandId="org.obeonetwork.dsl.uml2.navigator.commands.paste"
            contextId="org.eclipse.ui.contexts.window"
-           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+           schemeId="org.obeonetwork.dsl.uml2.navigator.scheme"
            sequence="M1+V">
      </key>
      <key
            commandId="org.obeonetwork.dsl.uml2.navigator.commands.cut"
            contextId="org.eclipse.ui.contexts.window"
-           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-           sequence="M1+Y">
+           schemeId="org.obeonetwork.dsl.uml2.navigator.scheme"
+           sequence="M1+X">
      </key>
+     <scheme
+           id="org.obeonetwork.dsl.uml2.navigator.scheme"
+           name="navigator.scheme">
+     </scheme>
   </extension>
   <extension
         point="org.eclipse.ui.handlers">
