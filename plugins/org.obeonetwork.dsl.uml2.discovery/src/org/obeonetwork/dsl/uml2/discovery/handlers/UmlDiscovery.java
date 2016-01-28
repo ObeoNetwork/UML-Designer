@@ -36,7 +36,7 @@ import org.obeonetwork.dsl.uml2.discovery.UmlDiscoveryActivator;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlDiscovery extends DiscoveryContentProvider {
-	private static final String CATALOG_URI = "http://obeonetwork.github.io/UML-Designer/discovery.xmi";
+	private static final String CATALOG_URI = "http://www.umldesigner.org/discovery.xmi";
 
 	@Override
 	public DiscoveryDefinition load(IProgressMonitor monitor) throws InterruptedException {
@@ -79,6 +79,7 @@ public class UmlDiscovery extends DiscoveryContentProvider {
 		try {
 			ps.busyCursorWhile(new IRunnableWithProgress() {
 
+				@Override
 				public void run(IProgressMonitor pm) {
 					try {
 						provider.load(pm);
