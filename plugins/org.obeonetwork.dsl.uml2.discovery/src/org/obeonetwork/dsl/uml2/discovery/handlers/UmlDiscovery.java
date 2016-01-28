@@ -79,7 +79,6 @@ public class UmlDiscovery extends DiscoveryContentProvider {
 		try {
 			ps.busyCursorWhile(new IRunnableWithProgress() {
 
-				@Override
 				public void run(IProgressMonitor pm) {
 					try {
 						provider.load(pm);
