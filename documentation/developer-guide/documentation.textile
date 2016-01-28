@@ -6,7 +6,7 @@ relativePath: ..
 ---
 
 The UML Designer's *web site* is hosted on Github: 
-"http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
+"http://www.umldesigner.org/":http://www.umldesigner.org/
 
 The documentation *source* code is available on :
 "https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation
@@ -133,7 +133,7 @@ The Travis build :
 This operation will generate a new @_site@ folder containing all the @.html@ files generated from the textile files.
 * To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.
 
-The new web site will be available immediately on : "http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
+The new web site will be available immediately on : "http://www.umldesigner.org/":http://www.umldesigner.org/
 
 h4. Integrate the documentation to Eclipse
 

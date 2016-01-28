@@ -4,7 +4,7 @@
   <extensionContent id="org.eclipse.jdt" name="UML Designer" alt-style="css/umldesigner.properties" style="css/umldesigner.css" path="overview/@">
     <group id="jdt" style-id="content-group">
     	<group label="UML Designer" style-id="content-group">
-    		<link style-id="content-link" label="Visit UML Designer web site!" url="http://obeonetwork.github.io/UML-Designer" id="umldesigner">
+    		<link style-id="content-link" label="Visit UML Designer web site!" url="http://www.umldesigner.org" id="umldesigner">
     			<text>Find last news, documentation and support!</text>
     		</link>
     		<link style-id="content-link" label="Getting started" url="http://org.eclipse.ui.intro/showPage?id=tutorials" id="umldesigner">
@@ -51,7 +51,7 @@
     <!-- Extension to the SDK What's New Page. -->
   <extensionContent id="org.eclipse.jdt" name="UML Designer" alt-style="css/umldesigner.properties" style="css/umldesigner.css" path="whatsnew/@">
     <group id="jdt" style-id="content-group">
-       <link label="UML Designer" url="http://obeonetwork.github.io/UML-Designer/download/index.html" id="umldesigner" style-id="content-link">
+       <link label="UML Designer" url="http://www.umldesigner.org/download/index.html" id="umldesigner" style-id="content-link">
           <text>Discover the latest features available in this release of UML Designer. (Internet connection required).</text>
        </link>
     </group>
