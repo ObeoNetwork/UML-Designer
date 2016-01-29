@@ -89,6 +89,27 @@
     <description>${scope.project.label}</description>
   </setupTask>
   <setupTask
+      xsi:type="git:GitCloneTask"
+      id="git.clone.umldesigner.ui.tests"
+      remoteURI="ObeoNetwork/UML-Designer-UI-Tests">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/InducedChoices">
+      <detail
+          key="inherit">
+        <value>github.remoteURIs</value>
+      </detail>
+      <detail
+          key="label">
+        <value>${scope.project.label}-UI-Tests Github repository</value>
+      </detail>
+      <detail
+          key="target">
+        <value>remoteURI</value>
+      </detail>
+    </annotation>
+    <description>${scope.project.label}-UI-Tests</description>
+  </setupTask>
+  <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
@@ -188,6 +209,8 @@
     </sourceLocator>
     <sourceLocator
         rootFolder="${git.clone.umldesigner.location/documentation}"/>
+    <sourceLocator
+        rootFolder="${git.clone.umldesigner.ui.tests.location}"/>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
