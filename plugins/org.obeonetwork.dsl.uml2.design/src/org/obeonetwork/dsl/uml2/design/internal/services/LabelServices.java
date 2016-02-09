@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.event.ChangeEvent;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.ActivityFinalNode;
 import org.eclipse.uml2.uml.ActivityParameterNode;
@@ -99,12 +100,29 @@ public class LabelServices {
 	 *
 	 * @param association
 	 *            the {@link Association} for which to retrieve a label.
+	 * @param view
+	 *            the edge for which to retrieve the source.
+	 * @return the computed label.
+	 */
+	public String computeAssociationBeginLabel(Association association, DDiagramElement view) {
+		final Property sourceEnd = AssociationServices.INSTANCE.getSourceEndAssociation(association, view);
+		if (sourceEnd != null) {
+			final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();
+			return displayLabel.getAssociationEndLabel(sourceEnd);
+		}
+		return null;
+	}
+
+	/**
+	 * Compute the label of the given association.
+	 *
+	 * @param association
+	 *            the {@link Association} for which to retrieve a label.
 	 * @return the computed label.
 	 */
 	public String computeAssociationEndLabel(Association association) {
 		return computeAssociationEndLabel(AssociationServices.INSTANCE.getTarget(association));
 	}
-
 	/**
 	 * Compute the label of the given property with mutiplicity and such.
 	 *
