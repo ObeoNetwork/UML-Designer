@@ -16,14 +16,20 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.dialogs.ListDialog;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
@@ -33,6 +39,7 @@ import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
@@ -81,6 +88,76 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Compute label forn_ary association edge.
+	 *
+	 * @param association
+	 * @param view
+	 *            edge
+	 * @return label
+	 */
+	public String computeAssociationNAryBeginLabel(Association association, DDiagramElement view) {
+		return LabelServices.INSTANCE.computeAssociationBeginLabel(association, view);
+	}
+
+	/**
+	 * Create a new association.
+	 *
+	 * @param object
+	 * @param source
+	 *            selected source
+	 * @param target
+	 *            selected Target
+	 */
+	public void createAssociation(EObject object, Element source, Element target) {
+		if (source.eContainer() instanceof Package) {
+			// tool creation association edge
+			if (!(source instanceof Association || target instanceof Association
+					|| source instanceof AssociationClass || target instanceof AssociationClass)) {
+
+				final Association association = UMLFactory.eINSTANCE.createAssociation();
+				final Property end1 = createAssociationEnd((Type)source);
+				association.getMemberEnds().add(end1);
+				final Property end2 = createAssociationEnd((Type)target);
+				association.getMemberEnds().add(end2);
+
+				association.getOwnedEnds().add(end1);
+				association.getOwnedEnds().add(end2);
+				((Package)source.eContainer()).getPackagedElements().add(association);
+				association.getNavigableOwnedEnds().addAll(getNavigableOwnedEnds(association));
+
+			} else if (source instanceof Association || target instanceof Association) {
+				Association association;
+				Type type;
+
+				if (source instanceof Association){
+					association=(Association)source;
+					type = (Type)target;
+				}else{
+					association = (Association)target;
+					type = (Type)source;
+				}
+
+				if (isBroken(association)) { // Look for broken association
+					fixAssociation(association, type);
+				} else { // create new end
+					final Property end = createAssociationEnd(type);
+					association.getOwnedEnds().add(end);
+					association.getMemberEnds().add(end);
+				}
+			}
+		}
+	}
+
+	private Property createAssociationEnd(Type type) {
+		final Property property = UMLFactory.eINSTANCE.createProperty();
+		property.setName(getAssociationEndsName(type));
+		property.setType(type);
+		property.setLower(0);
+		property.setUpper(-1);
+		return property;
+	}
+
+	/**
 	 * Create an operation in a class.
 	 *
 	 * @param type
@@ -89,6 +166,22 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public Operation createOperation(org.eclipse.uml2.uml.Type type) {
 		return OperationServices.INSTANCE.createOperation(type);
+	}
+
+	/**
+	 * Delete selected edge fron a N-Ary association
+	 *
+	 * @param association
+	 *            association
+	 * @param element
+	 *            edge to delete
+	 */
+	public void deleteNAryAssociation(Association association, DDiagramElement element){
+		if (isNary(association)){
+			final Property end = AssociationServices.INSTANCE.getSourceEndAssociation(association, element);
+			end.eContainer();
+			EcoreUtil.delete(end);
+		}
 	}
 
 	/**
@@ -119,29 +212,45 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return ElementServices.INSTANCE.findTypeByName(object, typeName);
 	}
 
-	private void fixAssociation(Association a, Type b) {
-		final Property target = AssociationServices.INSTANCE.getTarget(a);
-		final Property source = AssociationServices.INSTANCE.getSource(a);
-		final Property newOne = UMLFactory.eINSTANCE.createProperty();
-		newOne.setUpper(-1);
-		newOne.setUpper(0);
-		newOne.setType(b);
-		// The name is computed by the item provider.
-		if (target == null) {
-			a.getOwnedEnds().add(newOne);
-		} else if (source == null) {
-			a.getOwnedEnds().add(newOne);
-		} else {
-			/*
-			 * we already have both property ends, we just need to set the type
-			 */
-			if (target.getType() == null) {
-				target.setType(b);
-			} else if (source.getType() == null) {
-				source.setType(b);
+	private void fixAssociation(Association association, Type type) {
+		final EList<Property> ends = association.getMemberEnds();
+		final List<Property> brokenEnds = new ArrayList<Property>();
+		for (final Property end : ends) {
+			if (end.getType() == null) {
+				brokenEnds.add(end);
 			}
 		}
 
+		if (brokenEnds.size() > 1) {
+			// If several broken links exist user have to select the link to reconnect.
+
+			final ListDialog dialog = new ListDialog(Display.getCurrent().getActiveShell());
+			dialog.setTitle("Reconnect broken association end:"); //$NON-NLS-1$
+			dialog.setMessage("Please select the end to reconnect: "); //$NON-NLS-1$
+			dialog.setInput(brokenEnds.toArray());
+			dialog.setContentProvider(new ArrayContentProvider());
+			dialog.setLabelProvider(new LabelProvider() {
+				@Override
+				public String getText(Object element) {
+					return ((NamedElement)element).getName();
+				}
+			});
+			dialog.setInitialSelections(new Object[] {brokenEnds.get(0)});
+
+			final int status = dialog.open();
+			if (status == Window.OK) {
+				final Object[] types = dialog.getResult();
+				if (types != null && types.length == 1) {
+					final Property endToFix = (Property)types[0];
+					endToFix.setType(type);
+					endToFix.setName(getAssociationEndsName(type));
+				}
+			}
+		} else {
+			final Property endToFix = brokenEnds.get(0);
+			endToFix.setType(type);
+			endToFix.setName(getAssociationEndsName(type));
+		}
 	}
 
 	/**
@@ -193,6 +302,55 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get list of association. Check in diagram only two ends are presents.
+	 *
+	 * @param container
+	 *            package
+	 * @param diagram
+	 *            diagram
+	 * @return list of binary association
+	 */
+	public List<Association> getAssociation(Package container, DDiagram diagram) {
+		final List<Association> result = new ArrayList<Association>();
+		final Collection<EObject> associations = getAssociationInverseRefs(diagram);
+		final EList<DDiagramElement> elements = diagram.getDiagramElements();
+		// List semantic elements visible in diagram
+		final List<EObject> visibleSemanticEnds = new ArrayList<EObject>();
+		for (final DDiagramElement element : elements) {
+			visibleSemanticEnds.add(element.getTarget());
+		}
+		for (final EObject object : associations) {
+			final Association association = (Association)object;
+			final EList<Property> ends = association.getMemberEnds();
+			int visibleEnds = 0;
+			for (final Property end : ends) {
+				if (visibleSemanticEnds.contains(end.getType())) {
+					visibleEnds++;
+				}
+				if (end.getType() == null) { // Broken association case
+					visibleEnds++;
+				}
+			}
+			// Association should be visible in self container
+			// At least one of the ends is visible in diagram
+			if (visibleEnds <= 2) {
+				result.add(association);
+			}
+		}
+		return result;
+	}
+
+	private String getAssociationEndsName(Type type) {
+		String name = ((NamedElement)type).getName();
+		if (!com.google.common.base.Strings.isNullOrEmpty(name)) {
+			final char c[] = name.toCharArray();
+			c[0] = Character.toLowerCase(c[0]);
+			name = new String(c) + 's';
+		}
+		return name;
+	}
+
+	/**
 	 * Retrieve the cross references of the association of all the UML elements displayed as node in a
 	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
 	 * property.
@@ -227,13 +385,12 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	public Collection<Association> getBrokenAssociations(EObject container) {
 		final Collection<Association> result = new ArrayList<Association>();
 		for (final EObject child : container.eContents()) {
-			if (child instanceof Association && !(child instanceof AssociationClass)
+			if (child instanceof Association
 					&& isBroken((Association)child)) {
 				result.add((Association)child);
 			}
 		}
 		return result;
-
 	}
 
 	/**
@@ -272,6 +429,56 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public Collection<EObject> getInterfaceRealizationInverseRefs(DDiagram diagram) {
 		return NodeInverseRefsServices.INSTANCE.getInterfaceRealizationInverseRefs(diagram);
+	}
+
+	/**
+	 * Get list of n-ary association. Check in diagram if more than two ends are presents.
+	 *
+	 * @param container
+	 *            package
+	 * @param diagram
+	 *            diagram
+	 * @return list of n-ary association
+	 */
+	public List<Association> getNAryAssociation(Package container, DDiagram diagram) {
+		final List<Association> result = new ArrayList<Association>();
+		final Collection<EObject> associations = getAssociationInverseRefs(diagram);
+		for (final EObject object : associations) {
+			final Association association = (Association)object;
+			// Association should be visible in self container
+			// At least one of the ends is visible in diagram
+			final EList<DDiagramElement> elements = diagram.getDiagramElements();
+			// check if at least more than 2 ends are displayed in diagram
+			final List<EObject> visibleEndsList = new ArrayList<EObject>();
+			for (final DDiagramElement element : elements) {
+				visibleEndsList.add(element.getTarget());
+			}
+			final EList<Property> ends = association.getMemberEnds();
+			int visibleEnds = 0;
+			for (final Property end : ends) {
+				if (visibleEndsList.contains(end.getType())) {
+					visibleEnds++;
+				}
+				if (end.getType() == null) { // Broken association case
+					visibleEnds++;
+				}
+			}
+			if (association.eContainer().equals(container) && visibleEnds > 2) {
+				result.add(association);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Get source for n-ary association.
+	 *
+	 * @param association
+	 *            association
+	 * @return list of source.
+	 */
+	public EList<Type> getNAryAssociationSource(Association association) {
+		return association.getEndTypes();
 	}
 
 	/**
@@ -325,6 +532,28 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get the type of the association source end.
+	 * @param association association
+	 * @param diagram diagram
+	 * @return type of the source
+	 *
+	 */
+	public Type getSourceType(Association association, DDiagram diagram) {
+		final EList<DDiagramElement> elements = diagram.getDiagramElements();
+		// List semantic elements visible in diagram
+		final List<EObject> visibleEnds = new ArrayList<EObject>();
+		for (final DDiagramElement element : elements) {
+			visibleEnds.add(element.getTarget());
+		}
+		final EList<Property> ends = association.getMemberEnds();
+		for (final Property end : ends) {
+			if (visibleEnds.contains(end.getType())) {
+				return end.getType();
+			}
+		}
+		return null;
+	}
+	/**
 	 * Get stereotype application label.
 	 *
 	 * @param stereotypeApplication
@@ -370,6 +599,20 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get the list of broken ends.
+	 *
+	 * @param association
+	 *            association
+	 * @return List
+	 */
+	public List<Type> getTargetBrokenAssociationToClasse(Association association) {
+		if (!isNary(association)) {
+			return AssociationServices.INSTANCE.getTypes(association);
+		}
+		return null;
+	}
+
+	/**
 	 * Get the type of the association target end.
 	 *
 	 * @param association
@@ -378,6 +621,47 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public Type getTargetType(Association association) {
 		return AssociationServices.INSTANCE.getTargetType(association);
+	}
+
+	/**
+	 * Get the type of the association target end.
+	 *
+	 * @param association
+	 *            association
+	 * @param diagram
+	 *            diagram
+	 * @return Type of the target
+	 */
+	// FIXME check if previous method could be replaced by this one
+	public Type getTargetType(Association association, DDiagram diagram) {
+
+		final EList<DDiagramElement> elements = diagram.getDiagramElements();
+
+		// List semantic elements visible in diagram
+		final List<EObject> diagramElements = new ArrayList<EObject>();
+		for (final DDiagramElement element : elements) {
+			diagramElements.add(element.getTarget());
+		}
+
+		final List<Property> ends = association.getMemberEnds();
+		// find source index in list
+		int sourceIndex = 0;
+		for (int i = 0; i < ends.size(); i++) {
+			if (diagramElements.contains(ends.get(i).getType())) {
+				sourceIndex = i;
+				break;
+			}
+		}
+
+		// find target from the end of the list
+		int targetIndex = ends.size() - 1;
+		while (targetIndex > 0 && targetIndex > sourceIndex) {
+			if (diagramElements.contains(ends.get(targetIndex).getType())) {
+				return ends.get(targetIndex).getType();
+			}
+			targetIndex--;
+		}
+		return null;
 	}
 
 	/**
@@ -391,17 +675,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public Collection<EObject> getTemplateBindingInverseRefs(DDiagram diagram) {
 		return NodeInverseRefsServices.INSTANCE.getTemplateBindingInverseRefs(diagram);
-	}
-
-	/**
-	 * Get types.
-	 *
-	 * @param association
-	 *            Association
-	 * @return List of types
-	 */
-	public List<Type> getTypes(Association association) {
-		return AssociationServices.INSTANCE.getTypes(association);
 	}
 
 	/**
@@ -435,18 +708,24 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	private boolean isBroken(Association child) {
-		final Property target = AssociationServices.INSTANCE.getTarget(child);
-		final Property source = AssociationServices.INSTANCE.getSource(child);
-		if (target != null && target.getType() != null) {
-			if (source != null && source.getType() != null) {
-				return false;
+		final EList<Property> ends = child.getMemberEnds();
+		for (final Property end : ends) {
+			if (end.getType() == null) {
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	private boolean isComposite(Property property) {
 		return property != null && property.isComposite();
+	}
+
+	private boolean isNary(Association association) {
+		if (association != null && association.getMembers() != null && association.getMembers().size() > 2) {
+			return true;
+		}
+		return false;
 	}
 
 	private boolean isNavigable(Property property) {
@@ -502,6 +781,60 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Is a composite or aggregation association is valid.
+	 *
+	 * @param association
+	 * @return true if an aggregation or a composite association is binary
+	 */
+	public boolean isValidAggregationCompositeAssociation(Association association){
+		final EList<Property> ends = association.getMemberEnds();
+		if (ends.size()>2){
+			for (final Property end : ends){
+				if (end.getAggregation().getValue() != AggregationKind.NONE) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Check if an association can be created. Both selected elements are not association. If an association
+	 * is selected is should not be an aggregation or a composite
+	 *
+	 * @param self
+	 *            association
+	 * @param preSource
+	 *            User select element as source
+	 * @param preTarget
+	 *            user select element as target
+	 * @return true if valid
+	 */
+	public boolean isValidAssociation(EObject self, Element preSource,Element preTarget){
+
+		if (preSource instanceof Association && preTarget instanceof Association){
+			return false; // Source and Target are not association
+		}else if (preSource instanceof Association || preTarget instanceof Association){
+			// Verify association is not a binary association
+			Association association;
+			if (preSource instanceof Association){
+				association=(Association)preSource;
+			}else{
+				association=(Association)preTarget;
+			}
+
+			final EList<Property> ends = association.getMemberEnds();
+			for (final Property end : ends){
+				if (isComposite(end) || isShared(end)) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Open type selection dialog.
 	 *
 	 * @param element
@@ -545,10 +878,12 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *
 	 * @param association
 	 *            Association
+	 * @param element
+	 *            Edge element
 	 * @return True if source is navigable
 	 */
-	public boolean sourceIsNavigable(Association association) {
-		final Property source = AssociationServices.INSTANCE.getSource(association);
+	public boolean sourceIsNavigable(Association association, DDiagramElement element) {
+		final Property source = AssociationServices.INSTANCE.getSourceEndAssociation(association, element);
 		return isNavigable(source);
 	}
 
@@ -561,8 +896,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public boolean sourceIsNavigableAndTargetIsComposite(Association association) {
 		final Property source = AssociationServices.INSTANCE.getSource(association);
-	final Property target = AssociationServices.INSTANCE.getTarget(association);
-	return isNavigable(source) && isComposite(target);
+		final Property target = AssociationServices.INSTANCE.getTarget(association);
+		return isNavigable(source) && isComposite(target);
 	}
 
 	/**
@@ -573,9 +908,9 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @return True if source is navigable and shared
 	 */
 	public boolean sourceIsNavigableAndTargetIsShared(Association association) {
-	final Property source = AssociationServices.INSTANCE.getSource(association);
-	final Property target = AssociationServices.INSTANCE.getTarget(association);
-	return isNavigable(source) && isShared(target);
+		final Property source = AssociationServices.INSTANCE.getSource(association);
+		final Property target = AssociationServices.INSTANCE.getTarget(association);
+		return isNavigable(source) && isShared(target);
 	}
 
 	/**
@@ -651,5 +986,4 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		final Property target = AssociationServices.INSTANCE.getTarget(association);
 		return isShared(target);
 	}
-
 }
