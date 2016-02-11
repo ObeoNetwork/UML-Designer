@@ -22,7 +22,7 @@ script:
 - cp -r documentation/_site plugins/org.obeonetwork.dsl.uml2.design.doc/html
 - ls plugins/org.obeonetwork.dsl.uml2.design.doc/html
 # Build uml designer
-- mvn clean verify
+- mvn clean verify -X
 # Build uml designer products
 - mvn clean package -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml
 # Prepare local dirs to deploy: copy repository, bundles and tp
