@@ -38,7 +38,7 @@ Contributors:
   </licenses>
 
   <properties>
-    <tycho-version>0.23.0</tycho-version>
+    <tycho-version>0.24.0</tycho-version>
     <root-path>../..</root-path>
     <platform-version-name>mars</platform-version-name>
   </properties>
