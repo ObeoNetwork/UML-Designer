@@ -878,6 +878,7 @@ public abstract class AbstractDiagramServices {
 		}
 		reconnectService.setOldPointedElement(source);
 		reconnectService.setNewPointedElement(target);
+		reconnectService.setEdge(edgeView);
 		return reconnectService.doSwitch(context);
 	}
 
