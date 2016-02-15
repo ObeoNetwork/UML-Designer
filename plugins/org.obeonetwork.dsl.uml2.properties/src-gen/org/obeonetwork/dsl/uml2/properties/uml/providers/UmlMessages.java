@@ -21,610 +21,628 @@ import org.eclipse.osgi.util.NLS;
  * @generated
  */
 public class UmlMessages extends NLS {
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.properties.uml.providers.umlMessages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.properties.uml.providers.umlMessages"; //$NON-NLS-1$
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String General_ReadOnly;
+	public static String General_ReadOnly;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String General_Part_Title;
+	public static String General_Part_Title;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Operations_ReadOnly;
+	public static String Operations_ReadOnly;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Operations_Part_Title;
+	public static String Operations_Part_Title;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Parameters_ReadOnly;
+	public static String Parameters_ReadOnly;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Parameters_Part_Title;
+	public static String Parameters_Part_Title;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Attributes_ReadOnly;
+	public static String Attributes_ReadOnly;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Attributes_Part_Title;
+	public static String Attributes_Part_Title;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Literals_ReadOnly;
+	public static String Literals_ReadOnly;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Literals_Part_Title;
+	public static String Literals_Part_Title;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Ends_ReadOnly;
+	public static String Ends_ReadOnly;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String Ends_Part_Title;
+	public static String Ends_Part_Title;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_NameLabel;
+	public static String Qualifiers_ReadOnly;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_VisibilityLabel;
+	public static String Qualifiers_Part_Title;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_OrderedLabel;
+	public static String GeneralPropertiesEditionPart_NameLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_Abstract_Label;
+	public static String GeneralPropertiesEditionPart_VisibilityLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_LeafLabel;
+	public static String GeneralPropertiesEditionPart_OrderedLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_Static_Label;
+	public static String GeneralPropertiesEditionPart_Abstract_Label;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_UniqueLabel;
+	public static String GeneralPropertiesEditionPart_LeafLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_QueryLabel;
+	public static String GeneralPropertiesEditionPart_Static_Label;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ReadOnlyLabel;
+	public static String GeneralPropertiesEditionPart_UniqueLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_DerivedLabel;
+	public static String GeneralPropertiesEditionPart_QueryLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_DerivedUnionLabel;
+	public static String GeneralPropertiesEditionPart_ReadOnlyLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_SubstitutableLabel;
+	public static String GeneralPropertiesEditionPart_DerivedLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ActiveLabel;
+	public static String GeneralPropertiesEditionPart_DerivedUnionLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_BehaviorLabel;
+	public static String GeneralPropertiesEditionPart_SubstitutableLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ServiceLabel;
+	public static String GeneralPropertiesEditionPart_ActiveLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ReentrantLabel;
+	public static String GeneralPropertiesEditionPart_BehaviorLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_IndirectlyInstantiatedLabel;
+	public static String GeneralPropertiesEditionPart_ServiceLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_TypeLabel;
+	public static String GeneralPropertiesEditionPart_ReentrantLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_DirectionLabel;
+	public static String GeneralPropertiesEditionPart_IndirectlyInstantiatedLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_AggregationLabel;
+	public static String GeneralPropertiesEditionPart_TypeLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_LowerValueLabel;
+	public static String GeneralPropertiesEditionPart_DirectionLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_UpperValueLabel;
+	public static String GeneralPropertiesEditionPart_AggregationLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_DefaultValueLabel;
+	public static String GeneralPropertiesEditionPart_LowerValueLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_MemberEndLabel;
+	public static String GeneralPropertiesEditionPart_UpperValueLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_SupplierLabel;
+	public static String GeneralPropertiesEditionPart_DefaultValueLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ClientLabel;
+	public static String GeneralPropertiesEditionPart_MemberEndLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_KindLabel;
+	public static String GeneralPropertiesEditionPart_SupplierLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_Kind_readonlyLabel;
+	public static String GeneralPropertiesEditionPart_ClientLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_TriggerLabel;
+	public static String GeneralPropertiesEditionPart_KindLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_EffectLabel;
+	public static String GeneralPropertiesEditionPart_Kind_readonlyLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_GuardLabel;
+	public static String GeneralPropertiesEditionPart_TriggerLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_SourceLabel;
+	public static String GeneralPropertiesEditionPart_EffectLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_TargetLabel;
+	public static String GeneralPropertiesEditionPart_GuardLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_OwnedRuleLabel;
+	public static String GeneralPropertiesEditionPart_SourceLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_IconLabel;
+	public static String GeneralPropertiesEditionPart_TargetLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ExtendedCaseLabel;
+	public static String GeneralPropertiesEditionPart_OwnedRuleLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_AdditionLabel;
+	public static String GeneralPropertiesEditionPart_IconLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_RoleLabel;
+	public static String GeneralPropertiesEditionPart_ExtendedCaseLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_UsecaseLabel;
+	public static String GeneralPropertiesEditionPart_AdditionLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_SubjectsLabel;
+	public static String GeneralPropertiesEditionPart_RoleLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_EntryLabel;
+	public static String GeneralPropertiesEditionPart_UsecaseLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ExitLabel;
+	public static String GeneralPropertiesEditionPart_SubjectsLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_Do_Label;
+	public static String GeneralPropertiesEditionPart_EntryLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_SubmachineLabel;
+	public static String GeneralPropertiesEditionPart_ExitLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_SpecificationLabel;
+	public static String GeneralPropertiesEditionPart_Do_Label;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_InstanceValueLabel;
+	public static String GeneralPropertiesEditionPart_SubmachineLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_MinLabel;
+	public static String GeneralPropertiesEditionPart_SpecificationLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_InstanceLabel;
+	public static String GeneralPropertiesEditionPart_InstanceValueLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_MaxLabel;
+	public static String GeneralPropertiesEditionPart_MinLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_EventLabel;
+	public static String GeneralPropertiesEditionPart_InstanceLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_WhenLabel;
+	public static String GeneralPropertiesEditionPart_MaxLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ChangeExpressionLabel;
+	public static String GeneralPropertiesEditionPart_EventLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_RegionLabel;
+	public static String GeneralPropertiesEditionPart_WhenLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_BehaviourLabel;
+	public static String GeneralPropertiesEditionPart_ChangeExpressionLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_UnmarshallLabel;
+	public static String GeneralPropertiesEditionPart_RegionLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_OperationLabel;
+	public static String GeneralPropertiesEditionPart_BehaviourLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_SignalLabel;
+	public static String GeneralPropertiesEditionPart_UnmarshallLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_SymbolLabel;
+	public static String GeneralPropertiesEditionPart_OperationLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_NameExpressionLabel;
+	public static String GeneralPropertiesEditionPart_SignalLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_OperandLabel;
+	public static String GeneralPropertiesEditionPart_SymbolLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_BooleanValueLabel;
+	public static String GeneralPropertiesEditionPart_NameExpressionLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_IntegerValueLabel;
+	public static String GeneralPropertiesEditionPart_OperandLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_LanguageLabel;
+	public static String GeneralPropertiesEditionPart_BooleanValueLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_BodyLabel;
+	public static String GeneralPropertiesEditionPart_IntegerValueLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GeneralPropertiesEditionPart_ObservationLabel;
+	public static String GeneralPropertiesEditionPart_LanguageLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String OperationsPropertiesEditionPart_OperationsLabel;
+	public static String GeneralPropertiesEditionPart_BodyLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String ParametersPropertiesEditionPart_ParametersLabel;
+	public static String GeneralPropertiesEditionPart_ObservationLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String AttributesPropertiesEditionPart_AttributesLabel;
+	public static String OperationsPropertiesEditionPart_OperationsLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String LiteralsPropertiesEditionPart_LiteralsLabel;
+	public static String ParametersPropertiesEditionPart_ParametersLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String EndsPropertiesEditionPart_EndsLabel;
+	public static String AttributesPropertiesEditionPart_AttributesLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_DocumentationLabel;
+	public static String LiteralsPropertiesEditionPart_LiteralsLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_IntegerValueMessage;
+	public static String EndsPropertiesEditionPart_EndsLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_FloatValueMessage;
+	public static String QualifiersPropertiesEditionPart_QualifiersLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_ShortValueMessage;
+	public static String PropertiesEditionPart_DocumentationLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_LongValueMessage;
+	public static String PropertiesEditionPart_IntegerValueMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_ByteValueMessage;
+	public static String PropertiesEditionPart_FloatValueMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_BigIntegerValueMessage;
+	public static String PropertiesEditionPart_ShortValueMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_BigDecimalValueMessage;
+	public static String PropertiesEditionPart_LongValueMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_DoubleValueMessage;
+	public static String PropertiesEditionPart_ByteValueMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_PropertiesGroupLabel;
+	public static String PropertiesEditionPart_BigIntegerValueMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_RequiredFeatureMessage;
+	public static String PropertiesEditionPart_BigDecimalValueMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_AddTableViewerLabel;
+	public static String PropertiesEditionPart_DoubleValueMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_EditTableViewerLabel;
+	public static String PropertiesEditionPart_PropertiesGroupLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_RemoveTableViewerLabel;
+	public static String PropertiesEditionPart_RequiredFeatureMessage;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_AddListViewerLabel;
+	public static String PropertiesEditionPart_AddTableViewerLabel;
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String PropertiesEditionPart_RemoveListViewerLabel;
+	public static String PropertiesEditionPart_EditTableViewerLabel;
 
-    static {
-        // initialize resource bundle
-        NLS.initializeMessages(BUNDLE_NAME, UmlMessages.class);
-    }
+	/**
+	 * @generated
+	 */
 
-    /**
-     * @generated
-     */
+	public static String PropertiesEditionPart_RemoveTableViewerLabel;
 
-    private UmlMessages() {
-        // protect instanciation
-    }
+	/**
+	 * @generated
+	 */
+
+	public static String PropertiesEditionPart_AddListViewerLabel;
+
+	/**
+	 * @generated
+	 */
+
+	public static String PropertiesEditionPart_RemoveListViewerLabel;
+
+	static {
+		// initialize resource bundle
+		NLS.initializeMessages(BUNDLE_NAME, UmlMessages.class);
+	}
+
+	/**
+	 * @generated
+	 */
+
+	private UmlMessages() {
+		// protect instanciation
+	}
 }

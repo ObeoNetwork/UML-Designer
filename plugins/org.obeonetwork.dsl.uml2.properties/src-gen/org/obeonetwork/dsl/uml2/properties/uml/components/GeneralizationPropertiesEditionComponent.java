@@ -50,138 +50,145 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  */
 public class GeneralizationPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GENERAL_PART = "General"; //$NON-NLS-1$
+	public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
-    /**
-     * Default constructor
-     * 
-     * @generated
-     */
-    public GeneralizationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject generalization, String editing_mode) {
-        super(editingContext, generalization, editing_mode);
-        parts = new String[] { GENERAL_PART };
-        repositoryKey = UmlViewsRepository.class;
-        partKey = UmlViewsRepository.General.class;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @generated
+	 */
+	public GeneralizationPropertiesEditionComponent(PropertiesEditingContext editingContext,
+			EObject generalization, String editing_mode) {
+		super(editingContext, generalization, editing_mode);
+		parts = new String[] {GENERAL_PART};
+		repositoryKey = UmlViewsRepository.class;
+		partKey = UmlViewsRepository.General.class;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-     *      int, org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * @generated
-     */
-    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-        setInitializing(true);
-        if (editingPart != null && key == partKey) {
-            editingPart.setContext(elt, allResource);
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 * @generated
+	 */
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 
-            final Generalization generalization = (Generalization) elt;
-            final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
-            // init values
-            generalPart.setSubstitutable(generalization.isSubstitutable());
+			final Generalization generalization = (Generalization)elt;
+			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			// init values
+			generalPart.setSubstitutable(generalization.isSubstitutable());
 
-            // init filters
+			// init filters
 
-            // init values for referenced views
+			// init values for referenced views
 
-            // init filters for referenced views
+			// init filters for referenced views
 
-        }
-        setInitializing(false);
-    }
+		}
+		setInitializing(false);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-     */
-    public EStructuralFeature associatedFeature(Object editorKey) {
-        if (editorKey == UmlViewsRepository.General.Qualifiers.substitutable) {
-            return UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable();
-        }
-        return super.associatedFeature(editorKey);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.General.Qualifiers.substitutable) {
+			return UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * @generated
-     */
-    public void updateSemanticModel(final IPropertiesEditionEvent event) {
-        Generalization generalization = (Generalization) semanticObject;
-        if (UmlViewsRepository.General.Qualifiers.substitutable == event.getAffectedEditor()) {
-            generalization.setIsSubstitutable((Boolean) event.getNewValue());
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @generated
+	 */
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		Generalization generalization = (Generalization)semanticObject;
+		if (UmlViewsRepository.General.Qualifiers.substitutable == event.getAffectedEditor()) {
+			generalization.setIsSubstitutable((Boolean)event.getNewValue());
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-     */
-    public void updatePart(Notification msg) {
-        super.updatePart(msg);
-        if (editingPart.isVisible()) {
-            GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
-            if (UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null
-                    && isAccessible(UmlViewsRepository.General.Qualifiers.substitutable))
-                generalPart.setSubstitutable((Boolean) msg.getNewValue());
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
+			GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			if (UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && generalPart != null
+					&& isAccessible(UmlViewsRepository.General.Qualifiers.substitutable))
+				generalPart.setSubstitutable((Boolean)msg.getNewValue());
 
-        }
-    }
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-     */
-    @Override
-    protected NotificationFilter[] getNotificationFilters() {
-        NotificationFilter filter = new EStructuralFeatureNotificationFilter(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable());
-        return new NotificationFilter[] { filter, };
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable());
+		return new NotificationFilter[] {filter,};
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object,
-     *      int)
-     */
-    public boolean mustBeComposed(Object key, int kind) {
-        return key == UmlViewsRepository.General.Qualifiers.substitutable || key == UmlViewsRepository.General.Qualifiers.class;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object,
+	 *      int)
+	 */
+	public boolean mustBeComposed(Object key, int kind) {
+		return key == UmlViewsRepository.General.Qualifiers.substitutable
+				|| key == UmlViewsRepository.General.Qualifiers.class;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * @generated
-     */
-    public Diagnostic validateValue(IPropertiesEditionEvent event) {
-        Diagnostic ret = Diagnostic.OK_INSTANCE;
-        if (event.getNewValue() != null) {
-            try {
-                if (UmlViewsRepository.General.Qualifiers.substitutable == event.getAffectedEditor()) {
-                    Object newValue = event.getNewValue();
-                    if (newValue instanceof String) {
-                        newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), (String) newValue);
-                    }
-                    ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), newValue);
-                }
-            } catch (IllegalArgumentException iae) {
-                ret = BasicDiagnostic.toDiagnostic(iae);
-            } catch (WrappedException we) {
-                ret = BasicDiagnostic.toDiagnostic(we);
-            }
-        }
-        return ret;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @generated
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+				if (UmlViewsRepository.General.Qualifiers.substitutable == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(
+								UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(),
+								(String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(
+							UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(),
+							newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
 }

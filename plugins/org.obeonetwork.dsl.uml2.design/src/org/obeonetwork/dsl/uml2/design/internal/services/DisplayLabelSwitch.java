@@ -71,6 +71,7 @@ import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.TypedElement;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
@@ -102,6 +103,16 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * Opening brace constant.
 	 */
 	private static final String OPENING_BRACE = "["; //$NON-NLS-1$
+
+	/**
+	 * Line separator.
+	 */
+	public static final String END_OF_LINE = System.lineSeparator();
+
+	/**
+	 * Space.
+	 */
+	public static final String SPACE = " "; //$NON-NLS-1$
 
 	/**
 	 * Compute the {@link Stereotype} label part for the given {@link Element}.
@@ -671,69 +682,25 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String caseProperty(Property object) {
-		final StringBuilder label = new StringBuilder();
-		if (object.isDerived()) {
-			label.append("/"); //$NON-NLS-1$
-		}
-		label.append(caseStructuralFeature(object));
-		if (object.getDefault() != null && !"".equals(object.getDefault().trim())) { //$NON-NLS-1$
-			// is the label on multiple lines ?
-			if (object.getDefault().contains(NL)) {
-				label.append(" = ..."); //$NON-NLS-1$
-			} else {
-				label.append(" = " + object.getDefault()); //$NON-NLS-1$
+	public String caseProperty(Property property) {
+		if (property != null) {
+			// Qualifier are end properties displayed as bordered node
+			if (!property.getQualifiers().isEmpty()) {
+				String label = ""; //$NON-NLS-1$
+				boolean first = true;
+				for (final Property qualifier : property.getQualifiers()) {
+					if (first) {
+						label += SPACE + computeLabel(qualifier);
+						first = false;
+					} else {
+						label += END_OF_LINE;
+						label += SPACE + computeLabel(qualifier);
+					}
+				}
+				return label;
 			}
-		} else if (object.getDefaultValue() instanceof InstanceValue) {
-			label.append(" = " + ((InstanceValue)object.getDefaultValue()).getName()); //$NON-NLS-1$
 		}
-
-		final StringBuilder propertyModifier = new StringBuilder();
-		if (object.getRedefinedElements() != null && object.getRedefinedElements().size() > 0
-				&& object.getRedefinedElements().get(0) != null) {
-			propertyModifier.append("redefines " + object.getRedefinedElements().get(0).getName()); //$NON-NLS-1$
-		}
-		if (object.getRedefinedElements() != null && object.getSubsettedProperties().size() > 0
-				&& object.getRedefinedElements().get(0) != null) {
-			propertyModifier.append("subsets " + object.getSubsettedProperties().get(0).getName()); //$NON-NLS-1$
-		}
-		if (object.isID()) {
-			if (propertyModifier.length() > 0) {
-				propertyModifier.append(", "); //$NON-NLS-1$
-			}
-			propertyModifier.append("id"); //$NON-NLS-1$
-		}
-		if (object.isReadOnly()) {
-			if (propertyModifier.length() > 0) {
-				propertyModifier.append(", "); //$NON-NLS-1$
-			}
-			propertyModifier.append("readOnly"); //$NON-NLS-1$
-		}
-		// Ordered applies on multivalued multiplicity only
-		if (object.getUpper() != 1 && object.isOrdered()) {
-			if (propertyModifier.length() > 0) {
-				propertyModifier.append(", "); //$NON-NLS-1$
-			}
-			propertyModifier.append("ordered"); //$NON-NLS-1$
-		}
-		// Unique applies on multivalued multiplicity only
-		if (object.getUpper() != 1 && object.isUnique()) {
-			if (propertyModifier.length() > 0) {
-				propertyModifier.append(", "); //$NON-NLS-1$
-			}
-			propertyModifier.append("unique"); //$NON-NLS-1$
-		}
-		if (!object.isUnique() && !object.isOrdered()) {
-			if (propertyModifier.length() > 0) {
-				propertyModifier.append(", "); //$NON-NLS-1$
-			}
-			propertyModifier.append("seq"); //$NON-NLS-1$
-		}
-		if (propertyModifier.length() > 0) {
-			label.append("{" + propertyModifier + "}"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-
-		return label.toString();
+		return computeLabel(property);
 	}
 
 	/**
@@ -743,7 +710,6 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseProtocolStateMachine(ProtocolStateMachine object) {
 		return object.getName();
 	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -914,6 +880,94 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseUsage(org.eclipse.uml2.uml.Usage object) {
 		return "<<use>>"; //$NON-NLS-1$
+	}
+
+	/**
+	 * Compute label for a property.
+	 *
+	 * @param object
+	 *            property
+	 * @return label
+	 */
+	private String computeLabel(Property object) {
+		if (object.eContainer() instanceof Property
+				&& object.eContainmentFeature().getFeatureID() == UMLPackage.PROPERTY__QUALIFIER) {
+			return computeQualifierLabel(object);
+		}
+		return computePropertyLabel(object);
+
+	}
+
+	private String computePropertyLabel(Property object) {
+		final StringBuilder label = new StringBuilder();
+
+		if (object.isDerived()) {
+			label.append("/"); //$NON-NLS-1$
+		}
+		label.append(caseStructuralFeature(object));
+		if (object.getDefault() != null && !"".equals(object.getDefault().trim())) { //$NON-NLS-1$
+			// is the label on multiple lines ?
+			if (object.getDefault().contains(NL)) {
+				label.append(" = ..."); //$NON-NLS-1$
+			} else {
+				label.append(" = " + object.getDefault()); //$NON-NLS-1$
+			}
+		} else if (object.getDefaultValue() instanceof InstanceValue) {
+			label.append(" = " + ((InstanceValue)object.getDefaultValue()).getName()); //$NON-NLS-1$
+		}
+
+		final StringBuilder propertyModifier = new StringBuilder();
+		if (object.getRedefinedElements() != null && object.getRedefinedElements().size() > 0
+				&& object.getRedefinedElements().get(0) != null) {
+			propertyModifier.append("redefines " + object.getRedefinedElements().get(0).getName()); //$NON-NLS-1$
+		}
+		if (object.getRedefinedElements() != null && object.getSubsettedProperties().size() > 0
+				&& object.getRedefinedElements().get(0) != null) {
+			propertyModifier.append("subsets " + object.getSubsettedProperties().get(0).getName()); //$NON-NLS-1$
+		}
+		if (object.isID()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", "); //$NON-NLS-1$
+			}
+			propertyModifier.append("id"); //$NON-NLS-1$
+		}
+		if (object.isReadOnly()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", "); //$NON-NLS-1$
+			}
+			propertyModifier.append("readOnly"); //$NON-NLS-1$
+		}
+		// Ordered applies on multivalued multiplicity only
+		if (object.getUpper() != 1 && object.isOrdered()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", "); //$NON-NLS-1$
+			}
+			propertyModifier.append("ordered"); //$NON-NLS-1$
+		}
+		// Unique applies on multivalued multiplicity only
+		if (object.getUpper() != 1 && object.isUnique()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", "); //$NON-NLS-1$
+			}
+			propertyModifier.append("unique"); //$NON-NLS-1$
+		}
+		if (!object.isUnique() && !object.isOrdered()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", "); //$NON-NLS-1$
+			}
+			propertyModifier.append("seq"); //$NON-NLS-1$
+		}
+		if (propertyModifier.length() > 0) {
+			label.append("{" + propertyModifier + "}"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+		return label.toString();
+	}
+
+	private String computeQualifierLabel(Property object) {
+		if (object.getType() != null) {
+			return caseNamedElement(object) + SPACED_COLUMN + object.getType().getName();
+		}
+		return caseNamedElement(object);
 	}
 
 	/**

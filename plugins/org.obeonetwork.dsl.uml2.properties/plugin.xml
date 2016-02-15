@@ -117,6 +117,12 @@ Contributors:
                id="TaggedValues"
                label="Tagged Values">
          </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="semantic &amp; extension"
+               id="Qualifiers"
+               label="Qualifiers">
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -146,6 +152,12 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.AttributesEditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Attributes"
                tab="Attributes">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.QualifiersCustomPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.QualifiersEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
+               tab="Qualifiers">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm"
@@ -260,6 +272,12 @@ Contributors:
                id="Ends"
                label="Ends">
          </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="semantic &amp; extension"
+               id="Qualifiers"
+               label="Qualifiers">
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -325,6 +343,12 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Connector"
                tab="Ends">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.QualifiersCustomPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.QualifiersEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
+               tab="Qualifiers">
          </propertySection>
       </propertySections>
    </extension>
@@ -419,6 +443,12 @@ Contributors:
                id="TaggedValues"
                label="Tagged Values">
          </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="semantic &amp; extension"
+               id="Qualifiers"
+               label="Qualifiers">
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -490,6 +520,12 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.TaggedValuesEditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.TaggedValues"
                tab="TaggedValues">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.QualifiersCustomPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.QualifiersEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
+               tab="Qualifiers">
          </propertySection>
       </propertySections>
    </extension>

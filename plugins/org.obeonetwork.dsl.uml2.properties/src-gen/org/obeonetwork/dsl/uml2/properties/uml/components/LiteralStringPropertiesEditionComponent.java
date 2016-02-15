@@ -54,187 +54,211 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  */
 public class LiteralStringPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GENERAL_PART = "General"; //$NON-NLS-1$
+	public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
-    /**
-     * Default constructor
-     * 
-     * @generated
-     */
-    public LiteralStringPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject literalString, String editing_mode) {
-        super(editingContext, literalString, editing_mode);
-        parts = new String[] { GENERAL_PART };
-        repositoryKey = UmlViewsRepository.class;
-        partKey = UmlViewsRepository.General.class;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @generated
+	 */
+	public LiteralStringPropertiesEditionComponent(PropertiesEditingContext editingContext,
+			EObject literalString, String editing_mode) {
+		super(editingContext, literalString, editing_mode);
+		parts = new String[] {GENERAL_PART};
+		repositoryKey = UmlViewsRepository.class;
+		partKey = UmlViewsRepository.General.class;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-     *      int, org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * @generated
-     */
-    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-        setInitializing(true);
-        if (editingPart != null && key == partKey) {
-            editingPart.setContext(elt, allResource);
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 * @generated
+	 */
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 
-            final LiteralString literalString = (LiteralString) elt;
-            final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
-            // init values
-            if (isAccessible(UmlViewsRepository.General.integerValue))
-                generalPart.setIntegerValue(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, literalString.getValue()));
+			final LiteralString literalString = (LiteralString)elt;
+			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			// init values
+			if (isAccessible(UmlViewsRepository.General.integerValue))
+				generalPart.setIntegerValue(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING,
+						literalString.getValue()));
 
-            if (isAccessible(UmlViewsRepository.General.name))
-                generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, literalString.getName()));
+			if (isAccessible(UmlViewsRepository.General.name))
+				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING,
+						literalString.getName()));
 
-            if (isAccessible(UmlViewsRepository.General.visibility)) {
-                generalPart.initVisibility(EEFUtils.choiceOfValues(literalString, UMLPackage.eINSTANCE.getNamedElement_Visibility()), literalString.getVisibility());
-            }
-            // init filters
+			if (isAccessible(UmlViewsRepository.General.visibility)) {
+				generalPart.initVisibility(
+						EEFUtils.choiceOfValues(literalString,
+								UMLPackage.eINSTANCE.getNamedElement_Visibility()),
+						literalString.getVisibility());
+			}
+			// init filters
 
-            // init values for referenced views
+			// init values for referenced views
 
-            // init filters for referenced views
+			// init filters for referenced views
 
-        }
-        setInitializing(false);
-    }
+		}
+		setInitializing(false);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-     */
-    public EStructuralFeature associatedFeature(Object editorKey) {
-        if (editorKey == UmlViewsRepository.General.integerValue) {
-            return UMLPackage.eINSTANCE.getLiteralString_Value();
-        }
-        if (editorKey == UmlViewsRepository.General.name) {
-            return UMLPackage.eINSTANCE.getNamedElement_Name();
-        }
-        if (editorKey == UmlViewsRepository.General.visibility) {
-            return UMLPackage.eINSTANCE.getNamedElement_Visibility();
-        }
-        return super.associatedFeature(editorKey);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.General.integerValue) {
+			return UMLPackage.eINSTANCE.getLiteralString_Value();
+		}
+		if (editorKey == UmlViewsRepository.General.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.General.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * @generated
-     */
-    public void updateSemanticModel(final IPropertiesEditionEvent event) {
-        LiteralString literalString = (LiteralString) semanticObject;
-        if (UmlViewsRepository.General.integerValue == event.getAffectedEditor()) {
-            literalString.setValue((java.lang.String) EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String) event.getNewValue()));
-        }
-        if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-            literalString.setName((java.lang.String) EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String) event.getNewValue()));
-        }
-        if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-            literalString.setVisibility((VisibilityKind) event.getNewValue());
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @generated
+	 */
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		LiteralString literalString = (LiteralString)semanticObject;
+		if (UmlViewsRepository.General.integerValue == event.getAffectedEditor()) {
+			literalString.setValue((java.lang.String)EEFConverterUtil
+					.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+		}
+		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+			literalString.setName((java.lang.String)EEFConverterUtil
+					.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+		}
+		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+			literalString.setVisibility((VisibilityKind)event.getNewValue());
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-     */
-    public void updatePart(Notification msg) {
-        super.updatePart(msg);
-        if (editingPart.isVisible()) {
-            GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
-            if (UMLPackage.eINSTANCE.getLiteralString_Value().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null
-                    && isAccessible(UmlViewsRepository.General.integerValue)) {
-                if (msg.getNewValue() != null) {
-                    generalPart.setIntegerValue(EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
-                } else {
-                    generalPart.setIntegerValue("");
-                }
-            }
-            if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null
-                    && isAccessible(UmlViewsRepository.General.name)) {
-                if (msg.getNewValue() != null) {
-                    generalPart.setName(EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
-                } else {
-                    generalPart.setName("");
-                }
-            }
-            if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.visibility))
-                generalPart.setVisibility((VisibilityKind) msg.getNewValue());
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
+			GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			if (UMLPackage.eINSTANCE.getLiteralString_Value().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && generalPart != null
+					&& isAccessible(UmlViewsRepository.General.integerValue)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setIntegerValue(
+							EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
+				} else {
+					generalPart.setIntegerValue("");
+				}
+			}
+			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && generalPart != null
+					&& isAccessible(UmlViewsRepository.General.name)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setName(
+							EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
+				} else {
+					generalPart.setName("");
+				}
+			}
+			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject)
+					&& isAccessible(UmlViewsRepository.General.visibility))
+				generalPart.setVisibility((VisibilityKind)msg.getNewValue());
 
-        }
-    }
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-     */
-    @Override
-    protected NotificationFilter[] getNotificationFilters() {
-        NotificationFilter filter = new EStructuralFeatureNotificationFilter(UMLPackage.eINSTANCE.getLiteralString_Value(), UMLPackage.eINSTANCE.getNamedElement_Name(),
-                UMLPackage.eINSTANCE.getNamedElement_Visibility());
-        return new NotificationFilter[] { filter, };
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				UMLPackage.eINSTANCE.getLiteralString_Value(), UMLPackage.eINSTANCE.getNamedElement_Name(),
+				UMLPackage.eINSTANCE.getNamedElement_Visibility());
+		return new NotificationFilter[] {filter,};
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object,
-     *      int)
-     */
-    public boolean mustBeComposed(Object key, int kind) {
-        return key == UmlViewsRepository.General.integerValue || key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object,
+	 *      int)
+	 */
+	public boolean mustBeComposed(Object key, int kind) {
+		return key == UmlViewsRepository.General.integerValue || key == UmlViewsRepository.General.name
+				|| key == UmlViewsRepository.General.visibility;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * @generated
-     */
-    public Diagnostic validateValue(IPropertiesEditionEvent event) {
-        Diagnostic ret = Diagnostic.OK_INSTANCE;
-        if (event.getNewValue() != null) {
-            try {
-                if (UmlViewsRepository.General.integerValue == event.getAffectedEditor()) {
-                    Object newValue = event.getNewValue();
-                    if (newValue instanceof String) {
-                        newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getLiteralString_Value().getEAttributeType(), (String) newValue);
-                    }
-                    ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getLiteralString_Value().getEAttributeType(), newValue);
-                }
-                if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-                    Object newValue = event.getNewValue();
-                    if (newValue instanceof String) {
-                        newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String) newValue);
-                    }
-                    ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-                }
-                if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-                    Object newValue = event.getNewValue();
-                    if (newValue instanceof String) {
-                        newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String) newValue);
-                    }
-                    ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-                }
-            } catch (IllegalArgumentException iae) {
-                ret = BasicDiagnostic.toDiagnostic(iae);
-            } catch (WrappedException we) {
-                ret = BasicDiagnostic.toDiagnostic(we);
-            }
-        }
-        return ret;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @generated
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+				if (UmlViewsRepository.General.integerValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(
+								UMLPackage.eINSTANCE.getLiteralString_Value().getEAttributeType(),
+								(String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(
+							UMLPackage.eINSTANCE.getLiteralString_Value().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(
+								UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(),
+								(String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(
+							UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(
+								UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(),
+								(String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(
+							UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
 }
