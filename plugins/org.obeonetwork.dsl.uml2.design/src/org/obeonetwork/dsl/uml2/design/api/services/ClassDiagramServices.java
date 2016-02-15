@@ -27,6 +27,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.ListDialog;
@@ -34,6 +35,7 @@ import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
@@ -165,6 +167,42 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public Operation createOperation(org.eclipse.uml2.uml.Type type) {
 		return OperationServices.INSTANCE.createOperation(type);
+	}
+
+	/**
+	 * Create new qualifier for association
+	 *
+	 * @param association
+	 *            selected association
+	 */
+	public void createQualifier(Association association){
+		// only create qualifier possible for binary association
+		// FIXME rien ne semble specifier que c'est dans le cas de binary
+		// if (association.getMemberEnds().size() > 2) {
+		// return;
+		// }
+
+		// Display a selection pop-up to choose the end
+		final ListDialog dialog = new ListDialog(Display.getCurrent().getActiveShell());
+		dialog.setTitle("Qualifier creation"); //$NON-NLS-1$
+		dialog.setMessage("Please select the end to create new Qualifier:"); //$NON-NLS-1$
+		dialog.setInput(association.getMemberEnds().toArray());
+		dialog.setContentProvider(new ArrayContentProvider());
+		dialog.setLabelProvider(new LabelProvider() {
+			@Override
+			public String getText(Object element) {
+				return LabelServices.INSTANCE.computeUmlLabel((Element)element);
+			}
+		});
+		dialog.setInitialSelections(new Object[] {association.getMemberEnds().get(0)});
+
+		final int status = dialog.open();
+		if (status == Window.OK) {
+			final Property qualifier = UMLFactory.eINSTANCE.createProperty();
+			final Property end = (Property)dialog.getResult()[0];
+			end.getQualifiers().add(qualifier);
+			qualifier.setName(computeDefaultName(qualifier));
+		}
 	}
 
 	/**
@@ -516,15 +554,39 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return classes;
 	}
 
+
 	/**
-	 * Get the type of the association source end.
+	 * get association end qualifier for a classifier.
 	 *
-	 * @param association
-	 *            Association
-	 * @return Type of the source
+	 * @param classifier
+	 *            association end
+	 * @return List of qualifier
 	 */
-	public Type getSourceType(Association association) {
-		return AssociationServices.INSTANCE.getSourceType(association);
+	public List<Property> getSemanticCandidatesQualifier(Classifier classifier, DDiagram diagram) {
+		final List<Property> returnList = new ArrayList<Property>();
+		getAssociationInverseRefs(diagram);
+		final EList<DEdge> edges = diagram.getEdges();
+		final ArrayList<Association> visibleAssociations = new ArrayList<Association>();
+
+		for (final DEdge edge : edges) {
+			for (final EObject semanticElement : edge.getSemanticElements()) {
+				if (semanticElement instanceof Association) {
+					visibleAssociations.add((Association)semanticElement);
+				}
+			}
+		}
+		for (final Association association : visibleAssociations) {
+
+			for (final Property end : association.getMemberEnds()) {
+				if (association.getMemberEnds().size() <= 2 && end.getType().equals(classifier)
+						&& !end.getQualifiers().isEmpty()) {
+					// Add qualifier only for binary association
+					returnList.add(end.getQualifiers().get(0));
+				}
+			}
+		}
+
+		return returnList;
 	}
 
 	/**
@@ -534,7 +596,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @return type of the source
 	 *
 	 */
-	public Type getSourceType(Association association, DDiagram diagram) {
+	public Element getSourceType(Association association, DDiagram diagram) {
 		final EList<DDiagramElement> elements = diagram.getDiagramElements();
 		// List semantic elements visible in diagram
 		final List<EObject> visibleEnds = new ArrayList<EObject>();
@@ -544,11 +606,15 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		final EList<Property> ends = association.getMemberEnds();
 		for (final Property end : ends) {
 			if (visibleEnds.contains(end.getType())) {
-				return end.getType();
+				if (end.getQualifiers().isEmpty()) {
+					return end.getType();
+				}
+				return end.getQualifiers().get(0);
 			}
 		}
 		return null;
 	}
+
 	/**
 	 * Get stereotype application label.
 	 *
@@ -612,24 +678,12 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * Get the type of the association target end.
 	 *
 	 * @param association
-	 *            Association
-	 * @return Type of the target
-	 */
-	public Type getTargetType(Association association) {
-		return AssociationServices.INSTANCE.getTargetType(association);
-	}
-
-	/**
-	 * Get the type of the association target end.
-	 *
-	 * @param association
 	 *            association
 	 * @param diagram
 	 *            diagram
 	 * @return Type of the target
 	 */
-	// FIXME check if previous method could be replaced by this one
-	public Type getTargetType(Association association, DDiagram diagram) {
+	public Element getTargetType(Association association, DDiagram diagram) {
 
 		final EList<DDiagramElement> elements = diagram.getDiagramElements();
 
@@ -653,7 +707,10 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		int targetIndex = ends.size() - 1;
 		while (targetIndex > 0 && targetIndex > sourceIndex) {
 			if (diagramElements.contains(ends.get(targetIndex).getType())) {
-				return ends.get(targetIndex).getType();
+				if (ends.get(targetIndex).getQualifiers().isEmpty()) {
+					return ends.get(targetIndex).getType();
+				}
+				return ends.get(targetIndex).getQualifiers().get(0);
 			}
 			targetIndex--;
 		}

@@ -51,6 +51,7 @@ import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.Trigger;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -179,7 +180,11 @@ public class LabelServices {
 		} else if (element instanceof Port) {
 			name = "port"; //$NON-NLS-1$
 		} else if (element instanceof Property) {
-			name = "property"; //$NON-NLS-1$
+			if (element.eContainingFeature().getFeatureID() == UMLPackage.PROPERTY__QUALIFIER) {
+				name="qualifier"; //$NON-NLS-1$
+			}else{
+				name = "property"; //$NON-NLS-1$
+			}
 		} else if (element instanceof FinalState) {
 			name = "Final"; //$NON-NLS-1$
 		} else if (element instanceof Pseudostate) {
