@@ -25,60 +25,59 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface AttributesPropertiesEditionPart {
 
-    /**
-     * Init the attributes
-     * 
-     * @param current
-     *            the current value
-     * @param containgFeature
-     *            the feature where to navigate if necessary
-     * @param feature
-     *            the feature to manage
-     */
-    public void initAttributes(ReferencesTableSettings settings);
+	/**
+	 * Init the attributes
+	 * 
+	 * @param current
+	 *            the current value
+	 * @param containgFeature
+	 *            the feature where to navigate if necessary
+	 * @param feature
+	 *            the feature to manage
+	 */
+	public void initAttributes(ReferencesTableSettings settings);
 
-    /**
-     * Update the attributes
-     * 
-     * @param newValue
-     *            the attributes to update
-     * @generated
-     */
-    public void updateAttributes();
+	/**
+	 * Update the attributes
+	 * 
+	 * @param newValue
+	 *            the attributes to update
+	 * @generated
+	 */
+	public void updateAttributes();
 
-    /**
-     * Adds the given filter to the attributes edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * @generated
-     */
-    public void addFilterToAttributes(ViewerFilter filter);
+	/**
+	 * Adds the given filter to the attributes edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToAttributes(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the attributes edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * @generated
-     */
-    public void addBusinessFilterToAttributes(ViewerFilter filter);
+	/**
+	 * Adds the given filter to the attributes edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToAttributes(ViewerFilter filter);
 
-    /**
-     * @return true if the given element is contained inside the attributes
-     *         table
-     * @generated
-     */
-    public boolean isContainedInAttributesTable(EObject element);
+	/**
+	 * @return true if the given element is contained inside the attributes table
+	 * @generated
+	 */
+	public boolean isContainedInAttributesTable(EObject element);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * @generated
-     */
-    public String getTitle();
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * @generated
+	 */
+	public String getTitle();
 
 }

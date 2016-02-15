@@ -19,480 +19,494 @@ import org.eclipse.uml2.uml.Package;
  */
 public class UmlViewsRepository {
 
-    public static final int SWT_KIND = 0;
+	public static final int SWT_KIND = 0;
 
-    public static final int FORM_KIND = 1;
+	public static final int FORM_KIND = 1;
 
-    /**
-     * General view descriptor
-     * 
-     * @generated
-     */
-    public static class General {
-        /**
-         * @generated
-         */
+	/**
+	 * General view descriptor
+	 * 
+	 * @generated
+	 */
+	public static class General {
+		/**
+		 * @generated
+		 */
 
-        public static String name = "uml::General::name";
+		public static String name = "uml::General::name";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String visibility = "uml::General::visibility";
+		public static String visibility = "uml::General::visibility";
 
-        public static class Qualifiers {
+		public static class Qualifiers {
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String ordered = "uml::General::qualifiers::ordered";
+			public static String ordered = "uml::General::qualifiers::ordered";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String abstract_ = "uml::General::qualifiers::abstract";
+			public static String abstract_ = "uml::General::qualifiers::abstract";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String leaf = "uml::General::qualifiers::leaf";
+			public static String leaf = "uml::General::qualifiers::leaf";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String static_ = "uml::General::qualifiers::static";
+			public static String static_ = "uml::General::qualifiers::static";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String unique = "uml::General::qualifiers::unique";
+			public static String unique = "uml::General::qualifiers::unique";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String query = "uml::General::qualifiers::query";
+			public static String query = "uml::General::qualifiers::query";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String readOnly = "uml::General::qualifiers::readOnly";
+			public static String readOnly = "uml::General::qualifiers::readOnly";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String derived = "uml::General::qualifiers::derived";
+			public static String derived = "uml::General::qualifiers::derived";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String derivedUnion = "uml::General::qualifiers::derivedUnion";
+			public static String derivedUnion = "uml::General::qualifiers::derivedUnion";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String substitutable = "uml::General::qualifiers::substitutable";
+			public static String substitutable = "uml::General::qualifiers::substitutable";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String active = "uml::General::qualifiers::active";
+			public static String active = "uml::General::qualifiers::active";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String behavior = "uml::General::qualifiers::behavior";
+			public static String behavior = "uml::General::qualifiers::behavior";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String service = "uml::General::qualifiers::service";
+			public static String service = "uml::General::qualifiers::service";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String reentrant = "uml::General::qualifiers::reentrant";
+			public static String reentrant = "uml::General::qualifiers::reentrant";
 
-            /**
-             * @generated
-             */
+			/**
+			 * @generated
+			 */
 
-            public static String indirectlyInstantiated = "uml::General::qualifiers::indirectlyInstantiated";
+			public static String indirectlyInstantiated = "uml::General::qualifiers::indirectlyInstantiated";
 
-        }
+		}
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String type = "uml::General::type";
+		public static String type = "uml::General::type";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String direction = "uml::General::direction";
+		public static String direction = "uml::General::direction";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String aggregation = "uml::General::aggregation";
+		public static String aggregation = "uml::General::aggregation";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String lowerValue = "uml::General::lowerValue";
+		public static String lowerValue = "uml::General::lowerValue";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String upperValue = "uml::General::upperValue";
+		public static String upperValue = "uml::General::upperValue";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String defaultValue = "uml::General::defaultValue";
+		public static String defaultValue = "uml::General::defaultValue";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String memberEnd = "uml::General::memberEnd";
+		public static String memberEnd = "uml::General::memberEnd";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String supplier = "uml::General::supplier";
+		public static String supplier = "uml::General::supplier";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String client = "uml::General::client";
+		public static String client = "uml::General::client";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String kind = "uml::General::kind";
+		public static String kind = "uml::General::kind";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String kind_readonly = "uml::General::kind_readonly";
+		public static String kind_readonly = "uml::General::kind_readonly";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String trigger = "uml::General::trigger";
+		public static String trigger = "uml::General::trigger";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String effect = "uml::General::effect";
+		public static String effect = "uml::General::effect";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String guard = "uml::General::guard";
+		public static String guard = "uml::General::guard";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String source = "uml::General::source";
+		public static String source = "uml::General::source";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String target = "uml::General::target";
+		public static String target = "uml::General::target";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String ownedRule = "uml::General::ownedRule";
+		public static String ownedRule = "uml::General::ownedRule";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String icon = "uml::General::icon";
+		public static String icon = "uml::General::icon";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String extendedCase = "uml::General::extendedCase";
+		public static String extendedCase = "uml::General::extendedCase";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String addition = "uml::General::addition";
+		public static String addition = "uml::General::addition";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String role = "uml::General::role";
+		public static String role = "uml::General::role";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String usecase = "uml::General::usecase";
+		public static String usecase = "uml::General::usecase";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String subjects = "uml::General::subjects";
+		public static String subjects = "uml::General::subjects";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String entry = "uml::General::entry";
+		public static String entry = "uml::General::entry";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String exit = "uml::General::exit";
+		public static String exit = "uml::General::exit";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String do_ = "uml::General::do";
+		public static String do_ = "uml::General::do";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String submachine = "uml::General::submachine";
+		public static String submachine = "uml::General::submachine";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String specification = "uml::General::specification";
+		public static String specification = "uml::General::specification";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String instanceValue = "uml::General::instanceValue";
+		public static String instanceValue = "uml::General::instanceValue";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String min = "uml::General::min";
+		public static String min = "uml::General::min";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String instance = "uml::General::instance";
+		public static String instance = "uml::General::instance";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String max = "uml::General::max";
+		public static String max = "uml::General::max";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String event = "uml::General::event";
+		public static String event = "uml::General::event";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String when = "uml::General::when";
+		public static String when = "uml::General::when";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String changeExpression = "uml::General::changeExpression";
+		public static String changeExpression = "uml::General::changeExpression";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String region = "uml::General::region";
+		public static String region = "uml::General::region";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String behaviour = "uml::General::behaviour";
+		public static String behaviour = "uml::General::behaviour";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String unmarshall = "uml::General::unmarshall";
+		public static String unmarshall = "uml::General::unmarshall";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String operation = "uml::General::operation";
+		public static String operation = "uml::General::operation";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String signal = "uml::General::signal";
+		public static String signal = "uml::General::signal";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String symbol = "uml::General::symbol";
+		public static String symbol = "uml::General::symbol";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String nameExpression = "uml::General::nameExpression";
+		public static String nameExpression = "uml::General::nameExpression";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String operand = "uml::General::operand";
+		public static String operand = "uml::General::operand";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String booleanValue = "uml::General::booleanValue";
+		public static String booleanValue = "uml::General::booleanValue";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String integerValue = "uml::General::integerValue";
+		public static String integerValue = "uml::General::integerValue";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String language = "uml::General::language";
+		public static String language = "uml::General::language";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String body = "uml::General::body";
+		public static String body = "uml::General::body";
 
-        /**
-         * @generated
-         */
+		/**
+		 * @generated
+		 */
 
-        public static String observation = "uml::General::observation";
+		public static String observation = "uml::General::observation";
 
-    }
+	}
 
-    /**
-     * Operations view descriptor
-     * 
-     * @generated
-     */
-    public static class Operations {
-        /**
-         * @generated
-         */
+	/**
+	 * Operations view descriptor
+	 * 
+	 * @generated
+	 */
+	public static class Operations {
+		/**
+		 * @generated
+		 */
 
-        public static String operations_ = "uml::Operations::operations_";
+		public static String operations_ = "uml::Operations::operations_";
 
-    }
+	}
 
-    /**
-     * Parameters view descriptor
-     * 
-     * @generated
-     */
-    public static class Parameters {
-        /**
-         * @generated
-         */
+	/**
+	 * Parameters view descriptor
+	 * 
+	 * @generated
+	 */
+	public static class Parameters {
+		/**
+		 * @generated
+		 */
 
-        public static String parameters_ = "uml::Parameters::parameters_";
+		public static String parameters_ = "uml::Parameters::parameters_";
 
-    }
+	}
 
-    /**
-     * Attributes view descriptor
-     * 
-     * @generated
-     */
-    public static class Attributes {
-        /**
-         * @generated
-         */
+	/**
+	 * Attributes view descriptor
+	 * 
+	 * @generated
+	 */
+	public static class Attributes {
+		/**
+		 * @generated
+		 */
 
-        public static String attributes_ = "uml::Attributes::attributes_";
+		public static String attributes_ = "uml::Attributes::attributes_";
 
-    }
+	}
 
-    /**
-     * Literals view descriptor
-     * 
-     * @generated
-     */
-    public static class Literals {
-        /**
-         * @generated
-         */
+	/**
+	 * Literals view descriptor
+	 * 
+	 * @generated
+	 */
+	public static class Literals {
+		/**
+		 * @generated
+		 */
 
-        public static String literals_ = "uml::Literals::literals_";
+		public static String literals_ = "uml::Literals::literals_";
 
-    }
+	}
 
-    /**
-     * Ends view descriptor
-     * 
-     * @generated
-     */
-    public static class Ends {
-        /**
-         * @generated
-         */
+	/**
+	 * Ends view descriptor
+	 * 
+	 * @generated
+	 */
+	public static class Ends {
+		/**
+		 * @generated
+		 */
 
-        public static String ends_ = "uml::Ends::ends_";
+		public static String ends_ = "uml::Ends::ends_";
 
-    }
+	}
+
+	/**
+	 * Qualifiers view descriptor
+	 * 
+	 * @generated
+	 */
+	public static class Qualifiers {
+		/**
+		 * @generated
+		 */
+
+		public static String qualifiers_ = "uml::Qualifiers::qualifiers_";
+
+	}
 
 }

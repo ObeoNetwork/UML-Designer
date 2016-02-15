@@ -20,10 +20,10 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralCustomProperti
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilesPropertiesEditionPartForm;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.QualifiersCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypeApplicationsPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.GeneralPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.SAPropertyPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlPropertiesEditionPartProvider;
 
@@ -84,6 +84,10 @@ public class UmlCustomPropertiesEditionPartProvider extends UmlPropertiesEdition
         if (key == UmlViewsRepository.General.class) {
             if (kind == UmlViewsRepository.FORM_KIND)
                 return new GeneralCustomPropertiesEditionPartForm(component);
+        }
+        if (key == UmlViewsRepository.Qualifiers.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new QualifiersCustomPropertiesEditionPartForm(component);
         }
 
         return super.getPropertiesEditionPart(key, kind, component);

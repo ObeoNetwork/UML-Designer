@@ -25,60 +25,59 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface ParametersPropertiesEditionPart {
 
-    /**
-     * Init the parameters
-     * 
-     * @param current
-     *            the current value
-     * @param containgFeature
-     *            the feature where to navigate if necessary
-     * @param feature
-     *            the feature to manage
-     */
-    public void initParameters(ReferencesTableSettings settings);
+	/**
+	 * Init the parameters
+	 * 
+	 * @param current
+	 *            the current value
+	 * @param containgFeature
+	 *            the feature where to navigate if necessary
+	 * @param feature
+	 *            the feature to manage
+	 */
+	public void initParameters(ReferencesTableSettings settings);
 
-    /**
-     * Update the parameters
-     * 
-     * @param newValue
-     *            the parameters to update
-     * @generated
-     */
-    public void updateParameters();
+	/**
+	 * Update the parameters
+	 * 
+	 * @param newValue
+	 *            the parameters to update
+	 * @generated
+	 */
+	public void updateParameters();
 
-    /**
-     * Adds the given filter to the parameters edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * @generated
-     */
-    public void addFilterToParameters(ViewerFilter filter);
+	/**
+	 * Adds the given filter to the parameters edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToParameters(ViewerFilter filter);
 
-    /**
-     * Adds the given filter to the parameters edition editor.
-     * 
-     * @param filter
-     *            a viewer filter
-     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * @generated
-     */
-    public void addBusinessFilterToParameters(ViewerFilter filter);
+	/**
+	 * Adds the given filter to the parameters edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToParameters(ViewerFilter filter);
 
-    /**
-     * @return true if the given element is contained inside the parameters
-     *         table
-     * @generated
-     */
-    public boolean isContainedInParametersTable(EObject element);
+	/**
+	 * @return true if the given element is contained inside the parameters table
+	 * @generated
+	 */
+	public boolean isContainedInParametersTable(EObject element);
 
-    /**
-     * Returns the internationalized title text.
-     * 
-     * @return the internationalized title text.
-     * @generated
-     */
-    public String getTitle();
+	/**
+	 * Returns the internationalized title text.
+	 * 
+	 * @return the internationalized title text.
+	 * @generated
+	 */
+	public String getTitle();
 
 }

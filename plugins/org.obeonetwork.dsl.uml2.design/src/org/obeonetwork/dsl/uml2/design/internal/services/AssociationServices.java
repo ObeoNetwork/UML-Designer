@@ -10,12 +10,15 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.internal.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
@@ -61,14 +64,33 @@ public class AssociationServices {
 	 * @return end
 	 */
 	public Property getSourceEndAssociation(Association association, DDiagramElement view) {
-		final DEdge edge = (DEdge)view;
-		final List<Property> members = association.getMemberEnds();
-		final DNodeListSpec source = (DNodeListSpec)edge.getSourceNode();
-		final List<EObject> sourceSemanticElements = source.getSemanticElements();
-		for (final EObject sourceEObject : sourceSemanticElements) {
-			for (final Property member : members) {
-				if (sourceEObject.equals(member.getType())) {
-					return member;
+
+		if (view instanceof DEdge) {
+			final DEdge edge = (DEdge)view;
+			final List<Property> members = association.getMemberEnds();
+			final EdgeTarget edgeSource = edge.getSourceNode();
+			List<EObject> sourceSemanticElements = new ArrayList<EObject>();
+
+			if (edgeSource instanceof DNodeListSpec) {
+				// edge source is a classifier
+				final DNodeListSpec source = (DNodeListSpec)edgeSource;
+				sourceSemanticElements = source.getSemanticElements();
+				for (final EObject sourceEObject : sourceSemanticElements) {
+					for (final Property member : members) {
+						if (sourceEObject.equals(member.getType())) {
+							return member;
+						}
+					}
+				}
+			} else if (edgeSource instanceof DNodeSpec) {
+				// edge source is a qualifier
+				sourceSemanticElements = ((DNodeSpec)edgeSource).getSemanticElements();
+				for (final EObject sourceEObject : sourceSemanticElements) {
+					for (final Property member : members) {
+						if (sourceEObject.equals(member)) {
+							return member;
+						}
+					}
 				}
 			}
 		}

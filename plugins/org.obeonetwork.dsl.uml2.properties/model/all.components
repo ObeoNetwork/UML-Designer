@@ -182,7 +182,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Parameter"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_ZLS6EFv_EeKZBNASYbV97A" name="Property" views="_Kt6kIFv3EeKZBNASYbV97A">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_ZLS6EFv_EeKZBNASYbV97A" name="Property" views="_Kt6kIFv3EeKZBNASYbV97A _dahUYNbsEeWWFbhINWYt6A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZLS6EVv_EeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -228,6 +228,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_byCH0F7pEeKd8d7WgZ31eQ" name="type" views="_tYLxgFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//TypedElement/type"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sKRGUNbsEeWWFbhINWYt6A" name="qualifier" views="_hJjK4NbsEeWWFbhINWYt6A">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/qualifier"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property"/>
       </bindings>
@@ -1267,6 +1270,11 @@
       </views>
       <views xmi:id="_2oeWUIpNEeKz7Nysxc3j5A" name="Ends">
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_4yn5sIpNEeKz7Nysxc3j5A" name="ends">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+        </elements>
+      </views>
+      <views xmi:id="_dahUYNbsEeWWFbhINWYt6A" name="Qualifiers">
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_hJjK4NbsEeWWFbhINWYt6A" name="qualifiers">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
         </elements>
       </views>
