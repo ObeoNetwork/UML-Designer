@@ -27,7 +27,6 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.ListDialog;
@@ -99,6 +98,47 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public String computeAssociationNAryBeginLabel(Association association, DDiagramElement view) {
 		return LabelServices.INSTANCE.computeAssociationBeginLabel(association, view);
+	}
+
+	/**
+	 * Compute label for qualifier.
+	 *
+	 * @param association
+	 *            the association
+	 * @param view
+	 *            the qualifier element in diagram
+	 * @return label
+	 */
+	public String computeQualifierLabel(Association association, DDiagramElement view){
+		String label = ""; //$NON-NLS-1$
+		final DDiagramElement classifierView = (DDiagramElement)view.eContainer();
+		final EList<EObject> semanticElements = classifierView.getSemanticElements();
+
+		final Classifier classifier = (Classifier)semanticElements.get(0);
+
+		final EList<Property> ends = association.getMemberEnds();
+		Property end = null;
+		for (final Property endLoop : ends){
+			if (endLoop.getType().equals(classifier)){
+				end = endLoop;
+				break;
+			}
+		}
+
+		if (end != null) {
+			boolean first = true;
+			for (final Property qualifier : end.getQualifiers()) {
+				if (first) {
+					label += " " + computeUmlLabel(qualifier); //$NON-NLS-1$
+					first = false;
+				} else {
+					label += System.lineSeparator();
+					label += " " + computeUmlLabel(qualifier); //$NON-NLS-1$
+				}
+			}
+			return label;
+		}
+		return label;
 	}
 
 	/**
@@ -535,6 +575,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return ends;
 	}
 
+
 	/**
 	 * Return a set of classes from model.
 	 *
@@ -554,38 +595,28 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return classes;
 	}
 
-
 	/**
-	 * get association end qualifier for a classifier.
+	 * Get association end qualifier for a classifier.
 	 *
 	 * @param classifier
-	 *            association end
+	 *            association end type
+	 * @param diagram
+	 *            the diagram
 	 * @return List of qualifier
 	 */
-	public List<Property> getSemanticCandidatesQualifier(Classifier classifier, DDiagram diagram) {
-		final List<Property> returnList = new ArrayList<Property>();
-		getAssociationInverseRefs(diagram);
-		final EList<DEdge> edges = diagram.getEdges();
-		final ArrayList<Association> visibleAssociations = new ArrayList<Association>();
-
-		for (final DEdge edge : edges) {
-			for (final EObject semanticElement : edge.getSemanticElements()) {
-				if (semanticElement instanceof Association) {
-					visibleAssociations.add((Association)semanticElement);
-				}
-			}
-		}
-		for (final Association association : visibleAssociations) {
-
-			for (final Property end : association.getMemberEnds()) {
-				if (association.getMemberEnds().size() <= 2 && end.getType().equals(classifier)
+	public List<Association> getSemanticCandidatesQualifier(Classifier classifier, DDiagram diagram) {
+		final List<Association> returnList = new ArrayList<Association>();
+		final Collection<EObject> visibleAssociations = getAssociationInverseRefs(diagram);
+		for (final EObject association : visibleAssociations) {
+			final Association asso = (Association)association;
+			for (final Property end : asso.getMemberEnds()) {
+				if (asso.getMemberEnds().size() <= 2 && end.getType().equals(classifier)
 						&& !end.getQualifiers().isEmpty()) {
 					// Add qualifier only for binary association
-					returnList.add(end.getQualifiers().get(0));
+					returnList.add(asso);
 				}
 			}
 		}
-
 		return returnList;
 	}
 
@@ -609,7 +640,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 				if (end.getQualifiers().isEmpty()) {
 					return end.getType();
 				}
-				return end.getQualifiers().get(0);
+				return association;
 			}
 		}
 		return null;
@@ -710,7 +741,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 				if (ends.get(targetIndex).getQualifiers().isEmpty()) {
 					return ends.get(targetIndex).getType();
 				}
-				return ends.get(targetIndex).getQualifiers().get(0);
+				return association;
 			}
 			targetIndex--;
 		}
