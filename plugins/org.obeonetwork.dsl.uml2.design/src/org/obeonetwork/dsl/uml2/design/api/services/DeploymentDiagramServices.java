@@ -14,7 +14,10 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.DeploymentTarget;
+import org.eclipse.uml2.uml.Type;
+import org.obeonetwork.dsl.uml2.design.internal.services.AssociationServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 
 /**
@@ -45,6 +48,28 @@ public class DeploymentDiagramServices extends AbstractDiagramServices {
 	 */
 	public Collection<EObject> getDeploymentInverseRefs(DDiagram diagram) {
 		return NodeInverseRefsServices.INSTANCE.getDeploymentInverseRefs(diagram);
+	}
+
+	/**
+	 * Get the type of the association source end.
+	 *
+	 * @param association
+	 *            Association
+	 * @return Type of the source
+	 */
+	public Type getSourceType(Association association) {
+		return AssociationServices.INSTANCE.getSourceType(association);
+	}
+
+	/**
+	 * Get the type of the association target end.
+	 *
+	 * @param association
+	 *            Association
+	 * @return Type of the target
+	 */
+	public Type getTargetType(Association association) {
+		return AssociationServices.INSTANCE.getTargetType(association);
 	}
 
 	/**

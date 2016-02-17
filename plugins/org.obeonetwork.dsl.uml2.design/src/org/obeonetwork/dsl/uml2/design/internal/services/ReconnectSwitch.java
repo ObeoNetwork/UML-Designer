@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
@@ -84,14 +85,25 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	private Element newPointedElement;
 
 	/**
+	 * Edge to reconnect.
+	 */
+	private DEdge edgeToReconnect;
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Element caseAssociation(Association association) {
 		if (isReconnectable(association)) {
 			if (RECONNECT_SOURCE == reconnectKind) {
-				final Property source = AssociationServices.INSTANCE.getSource(association);
-				source.setType((Type)newPointedElement);
+				if (association.getMemberEnds().size() > 2) {
+					final Property end = AssociationServices.INSTANCE.getSourceEndAssociation(association,
+							edgeToReconnect);
+					end.setType((Type)newPointedElement);
+				} else {
+					final Property source = AssociationServices.INSTANCE.getSource(association);
+					source.setType((Type)newPointedElement);
+				}
 			} else {
 				final Property target = AssociationServices.INSTANCE.getTarget(association);
 				target.setType((Type)newPointedElement);
@@ -482,6 +494,16 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 		reconnectPreconditionService.setNewPointedElement(newPointedElement);
 		reconnectPreconditionService.setOldPointedElement(oldPointedElement);
 		return reconnectPreconditionService.isReconnectable(element);
+	}
+
+	/**
+	 * Store selected edge element.
+	 *
+	 * @param edge
+	 *            diagram edge to reconnect
+	 */
+	public void setEdgeToReconnect(DEdge edge) {
+		edgeToReconnect = edge;
 	}
 
 	/**
