@@ -87,7 +87,8 @@ Creation tools are available in the class diagram for the following features :
 * property : Can be created under classes, interfaces, datatypes, primitive types, enumerations.
 * typed property : Can be created under classes, interfaces, datatypes, primitive types, enumerations. When the user selects a container, a wizard is open which list all the available types existing in thee modeling project in order that the user selects a type for the property to create.
 * operation : Can be created under classes, interfaces, datatypes, primitive types, enumerations.
-* literal:Can be created under enumerations.
+* literal : Can be created under enumerations.
+* qualifier : Can be created under association end. When the user selects an association, a wizard is open which list the ends of the association. The qualifier will be created under the selected end.
 			
 It is possible to add and edit :
 * the property type : 
@@ -111,7 +112,7 @@ h4. Create relationships
 
 It is possible to *create a relationship* by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 The following edge creation tools exist in the palette :
-* association : is represented by a solid link with start and end labels and can be created between two classes. According to the association navigability an arrow will be visible at the start or end of the link.
+* association : is represented by a solid link with start and end labels and can be created between two classes. According to the association navigability an arrow will be visible at the start or end of the link. N-ary association with more than two ends are drawned with a diamond and solid lines connect each end to the diamond.
 * reference : is represented by a solid link with start and end labels and can be created between two classes. According to the reference navigability an arrow will be visible at the start or end of the link.
 * composition : is represented by a solid edge with fill diamond decorator and with start and end labels, it can be created between two classes. According to the composition navigability an arrow will be visible at the start or end of the link.
 * aggregation : is represented by a solid edge with diamond decorator and with start and end labels, it can be created between two classes. According to the aggregation navigability an arrow will be visible at the start or end of the link.

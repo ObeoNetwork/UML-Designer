@@ -50,145 +50,145 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  */
 public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-    /**
-     * @generated
-     */
+	/**
+	 * @generated
+	 */
 
-    public static String GENERAL_PART = "General"; //$NON-NLS-1$
+	public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
-    /**
-     * Default constructor
-     * 
-     * @generated
-     */
-    public CommentPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject comment, String editing_mode) {
-        super(editingContext, comment, editing_mode);
-        parts = new String[] { GENERAL_PART };
-        repositoryKey = UmlViewsRepository.class;
-        partKey = UmlViewsRepository.General.class;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @generated
+	 */
+	public CommentPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject comment,
+			String editing_mode) {
+		super(editingContext, comment, editing_mode);
+		parts = new String[] {GENERAL_PART};
+		repositoryKey = UmlViewsRepository.class;
+		partKey = UmlViewsRepository.General.class;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
-     *      int, org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * @generated
-     */
-    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-        setInitializing(true);
-        if (editingPart != null && key == partKey) {
-            editingPart.setContext(elt, allResource);
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+	 *      int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 * @generated
+	 */
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
 
-            final Comment comment = (Comment) elt;
-            final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
-            // init values
-            // FIXME NO VALID CASE INTO template public updater(editionElement :
-            // PropertiesEditionElement, view : View, pec :
-            // PropertiesEditionComponent) in widgetControl.mtl module, with the
-            // values : body, General, Comment.
-            // init filters
-            // FIXME NO VALID CASE INTO template public
-            // filterUpdater(editionElement : PropertiesEditionElement, view :
-            // View, pec : PropertiesEditionComponent) in widgetControl.mtl
-            // module, with the values : body, General, Comment.
-            // init values for referenced views
+			final Comment comment = (Comment)elt;
+			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			// init values
+			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement,
+			// view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values :
+			// body, General, Comment.
+			// init filters
+			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement :
+			// PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl
+			// module, with the values : body, General, Comment.
+			// init values for referenced views
 
-            // init filters for referenced views
+			// init filters for referenced views
 
-        }
-        setInitializing(false);
-    }
+		}
+		setInitializing(false);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-     */
-    public EStructuralFeature associatedFeature(Object editorKey) {
-        if (editorKey == UmlViewsRepository.General.body) {
-            return UMLPackage.eINSTANCE.getComment_Body();
-        }
-        return super.associatedFeature(editorKey);
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.General.body) {
+			return UMLPackage.eINSTANCE.getComment_Body();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * @generated
-     */
-    public void updateSemanticModel(final IPropertiesEditionEvent event) {
-        Comment comment = (Comment) semanticObject;
-        if (UmlViewsRepository.General.body == event.getAffectedEditor()) {
-            // FIXME INVALID CASE you must override the template
-            // 'declareEObjectUpdater' for the case : body, General, Comment.
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @generated
+	 */
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		Comment comment = (Comment)semanticObject;
+		if (UmlViewsRepository.General.body == event.getAffectedEditor()) {
+			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : body,
+			// General, Comment.
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-     */
-    public void updatePart(Notification msg) {
-        super.updatePart(msg);
-        if (editingPart.isVisible()) {
-            GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
-            // FIXME INVALID CASE INTO template public
-            // liveUpdater(editionElement : PropertiesEditionElement, view :
-            // View, pec : PropertiesEditionComponent) in widgetControl.mtl
-            // module, with the values : body, General, Comment.
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
+			GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement,
+			// view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values :
+			// body, General, Comment.
 
-        }
-    }
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-     */
-    @Override
-    protected NotificationFilter[] getNotificationFilters() {
-        NotificationFilter filter = new EStructuralFeatureNotificationFilter(UMLPackage.eINSTANCE.getComment_Body());
-        return new NotificationFilter[] { filter, };
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+				UMLPackage.eINSTANCE.getComment_Body());
+		return new NotificationFilter[] {filter,};
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object,
-     *      int)
-     */
-    public boolean mustBeComposed(Object key, int kind) {
-        return key == UmlViewsRepository.General.body;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object,
+	 *      int)
+	 */
+	public boolean mustBeComposed(Object key, int kind) {
+		return key == UmlViewsRepository.General.body;
+	}
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * @generated
-     */
-    public Diagnostic validateValue(IPropertiesEditionEvent event) {
-        Diagnostic ret = Diagnostic.OK_INSTANCE;
-        if (event.getNewValue() != null) {
-            try {
-                if (UmlViewsRepository.General.body == event.getAffectedEditor()) {
-                    Object newValue = event.getNewValue();
-                    if (newValue instanceof String) {
-                        newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getComment_Body().getEAttributeType(), (String) newValue);
-                    }
-                    ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getComment_Body().getEAttributeType(), newValue);
-                }
-            } catch (IllegalArgumentException iae) {
-                ret = BasicDiagnostic.toDiagnostic(iae);
-            } catch (WrappedException we) {
-                ret = BasicDiagnostic.toDiagnostic(we);
-            }
-        }
-        return ret;
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @generated
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+				if (UmlViewsRepository.General.body == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(
+								UMLPackage.eINSTANCE.getComment_Body().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE
+							.validate(UMLPackage.eINSTANCE.getComment_Body().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
 }

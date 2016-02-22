@@ -73,6 +73,13 @@
          </propertyTab>
 
          <propertyTab
+               id="Qualifiers"
+               label="Qualifiers"
+               category="extended"
+               afterTab="General">
+         </propertyTab>
+
+         <propertyTab
                id="Ends"
                label="Ends"
                category="extended"
@@ -216,6 +223,12 @@
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PropertyPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
                tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.QualifiersPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PropertyPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
+               tab="Qualifiers">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
