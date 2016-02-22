@@ -2178,13 +2178,13 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:source"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd" variableName="end2">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:target.name.toLowerFirst()+'s'"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:target"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                           <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="var:end2"/>
                         </subModelOperations>
@@ -2211,13 +2211,13 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:source"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="shared"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd" variableName="end2">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:target.name.toLowerFirst()+'s'"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:target"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="shared"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                           <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="var:end2"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:end1.name+'To'+end2.name.toUpperFirst()"/>
