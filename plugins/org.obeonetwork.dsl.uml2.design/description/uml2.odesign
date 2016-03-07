@@ -2994,7 +2994,7 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CS_PortInterfaceRealization" preconditionExpression="[source.isValidPortInterfaceRealization(target)/]" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface']" targetFinderExpression="service:diagram.getPortInterfaceRealization" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+        <edgeMappings name="CS_PortInterfaceRealization" preconditionExpression="aql:source.isValidPortInterfaceRealization(target)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface']" targetFinderExpression="service:diagram.getPortInterfaceRealization" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
@@ -4967,7 +4967,7 @@
               </conditionnalStyles>
             </subContainerMappings>
             <conditionnalStyles predicateExpression="aql:(self.eContainer().oclIsTypeOf(uml::State) and self.eContainer().isSubmachineState()) or self.eContainer().oclIsTypeOf(uml::StateMachine)">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" borderLineStyle="dash" labelSize="9" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="9" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']" borderLineStyle="dash">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4975,7 +4975,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.eContainer().oclIsTypeOf(uml::State)">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" borderLineStyle="dash" labelSize="9" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" backgroundStyle="Liquid">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="9" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" backgroundStyle="Liquid" borderLineStyle="dash">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5181,7 +5181,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new entry point" name="Entry Point State Node" label="Entry Point" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_entryPoint.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new entry point" name="Entry Point State Node" label="Entry Point" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_entryPoint.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']" inverseSelectionOrder="true">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -5203,7 +5203,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new exit point" name="Exit Point State Node" label="Exit Point" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_exitPoint.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new exit point" name="Exit Point State Node" label="Exit Point" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_exitPoint.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']" inverseSelectionOrder="true">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>

@@ -359,49 +359,6 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Get required interfaces.
-	 *
-	 * @param diagram
-	 *            Diagram
-	 * @return The interfaces used by ports visible on the diagram
-	 */
-	public Collection<EObject> getPortUsage(DDiagram diagram) {
-		final Set<EObject> result = Sets.newLinkedHashSet();
-		if (diagram instanceof DSemanticDecorator) {
-			final Session sess = SessionManager.INSTANCE
-					.getSession(((DSemanticDecorator)diagram).getTarget());
-
-			final Iterator<EObject> it = Iterators.transform(
-					Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
-					new Function<AbstractDNode, EObject>() {
-
-						public EObject apply(AbstractDNode input) {
-							return input.getTarget();
-						}
-					});
-			while (it.hasNext()) {
-				final EObject displayedAsANode = it.next();
-				if (displayedAsANode != null) {
-					for (final Setting xRef : sess.getSemanticCrossReferencer()
-							.getInverseReferences(displayedAsANode)) {
-						EObject eObject = xRef.getEObject();
-						if (eObject instanceof DNode) {
-							eObject = ((DNode)eObject).getTarget();
-						}
-						if (sess.getModelAccessor().eInstanceOf(eObject, "Port")) { //$NON-NLS-1$
-							final Port port = (Port)eObject;
-							if (port.getRequireds().size() > 0) {
-								result.add(port);
-							}
-						}
-					}
-				}
-			}
-		}
-		return result;
-	}
-
-	/**
 	 * Get related elements for composite structure diagram.
 	 *
 	 * @param cur
@@ -594,19 +551,5 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	public boolean isValidPortInterfaceRealization(Port source, Interface target) {
 		return source.getProvideds() != null && source.getProvideds().size() > 0
 				&& source.getProvideds().contains(target);
-	}
-
-	/**
-	 * Check if is a valid port usage.
-	 *
-	 * @param source
-	 *            Interface
-	 * @param target
-	 *            Port
-	 * @return True if port uses the given interface
-	 */
-	public boolean isValidPortUsage(Interface source, Port target) {
-		return target.getRequireds() != null && target.getRequireds().size() > 0
-				&& target.getRequireds().contains(source);
 	}
 }

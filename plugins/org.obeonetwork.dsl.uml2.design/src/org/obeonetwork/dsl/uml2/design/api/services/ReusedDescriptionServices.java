@@ -120,7 +120,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			markForAutosize(semanticElement);
 			// add to diagram
 			showView(semanticElement, (DSemanticDecorator)diagram, session,
-					"[elementView.oclAsType(DNode).getParentDiagram()/]"); //$NON-NLS-1$
+					"aql:elementView.oclAsType(DNode).getParentDiagram()"); //$NON-NLS-1$
 		}
 	}
 
@@ -148,10 +148,10 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			String containerViewExpression = "";//$NON-NLS-1$
 			if (lastShownElements.contains(semanticElement.eContainer())) {
 				// The user want to add list of Hierarchical elements
-				containerViewExpression = "[self.getHierarchicalContainerView(elementView)/]"; //$NON-NLS-1$
+				containerViewExpression = "aql:self.getHierarchicalContainerView(elementView)"; //$NON-NLS-1$
 			} else {
 				// The user want to add an element not a hierarchy
-				containerViewExpression = "[self.getContainerView(elementView)/]"; //$NON-NLS-1$
+				containerViewExpression = "aql:self.getContainerView(elementView)"; //$NON-NLS-1$
 			}
 			showView(semanticElement, (DSemanticDecorator)containerView, session, containerViewExpression); // $NON-NLS-1$
 			lastShownElements.add((Element)semanticElement);
