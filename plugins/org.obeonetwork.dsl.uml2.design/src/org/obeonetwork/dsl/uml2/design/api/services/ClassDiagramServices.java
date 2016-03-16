@@ -148,6 +148,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 					final Property end = createAssociationEnd(type);
 					association.getOwnedEnds().add(end);
 					association.getMemberEnds().add(end);
+					association.getNavigableOwnedEnds().add(end);
 				}
 			}
 		}
