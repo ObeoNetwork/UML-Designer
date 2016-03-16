@@ -445,7 +445,7 @@ Contributors:
          </propertyTab>
          <propertyTab
                afterTab="General"
-               category="semantic &amp; extension"
+               category="default"
                id="Qualifiers"
                label="Qualifiers">
          </propertyTab>
