@@ -2142,7 +2142,9 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
-            <initialOperation/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sef"/>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="QualifierDirectEdit" forceRefresh="true" inputLabelExpression="service:computeUmlDirectEditLabel">
             <mask mask="{0}"/>
