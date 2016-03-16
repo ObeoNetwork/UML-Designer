@@ -5086,9 +5086,9 @@
                     <cases conditionExpression="service:isCompositeVertical()">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:clearVerticalKeyword()"/>
                     </cases>
-                    <cases conditionExpression="service:isCompositeHorizontal()">
+                    <default>
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addVerticalKeyword()"/>
-                    </cases>
+                    </default>
                   </subModelOperations>
                 </cases>
                 <cases conditionExpression="aql:self.oclIsTypeOf(uml::Region)">
@@ -5096,6 +5096,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   </subModelOperations>
                 </cases>
+                <default/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -5110,9 +5111,9 @@
                       <cases conditionExpression="service:isCompositeVertical()">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:clearVerticalKeyword()"/>
                       </cases>
-                      <cases conditionExpression="service:isCompositeHorizontal()">
+                      <default>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addVerticalKeyword()"/>
-                      </cases>
+                      </default>
                     </subModelOperations>
                   </cases>
                   <cases conditionExpression="aql:self.oclIsTypeOf(uml::StateMachine)">
@@ -5120,9 +5121,9 @@
                       <cases conditionExpression="service:isVertical()">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:clearVerticalKeyword()"/>
                       </cases>
-                      <cases conditionExpression="service:isNotVertical()">
+                      <default>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addVerticalKeyword()"/>
-                      </cases>
+                      </default>
                     </subModelOperations>
                   </cases>
                   <default>
