@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" documentation="Copyright (c) 2009, 2014 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="UML2 modelers" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" documentation="Copyright (c) 2009, 2014 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="UML2 modelers" version="10.0.0.201505222000">
   <ownedViewpoints name="Reused" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="" preconditionExpression="service:inactive">
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
@@ -2871,63 +2871,18 @@
           <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="CS_AddRelatedElements" label="Add Related Elements" precondition="aql:self.oclIsKindOf(uml::Interface) or self.oclIsKindOf(uml::Port) or self.oclIsKindOf(uml::EncapsulatedClassifier) or self.oclIsKindOf(uml::PackageableElement)" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="service:handleUnmeaningViews(views)" iteratorName="view">
-                <subModelOperations xsi:type="tool:For" expression="aql:view.target.getRelatedForCompositeStructure()" iteratorName="object">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
+                <subModelOperations xsi:type="tool:For" expression="service:getRelated">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:markForAutosize">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.diagramElements.target->excludes(object)">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:object.oclIsKindOf(uml::EncapsulatedClassifier)">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.target.oclIsKindOf(uml::InterfaceRealization)">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.targetNode.eContainer().oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="var:diagram"/>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.targetNode.eContainer().eContainer().oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:view.targetNode.eContainer()"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.target.oclIsKindOf(uml::Usage)">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.sourceNode.eContainer().oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="var:diagram"/>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.sourceNode.eContainer().eContainer().oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:view.sourceNode.eContainer()"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.target.oclIsKindOf(uml::EncapsulatedClassifier)">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.eContainer().oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.target.ownedElement->includes(object)">
-                              <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="var:view"/>
-                            </subModelOperations>
-                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:not view.target.ownedElement->includes(object)">
-                              <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="var:diagram"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.eContainer().eContainer().oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:view.eContainer()"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.target.oclIsKindOf(uml::Port)">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.eContainer().eContainer().oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:not view.target.eContainer(uml::EncapsulatedClassifier).ownedElement->includes(object)">
-                              <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="var:diagram"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.eContainer().eContainer().eContainer().oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:view.eContainer().eContainer()"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.target.oclIsKindOf(uml::PackageableElement)">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.oclIsKindOf(diagram::DDiagram)">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.target.ownedElement->includes(object)">
-                              <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="var:view"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:object.oclIsKindOf(uml::Property)">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:view.eContainer().eContainer().oclIsKindOf(diagram::DDiagram)">
-                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:view.eContainer()"/>
-                        </subModelOperations>
-                      </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::StructuredClassifier)">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="service:getParentView(diagram)"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Property)">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']" containerViewExpression="service:getParentView(diagram)"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsTypeOf(uml::Interface)">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface']" containerViewExpression="service:getParentView(diagram)"/>
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface']" containerViewExpression="service:getParentView(diagram)"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>

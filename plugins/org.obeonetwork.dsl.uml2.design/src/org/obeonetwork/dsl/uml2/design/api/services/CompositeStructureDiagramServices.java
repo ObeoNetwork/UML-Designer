@@ -26,7 +26,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -317,6 +317,57 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		return returnList;
 	}
 
+	private EObject	getParentView(Element element, DDiagram diagram){
+		final EObject parent = element.eContainer();
+		if (parent.eContainer()!=null){ //not root element
+			for (final DDiagramElementContainer diagramElement : diagram.getContainers()){
+				if (diagramElement.getTarget().equals(parent)){
+					return diagramElement;
+				}
+			}
+		}
+		return diagram;
+	}
+
+	/**
+	 * Get parent view for an interface in the specified diagram.
+	 *
+	 * @param locInterface
+	 *            Interface
+	 * @param diagram
+	 *            diagram
+	 * @return parent view
+	 */
+	public EObject getParentView(Interface locInterface, DDiagram diagram) {
+		return getParentView((Element)locInterface, diagram);
+	}
+
+	/**
+	 * Get parent view for a property in the specified diagram.
+	 *
+	 * @param property
+	 *            property
+	 * @param diagram
+	 *            diagram
+	 * @return parent view
+	 */
+	public EObject getParentView(Property property, DDiagram diagram) {
+		return getParentView((Element)property, diagram);
+	}
+
+	/**
+	 * Get parent view for a property in the specified diagram.
+	 *
+	 * @param classifier
+	 *            classifier
+	 * @param diagram
+	 *            diagram
+	 * @return parent view
+	 */
+	public EObject getParentView(StructuredClassifier classifier, DDiagram diagram) {
+		return getParentView((Element)classifier, diagram);
+	}
+
 	/**
 	 * Get provided interfaces.
 	 *
@@ -400,35 +451,6 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		return NodeInverseRefsServices.INSTANCE.getUsageInverseRefs(diagram);
 	}
 
-	/**
-	 * Several element views does not need to be handled in composite structure, Especially interfaces. In
-	 * another hand, interface usages/interface realizations are returned.
-	 *
-	 * @param views
-	 *            Views to handle
-	 * @return the handle result
-	 */
-	public List<EObject> handleUnmeaningViews(List<EObject> views) {
-		final List<EObject> result = new ArrayList<EObject>();
-
-		for (final EObject view : views) {
-			if (isInterfaceView(view)) {
-				final DNode interfaceView = (DNode)view;
-				final List<DEdge> edges = new ArrayList<DEdge>(interfaceView.getIncomingEdges());
-				edges.addAll(interfaceView.getOutgoingEdges());
-				for (final DEdge edge : edges) {
-					final EObject target = edge.getTarget();
-					if (target instanceof InterfaceRealization || target instanceof Usage) {
-						result.add(edge);
-					}
-				}
-			} else {
-				result.add(view);
-			}
-		}
-
-		return result;
-	}
 
 	/**
 	 * Check that source and target are connectable. We explore recursively source generalizations to handle
