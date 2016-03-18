@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.internal.listeners;
 
+import java.util.List;
+
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 
 /**
@@ -40,7 +43,19 @@ public class UmlDesignerSessionListener implements SessionListener {
 			// is re-enabled automatically at the session opening or when the
 			// user change the viewpoint
 			// selection
-			UmlViewpoints.enableReused(session);
+
+			for (final Viewpoint selected : session.getSelectedViewpoints(false)) {
+				final List<Viewpoint> umlDesignerViewpoints = UmlViewpoints.getUmlViewpoints();
+				if (selected.getName().equals(UmlViewpoints.getReusedViewPoint().getName())) {
+					return;
+				}
+				for (final Viewpoint umlVp : umlDesignerViewpoints) {
+					if (selected.getName().equals(umlVp.getName())) {
+						UmlViewpoints.enableReused(session);
+						return;
+					}
+				}
+			}
 		}
 	}
 }
