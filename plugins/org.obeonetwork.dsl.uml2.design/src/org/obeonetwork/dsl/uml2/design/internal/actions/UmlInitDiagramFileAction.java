@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 
 /**
  * Init diagram actions.
@@ -99,6 +100,8 @@ public class UmlInitDiagramFileAction implements IObjectActionDelegate {
 		}
 
 		if (existingSession != null) {
+			// enable uml viewpoints
+			UmlViewpoints.enable(existingSession);
 			openCreateRepresentationWizard(existingSession);
 		}
 
