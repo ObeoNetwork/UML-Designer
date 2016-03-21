@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Collaboration;
@@ -197,7 +198,7 @@ public class AddElementToDiagramServices {
 				return input instanceof Package || input instanceof Class || input instanceof Component
 						|| input instanceof Artifact || input instanceof DataType
 						|| input instanceof Interface || input instanceof Collaboration
-						|| input instanceof UseCase;
+						|| input instanceof UseCase || input instanceof Actor;
 			}
 		};
 		return validForUseCaseDiagram;
