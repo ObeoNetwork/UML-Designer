@@ -4847,7 +4847,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SM_ReusedMappings" semanticCandidatesExpression="null">
+        <containerMappings name="SM_ReusedMappings" semanticCandidatesExpression="null" domainClass="uml.RedefinableElement">
           <borderedNodeMappings name="SM_Connection" semanticCandidatesExpression="service:getConnectionPoints" domainClass="uml.Pseudostate">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="RIGHT" resizeKind="NSEW" arcWidth="0" arcHeight="0" roundedCorner="true" workspacePath="/org.obeonetwork.dsl.uml2.design/images/InitNode.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
