@@ -18,7 +18,7 @@ Contributors:
   </prerequisites>
   <groupId>org.obeonetwork.dsl.uml2</groupId>
   <artifactId>common.parent</artifactId>
-    <version>6.0.0-SNAPSHOT</version>
+    <version>7.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>UML Designer Common Parent</name>
@@ -40,7 +40,7 @@ Contributors:
   <properties>
     <tycho-version>0.24.0</tycho-version>
     <root-path>../..</root-path>
-    <platform-version-name>mars</platform-version-name>
+    <platform-version-name>neon</platform-version-name>
   </properties>
 
   <build>
