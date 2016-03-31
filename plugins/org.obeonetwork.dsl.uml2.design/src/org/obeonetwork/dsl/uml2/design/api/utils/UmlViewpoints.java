@@ -36,6 +36,7 @@ public class UmlViewpoints {
 	public static void enable(final Session session) {
 		if (session != null) {
 			session.getTransactionalEditingDomain().getCommandStack()
+
 			.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 				@Override
 				protected void doExecute() {
@@ -52,8 +53,6 @@ public class UmlViewpoints {
 							new NullProgressMonitor());
 					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().review(), session,
 							new NullProgressMonitor());
-					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().dashboard(),
-							session, new NullProgressMonitor());
 					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extend(), session,
 							new NullProgressMonitor());
 				}
@@ -129,15 +128,6 @@ public class UmlViewpoints {
 	 */
 	public Viewpoint capture() {
 		return registry.getViewpoint(URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Capture")); //$NON-NLS-1$
-	}
-
-	/**
-	 * Dashboard.
-	 *
-	 * @return viewpoint
-	 */
-	public Viewpoint dashboard() {
-		return registry.getViewpoint(URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Dashboard")); //$NON-NLS-1$
 	}
 
 	/**
