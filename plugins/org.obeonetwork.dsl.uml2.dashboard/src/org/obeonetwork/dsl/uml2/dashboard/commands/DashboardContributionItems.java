@@ -8,12 +8,11 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.internal.commands;
+package org.obeonetwork.dsl.uml2.dashboard.commands;
 
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.commands.ParameterValueConversionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
@@ -23,8 +22,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
-import org.obeonetwork.dsl.uml2.design.internal.services.DashboardServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
+import org.obeonetwork.dsl.uml2.dashboard.services.DashboardServices;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -38,8 +36,7 @@ public class DashboardContributionItems extends CompoundContributionItem {
 	/**
 	 * Open dashboard command.
 	 */
-	public static final String OPEN_DASHBOARD_CMD_ID = "org.obeonetwork.dsl.uml2.actions.openDashboard"; //$NON-NLS-1$
-
+	public static final String OPEN_DASHBOARD_CMD_ID = "org.obeonetwork.dsl.uml2.actions.openDashboard";//$NON-NLS-1$
 	/**
 	 * Model parameter.
 	 */
@@ -64,20 +61,14 @@ public class DashboardContributionItems extends CompoundContributionItem {
 	protected IContributionItem[] getContributionItems() {
 		final List<IContributionItem> menuItems = Lists.newArrayList();
 		// Get all available dashboards
-		final List<EObject> umlModelRoots = DashboardServices.INSTANCE.getUmlModelsWithDashboard();
+		final List<EObject> umlModelRoots = DashboardServices.INSTANCE.getUmlModels();
 		for (final EObject eObject : umlModelRoots) {
 			// Get the project name
 			final IFile resourceFile = ResourcesPlugin.getWorkspace().getRoot()
 					.getFile(new Path(eObject.eResource().getURI().toPlatformString(true)));
 			final String projectName = resourceFile.getProject().getName();
-
 			final Map<String, String> parameters = Maps.newHashMap();
-			final UmlElementConverter converter = new UmlElementConverter();
-			try {
-				parameters.put(OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY, converter.convertToString(eObject));
-			} catch (final ParameterValueConversionException e) {
-				LogServices.INSTANCE.error("Opening dashboard for project " + projectName + " failed", e); //$NON-NLS-1$ //$NON-NLS-2$
-			}
+			parameters.put(OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY, projectName);
 			final CommandContributionItemParameter contributionParameter = new CommandContributionItemParameter(
 					PlatformUI.getWorkbench(), null, OPEN_DASHBOARD_CMD_ID, parameters, null, null, null,
 					projectName, null, "Open the dashboard of the project : " + projectName, //$NON-NLS-1$

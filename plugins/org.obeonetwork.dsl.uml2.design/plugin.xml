@@ -88,17 +88,12 @@ Contributors:
            </description>
         </wizard>
   </extension>
-
-  
-	   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
-	      <editpartProvider class="org.obeonetwork.dsl.uml2.design.internal.editpart.UMLEditPartProvider">
-	         <Priority name="High"/>
-	      </editpartProvider>
-	   </extension>
-  
-  
-  
-    <extension
+  <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+    <editpartProvider class="org.obeonetwork.dsl.uml2.design.internal.editpart.UMLEditPartProvider">
+      <Priority name="High"/>
+    </editpartProvider>
+  </extension>
+  <extension
          point="org.eclipse.ui.commands">
       <command
             id="org.eclipse.sirius.ui.navigator.actions.uml.delete"
@@ -125,16 +120,6 @@ Contributors:
               name="Create State Machine Diagram">
         </command>
         <command
-              id="org.obeonetwork.dsl.uml2.actions.openDashboard"
-              name="Open Dashboard">
-           <commandParameter
-                 id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.model"
-                 name="model"
-                 optional="true"
-                 typeId="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType">
-           </commandParameter>
-        </command>
-        <command
               id="org.obeonetwork.dsl.uml2.actions.newUmlProject"
               name="New UML Project">
         </command>
@@ -142,13 +127,7 @@ Contributors:
               id="org.obeonetwork.dsl.uml2.actions.newUmlModel"
               name="New UML Model">
         </command>
-        <commandParameterType
-              converter="org.obeonetwork.dsl.uml2.design.internal.commands.UmlElementConverter"
-              id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType"
-              type="org.eclipse.uml2.uml.Model">
-        </commandParameterType>
    </extension>
-  
    <extension
          point="org.eclipse.ui.handlers">
         <handler
@@ -269,15 +248,6 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.internal.commands.OpenDashboard"
-               commandId="org.obeonetwork.dsl.uml2.actions.openDashboard">
-            <enabledWhen>
-               <reference
-                     definitionId="org.obeonetwork.dsl.uml2.design.DashboardsExistDefinition">
-               </reference>
-            </enabledWhen>
-         </handler>
-         <handler
                class="org.obeonetwork.dsl.uml2.design.internal.commands.NewUmlProject"
                commandId="org.obeonetwork.dsl.uml2.actions.newUmlProject">
          </handler>
@@ -286,9 +256,7 @@ Contributors:
                commandId="org.obeonetwork.dsl.uml2.actions.newUmlModel">
          </handler>
    </extension>
-  
-  
-    <extension
+   <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
@@ -387,34 +355,6 @@ Contributors:
                </visibleWhen>
             </command>
          </toolbar>
-         <toolbar
-               id="org.obeonetwork.dsl.uml2.toolbar.openDashboard"
-               label="Dashboard">
-            <command
-                  commandId="org.obeonetwork.dsl.uml2.actions.openDashboard"
-                  icon="icons/Dashboard.gif"
-                  label="Dashboard"
-                  style="pulldown"
-                  tooltip="Open UML Designer Dashboard">
-               <visibleWhen
-                     checkEnabled="false">
-                  <with
-                        variable="activeWorkbenchWindow.activePerspective">
-                     <equals
-                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
-                     </equals>
-                  </with>
-               </visibleWhen>
-            </command>
-         </toolbar>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="menu:org.obeonetwork.dsl.uml2.actions.openDashboard">
-         <dynamic
-               class="org.obeonetwork.dsl.uml2.design.internal.commands.DashboardContributionItems"
-               id="org.obeonetwork.dsl.uml2.design.dynamicDashboard">
-         </dynamic>
       </menuContribution>
    </extension>
     <extension
@@ -425,13 +365,6 @@ Contributors:
              namespace="org.obeonetwork.dsl.uml2.design"
              properties="Capture,Design,Review,Extend"
              type="org.eclipse.uml2.uml.Element">
-       </propertyTester>
-       <propertyTester
-             class="org.obeonetwork.dsl.uml2.design.internal.testers.DashboardPropertyTester"
-             id="org.obeonetwork.dsl.uml2.design.DashboardsExist"
-             namespace="org.obeonetwork.dsl.uml2.design"
-             properties="dashboardsExist"
-             type="java.lang.Object">
        </propertyTester>
     </extension>
     <extension
@@ -494,6 +427,13 @@ Contributors:
                property="org.obeonetwork.dsl.uml2.design.dashboardsExist">
          </test>
       </definition>
+      <definition
+            id="org.obeonetwork.dsl.uml2.design.UMLViewpointEnabledDefinition">
+         <test
+               forcePluginActivation="true"
+               property="org.obeonetwork.dsl.uml2.design.UmlViewpointEnabled">
+         </test>
+      </definition>
    </extension>
    <extension
         point="org.eclipse.emf.validation.constraintProviders">
@@ -554,4 +494,5 @@ Contributors:
             class="org.obeonetwork.dsl.uml2.design.preferences.UmlDesignerPreferenceInitializer">
       </initializer>
    </extension>
+   
 </plugin>

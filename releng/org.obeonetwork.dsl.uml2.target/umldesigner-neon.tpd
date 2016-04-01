@@ -74,3 +74,8 @@ location "http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.
 	org.eclipse.emf.compare.feature.group lazy
 	org.eclipse.emf.compare.uml2.feature.group lazy
 }
+
+// Amalgam
+location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.x/neon" {
+	org.eclipse.amalgam.explorer.activity.feature.group lazy
+}

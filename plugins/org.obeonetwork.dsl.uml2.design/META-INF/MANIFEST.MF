@@ -48,7 +48,8 @@ Require-Bundle: org.eclipse.ui,
  org.apache.xml.serializer,
  org.eclipse.emf.edit.ui,
  org.eclipse.uml2.uml.editor,
- org.eclipse.sirius.common.acceleo.aql;bundle-version="3.0.0"
+ org.eclipse.sirius.common.acceleo.aql;bundle-version="3.0.0",
+ org.obeonetwork.dsl.uml2.dashboard
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Localization: plugin
