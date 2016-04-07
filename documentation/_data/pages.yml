@@ -61,7 +61,7 @@
   - title: Build
     file: developer-guide/build
   - title: Test
-    file: developer-guide/build
+    file: developer-guide/test
   - title: Release
     file: developer-guide/release
   - title: Documentation
