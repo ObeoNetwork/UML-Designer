@@ -15,6 +15,9 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+
 /**
  * Uml designer session listener used to listen session opening and viewpoint selection change.
  *
@@ -39,11 +42,18 @@ public class UmlDesignerSessionListener implements SessionListener {
 			// The Reused viewpoint must not be disabled by the user as other viewpoints depend on it, so it
 			// is re-enabled automatically at the session opening or when the user change the viewpoint
 			// selection
-			for (final Viewpoint selectedViewpoint : session.getSelectedViewpoints(false)) {
-				if (UmlViewpoints.isUmlViewpoint(selectedViewpoint)) {
+			if (Iterables.any(session.getSelectedViewpoints(false), new Predicate<Viewpoint>() {
+				public boolean apply(Viewpoint selectedViewpoint) {
+					return UmlViewpoints.isUmlViewpoint(selectedViewpoint);
+				}
+			})) {
+				final Viewpoint reused = UmlViewpoints.fromViewpointRegistry().reused();
+				if (Iterables.indexOf(session.getSelectedViewpoints(false), new Predicate<Viewpoint>() {
+					public boolean apply(Viewpoint selectedViewpoint) {
+						return selectedViewpoint.getName().equals(reused.getName());
+					}
+				}) == -1) {
 					UmlViewpoints.enableReused(session);
-					return;
-
 				}
 			}
 		}
