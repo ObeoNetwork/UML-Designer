@@ -5831,7 +5831,7 @@
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
             <subModelOperations xsi:type="tool:If" conditionExpression="service:notExistComments">
               <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Comment" referenceName="ownedComment">
-                <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="var:0"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="var:arg0"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="feature:eContainer"/>
               </subModelOperations>
             </subModelOperations>
