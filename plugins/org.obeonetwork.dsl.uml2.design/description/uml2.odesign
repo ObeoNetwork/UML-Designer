@@ -1702,7 +1702,7 @@
           </style>
         </nodeMappings>
         <nodeMappings name="CD_Association_NAry" semanticCandidatesExpression="service:getNAryAssociation(diagram)" semanticElements="service:getSemanticElements" domainClass="uml.Association">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:computeUmlLabel" sizeComputationExpression="-1" workspacePath="/org.obeonetwork.dsl.uml2.design/images/association.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" sizeComputationExpression="-1" workspacePath="/org.obeonetwork.dsl.uml2.design/images/association.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
