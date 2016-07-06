@@ -524,23 +524,23 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
 					} else if (param.isOrdered() != pin.isOrdered()) {
 						final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-								"ordered"}; //$NON-NLS-1$
+						"ordered"}; //$NON-NLS-1$
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
 					} else if (param.getLowerValue() == null && pin.getLowerValue() != null
 							|| param.getLowerValue() != null && pin.getLowerValue() == null
 							|| !(param.getLowerValue() == null && pin.getLowerValue() == null
-									|| param.getLowerValue().stringValue()
-											.equals(pin.getLowerValue().stringValue()))) {
+							|| param.getLowerValue().stringValue()
+							.equals(pin.getLowerValue().stringValue()))) {
 						final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-								"lower value"}; //$NON-NLS-1$
+						"lower value"}; //$NON-NLS-1$
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
 					} else if (param.getUpperValue() == null && pin.getUpperValue() != null
 							|| param.getUpperValue() != null && pin.getUpperValue() == null
 							|| !(param.getUpperValue() == null && pin.getUpperValue() == null
-									|| param.getUpperValue().stringValue()
-											.equals(pin.getUpperValue().stringValue()))) {
+							|| param.getUpperValue().stringValue()
+							.equals(pin.getUpperValue().stringValue()))) {
 						final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-								"upper value"}; //$NON-NLS-1$
+						"upper value"}; //$NON-NLS-1$
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
 					}
 				}
@@ -560,7 +560,7 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 		final List<ActivityNode> allActivityNodes = getActivityNodes(context);
 		final List<ActivityNode> childNodes = new ArrayList<ActivityNode>(allActivityNodes);
 		for (final ActivityNode activityNode : allActivityNodes) {
-			if (activityNode instanceof AcceptEventAction) {
+			if (activityNode instanceof AcceptEventAction || activityNode instanceof OpaqueAction) {
 				childNodes.remove(activityNode);
 			}
 		}
@@ -610,6 +610,25 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 	 */
 	public InterruptibleActivityRegion getInterruptibleRegion(ActivityNode node) {
 		return node.getInInterruptibleRegions().get(0);
+	}
+
+	/**
+	 * Get the {@link ExecutableNode} elements for the given context.
+	 *
+	 * @param context
+	 *            the context object on which to execute this service.
+	 * @return the {@link List} of {@link ExecutableNode}
+	 */
+	public List<ActivityNode> getOpaqueActionNodes(Element context) {
+		final List<ActivityNode> allActivityNodes = getActivityNodes(context);
+		final List<ActivityNode> childNodes = new ArrayList<ActivityNode>(allActivityNodes);
+		for (final ActivityNode activityNode : allActivityNodes) {
+			if (!(activityNode instanceof OpaqueAction)) {
+				childNodes.remove(activityNode);
+			}
+		}
+
+		return childNodes;
 	}
 
 	/**
