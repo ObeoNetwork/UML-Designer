@@ -83,6 +83,7 @@ import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.SemanticElementsSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.StereotypeServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.TooltipServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.UIServices;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
 
@@ -107,6 +108,17 @@ public abstract class AbstractDiagramServices {
 	 */
 	public String computeDefaultName(final EObject element) {
 		return LabelServices.INSTANCE.computeDefaultName(element);
+	}
+
+	/**
+	 * Compute the tooltip.
+	 *
+	 * @param element
+	 *            New element
+	 * @return Tooltip for the new element, the tooltip will looks like 'pkg::name'.
+	 */
+	public String computeTooltip(final EObject element) {
+		return TooltipServices.INSTANCE.computeTooltip(element);
 	}
 
 	/**
