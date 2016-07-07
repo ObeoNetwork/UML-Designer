@@ -28,6 +28,8 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.widgets.Display;
@@ -111,52 +113,89 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Create an association between two elements.
+	 *
+	 * @param source
+	 *            association source
+	 * @param target
+	 *            association target
+	 * @return The association
+	 */
+	private Association createAssociation(Element source, Element target) {
+		final Association association = UMLFactory.eINSTANCE.createAssociation();
+		final Property end1 = createAssociationEnd((Type)source);
+		association.getMemberEnds().add(end1);
+		final Property end2 = createAssociationEnd((Type)target);
+		association.getMemberEnds().add(end2);
+
+		association.getOwnedEnds().add(end1);
+		association.getOwnedEnds().add(end2);
+		((Package)source.eContainer()).getPackagedElements().add(association);
+		association.getNavigableOwnedEnds().addAll(getNavigableOwnedEnds(association));
+		return association;
+	}
+
+	/**
 	 * Create a new association.
 	 *
 	 * @param object
+	 *            Object
 	 * @param source
 	 *            selected source
 	 * @param target
 	 *            selected Target
+	 * @param sourceView
+	 *            Source view
+	 * @param targetView
+	 *            Target view
+	 * @return Association
 	 */
-	public Association createAssociation(EObject object, Element source, Element target) {
-		Association association = null;
-
+	public Association createAssociation(EObject object, Element source, Element target, EObject sourceView,
+			EObject targetView) {
 		if (source.eContainer() instanceof Package) {
 			// tool creation association edge
-			if (!(source instanceof Association || target instanceof Association
-					|| source instanceof AssociationClass || target instanceof AssociationClass)) {
-
-				association = UMLFactory.eINSTANCE.createAssociation();
-				final Property end1 = createAssociationEnd((Type)source);
-				association.getMemberEnds().add(end1);
-				final Property end2 = createAssociationEnd((Type)target);
-				association.getMemberEnds().add(end2);
-
-				association.getOwnedEnds().add(end1);
-				association.getOwnedEnds().add(end2);
-				((Package)source.eContainer()).getPackagedElements().add(association);
-				association.getNavigableOwnedEnds().addAll(getNavigableOwnedEnds(association));
-
+			if (!(source instanceof Association || target instanceof Association)) {
+				return createAssociation(source, target);
+			} else if ((source instanceof AssociationClass || target instanceof AssociationClass)
+					&& (sourceView instanceof DEdge || targetView instanceof DEdge)) {
+				// try to connect association from/to associationClas (edge part)
+				return createAssociationAddEnd(source, target);
+			} else if (source instanceof AssociationClass || target instanceof AssociationClass
+					&& (sourceView instanceof DNodeList || targetView instanceof DNodeList)) {
+				// try to connect association from/to associationClas (container part)
+				return createAssociation(source, target);
 			} else if (source instanceof Association || target instanceof Association) {
-				Type type;
-
-				if (source instanceof Association) {
-					association = (Association)source;
-					type = (Type)target;
-				} else {
-					association = (Association)target;
-					type = (Type)source;
-				}
-
-				if (isBroken(association)) { // Look for broken association
-					fixAssociation(association, type);
-				} else { // create new end
-					final Property end = createAssociationEnd(type);
-					association.getNavigableOwnedEnds().add(end);
-					association.getOwnedEnds().add(end);
-				}
+				return createAssociationAddEnd(source, target);
 			}
+		}
+		return null;
+	}
+
+	/**
+	 * Add an end to an existing association.
+	 *
+	 * @param source
+	 *            Association or element
+	 * @param target
+	 *            element or association
+	 */
+	private Association createAssociationAddEnd(Element source, Element target) {
+		Association association;
+		Type type;
+		if (source instanceof Association) {
+			association = (Association)source;
+			type = (Type)target;
+		} else {
+			association = (Association)target;
+			type = (Type)source;
+		}
+
+		if (isBroken(association)) { // Look for broken association
+			fixAssociation(association, type);
+		} else { // create new end
+			final Property end = createAssociationEnd(type);
+			association.getNavigableOwnedEnds().add(end);
+			association.getOwnedEnds().add(end);
 		}
 		return association;
 	}
@@ -172,15 +211,18 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 
 	/**
 	 * Precondition for n-ary association creation.
-	 * @param object selected association
+	 *
+	 * @param object
+	 *            selected association
 	 * @return true if association is binary and no end have no qualifiers
 	 */
-	public boolean createNaryAssociationPrecondition(EObject object){
-		//aql:self.oclIsKindOf(uml::Association) and self.oclAsType(uml::Association).getEndTypes()->size()<=2
-		if (object instanceof Association){
-			if (((Association)object).getMemberEnds().size()==2){
-				for (final Property end : ((Association)object).getMemberEnds()){
-					if (end.getQualifiers().isEmpty()){
+	public boolean createNaryAssociationPrecondition(EObject object) {
+		// aql:self.oclIsKindOf(uml::Association) and
+		// self.oclAsType(uml::Association).getEndTypes()->size()<=2
+		if (object instanceof Association) {
+			if (((Association)object).getMemberEnds().size() == 2) {
+				for (final Property end : ((Association)object).getMemberEnds()) {
+					if (end.getQualifiers().isEmpty()) {
 						return true;
 					}
 				}
@@ -206,7 +248,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @param association
 	 *            selected association
 	 */
-	public void createQualifier(Association association){
+	public void createQualifier(Association association) {
 		// Display a selection pop-up to choose the end
 		final ListDialog dialog = new ListDialog(Display.getCurrent().getActiveShell());
 		dialog.setTitle("Qualifier creation"); //$NON-NLS-1$
@@ -238,8 +280,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @param element
 	 *            edge to delete
 	 */
-	public void deleteNAryAssociation(Association association, DDiagramElement element){
-		if (isNary(association)){
+	public void deleteNAryAssociation(Association association, DDiagramElement element) {
+		if (isNary(association)) {
 			final Property end = AssociationServices.INSTANCE.getSourceEndAssociation(association, element);
 			end.eContainer();
 			EcoreUtil.delete(end);
@@ -470,8 +512,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	public Collection<Association> getBrokenAssociations(EObject container) {
 		final Collection<Association> result = new ArrayList<Association>();
 		for (final EObject child : container.eContents()) {
-			if (child instanceof Association
-					&& isBroken((Association)child)) {
+			if (child instanceof Association && isBroken((Association)child)) {
 				result.add((Association)child);
 			}
 		}
@@ -550,7 +591,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return association.getEndTypes();
 	}
 
-
 	/**
 	 * Get navigable owned end of an association
 	 *
@@ -616,10 +656,12 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 
 	/**
 	 * Get the type of the association source end.
-	 * @param association association
-	 * @param diagram diagram
-	 * @return type of the source
 	 *
+	 * @param association
+	 *            association
+	 * @param diagram
+	 *            diagram
+	 * @return type of the source
 	 */
 	public Element getSourceType(Association association, DDiagram diagram) {
 		final EList<DDiagramElement> elements = diagram.getDiagramElements();
@@ -785,8 +827,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return associationClasses;
 	}
 
-	private List <Property> getVisibleAssociationEnds(Association association, DDiagram diagram){
-		final List <Property>ends = new ArrayList<Property>();
+	private List<Property> getVisibleAssociationEnds(Association association, DDiagram diagram) {
+		final List<Property> ends = new ArrayList<Property>();
 		// Association should be visible in self container
 		// At least one of the ends is visible in diagram
 		final EList<DDiagramElement> elements = diagram.getDiagramElements();
@@ -886,10 +928,10 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @param association
 	 * @return true if an aggregation or a composite association is binary
 	 */
-	public boolean isValidAggregationCompositeAssociation(Association association){
+	public boolean isValidAggregationCompositeAssociation(Association association) {
 		final EList<Property> ends = association.getMemberEnds();
-		if (ends.size()>2){
-			for (final Property end : ends){
+		if (ends.size() > 2) {
+			for (final Property end : ends) {
 				if (end.getAggregation().getValue() != AggregationKind.NONE) {
 					return false;
 				}
@@ -907,11 +949,11 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *            selected element
 	 * @return true if valid
 	 */
-	public boolean isValidAssociation(EObject self, Element preSource){
-		if (preSource instanceof Association){
+	public boolean isValidAssociation(EObject self, Element preSource) {
+		if (preSource instanceof Association) {
 			// Verify association ends don't have qualifiers
 			final EList<Property> ends = ((Association)preSource).getMemberEnds();
-			for (final Property end : ends){
+			for (final Property end : ends) {
 				if (!end.getQualifiers().isEmpty()) {
 					return false;
 				}
@@ -932,21 +974,21 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *            user select element as target
 	 * @return true if valid
 	 */
-	public boolean isValidAssociation(EObject self, Element preSource,Element preTarget){
+	public boolean isValidAssociation(EObject self, Element preSource, Element preTarget) {
 
-		if (preSource instanceof Association && preTarget instanceof Association){
+		if (preSource instanceof Association && preTarget instanceof Association) {
 			return false; // Source and Target are not association
-		}else if (preSource instanceof Association || preTarget instanceof Association){
+		} else if (preSource instanceof Association || preTarget instanceof Association) {
 			// Verify association is not a binary association
 			Association association;
-			if (preSource instanceof Association){
-				association=(Association)preSource;
-			}else{
-				association=(Association)preTarget;
+			if (preSource instanceof Association) {
+				association = (Association)preSource;
+			} else {
+				association = (Association)preTarget;
 			}
 
 			final EList<Property> ends = association.getMemberEnds();
-			for (final Property end : ends){
+			for (final Property end : ends) {
 				if (isComposite(end) || isShared(end)) {
 					return false;
 				}
@@ -985,7 +1027,10 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *
 	 * @param source
 	 *            Selected element
-	 * @param selectedContainerView
+	 * @param target
+	 *            Selected element
+	 * @param sourceContainerView
+	 *            Source container view
 	 */
 	public void openSelectNaryAssociationEndsDialog(final EObject source, final EObject target,
 			DSemanticDecorator sourceContainerView) {
@@ -1006,7 +1051,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 
 		final ModelElementsSelectionDialog dlg = new ModelElementsSelectionDialog("Create N-ary Association", //$NON-NLS-1$
 				"Select additional elements to add to the association." + System.lineSeparator() //$NON-NLS-1$
-						+ " At least one element have to be selected, else n-Ary association will not be created " //$NON-NLS-1$
+				+ " At least one element have to be selected, else n-Ary association will not be created " //$NON-NLS-1$
 				+ System.lineSeparator());
 
 		dlg.setGrayedPredicate(new Predicate<EObject>() {
@@ -1014,12 +1059,9 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 			public boolean apply(EObject input) {
 				if (input.equals(source) || input.equals(target)) {
 					return true;
-				} else if (input instanceof Class ||
-						input instanceof AssociationClass ||
-						input instanceof Interface ||
-						input instanceof Enumeration ||
-						input instanceof DataType ||
-						input instanceof PrimitiveType) {
+				} else if (input instanceof Class || input instanceof AssociationClass
+						|| input instanceof Interface || input instanceof Enumeration
+						|| input instanceof DataType || input instanceof PrimitiveType) {
 					return false;
 				}
 				return true;
@@ -1027,10 +1069,10 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		});
 
 		@SuppressWarnings("rawtypes")
-		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-				model, diagram, true);
+		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(), model,
+				diagram, true);
 		if (elementsToAdd.size() > 0) {
-			final Association association = createAssociation(null, (Element)source, (Element)target);
+			final Association association = createAssociation((Element)source, (Element)target);
 			for (final Object element : elementsToAdd) {
 				if (element instanceof Type) {
 					final Property end = createAssociationEnd((Type)element);
@@ -1041,7 +1083,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 			}
 		}
 	}
-
 
 	/**
 	 * Open type selection dialog.

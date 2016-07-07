@@ -1777,7 +1777,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createAssociation(source, target)"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createAssociation(source, target, sourceView, targetView)"/>
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new reference" name="Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
