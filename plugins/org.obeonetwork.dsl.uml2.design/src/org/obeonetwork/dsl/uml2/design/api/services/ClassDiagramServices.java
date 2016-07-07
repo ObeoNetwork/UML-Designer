@@ -28,8 +28,10 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ListDialog;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
@@ -39,15 +41,19 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.design.api.wizards.ModelElementsSelectionDialog;
 import org.obeonetwork.dsl.uml2.design.internal.dialogs.ModelElementSelectionDialog;
 import org.obeonetwork.dsl.uml2.design.internal.services.AssociationServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.DirectEditLabelSwitch;
@@ -113,13 +119,15 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @param target
 	 *            selected Target
 	 */
-	public void createAssociation(EObject object, Element source, Element target) {
+	public Association createAssociation(EObject object, Element source, Element target) {
+		Association association = null;
+
 		if (source.eContainer() instanceof Package) {
 			// tool creation association edge
 			if (!(source instanceof Association || target instanceof Association
 					|| source instanceof AssociationClass || target instanceof AssociationClass)) {
 
-				final Association association = UMLFactory.eINSTANCE.createAssociation();
+				association = UMLFactory.eINSTANCE.createAssociation();
 				final Property end1 = createAssociationEnd((Type)source);
 				association.getMemberEnds().add(end1);
 				final Property end2 = createAssociationEnd((Type)target);
@@ -131,7 +139,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 				association.getNavigableOwnedEnds().addAll(getNavigableOwnedEnds(association));
 
 			} else if (source instanceof Association || target instanceof Association) {
-				Association association;
 				Type type;
 
 				if (source instanceof Association) {
@@ -152,6 +159,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 				}
 			}
 		}
+		return association;
 	}
 
 	private Property createAssociationEnd(Type type) {
@@ -953,6 +961,90 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Check if an Nary association can be created. Both selected elements are not association. If an
+	 * association is selected is should not be an aggregation or a composite
+	 *
+	 * @param self
+	 *            association
+	 * @param preSource
+	 *            User select element as source
+	 * @param preTarget
+	 *            user select element as target
+	 * @return true if valid
+	 */
+	public boolean isValidNaryAssociation(EObject self, Element preSource, Element preTarget) {
+
+		if (preSource instanceof Association || preTarget instanceof Association) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Open the select existing element dialog.
+	 *
+	 * @param source
+	 *            Selected element
+	 * @param selectedContainerView
+	 */
+	public void openSelectNaryAssociationEndsDialog(final EObject source, final EObject target,
+			DSemanticDecorator sourceContainerView) {
+
+		DDiagram diagram = null;
+		EObject parent = sourceContainerView.eContainer();
+		while (diagram == null && parent != null) {
+			if (parent instanceof DDiagram) {
+				diagram = (DDiagram)parent;
+			}
+			parent = parent.eContainer();
+		}
+
+		Model model = null;
+		if (source instanceof Element) {
+			model = ((Element)source).getModel();
+		}
+
+		final ModelElementsSelectionDialog dlg = new ModelElementsSelectionDialog("Create N-ary Association", //$NON-NLS-1$
+				"Select additional elements to add to the association." + System.lineSeparator() //$NON-NLS-1$
+						+ " At least one element have to be selected, else n-Ary association will not be created " //$NON-NLS-1$
+				+ System.lineSeparator());
+
+		dlg.setGrayedPredicate(new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				if (input.equals(source) || input.equals(target)) {
+					return true;
+				} else if (input instanceof Class ||
+						input instanceof AssociationClass ||
+						input instanceof Interface ||
+						input instanceof Enumeration ||
+						input instanceof DataType ||
+						input instanceof PrimitiveType) {
+					return false;
+				}
+				return true;
+			}
+		});
+
+		@SuppressWarnings("rawtypes")
+		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+				model, diagram, true);
+		if (elementsToAdd.size() > 0) {
+			final Association association = createAssociation(null, (Element)source, (Element)target);
+			for (final Object element : elementsToAdd) {
+				if (element instanceof Type) {
+					final Property end = createAssociationEnd((Type)element);
+					association.getOwnedEnds().add(end);
+					association.getMemberEnds().add(end);
+					association.getNavigableOwnedEnds().add(end);
+				}
+			}
+		}
+	}
+
+
+	/**
 	 * Open type selection dialog.
 	 *
 	 * @param element
@@ -1104,5 +1196,4 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		final Property target = AssociationServices.INSTANCE.getTarget(association);
 		return isShared(target);
 	}
-
 }
