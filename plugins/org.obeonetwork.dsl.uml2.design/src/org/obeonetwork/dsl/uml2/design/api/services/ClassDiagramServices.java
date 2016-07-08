@@ -41,9 +41,11 @@ import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
@@ -58,7 +60,6 @@ import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.OperationServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.StereotypeServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.UIServices;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
@@ -418,6 +419,16 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return result;
 	}
 
+	void getAssociationClasses(Package pack, List<AssociationClass> list) {
+		for (final PackageableElement element : pack.getPackagedElements()) {
+			if (element instanceof AssociationClass) {
+				list.add((AssociationClass)element);
+			} else if (element instanceof Package) {
+				getAssociationClasses((Package)element, list);
+			}
+		}
+	}
+
 	private String getAssociationEndsName(Type type) {
 		String name = ((NamedElement)type).getName();
 		if (!com.google.common.base.Strings.isNullOrEmpty(name)) {
@@ -532,6 +543,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return result;
 	}
 
+
 	/**
 	 * Get source for n-ary association.
 	 *
@@ -542,7 +554,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	public EList<Type> getNAryAssociationSource(Association association) {
 		return association.getEndTypes();
 	}
-
 
 	/**
 	 * Get navigable owned end of an association
@@ -564,6 +575,43 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return ends;
 	}
 
+	/**
+	 * Return collection of visible association class in a diagram.
+	 *
+	 * @param diagram
+	 *            Diagram
+	 * @param container
+	 *            Container of the associationClass
+	 * @return Set of visible association Classes or empty collection
+	 */
+	// public Collection<EObject> getVisibleAssociationClass(DDiagram diagram, EObject container) {
+	// final Set<EObject> associationClasses = new HashSet<EObject>();
+	// final Collection<EObject> displayedNodes = UIServices.INSTANCE.getDisplayedNodes(diagram);
+	// final Collection<EObject> associations = getAssociationInverseRefs(diagram);
+	// for (final EObject association : associations) {
+	// if (association instanceof AssociationClass) {
+	// final Property source = AssociationServices.INSTANCE.getSource((AssociationClass)association);
+	// final Property target = AssociationServices.INSTANCE.getTarget((AssociationClass)association);
+	// final Type sourceType = source.getType();
+	// final Type targetType = target.getType();
+	// if (sourceType != null && displayedNodes.contains(sourceType) && targetType != null
+	// && displayedNodes.contains(targetType)) {
+	// if (container == association.eContainer()) {
+	// associationClasses.add(association);
+	// }
+	// }
+	// }
+	// }
+	// return associationClasses;
+	public List<AssociationClass> getSemanticCandidatesAssociationClasses(Element element) {
+
+		final List<AssociationClass> classes = new ArrayList<AssociationClass>();
+
+		final Model model = element.getModel();
+		getAssociationClasses(model, classes);
+
+		return classes;
+	}
 	/**
 	 * Return a set of classes from model.
 	 *
@@ -631,6 +679,10 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 			}
 		}
 		return null;
+	}
+
+	EObject getSourceViewContainer(DDiagramElement element){
+		return element.getParentDiagram();
 	}
 
 	/**
@@ -746,36 +798,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public Collection<EObject> getTemplateBindingInverseRefs(DDiagram diagram) {
 		return NodeInverseRefsServices.INSTANCE.getTemplateBindingInverseRefs(diagram);
-	}
-
-	/**
-	 * Return collection of visible association class in a diagram.
-	 *
-	 * @param diagram
-	 *            Diagram
-	 * @param container
-	 *            Container of the associationClass
-	 * @return Set of visible association Classes or empty collection
-	 */
-	public Collection<EObject> getVisibleAssociationClass(DDiagram diagram, EObject container) {
-		final Set<EObject> associationClasses = new HashSet<EObject>();
-		final Collection<EObject> displayedNodes = UIServices.INSTANCE.getDisplayedNodes(diagram);
-		final Collection<EObject> associations = getAssociationInverseRefs(diagram);
-		for (final EObject association : associations) {
-			if (association instanceof AssociationClass) {
-				final Property source = AssociationServices.INSTANCE.getSource((AssociationClass)association);
-				final Property target = AssociationServices.INSTANCE.getTarget((AssociationClass)association);
-				final Type sourceType = source.getType();
-				final Type targetType = target.getType();
-				if (sourceType != null && displayedNodes.contains(sourceType) && targetType != null
-						&& displayedNodes.contains(targetType)) {
-					if (container == association.eContainer()) {
-						associationClasses.add(association);
-					}
-				}
-			}
-		}
-		return associationClasses;
 	}
 
 	private List <Property> getVisibleAssociationEnds(Association association, DDiagram diagram){
@@ -1104,5 +1126,4 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		final Property target = AssociationServices.INSTANCE.getTarget(association);
 		return isShared(target);
 	}
-
 }
