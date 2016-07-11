@@ -153,9 +153,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 					fixAssociation(association, type);
 				} else { // create new end
 					final Property end = createAssociationEnd(type);
-					association.getOwnedEnds().add(end);
-					association.getMemberEnds().add(end);
 					association.getNavigableOwnedEnds().add(end);
+					association.getOwnedEnds().add(end);
 				}
 			}
 		}
