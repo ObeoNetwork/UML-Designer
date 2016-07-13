@@ -28,6 +28,8 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.ListDialog;
@@ -105,6 +107,27 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Create an association between two elements.
+	 *
+	 * @param source
+	 *            association source
+	 * @param target
+	 *            association target
+	 */
+	private void createAssociation(Element source, Element target ){
+		final Association association = UMLFactory.eINSTANCE.createAssociation();
+		final Property end1 = createAssociationEnd((Type)source);
+		association.getMemberEnds().add(end1);
+		final Property end2 = createAssociationEnd((Type)target);
+		association.getMemberEnds().add(end2);
+
+		association.getOwnedEnds().add(end1);
+		association.getOwnedEnds().add(end2);
+		((Package)source.eContainer()).getPackagedElements().add(association);
+		association.getNavigableOwnedEnds().addAll(getNavigableOwnedEnds(association));
+	}
+
+	/**
 	 * Create a new association.
 	 *
 	 * @param object
@@ -112,45 +135,57 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *            selected source
 	 * @param target
 	 *            selected Target
+	 * @param sourceView
+	 * @param targetView
 	 */
-	public void createAssociation(EObject object, Element source, Element target) {
+	public void createAssociation(EObject object, Element source, Element target, EObject sourceView,
+			EObject targetView) {
 		if (source.eContainer() instanceof Package) {
 			// tool creation association edge
-			if (!(source instanceof Association || target instanceof Association
-					|| source instanceof AssociationClass || target instanceof AssociationClass)) {
-
-				final Association association = UMLFactory.eINSTANCE.createAssociation();
-				final Property end1 = createAssociationEnd((Type)source);
-				association.getMemberEnds().add(end1);
-				final Property end2 = createAssociationEnd((Type)target);
-				association.getMemberEnds().add(end2);
-
-				association.getOwnedEnds().add(end1);
-				association.getOwnedEnds().add(end2);
-				((Package)source.eContainer()).getPackagedElements().add(association);
-				association.getNavigableOwnedEnds().addAll(getNavigableOwnedEnds(association));
-
+			if (!(source instanceof Association || target instanceof Association)
+					) {
+				createAssociation(source, target);
+			} else if ((source instanceof AssociationClass || target instanceof AssociationClass)
+					&& (sourceView instanceof DEdge || targetView instanceof DEdge)) {
+				// try to connect association from/to associationClas (edge part)
+				createAssociationAddEnd(source, target);
+			} else if (source instanceof AssociationClass || target instanceof AssociationClass
+					&& (sourceView instanceof DNodeList || targetView instanceof DNodeList)) {
+				// try to connect association from/to associationClas (container part)
+				createAssociation(source, target);
 			} else if (source instanceof Association || target instanceof Association) {
-				Association association;
-				Type type;
-
-				if (source instanceof Association) {
-					association = (Association)source;
-					type = (Type)target;
-				} else {
-					association = (Association)target;
-					type = (Type)source;
-				}
-
-				if (isBroken(association)) { // Look for broken association
-					fixAssociation(association, type);
-				} else { // create new end
-					final Property end = createAssociationEnd(type);
-					association.getOwnedEnds().add(end);
-					association.getMemberEnds().add(end);
-					association.getNavigableOwnedEnds().add(end);
-				}
+				createAssociationAddEnd(source, target);
 			}
+		}
+	}
+
+	/**
+	 * Add an end to an existing association.
+	 * 
+	 * @param source
+	 *            Association or element
+	 * @param target
+	 *            element or association
+	 */
+	private void createAssociationAddEnd(Element source, Element target) {
+		Association association;
+		Type type;
+
+		if (source instanceof Association) {
+			association = (Association)source;
+			type = (Type)target;
+		} else {
+			association = (Association)target;
+			type = (Type)source;
+		}
+
+		if (isBroken(association)) { // Look for broken association
+			fixAssociation(association, type);
+		} else { // create new end
+			final Property end = createAssociationEnd(type);
+			association.getOwnedEnds().add(end);
+			association.getMemberEnds().add(end);
+			association.getNavigableOwnedEnds().add(end);
 		}
 	}
 
