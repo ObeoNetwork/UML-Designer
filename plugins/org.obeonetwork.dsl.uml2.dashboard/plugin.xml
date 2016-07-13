@@ -80,8 +80,8 @@
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
             id="org.obeonetwork.dsl.uml2.design.OverviewPage"
-            imageOff="icons/Dashboard.gif"
-            imageOn="icons/Dashboard.gif"
+            imageOff="icons/overview/OverviewOn.png"
+            imageOn="icons/overview/OverviewSelectedOn.png"
             index="1"
             tabName="%overview"
             title="Overview"
@@ -90,8 +90,8 @@
             The Overview section lists all the representations that could be created ordered by viewpoints : Capture (Package hierarchy, Use case diagram…), Design (Class diagram, Activity diagram,…).
          </Description>
          <Overview
-               imageOff="icons/CreateOff.gif"
-               imageOn="icons/CreateOn.gif">
+               imageOff="icons/overview/OverviewOn.png"
+               imageOn="icons/overview/OverviewSelectedOn.png">
             <Description>
                %overview.description
             </Description>
@@ -312,8 +312,8 @@
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
             id="org.obeonetwork.dsl.uml2.design.CapturePage"
-            imageOff="icons/CreateOff.gif"
-            imageOn="icons/CreateOn.gif"
+            imageOff="icons/capture/CaptureOn.png"
+            imageOn="icons/capture/CaptureSelectedOn.png"
             index="2"
             tabName="%capture"
             title="%capture"
@@ -322,8 +322,8 @@
             %capture.description
          </Description>
          <Overview
-               imageOff="icons/CreateOff.gif"
-               imageOn="icons/CreateOn.gif">
+               imageOff="icons/capture/CaptureOn.png"
+               imageOn="icons/capture/CaptureSelectedOn.png">
             <Description>
                &lt;p&gt;&lt;b&gt;Capture&lt;/b&gt;&lt;br/&gt;To capture the actors and their interactions with the application and define the main structure of the application.&lt;/p&gt;
             </Description>
@@ -365,8 +365,8 @@
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
             id="org.obeonetwork.dsl.uml2.design.DesignPage"
-            imageOff="icons/CreateOff.gif"
-            imageOn="icons/CreateOn.gif"
+            imageOff="icons/design/DesignOn.png"
+            imageOn="icons/design/DesignSelectedOn.png"
             index="3"
             tabName="%design"
             title="%design"
@@ -375,8 +375,8 @@
             %design.description
          </Description>
          <Overview
-               imageOff="icons/CreateOff.gif"
-               imageOn="icons/CreateOn.gif">
+               imageOff="icons/design/DesignOn.png"
+               imageOn="icons/design/DesignSelectedOn.png">
             <Description>
                &lt;p&gt;&lt;b&gt;Design&lt;/b&gt;&lt;br/&gt;To work on the fine grained structure and the behaviours of the application.&lt;/p&gt;
             </Description>
@@ -468,8 +468,8 @@
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
             id="org.obeonetwork.dsl.uml2.design.ReviewPage"
-            imageOff="icons/CreateOff.gif"
-            imageOn="icons/CreateOn.gif"
+            imageOff="icons/review/ReviewOn.png"
+            imageOn="icons/review/ReviewSelectedOn.png"
             index="4"
             tabName="%review"
             title="%review"
@@ -478,8 +478,8 @@
             %review.description
          </Description>
          <Overview
-               imageOff="icons/CreateOff.gif"
-               imageOn="icons/CreateOn.gif">
+               imageOff="icons/review/ReviewOn.png"
+               imageOn="icons/review/ReviewSelectedOn.png">
             <Description>
                &lt;p&gt;&lt;b&gt;Review&lt;/b&gt;&lt;br/&gt;To document, get some overview and metrics of the application (non standard representations).&lt;/p&gt;
             </Description>
@@ -531,8 +531,8 @@
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
             id="org.obeonetwork.dsl.uml2.design.ExtendPage"
-            imageOff="icons/CreateOff.gif"
-            imageOn="icons/CreateOn.gif"
+            imageOff="icons/extend/ExtendOn.png"
+            imageOn="icons/extend/ExtendSelectedOn.png"
             index="5"
             tabName="%extend"
             title="%extend"
@@ -541,8 +541,8 @@
             %extend.description
          </Description>
          <Overview
-               imageOff="icons/CreateOff.gif"
-               imageOn="icons/CreateOn.gif">
+               imageOff="icons/extend/ExtendOn.png"
+               imageOn="icons/extend/ExtendSelectedOn.png">
             <Description>
                &lt;p&gt;&lt;b&gt;Extend&lt;/b&gt;&lt;br/&gt;To extend the UML standard for example by defining profile.&lt;/p&gt;
             </Description>
@@ -574,8 +574,8 @@
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.ActivityExplorerPage"
             id="org.obeonetwork.dsl.uml2.design.DocumentationPage"
-            imageOff="icons/HelpOff.gif"
-            imageOn="icons/HelpOn.gif"
+            imageOff="icons/documentation/HelpOn.png"
+            imageOn="icons/documentation/HelpSelectedOn.png"
             index="6"
             tabName="%documentation"
             title="%documentation"
@@ -584,8 +584,8 @@
             %documentation.description
          </Description>
          <Overview
-               imageOff="icons/HelpOff.gif"
-               imageOn="icons/HelpOn.gif">
+               imageOff="icons/documentation/HelpOn.png"
+               imageOn="icons/documentation/HelpSelectedOn.png">
             <Description>
                &lt;p&gt;&lt;b&gt;Documentation&lt;/b&gt;&lt;br/&gt;Documentation and supports entry points.&lt;/p&gt;
             </Description>
