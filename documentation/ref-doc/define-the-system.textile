@@ -256,26 +256,58 @@ Each SysML project provides the following viewpoints :
 
 h2(#Dashboard). Dashboard
 
-The *dashboard* is a diagram which is created automatically by the "project creation":{{ page.relativePath }}/ref-doc/define-the-system.html#Create_A_Project action. Only one dashboard exists per project.
+The *Dashboard* is an activity explorer which is created automatically by the "project creation":{{ page.relativePath }}/ref-doc/define-the-system.html#Create_A_Project action. Only one dashboard exists per project.
 
-!{{ page.relativePath }}/images/Dashboard.png!
+If the dashboard is closed, it could be re-opened in the "model Explorer" with the project contextual menu "Go To Activity Explorer"
 
-The dashboard is composed by three main regions : Create, Navigate, Help
+!{{ page.relativePath }}/images/DashboardGoToActivityExplorer.png!
 
-h3. Create
+The dashboard is composed by seven tabs : Process Map, Overview, Capture, Review, Extend, Documentation
 
-The *Create* section lists all the representations that could be created ordered by viewpoints : Capture (Package hierarchy, Use case diagram...), Design (Class diagram, Activity diagram,...).
-To *create a new representation* the user just needs to *double click* on the representation name. The new representation is created under the root model element in the semantic model and the corresponding editor opens.
+h3. Process Map tab
 
-h3. Navigate
+This tab list all available activities.
+!{{ page.relativePath }}/images/DashboardProcessMap.png!
+To navigate to an other tab the user just needs to *double click* on the icon.
+	
+h3. Overview
 
-The *Navigate* section lists all the existing representations.
-To *navigate* to a representation the user just needs to *double click* on the representation name. The representation editor is opened.
+On the left, the tab Overview list all  the representations that could be created ordered by viewpoints : Capture (Package hierarchy, Use case diagram...), Design (Class diagram, Activity diagram,...), Review, Extend. To *create a new representation* the user just needs to *click* on the link named as requested diagram. The new representation is created under the root model element in the semantic model and the corresponding editor opens. On the right of the tab, A diagram viewer list all already created diagrams ordered by viewpoints and by type of diagram. To *navigate* to a representation the user just needs to *double click* on the representation name. The representation editor is opened.
 
-h3. Help
+!{{ page.relativePath }}/images/DashboardOverviewTab.png!
 
-The *Help* section lists some documentation entry points.
-To *open the help*, the user just needs to *double click* on the help section title. The contextual help content is opened on the expected section.
+To navigate to the previous or the next tab the user just needs to *click* on the icon in the top of the tab.
+
+h3. Capture
+
+The tab Capture is a specific tab dedicated to the viewpoint *Capture*.
+
+!{{ page.relativePath }}/images/DashboardCaptureTab.png!
+
+h3. Design
+
+The tab Design is a specific tab dedicated to the viewpoint *Design*.
+
+!{{ page.relativePath }}/images/DashboardDesignTab.png!
+
+h3. Review
+
+The tab Review is a specific tab dedicated to the viewpoint *Review*.
+
+!{{ page.relativePath }}/images/DashboardReviewTab.png!
+
+h3. Extend
+
+The tab Extend is a specific tab dedicated to the viewpoint *Extend*.
+
+!{{ page.relativePath }}/images/DashboardExtendTab.png!
+
+h3. Documentation
+
+The *Documentation* tab lists some documentation entry points.
+To *open the help*, the user just needs to *click* on the help section title. The contextual help content is opened on the expected section.
+
+!{{ page.relativePath }}/images/DashboardDocumentationTab.png!
 
 h2. Manage representations
 
