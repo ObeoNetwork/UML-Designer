@@ -28,6 +28,7 @@ Contributors:
   <modules>
     <!-- Build plugins -->
     <module>../../plugins/org.obeonetwork.gmf.runtime.diagram.ui.extension</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.dashboard</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.design</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.branding</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.design.doc</module>
