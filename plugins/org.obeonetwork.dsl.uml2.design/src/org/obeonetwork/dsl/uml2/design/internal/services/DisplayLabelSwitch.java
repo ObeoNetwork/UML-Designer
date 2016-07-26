@@ -569,22 +569,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseOpaqueAction(OpaqueAction object) {
-		final Iterator<String> it = object.getBodies().iterator();
-
-		if (it.hasNext()) {
-			final StringBuffer buffer = new StringBuffer();
-			buffer.append(caseNamedElement(object));
-			buffer.append(NL);
-
-			while (it.hasNext()) {
-				buffer.append(NL);
-				buffer.append(it.next());
-			}
-
-			return buffer.toString();
-		}
-
-		return null;
+		return object.getName();
 	}
 
 	/**

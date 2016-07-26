@@ -55,6 +55,7 @@ import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
 
 import com.google.common.base.Predicate;
@@ -69,6 +70,17 @@ import com.google.common.collect.Lists;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class ActivityDiagramServices extends AbstractDiagramServices {
+	/**
+	 * Return the label of an opaque action with its body.
+	 *
+	 * @param opaqueAction
+	 *            Opaque Action
+	 * @return Opaque Action label
+	 */
+	public String computeOpaqueActionWithBodyLabel(OpaqueAction opaqueAction) {
+		return LabelServices.INSTANCE.computeOpaqueActionWithBodyLabel(opaqueAction);
+	}
+
 	/**
 	 * Creates a new {@link InputPin} element in the given context.
 	 *
@@ -232,6 +244,21 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			((Activity)context).getOwnedGroups().add(interruptRegion);
 		}
 		return interruptRegion;
+	}
+
+	/**
+	 * Parse the edited label string and update the underlying context {@link Element}.
+	 *
+	 * @param opaqueAction
+	 *            the context object on which to execute this service.
+	 * @param editedLabelContent
+	 *            the content entered by the user.
+	 * @return the context {@link Element}
+	 */
+	public Element editOpaqueActionWithBodyLabel(OpaqueAction opaqueAction, String editedLabelContent) {
+		opaqueAction.getBodies().clear();
+		opaqueAction.getBodies().add(editedLabelContent);
+		return opaqueAction;
 	}
 
 	/**

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.internal.services;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.event.ChangeEvent;
@@ -38,6 +39,7 @@ import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.JoinNode;
 import org.eclipse.uml2.uml.MergeNode;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
@@ -247,6 +249,32 @@ public class LabelServices {
 	public String computeElementImportLabel(ElementImport element) {
 		// ['«Metaclass»\n'+self.oclAsType(uml::Element).computeUmlLabel()/]
 		return "«Metaclass»\n" + computeUmlLabel(element); //$NON-NLS-1$
+	}
+
+	/**
+	 * Compute opaque action with body label.
+	 *
+	 * @param opaqueAction
+	 *            Opaque action
+	 * @return Label
+	 */
+	public String computeOpaqueActionWithBodyLabel(OpaqueAction opaqueAction) {
+
+		final Iterator<String> it = opaqueAction.getBodies().iterator();
+
+		if (it.hasNext()) {
+			final StringBuffer buffer = new StringBuffer();
+			buffer.append(ILabelConstants.NL);
+
+			while (it.hasNext()) {
+				buffer.append(ILabelConstants.NL);
+				buffer.append(it.next());
+			}
+
+			return buffer.toString();
+		}
+
+		return computeUmlLabel(opaqueAction);
 	}
 
 	/**

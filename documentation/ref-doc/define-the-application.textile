@@ -79,6 +79,10 @@ This actions allows to edit :
 * actor, subject (component,  artifact, datatype, interface, collaboration, class), use case labels
 * relationships labels
 
+h3. Manage bodies
+
+It is possible to *define a body* to an Opaque Action by selecting the optional layer _Body_ from the diagram toolbar. Then the Opaque actions contains there bodies whic are editable thanks to the "direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit).
+
 h2. What the application is supposed to do ? 
 
 h3(#Use_Case_Diagram). Capture the use cases
