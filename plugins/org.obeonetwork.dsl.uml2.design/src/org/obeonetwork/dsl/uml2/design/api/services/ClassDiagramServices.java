@@ -756,6 +756,76 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get AssociationClass tooltip content.
+	 * @param associationClassParam the current AssociationClass
+	 * @return the tooltip content
+	 */
+	public String getTooltip(AssociationClass associationClassParam) {
+		return getTooltip((NamedElement)associationClassParam);
+	}
+
+	/**
+	 * Get class tooltip content.
+	 * @param classParam the class
+	 * @return the tooltip content
+	 */
+	public String getTooltip(Class classParam) {
+		return getTooltip((NamedElement)classParam);
+	}
+
+	/**
+	 * Get DataType tooltip content.
+	 *
+	 * @param dataTypeParam
+	 *            the current DataType
+	 * @return the tooltip content
+	 */
+	public String getTooltip(DataType dataTypeParam) {
+		return getTooltip((NamedElement)dataTypeParam);
+	}
+
+	/**
+	 * Get Enumeration tooltip content.
+	 * @param enumParam the current enumeration
+	 * @return the tooltip content
+	 */
+	public String getTooltip(Enumeration enumParam) {
+		return getTooltip((NamedElement)enumParam);
+	}
+
+	/**
+	 * Get Interface tooltip content.
+	 *
+	 * @param interfaceParam
+	 *            the current Interface
+	 * @return the tooltip content
+	 */
+	public String getTooltip(Interface interfaceParam) {
+		return getTooltip((NamedElement)interfaceParam);
+	}
+	private String getTooltip(NamedElement namedElement) {
+
+		final Package pack = namedElement.getNearestPackage();
+		return pack.getName() + "::" + namedElement.getName(); //$NON-NLS-1$
+	}
+	/**
+	 * Get package tooltip content.
+	 * @param packageParam the current package
+	 * @return the tooltip content
+	 */
+	public String getTooltip(Package packageParam) {
+		return getTooltip((NamedElement)packageParam);
+	}
+	/**
+	 * Get PrimitiveType tooltip content.
+	 * @param packageParam the current PrimitiveType
+	 * @return the tooltip content
+	 */
+	public String getTooltip(PrimitiveType primitiveTypeParam) {
+		return getTooltip((NamedElement)primitiveTypeParam);
+	}
+
+	/**
 	 * Return collection of visible association class in a diagram.
 	 *
 	 * @param diagram
