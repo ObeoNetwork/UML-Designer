@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   viewBox="-34214.4 0 0 76.8"
+   x="0px"
+   y="0px"
+   id="svg3037"
+   inkscape:version="0.91 r13725"
+   width="11.288889mm"
+   height="11.288889mm"
+   sodipodi:docname="OverviewSelected.svg">
+  <metadata
+     id="metadata3049">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3047">
+    <filter
+       id="filter4415"
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB">
+      <feFlood
+         id="feFlood4417"
+         flood-opacity="0.7"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite4419"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur4421"
+         stdDeviation="2.5"
+         result="blur" />
+      <feOffset
+         id="feOffset4423"
+         dx="2"
+         dy="2"
+         result="offset" />
+      <feComposite
+         id="feComposite4425"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+    <filter
+       id="filter4427"
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB">
+      <feFlood
+         id="feFlood4429"
+         flood-opacity="0.7"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite4431"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur4433"
+         stdDeviation="2.5"
+         result="blur" />
+      <feOffset
+         id="feOffset4435"
+         dx="2"
+         dy="2"
+         result="offset" />
+      <feComposite
+         id="feComposite4437"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1680"
+     inkscape:window-height="949"
+     id="namedview3045"
+     showgrid="false"
+     inkscape:zoom="2.1185582"
+     inkscape:cx="32.758188"
+     inkscape:cy="5.0618343"
+     inkscape:window-x="766"
+     inkscape:window-y="137"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3037"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     units="mm" />
+  <path
+     inkscape:connector-curvature="0"
+     d="m 1.3282262,33.429239 8.29483,-8.29483 c -1.60831,-2.53327 -2.53831,-5.53654 -2.53831,-8.75139 0,-9.0331599 7.3481498,-16.38301988992594 16.3812598,-16.38301988992594 9.03311,0 16.37962,7.34985998992594 16.37962,16.38301988992594 0,9.03307 -7.34651,16.38288 -16.38125,16.38288 -3.05663,0 -5.91988,-0.84167 -8.36981,-2.30493 l -8.3681398,8.36814 c -3.57324,3.56826 -8.97312,-1.82665 -5.3982,-5.39987 z M 34.767426,16.383019 c 0,-6.23155 -5.07153,-11.3030999 -11.30305,-11.3030999 -6.23152,0 -11.30309,5.0698499 -11.30309,11.3030999 0,6.23315 5.07157,11.30299 11.30309,11.30299 6.23152,0 11.30305,-5.07155 11.30305,-11.30299 z m -3.34992,-2.93998 c -3.30661,-7.6647899 -14.43967,-6.7764999 -16.5363,1.24833 4.22322,-4.9565299 11.65475,-5.4898999 16.5363,-1.24833 z"
+     id="path4-6"
+     style="fill:#4e7fb2;fill-opacity:1"
+     inkscape:export-filename="/Volumes/partage/private/marketing/Design/Produits/UMLDesigner/welcomepage/exports/OverviewSelected.png"
+     inkscape:export-xdpi="90.700081"
+     inkscape:export-ydpi="90.700081" />
+</svg>
