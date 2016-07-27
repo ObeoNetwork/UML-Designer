@@ -5220,7 +5220,7 @@
             </ownedTools>
           </subSections>
         </toolSections>
-        <toolSections name="SD_Import" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
+        <toolSections documentation="Use existing elements" name="SD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Add an existing class to the diagram" name="CR_ClassLifeline" label="Class" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
             <variable name="container">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="service:getAllClassesAndContainers" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select an instance or a property associated to the new lifeline"/>
@@ -5239,114 +5239,108 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createLifeline(property)"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Use an existing operation to create a synchronous message" name="CR_SynchronousMessage" label="Synchronous Message" precondition="aql:preTarget.represents.type.ownedOperation->size() > 0" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Message_synchCall.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <sourceVariable name="source">
+              <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="aql:source.eContainer(uml::Interaction)"/>
+            </sourceVariable>
+            <targetVariable name="target">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="aql:target.represents.type.ownedOperation" message="Select an operation"/>
+            </targetVariable>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:sourceContainer.createSynchronousMessageWithExecution(source, target, startingEndPredecessor, finishingEndPredecessor, operation)"/>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Use an existing operation to create an asynchronous message" name="CR_AsynchronousMessage" label="Asynchronous Message" precondition="aql:preTarget.represents.type.ownedOperation->size() > 0" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Message_asynchCall.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <sourceVariable name="source">
+              <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="aql:source.eContainer(uml::Interaction)"/>
+            </sourceVariable>
+            <targetVariable name="target">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="aql:target.represents.type.ownedOperation" message="Select an operation"/>
+            </targetVariable>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:sourceContainer.createAsynchronousMessageWithExecution(source,target,startingEndPredecessor,finishingEndPredecessor, operation)"/>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
+          </ownedTools>
         </toolSections>
-        <toolSections name="SD_Create" label="Interaction">
-          <ownedTools xsi:type="tool_1:ToolGroup" name="Lifeline">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new class" name="CR_Lifeline" label="Class" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getNearestPackage()">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="class">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                          <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline" variableName="lifeline">
-                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:class.name"/>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
-                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:class.name"/>
-                            <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:class"/>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lifeline">
-                            <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="var:property"/>
-                          </subModelOperations>
+        <toolSections documentation="Create new elements" name="SD_Create" label="Create">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new class" name="CR_Lifeline" label="Class" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getNearestPackage()">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="class">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline" variableName="lifeline">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:class.name"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:class.name"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:class"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lifeline">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="var:property"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new actor" name="CR_Actor" label="Actor" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getNearestPackage()">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Actor" referenceName="packagedElement" variableName="actor">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline" variableName="lifeline">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:actor.name"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:actor.name"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:actor"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lifeline">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="var:property"/>
-                      </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new actor" name="CR_Actor" label="Actor" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getNearestPackage()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Actor" referenceName="packagedElement" variableName="actor">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline" variableName="lifeline">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:actor.name"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:actor.name"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:actor"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lifeline">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="var:property"/>
                     </subModelOperations>
                   </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" name="CR_Synch_Message">
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new synchronous message" name="CR_SynchronousMessage" label="Synchronous Message" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
-              <sourceVariable name="source">
-                <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="aql:source.eContainer(uml::Interaction)"/>
-              </sourceVariable>
-              <targetVariable name="target">
-                <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="service:getAllOperations" message="Select an operation"/>
-              </targetVariable>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:sourceContainer.createSynchronousMessageWithExecution(source, target, startingEndPredecessor, finishingEndPredecessor, operation)"/>
-              </initialOperation>
-              <startingEndPredecessor name="startingEndPredecessor"/>
-              <finishingEndPredecessor name="finishingEndPredecessor"/>
-            </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new synchronous operation" name="CR_Synchronous_Operation" label="Synchronous Message and Operation Creation" precondition="service:preTarget.isValidMessageEnd" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:target.createOperationAndSynchMessage(source,startingEndPredecessor,finishingEndPredecessor)"/>
-              </initialOperation>
-              <startingEndPredecessor name="startingEndPredecessor"/>
-              <finishingEndPredecessor name="finishingEndPredecessor"/>
-            </tools>
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Create a new synchronous operation" name="CR_Synchronous_Operation" label="Synchronous Message" precondition="service:preTarget.isValidMessageEnd" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:target.createOperationAndSynchMessage(source,startingEndPredecessor,finishingEndPredecessor)"/>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" name="CR_Asynch_Message">
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new asynchronus message" name="CR_AsynchronousMessage" label="Asynchronous Message" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
-              <sourceVariable name="source">
-                <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="aql:source.eContainer(uml::Interaction)"/>
-              </sourceVariable>
-              <targetVariable name="target">
-                <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="service:getAllOperations" message="Select an operation"/>
-              </targetVariable>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:sourceContainer.createAsynchronousMessageWithExecution(source,target,startingEndPredecessor,finishingEndPredecessor, operation)"/>
-              </initialOperation>
-              <startingEndPredecessor name="startingEndPredecessor"/>
-              <finishingEndPredecessor name="finishingEndPredecessor"/>
-            </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new asynchronous operation" name="CR_Asynchronous_Operation" label="Asynchronous Message and Operation Creation" precondition="service:preTarget.isValidMessageEnd" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:target.createOperationAndAsynchMessage(source,startingEndPredecessor,finishingEndPredecessor)"/>
-              </initialOperation>
-              <startingEndPredecessor name="startingEndPredecessor"/>
-              <finishingEndPredecessor name="finishingEndPredecessor"/>
-            </tools>
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Create a new asynchronous operation" name="CR_Asynchronous_Operation" label="Asynchronous Message" precondition="service:preTarget.isValidMessageEnd" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:target.createOperationAndAsynchMessage(source,startingEndPredecessor,finishingEndPredecessor)"/>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
