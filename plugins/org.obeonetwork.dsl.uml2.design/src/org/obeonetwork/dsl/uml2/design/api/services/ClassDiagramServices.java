@@ -818,9 +818,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 				final Type targetType = target.getType();
 				if (sourceType != null && displayedNodes.contains(sourceType) && targetType != null
 						&& displayedNodes.contains(targetType)) {
-					if (container == association.eContainer()) {
-						associationClasses.add(association);
-					}
+					associationClasses.add(association);
 				}
 			}
 		}
