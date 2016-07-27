@@ -429,6 +429,18 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get abstract label format.
+	 *
+	 * @param object
+	 *            EObject
+	 * @return Abstract label format
+	 */
+	public FontFormat getAbstractItalicLabelFormat(EObject object) {
+		// Fix to return bold/italic when bug will be fixed on sirius
+		return FontFormat.ITALIC_LITERAL;
+	}
+
+	/**
 	 * Get all the stereotype applications according to the selected diagram.
 	 *
 	 * @param diagram

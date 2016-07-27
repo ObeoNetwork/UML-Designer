@@ -278,7 +278,7 @@
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from class" label="for class" browseExpression="aql:container.eInverse()->select(elt | elt.oclIsTypeOf(uml::Property)).eInverse()->select(elt | elt.oclIsTypeOf(uml::Lifeline)).interaction" navigationNameExpression="aql:'Open '+self.name+' Sequence Diagram'" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from class" label="for class" browseExpression="aql:container.eInverse()->select(elt|elt.oclIsTypeOf(uml::Property)).eInverse()->select(elt|elt.oclIsTypeOf(uml::Lifeline)).interaction" navigationNameExpression="aql:'Open '+self.name+' Sequence Diagram'" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
@@ -567,6 +567,8 @@
   <ownedViewpoints endUserDocumentation="To capture the actors and their interactions with the application and define the main structure of the application." name="Capture" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" name="Package Hierarchy" titleExpression="aql:self.name +' Package Hierarchy'" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide containment">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']"/>
       </filters>
@@ -860,6 +862,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" documentation="Diagram for Use Cases" name="Use Case Diagram" titleExpression="aql:self.name +' Use Case Diagram'" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Use Case" reusedMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
         <nodeMappings name="UCD_Actor" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Mapping to create actors" domainClass="uml.Actor" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']">
@@ -1299,13 +1302,14 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" documentation="Representation to edit class diagrams" name="Class Diagram" titleExpression="aql:self.name +' Class Diagram'" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" preconditionExpression="" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" documentation="Hides elements (Classes, Interfaces, Associations, ...) not related to the selected (context) Class/Interface." name="Related Elements">
         <filters xsi:type="filter:VariableFilter" semanticConditionExpression="service:self.isRelated(contextSelection)">
           <ownedVariables xsi:type="tool:SelectModelElementVariable" name="contextSelection" candidatesExpression="aql:diagram.ownedDiagramElements.target->select(elt | elt.oclIsTypeOf(uml::Class) or elt.oclIsTypeOf(uml::Interface))" message="Select the contextual element. This filter shows only the elements related to the selected context, the other elements will be hidden."/>
         </filters>
       </filters>
       <validationSet name="callCheckAggregationCompositeAssociation">
-        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="This is not a binary association as required for composite or aggregation." targetClass="uml.Association">
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="isValidAggregationCompositeAssociation" level="ERROR" message="This is not a binary association as required for composite or aggregation." targetClass="uml.Association">
           <audits auditExpression="service:isValidAggregationCompositeAssociation"/>
         </ownedRules>
       </validationSet>
@@ -1767,7 +1771,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sef"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="QualifierDirectEdit" forceRefresh="true" inputLabelExpression="service:computeUmlDirectEditLabel">
@@ -2274,7 +2278,7 @@
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="feature:isAbstract">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']/@style //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@style //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']/@style //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']/@conditionnalStyles.0/@style" attributeName="labelFormat" value="service:self.getAbstractBoldLabelFormat"/>
-            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']/@style" attributeName="labelFormat" value="aql:diagram::FontFormat::italic"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']/@style" attributeName="labelFormat" value="service:self.getAbstractItalicLabelFormat"/>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:isStatic">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']/@style //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style" attributeName="labelFormat" value="aql:viewpoint::FontFormat::underline"/>
@@ -2408,6 +2412,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" documentation="Description to edit composite structure diagrams" name="Composite Structure Diagram" titleExpression="aql:self.name +' Composite Structure Diagram'" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.PackageableElement" preconditionExpression="aql:self.oclIsKindOf(uml::Package) or self.oclIsKindOf(uml::StructuredClassifier)" rootExpression="var:self" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <defaultLayer name="Composite structure" reusedMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
         <edgeMappings name="CS_Connector" preconditionExpression="aql:self.isValidConnector(sourceView,targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_MainStructuredClassifier']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_MainStructuredClassifier']" targetFinderExpression="aql:self.getConnectorTarget(diagram)" sourceFinderExpression="aql:self.getConnectorSource(diagram)" domainClass="uml.Connector" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
           <style targetArrow="NoDecoration">
@@ -2427,7 +2433,7 @@
             </style>
           </borderedNodeMappings>
           <subContainerMappings name="CS_Part" preconditionExpression="aql:self.oclIsTypeOf(uml::Property) and self.isComposite()" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:ownedAttribute" createElements="false" domainClass="uml.Property" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram']">
-            <borderedNodeMappings name="CS_Part_Port" semanticCandidatesExpression="aql:self.type.ownedAttribute->select(elt | elt.oclIsTypeOf(uml::Port))" domainClass="uml.Port">
+            <borderedNodeMappings name="CS_Part_Port" semanticCandidatesExpression="aql:self.type.ownedAttribute->select(Element elt|elt.oclIsTypeOf(uml::Port))" domainClass="uml.Port">
               <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>italic</labelFormat>
@@ -2645,6 +2651,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" name="Component Diagram" titleExpression="aql:self.name +' Component Diagram'" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements']" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide connectors">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubRequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_RequiredInterface2ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubProvidedInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubRequiredInterface2Port']"/>
       </filters>
@@ -2889,7 +2897,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Create a new typed port" name="CS_Add_TypedPort" label="Typed Port" precondition="aql:self.oclIsKindOf(uml::StructuredClassifier)" candidatesExpression="aql:self.getValidsForComponentDiagram()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))" tree="true" rootExpression="service:getAllRootsInSession" childrenExpression="aql:self.eContents()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif" windowTitle="Select the port type">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Create a new typed port" name="CS_Add_TypedPort" label="Typed Port" precondition="aql:self.oclIsKindOf(uml::StructuredClassifier)" candidatesExpression="aql:self.getValidsForComponentDiagram()->select(EObject eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))" tree="true" rootExpression="service:getAllRootsInSession" childrenExpression="aql:self.eContents()->select(EObject eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif" windowTitle="Select the port type">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -3165,8 +3173,10 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" name="Deployment Diagram" titleExpression="aql:self.oclAsType(uml::NamedElement).name +' Deployment Diagram'" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <defaultLayer name="Deployment diagram" reusedMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
-        <edgeMappings name="DE_Link" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="service:getTargetType" sourceFinderExpression="service:getSourceType" targetExpression="aql:self->including(elt | elt.getSource())->including(elt | elt.getTarget())" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkTarget']">
+        <edgeMappings name="DE_Link" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="service:getTargetType" sourceFinderExpression="service:getSourceType" targetExpression="aql:self->including(Element elt|elt.getSource())->including(Element elt|elt.getTarget())" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkTarget']">
           <style targetArrow="NoDecoration" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="feature:name">
@@ -3472,7 +3482,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectDependencySource" precondition="aql:not oclIsTypeOf(uml::Manifestation)" reconnectionKind="RECONNECT_SOURCE">
+            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectDependencySource" precondition="aql:not self.oclIsTypeOf(uml::Manifestation)" reconnectionKind="RECONNECT_SOURCE">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -3487,7 +3497,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectDependencyTarget" precondition="aql:not oclIsTypeOf(uml::Manifestation)">
+            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectDependencyTarget" precondition="aql:not self.oclIsTypeOf(uml::Manifestation)">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -3576,11 +3586,13 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Activity Diagram" titleExpression="aql:self.name +' Activity Diagram'" domainClass="uml.Activity" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <validationSet name="callOperationPinConsistency">
-        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="service:getCallOperationPinConsistencyErrorMessage" targetClass="uml.Pin">
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="CallOperationPinConsistencyError" level="ERROR" message="service:getCallOperationPinConsistencyErrorMessage" targetClass="uml.Pin">
           <audits auditExpression="service:isConsistent"/>
         </ownedRules>
-        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="service:getCallOperationConsistencyErrorMessage" targetClass="uml.CallOperationAction">
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="CallOperationConsistencyError" level="ERROR" message="service:getCallOperationConsistencyErrorMessage" targetClass="uml.CallOperationAction">
           <audits auditExpression="service:isConsistent"/>
         </ownedRules>
       </validationSet>
@@ -3592,7 +3604,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="aql:self.interrupts->filter(EObject)->size() > 0">
+          <conditionnalStyles predicateExpression="aql:self.interrupts->filter(ecore::EObject)->size() > 0">
             <style routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
               <centerLabelStyleDescription labelExpression="." iconPath="/org.obeonetwork.dsl.uml2.design/icons/InterruptibleEdgeIcon.png">
@@ -4351,7 +4363,7 @@
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new activity diagram" name="CR_ActivityDiagramFromCallBehaviorAction" label="Create Activity diagram" precondition="aql:self.oclIsTypeOf(uml::CallBehaviorAction) and self.behavior.oclIsTypeOf(uml::Activity)" titleExpression="aql:self.behavior.name +' Activity Diagram'" browseExpression="aql:self.behavior" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new activity diagram" name="CR_ActivityDiagramFromCallBehaviorAction" label="Create Activity diagram" precondition="aql:self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::Activity)" titleExpression="aql:self.oclAsType(uml::CallBehaviorAction).behavior.name +' Activity Diagram'" browseExpression="aql:self.oclAsType(uml::CallBehaviorAction).behavior" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
@@ -4410,6 +4422,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="State Machine Diagram" titleExpression="aql:self.oclAsType(uml::NamedElement).name +' State Machine Diagram'" domainClass="uml.StateMachine" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <diagramInitialisation>
         <firstModelOperations xsi:type="tool:If" conditionExpression="aql:self.region->size() = 0">
           <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Region" referenceName="region">
@@ -4755,9 +4769,6 @@
                     </subModelOperations>
                   </default>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:containerView">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:"/>
-                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -5096,6 +5107,9 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" documentation="@generated" name="Sequence Diagram" titleExpression="service:getSequenceDiagramName" domainClass="uml.Interaction" enablePopupBars="true" endsOrdering="service:getEndsOrdering(eventEnds)" instanceRolesOrdering="feature:lifeline">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="SD_Lifeline Instance Role" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Sequence%20diagram']/@ownedTools[name='Open%20sequence%20diagram%20from%20lifeline']" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Lifeline']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:lifeline" semanticElements="service:getClientDependencies" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline">
           <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="SD_Lifeline Execution" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Lifeline']" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
@@ -5383,6 +5397,7 @@
   <ownedViewpoints endUserDocumentation="To document, get some overview and metrics of the application." name="Review" label="Review" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="Documentation Table" titleExpression="aql:self.oclAsType(uml::NamedElement).name +' Documentation Table'" domainClass="uml.Package">
       <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <ownedLineMappings name="DT_PackageLine" domainClass="uml.Package" semanticCandidatesExpression="var:self">
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -5390,7 +5405,7 @@
         <backgroundConditionalStyle predicateExpression="service:existComments">
           <style backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']"/>
         </backgroundConditionalStyle>
-        <ownedSubLines name="DT_ElementLine" reusedSubLines="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" reusedInMappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" domainClass="uml.Element" semanticCandidatesExpression="aql:elf.eContents()->select(elt | not elt.oclIsTypeOf(uml::Comment))">
+        <ownedSubLines name="DT_ElementLine" reusedSubLines="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" reusedInMappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" domainClass="uml.Element" semanticCandidatesExpression="aql:self.eContents()->select(elt | not elt.oclIsTypeOf(uml::Comment))">
           <defaultBackground>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultBackground>
@@ -5423,6 +5438,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Use Case Cross Table" titleExpression="aql:self.name +' Use Case Cross Table'" domainClass="uml.Model" initialHeaderColumnWidth="50">
       <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <ownedLineMappings name="UCT_ClassifierLine" domainClass="uml.Classifier">
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -5458,6 +5474,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Package Containment" titleExpression="aql:self.name + ' Package Containment'" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Containment">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@edgeMappings[name='PC_Containment']"/>
       </filters>
@@ -5574,6 +5592,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Diagram%20PD']" documentation="Representation to edit profile diagrams" name="Profile Diagram" titleExpression="aql:self.name +' Profile Diagram'" domainClass="uml.Profile" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <defaultLayer name="Profile">
         <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']" targetFinderExpression="service:self.getElementImport" sourceFinderExpression="aql:self.getStereotype()" domainClass="uml.Extension" useDomainElement="true" reconnections="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PD_ReconnectTarget'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PD_ReconnectSource']">
           <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="tree">
@@ -6070,7 +6089,7 @@
   <userColorsPalettes name="UMLPalette">
     <entries xsi:type="description:UserFixedColor" red="235" green="235" blue="235" name="Nested Package Foreground"/>
     <entries xsi:type="description:UserFixedColor" name="ComponentColor"/>
-    <entries xsi:type="description:InterpolatedColor" name="Component Background Color" colorValueComputationExpression="aql:ancestors()->size()">
+    <entries xsi:type="description:InterpolatedColor" name="Component Background Color" colorValueComputationExpression="aql:self.ancestors()->size()">
       <colorSteps associatedValue="0">
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
       </colorSteps>
@@ -6088,7 +6107,7 @@
     <entries xsi:type="description:UserFixedColor" red="246" green="253" blue="255" name="InformationBackground"/>
     <entries xsi:type="description:UserFixedColor" red="12" green="92" blue="159" name="InformationBorder"/>
     <entries xsi:type="description:UserFixedColor" red="230" green="230" blue="230" name="very light gray"/>
-    <entries xsi:type="description:InterpolatedColor" name="Containment Background" colorValueComputationExpression="aql:ancestors()->size()">
+    <entries xsi:type="description:InterpolatedColor" name="Containment Background" colorValueComputationExpression="aql:self.ancestors()->size()">
       <colorSteps associatedValue="0" associatedColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']"/>
       <colorSteps associatedValue="15" associatedColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']"/>
     </entries>
