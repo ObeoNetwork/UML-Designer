@@ -130,7 +130,7 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 
 	/**
 	 * Create a transition.
-	 * 
+	 *
 	 * @param self
 	 *            region
 	 * @param source_p
@@ -154,6 +154,7 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 		}
 
 	}
+
 	private void createTransition(Region region, Vertex source, Vertex target) {
 		final Transition transition = UMLFactory.eINSTANCE.createTransition();
 		transition.setSource(source);
@@ -161,6 +162,22 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 		region.getTransitions().add(transition);
 	}
 
+	/**
+	 * Get connection point to display for a state machine.
+	 *
+	 * @param compositeState
+	 *            the composite state
+	 * @return list of connection point or empty list
+	 */
+	public List<Pseudostate> getConnectionPoints(State compositeState) {
+		final List<Pseudostate> connectionPoints = new ArrayList<Pseudostate>();
+		if (!compositeState.isSimple()) {
+			if (!compositeState.getConnectionPoints().isEmpty()) {
+				connectionPoints.addAll(compositeState.getConnectionPoints());
+			}
+		}
+		return connectionPoints;
+	}
 
 	/**
 	 * Get connection point to display for a state machine.
@@ -362,7 +379,6 @@ public class StateMachineDiagramServices extends AbstractDiagramServices {
 	public boolean isInitialState(Pseudostate state) {
 		return state.getKind().equals(PseudostateKind.INITIAL_LITERAL);
 	}
-
 
 	/**
 	 * Is a join state.
