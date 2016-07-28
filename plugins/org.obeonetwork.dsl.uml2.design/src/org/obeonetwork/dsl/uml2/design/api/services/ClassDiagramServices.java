@@ -423,9 +423,12 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *            EObject
 	 * @return Abstract label format
 	 */
-	public FontFormat getAbstractBoldLabelFormat(EObject object) {
+	public List<FontFormat> getAbstractBoldLabelFormat(EObject object) {
 		// Fix to return bold/italic when bug will be fixed on sirius
-		return FontFormat.BOLD_LITERAL;
+		final List<FontFormat> fontFormats = new ArrayList<FontFormat>();
+		fontFormats.add(FontFormat.BOLD_LITERAL);
+		fontFormats.add(FontFormat.ITALIC_LITERAL);
+		return fontFormats;
 	}
 
 	/**
