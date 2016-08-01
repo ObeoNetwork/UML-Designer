@@ -159,12 +159,12 @@ public abstract class AbstractCreateDiagram<T extends PackageableElement> extend
 		}
 		descriptionLabel += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
 		final InputDialog askViewPointName = new InputDialog(Display.getDefault().getActiveShell(),
-				Messages.createRepresentationInputDialog_Title, descriptionLabel, defaultName,
+				"New " + description.getName(), descriptionLabel, defaultName, //$NON-NLS-1$
 				new IInputValidator() {
-					public String isValid(final String newText) {
-						return null;
-					}
-				});
+			public String isValid(final String newText) {
+				return null;
+			}
+		});
 		if (askViewPointName.open() == Window.OK) {
 			return askViewPointName.getValue();
 		}
