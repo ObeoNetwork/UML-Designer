@@ -68,7 +68,7 @@ public class CreateActivityDiagram extends NewDiagramHyperLinkAdapter {
 			}
 		}
 		final Activity activity = UMLFactory.eINSTANCE.createActivity();
-		final String activityLabel = parent.getName() + " activity"; //$NON-NLS-1$
+		final String activityLabel = parent.getName(); // $NON-NLS-1$
 		activity.setName(activityLabel);
 		return activity;
 	}
