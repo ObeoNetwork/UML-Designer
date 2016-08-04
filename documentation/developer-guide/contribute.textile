@@ -8,7 +8,7 @@ relativePath: ..
 h2. How you can help
 
 UML Designer is an open source project and everyone is encouraged to get involved! There are lots of ways you can contribute:
-* join our "forum":{{ page.relativePath }}/developer-guide/contribute.html#Forum on the "obeonetwork":http://www.obeonetwork.com/
+* join our "forum":{{ page.relativePath }}/developer-guide/contribute.html#Forum
 * find and "report bugs":{{ page.relativePath }}/developer-guide/contribute.html#Report_bugs
 * write tests for bugs
 * "improve the documentation":{{ page.relativePath }}/developer-guide/contribute.html#Contribute_to_doc
@@ -57,7 +57,7 @@ You can visualize also on which issues we are working on thanks to our *card wal
 
 h3(#Forum). Forum
  
-If you have any *question*, do not hesitate ask a question on the "Obeo Network":http://www.obeonetwork.com/group/uml-designer.
+If you have any *question*, do not hesitate ask a question on "Stack Overflow":http://stackoverflow.com/questions/ask?tags=uml-designer. When you ask a question do not forget to add the tag <code>uml-designer</code>.
 
 h3(#Survey). Survey
 

@@ -9,52 +9,51 @@ This table lists all the steps to follow to release a new UML Designer version.
 
 h2. Prepare/validate nightly
 
-|Action                                                                    |v6.0.0|
-|"Release 0":{{ page.relativePath }}/developer-guide/release.html#release0 |    OK|
-|"Release 1":{{ page.relativePath }}/developer-guide/release.html#release1 |    OK| 
-|"Release 2":{{ page.relativePath }}/developer-guide/release.html#release2 |    OK|
-|"Release 3":{{ page.relativePath }}/developer-guide/release.html#release3 |    OK|
-|"Release 4":{{ page.relativePath }}/developer-guide/release.html#release4 |    OK|
-|"Release 5":{{ page.relativePath }}/developer-guide/release.html#release5 |    OK|
-|"Release 6":{{ page.relativePath }}/developer-guide/release.html#release6 |    OK| 
-|"Release 7":{{ page.relativePath }}/developer-guide/release.html#release7 |    OK|
-|"Release 8":{{ page.relativePath }}/developer-guide/release.html#release8 |    OK|
+|Action                                                                    |
+|"Release 0":{{ page.relativePath }}/developer-guide/release.html#release0 |
+|"Release 1":{{ page.relativePath }}/developer-guide/release.html#release1 |
+|"Release 2":{{ page.relativePath }}/developer-guide/release.html#release2 |
+|"Release 3":{{ page.relativePath }}/developer-guide/release.html#release3 |
+|"Release 4":{{ page.relativePath }}/developer-guide/release.html#release4 | 
+|"Release 6":{{ page.relativePath }}/developer-guide/release.html#release6 |  
+|"Release 7":{{ page.relativePath }}/developer-guide/release.html#release7 | 
+|"Release 8":{{ page.relativePath }}/developer-guide/release.html#release8 | 
 
 h1. Deploy on umldesigner.org
 
-|Action                                                                      |v6.0.0|
-|"Release 9":{{ page.relativePath }}/developer-guide/release.html#release9   |    OK|
-|"Release 10":{{ page.relativePath }}/developer-guide/release.html#release10 |    OK|
-|"Release 11":{{ page.relativePath }}/developer-guide/release.html#release11 |    KO| 
-|"Release 12":{{ page.relativePath }}/developer-guide/release.html#release12 |    OK|
-|"Release 13":{{ page.relativePath }}/developer-guide/release.html#release13 |    OK|
-|"Release 14":{{ page.relativePath }}/developer-guide/release.html#release14 |    OK|
+|Action                                                                      |
+|"Release 9":{{ page.relativePath }}/developer-guide/release.html#release9   |
+|"Release 10":{{ page.relativePath }}/developer-guide/release.html#release10 | 
+|"Release 11":{{ page.relativePath }}/developer-guide/release.html#release11 |  
+|"Release 12":{{ page.relativePath }}/developer-guide/release.html#release12 | 
+|"Release 13":{{ page.relativePath }}/developer-guide/release.html#release13 | 
+|"Release 14":{{ page.relativePath }}/developer-guide/release.html#release14 | 
 
 h2. Deploy on Eclipse marketplace
 
-|Action                                                                      |v6.0.0|
-|"Release 15":{{ page.relativePath }}/developer-guide/release.html#release15 |    OK|
-|"Release 16":{{ page.relativePath }}/developer-guide/release.html#release16 |    KO| 
+|Action                                                                      |
+|"Release 15":{{ page.relativePath }}/developer-guide/release.html#release15 |
+|"Release 16":{{ page.relativePath }}/developer-guide/release.html#release16 | 
 
 h2. Deploy on the obeonetwork
 
-|Action                                                                      |v6.0.0|
-|"Release 17":{{ page.relativePath }}/developer-guide/release.html#release17 |    KO|
-|"Release 18":{{ page.relativePath }}/developer-guide/release.html#release18 |    KO|
-|"Release 19":{{ page.relativePath }}/developer-guide/release.html#release19 |    KO|
-|"Release 20":{{ page.relativePath }}/developer-guide/release.html#release20 |    KO|
-|"Release 21":{{ page.relativePath }}/developer-guide/release.html#release21 |    KO| 
-|"Release 22":{{ page.relativePath }}/developer-guide/release.html#release22 |    KO|
+|Action                                                                      |
+|"Release 17":{{ page.relativePath }}/developer-guide/release.html#release17 |
+|"Release 18":{{ page.relativePath }}/developer-guide/release.html#release18 |
+|"Release 19":{{ page.relativePath }}/developer-guide/release.html#release19 |
+|"Release 20":{{ page.relativePath }}/developer-guide/release.html#release20 |
+|"Release 21":{{ page.relativePath }}/developer-guide/release.html#release21 | 
+|"Release 22":{{ page.relativePath }}/developer-guide/release.html#release22 |
 
 h2. Spread the world
 
-|Action                                                                      |v6.0.0|
-|"Release 23":{{ page.relativePath }}/developer-guide/release.html#release23 |    KO|
-|"Release 24":{{ page.relativePath }}/developer-guide/release.html#release24 |    KO|
-|"Release 25":{{ page.relativePath }}/developer-guide/release.html#release25 |    KO|
-|"Release 26":{{ page.relativePath }}/developer-guide/release.html#release26 |    KO| 
-|"Release 27":{{ page.relativePath }}/developer-guide/release.html#release27 |    KO|
-|"Release 28":{{ page.relativePath }}/developer-guide/release.html#release28 |    KO|
+|Action                                                                      |
+|"Release 23":{{ page.relativePath }}/developer-guide/release.html#release23 |
+|"Release 24":{{ page.relativePath }}/developer-guide/release.html#release24 | 
+|"Release 25":{{ page.relativePath }}/developer-guide/release.html#release25 |
+|"Release 26":{{ page.relativePath }}/developer-guide/release.html#release26 | 
+|"Release 27":{{ page.relativePath }}/developer-guide/release.html#release27 |
+|"Release 28":{{ page.relativePath }}/developer-guide/release.html#release28 |
 
 h2. Actions details
 
@@ -116,7 +115,7 @@ For more details about the build, have a look to the "build section":{{ page.rel
 
 h3(#release11). Release 11
 
-Test check for updates from previous version. From a previous installed version of the UML Designer product, try to use check for updates to upadte to the new released version.
+Test check for updates from previous version. From a previous installed version of the UML Designer product, try to use check for updates to update to the new released version.
 
 h3(#release12). Release 12
 
@@ -138,11 +137,11 @@ h3(#release22). Release 15
 
 h3(#release15). Release 16
 
-Update UML Designer description on the "Eclipse marketplace:http://marketplace.eclipse.org"
+Update UML Designer description on the "Eclipse marketplace":http://marketplace.eclipse.org
 
 h3(#release16). Release 17
 
-Test install from "Eclipse marketplace":https://marketplace.eclipse.org/content/uml-designer-eclipse-luna-version
+Test install from "Eclipse marketplace":https://marketplace.eclipse.org/content/uml-designer
 
 h3(#release17). Release 18
 
@@ -172,15 +171,15 @@ Send mail to Obeo.
 
 h3(#release24). Release 24
 
-Post message on "obeonetwork UML Designer forum":http://www.obeonetwork.com/group/uml-designer/forum/.
+Post a blog post.
 
 h3(#release25). Release 25
 
-Post message on "G+":https://plus.google.com.
+Post message on "G+":https://plus.google.com #UML-Designer.
 
 h3(#release26). Release 26
 
-Post message on "twitter":https://twitter.com/.
+Post message on "twitter":https://twitter.com/ #UML-Designer.
 
 h3(#release27). Release 27
 
@@ -192,3 +191,5 @@ Update wikipedia pages:
 * "Comparaison des logiciels d'UML":http://fr.wikipedia.org/w/index.php?title=Comparaison_des_logiciels_d%27UML&veaction=edit&vesection=1, 
 * "List of Unified Modeling Language tools":https://en.wikipedia.org/wiki/List_of_Unified_Modeling_Language_tools, 
 * "UML Designer":https://en.wikipedia.org/wiki/UML_Designer
+
+Answer to the "Eclipse marketplace":https://marketplace.eclipse.org/content/uml-designer questions.
