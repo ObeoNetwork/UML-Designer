@@ -795,16 +795,6 @@ public class ModelElementsSelectionDialog {
 	}
 
 	/**
-	 * Return all selected elements of the diagram that are display in the tree.
-	 *
-	 * @return All selected elements of the diagram that are display in the tree.
-	 */
-	protected Set<Object> getAllSelectedElements() {
-		final Set<Object> treeElements = getAllChildren(eObject);
-		return Sets.newHashSet(Iterators.filter(treeElements.iterator(), Predicates.not(isGrayed)));
-	}
-
-	/**
 	 * Get displayable elements according to diagram kind.
 	 *
 	 * @param selectedContainer
@@ -838,8 +828,6 @@ public class ModelElementsSelectionDialog {
 		return selectedElements;
 	}
 
-
-
 	/**
 	 * Init the content provider.
 	 *
@@ -850,8 +838,6 @@ public class ModelElementsSelectionDialog {
 		final AdapterFactory adapterFactory = getAdapterFactory();
 		contentProvider = new ModelFilteredTreeContentProvider(adapterFactory, getDisplayablePredicate());
 	}
-
-
 
 	/**
 	 * Indicates if the given element or at least one of its children checks the given predicate.
@@ -886,8 +872,6 @@ public class ModelElementsSelectionDialog {
 		return false;
 	}
 
-
-
 	/**
 	 * Asks the end-user for a list of elements to select/de-select, and applies the corresponding changes.
 	 *
@@ -910,7 +894,7 @@ public class ModelElementsSelectionDialog {
 
 		initContentProvider();
 
-		final Set<Object> allSelectedElements = Collections.unmodifiableSet(getAllSelectedElements());
+		final Set<Object> allSelectedElements = Collections.unmodifiableSet(Sets.newHashSet());
 		final Option<Set<Object>> response = askUserForNewSelection(parent, allSelectedElements);
 		if (response.some()) {
 			final Set<Object> selectedAfter = response.get();
@@ -931,8 +915,9 @@ public class ModelElementsSelectionDialog {
 	 */
 	@SuppressWarnings("unchecked")
 	public void setGrayedPredicate(Predicate<EObject> isGrayedPredicate) {
-		isGrayed = Predicates.and((Predicate<? super Object>)(isGrayedPredicate != null ? isGrayedPredicate
-				: Predicates.alwaysFalse()),
+		isGrayed = Predicates.and(
+				(Predicate<? super Object>)(isGrayedPredicate != null ? isGrayedPredicate
+						: Predicates.alwaysFalse()),
 				AddElementToDiagramServices.INSTANCE.isValidForDiagram(diagram, eObject));
 	}
 
