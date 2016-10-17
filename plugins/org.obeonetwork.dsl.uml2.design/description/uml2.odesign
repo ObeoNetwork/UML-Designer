@@ -877,7 +877,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isNotHumanActor">
-            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" resizeKind="NSEW" width="3" height="5">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="9" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="5" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
