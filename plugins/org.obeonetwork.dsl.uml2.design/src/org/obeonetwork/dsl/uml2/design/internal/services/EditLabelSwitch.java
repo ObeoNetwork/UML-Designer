@@ -13,10 +13,7 @@ package org.obeonetwork.dsl.uml2.design.internal.services;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -31,15 +28,14 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.FunctionBehavior;
-import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Lifeline;
@@ -164,6 +160,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		LabelServices.INSTANCE.editUmlLabel(operation, editedLabelContent);
 		return execution;
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -260,34 +257,19 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 */
 	@Override
 	public Element caseLifeline(Lifeline lifeline) {
-		final String name = editedLabelContent.substring(0, editedLabelContent.indexOf(":")); //$NON-NLS-1$
-		// Edit associated instance name
-		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0) {
-			((InstanceSpecification)lifeline.getClientDependencies().get(0).getSuppliers().get(0))
-			.setName(name);
+		final int indexOfColon = editedLabelContent.indexOf(":"); //$NON-NLS-1$
+		if (indexOfColon > 0) {
+			editedLabelContent.substring(0, indexOfColon);
+			editedLabelContent.substring(indexOfColon + 1, // $NON-NLS-1$
+					editedLabelContent.length()).trim();
 		}
 		// Edit lifeline name
-		lifeline.setName(name);
+		caseNamedElement(lifeline);
 
-		// Edit dependency
-		final String type = editedLabelContent.substring(editedLabelContent.indexOf(":") + 1, //$NON-NLS-1$
-				editedLabelContent.length()).trim();
-		final Iterator<?> itr = lifeline.getModel().eAllContents();
-		final Map<String, InstanceSpecification> instances = new HashMap<String, InstanceSpecification>();
-		while (itr.hasNext()) {
-			final Object element = itr.next();
-			if (element instanceof InstanceSpecification) {
-				instances.put(((InstanceSpecification)element).getClassifiers().get(0).getName(),
-						(InstanceSpecification)element);
-			}
-		}
-		if (instances.containsKey(type)) {
-			final InstanceSpecification instance = instances.get(type);
-			lifeline.getClientDependencies().clear();
-			final Dependency dependency = UMLFactory.eINSTANCE.createDependency();
-			dependency.getClients().add(lifeline);
-			dependency.getSuppliers().add(instance);
-			lifeline.getInteraction().getNearestPackage().getPackagedElements().add(dependency);
+		// Edit property
+		final ConnectableElement represents = lifeline.getRepresents();
+		if (represents instanceof Property) {
+			caseProperty((Property)represents);
 		}
 
 		return lifeline;
@@ -306,6 +288,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		LabelServices.INSTANCE.editUmlLabel(message.getReceiveEvent(), editedLabelContent);
 		return message;
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -545,7 +528,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return object;
 	}
 
-	private void editTransitionBehaviorExpression(Transition object, String newLabel){
+	private void editTransitionBehaviorExpression(Transition object, String newLabel) {
 		final int behaviorStartIndex = newLabel.lastIndexOf("/");//$NON-NLS-1$
 
 		if (behaviorStartIndex != -1) {
@@ -573,13 +556,13 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 
 	}
 
-	private void editTransitionGuard(Transition object, String newLabel){
+	private void editTransitionGuard(Transition object, String newLabel) {
 		final int guardStartIndex = newLabel.indexOf("[");//$NON-NLS-1$
 
 		if (newLabel.matches(".*\\[.*\\].*")) { //$NON-NLS-1$
 			String editedGuardLabelContent = newLabel;
 			final int guardEndIndex = editedGuardLabelContent.lastIndexOf("]");//$NON-NLS-1$
-			editedGuardLabelContent = editedGuardLabelContent.substring(guardStartIndex+1, guardEndIndex);
+			editedGuardLabelContent = editedGuardLabelContent.substring(guardStartIndex + 1, guardEndIndex);
 			if (!editedGuardLabelContent.isEmpty()) {// no change if string is empty
 				OpaqueExpression expr;
 				Constraint constraint = object.getGuard();
@@ -605,7 +588,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		}
 	}
 
-	private void editTransitionTrigger(Transition object, String newLabel){
+	private void editTransitionTrigger(Transition object, String newLabel) {
 		final int guardStartIndex = newLabel.indexOf("[");//$NON-NLS-1$
 		final int behaviorStartIndex = newLabel.lastIndexOf("/");//$NON-NLS-1$
 
@@ -627,7 +610,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		final List<String> triggersLabels = new ArrayList<String>();
 
 		if (!newLabel.isEmpty() && triggerEndIndex > 0) {
-			final String triggerEditedLabel = newLabel.substring(0,triggerEndIndex);
+			final String triggerEditedLabel = newLabel.substring(0, triggerEndIndex);
 
 			// String[] triggersLabels = {triggerEditedLabel};
 			if (triggerEditedLabel.contains(",")) {//$NON-NLS-1$
@@ -665,11 +648,11 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 				doSwitch(trigger);
 			}
 
-		}else{
-			//remove all triggers
+		} else {
+			// remove all triggers
 			final EList<Trigger> triggers = object.getTriggers();
-			if (triggers.size()>0){
-				for (final Trigger trigger : triggers){
+			if (triggers.size() > 0) {
+				for (final Trigger trigger : triggers) {
 					trigger.destroy();
 				}
 			}
