@@ -655,4 +655,10 @@
          </Predicate>
       </Page>
    </extension>
+     <extension
+           point="org.eclipse.sirius.sessionManagerListener">
+        <listener
+              class="org.obeonetwork.dsl.uml2.dashboard.listeners.DashboardSessionListener">
+        </listener>
+     </extension>
 </plugin>

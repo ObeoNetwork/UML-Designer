@@ -1,5 +1,7 @@
 package org.obeonetwork.dsl.uml2.dashboard;
 
+import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
+import org.eclipse.amalgam.explorer.activity.ui.api.preferences.PreferenceConstants;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -14,7 +16,7 @@ public class DashboardPlugin extends AbstractUIPlugin {
 
 	// The shared instance
 	private static DashboardPlugin plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -25,10 +27,15 @@ public class DashboardPlugin extends AbstractUIPlugin {
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		// Unset the open activity explorer automatically on session load
+		ActivityExplorerActivator.getDefault().getPreferenceStore()
+				.setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, false);
 	}
+
 	/**
 	 * A helper to log plugin errors.
 	 *
@@ -42,13 +49,19 @@ public class DashboardPlugin extends AbstractUIPlugin {
 	public static void log(int severity, String message, Throwable exception) {
 		getDefault().getLog().log(new Status(severity, PLUGIN_ID, message, exception));
 	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
+
+		// Restore default value
+		ActivityExplorerActivator.getDefault().getPreferenceStore()
+				.setToDefault(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER);
 	}
 
 	/**
