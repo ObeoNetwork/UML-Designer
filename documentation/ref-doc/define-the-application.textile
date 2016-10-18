@@ -450,19 +450,7 @@ The following elements can be added on a component diagram :
 * class into an existing component  : the class and all its ports will be visible
 * part
 * property
-* required service : when the _Required Service_ tool is selected from the palette, a selection wizard asks the user to select the required interfaces.
-		
-!{{ page.relativePath }}/images/CompositeStructureDiagramRequiredServiceWizard.png!
-		
-The required services are represented as following:
-!{{ page.relativePath }}/images/CompositeStructureDiagramRequiredService.png!
-		
-* provided service : when the _Provided Service_ tool is selected from the palette, a selection wizard asks the user to select the required interfaces. 
-!{{ page.relativePath }}/images/CompositeStructureDiagramProvidedServiceWizard.png!
-		
-The provided services are represented as following: 
-!{{ page.relativePath }}/images/CompositeStructureDiagramProvidedServiceWizard.png!
-		
+* interfaces		
 * package : the package will not be visible on the diagram but all the sub elements will be added
 		
 The user can see that an element is not coming from the current package :
