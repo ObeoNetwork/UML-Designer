@@ -16,8 +16,8 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+import org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
-import org.obeonetwork.dsl.uml2.design.internal.wizards.UmlProjectUtils;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel.AbstractNewUmlModelWizard;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel.UmlModelWizardInitModelPage;
 

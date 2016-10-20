@@ -23,8 +23,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.IWorkbench;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+import org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
-import org.obeonetwork.dsl.uml2.design.internal.wizards.UmlProjectUtils;
 
 /**
  * The wizard to create a new UML designer model.

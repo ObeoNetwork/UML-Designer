@@ -68,7 +68,7 @@ public class InitUmlModel extends WorkspaceModifyOperation {
 
 				public void run() {
 					// Create default empty UML model
-					org.obeonetwork.dsl.uml2.design.internal.wizards.UmlProjectUtils
+					org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils
 							.createSemanticResource(project, rootObjectName, umlFileName);
 
 					// Enable UML viewpoints

@@ -1,4 +1,4 @@
-package org.obeonetwork.dsl.uml2.design.internal.wizards;
+package org.obeonetwork.dsl.uml2.design.api.wizards;
 
 import java.io.IOException;
 
@@ -20,6 +20,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
 
 import com.google.common.collect.Maps;
 
