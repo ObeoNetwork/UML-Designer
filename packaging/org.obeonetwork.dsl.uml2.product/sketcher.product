@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="UML Designer" uid="org.obeonetwork.dsl.uml2.branding.product" id="org.obeonetwork.dsl.uml2.branding.product" application="org.eclipse.ui.ide.workbench" version="7.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="UML Designer" uid="org.obeonetwork.dsl.uml2.branding.product" id="org.obeonetwork.dsl.uml2.branding.product" application="org.eclipse.ui.ide.workbench" version="7.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="icons/about.gif"/>
       <text>
          UML Designer
 
-Version  7.0.0
+Version  7.1.0
 
 
 Copyright (c) 2005-2016 Obeo. All Rights Reserved.
