@@ -2790,7 +2790,7 @@
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="9" roundedCorner="true" widthComputationExpression="service:defaultWidth" heightComputationExpression="service:defaultHeight" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="9" labelExpression="service:computeUmlLabel" roundedCorner="true" widthComputationExpression="service:defaultWidth" heightComputationExpression="service:defaultHeight" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
