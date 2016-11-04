@@ -128,10 +128,12 @@ public class DashboardServices {
 		if (opionalModelingProject.some()) {
 			final Session session = opionalModelingProject.get().getSession();
 			if (session != null) {
+				final boolean initialValue = ActivityExplorerActivator.getDefault().getPreferenceStore()
+						.getBoolean(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER);
 				// in order to open activity explorer at project creation the preference store
 				// P_OPEN_ACTIVITY_EXPLORER need to be set to true
 				ActivityExplorerActivator.getDefault().getPreferenceStore()
-				.setDefault(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, true);
+						.setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, true);
 
 				final IEditorPart part = ActivityExplorerManager.INSTANCE.getEditorFromSession(session);
 				if (part != null) {
@@ -140,6 +142,8 @@ public class DashboardServices {
 				} else {
 					ActivityExplorerManager.INSTANCE.openEditor(session);
 				}
+				ActivityExplorerActivator.getDefault().getPreferenceStore()
+						.setValue(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, initialValue);
 			}
 		}
 	}
