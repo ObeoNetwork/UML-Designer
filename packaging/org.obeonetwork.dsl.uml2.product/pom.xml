@@ -29,6 +29,14 @@ Contributors:
     <product-id>org.obeonetwork.dsl.uml2.branding.product</product-id>
   </properties>
 
+<pluginRepositories>
+  <pluginRepository>
+    <id>buchen-maven-repo</id>
+    <url>http://buchen.github.io/maven-repo</url>
+    <layout>default</layout>
+  </pluginRepository>
+</pluginRepositories>
+
   <build>
     <plugins>
       <plugin>
@@ -47,6 +55,7 @@ Contributors:
           <execution>
             <!-- (optional) create product zips (one per os/ws/arch) -->
             <id>archive-products</id>
+            <phase>verify</phase>
             <goals>
               <goal>archive-products</goal>
             </goals>
@@ -96,6 +105,29 @@ Contributors:
           </execution>
         </executions>
       </plugin>
+      <plugin>
+				<groupId>name.abuchen</groupId>
+				<artifactId>fix-info-plist-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>fix-info-plist</id>
+						<phase>package</phase>
+						<goals>
+							<goal>fix-info-plist</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<productId>${product-id}</productId>
+					<appName>UMLDesigner.app</appName>
+					<properties>
+						<property>
+							<name>Eclipse</name>
+							<value>[-keyring,~/.eclipse_keyring,-vm,../Eclipse/jre/lib/jli/libjli.dylib]</value>
+						</property>
+					</properties>
+				</configuration>
+			</plugin>
     </plugins>
   </build>
 

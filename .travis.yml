@@ -25,7 +25,7 @@ script:
 # Build uml designer
 - mvn clean verify
 # Build uml designer products
-- mvn clean package -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml
+- mvn clean verify -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml
 # Prepare local dirs to deploy: copy repository, bundles and tp
 - chmod a+x prepare-deploy-local-dir.sh
 - echo "$TRAVIS_TAG"
