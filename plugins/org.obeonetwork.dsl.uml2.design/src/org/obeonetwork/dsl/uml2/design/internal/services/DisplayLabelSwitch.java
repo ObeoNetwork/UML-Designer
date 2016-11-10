@@ -268,6 +268,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseClass(Class object) {
 		return caseTemplateableElement(object);
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -275,6 +276,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseComponentRealization(org.eclipse.uml2.uml.ComponentRealization object) {
 		return ""; //$NON-NLS-1$
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -695,6 +697,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseProtocolStateMachine(ProtocolStateMachine object) {
 		return object.getName();
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -967,7 +970,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		if (p.isDerived()) {
 			sb.append("/"); //$NON-NLS-1$
 		}
-		sb.append(p.getName());
+		if (p.getName() != null) {
+			sb.append(p.getName());
+		}
 		sb.append(caseMultiplicityElement(p));
 		return sb.toString();
 	}
