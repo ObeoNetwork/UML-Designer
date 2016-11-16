@@ -4,6 +4,10 @@ env:
   global:
     - MAVEN_OPTS="-XX:MaxPermSize=512m"
     - secure: "KpzAMqnf5+K5PNmZbcoiaSjWS//sVkPlbjrpb662rrkQcZHslqnAVmy2h+OsSaA6pefhRpzrSmys9vu7Ou4ZPNOBgxlmePOUl+MfEXOe+9EO3G6GLooyvzzk/9rsOYuHMiM6hrJZsPWF2NyIibElqE/l6YKuTUH9XOWnVbGZ+oY="
+    - JDK_VERSION="8.0.112"
+    - ZULU_VERSION="8.19.0.1"
+    - ZULU_JDK="zulu$ZULU_VERSION-jdk$JDK_VERSION"
+    - ZULU_JDK_URL="http://cdn.azul.com/zulu/bin/$ZULU_JDK"
     
 
 sudo: false
@@ -22,6 +26,39 @@ script:
 - rm -rf plugins/org.obeonetwork.dsl.uml2.design.doc/html
 - cp -r documentation/_site plugins/org.obeonetwork.dsl.uml2.design.doc/html
 - ls plugins/org.obeonetwork.dsl.uml2.design.doc/html
+# Download the JREs
+- wget $ZULU_JDK_URL-linux_x64.tar.gz
+- wget $ZULU_JDK_URL-win_x64.zip
+- wget $ZULU_JDK_URL-macosx_x64.zip
+- ls
+# Extract the JREs
+- tar -C packaging/org.obeonetwork.dsl.uml2.runtime.product.feature/linux-64/ -xf $ZULU_JDK-linux_x64.tar.gz
+- cd packaging/org.obeonetwork.dsl.uml2.runtime.product.feature/linux-64/
+- ls
+- cd $ZULU_JDK-linux_x64
+- ls 
+- mv jre/* ../jre
+- ls ../jre/
+- cd ../
+- rm -rf $ZULU_JDK-linux_x64
+- ls
+- cd ../../../
+- rm -rf $ZULU_JDK-linux_x64.zip
+- ls
+- unzip $ZULU_JDK-win_x64.zip ''"$ZULU_JDK"'-win_x64/jre/*' -d packaging/org.obeonetwork.dsl.uml2.runtime.product.feature/win32-64/jre/
+- cd packaging/org.obeonetwork.dsl.uml2.runtime.product.feature/win32-64/jre/
+- mv $ZULU_JDK-win_x64/jre/* .
+- rm -rf $ZULU_JDK-win_x64
+- ls
+- cd ../../../../
+- rm -rf $ZULU_JDK-win_x64.zip
+- ls
+- unzip $ZULU_JDK-macosx_x64.zip ''"$ZULU_JDK"'-macosx_x64/jre/*' -d packaging/org.obeonetwork.dsl.uml2.runtime.product.feature/macosx/jre/
+- cd packaging/org.obeonetwork.dsl.uml2.runtime.product.feature/macosx/jre/
+- mv $ZULU_JDK-macosx_x64/jre/* .
+- rm -rf $ZULU_JDK-macosx_x64
+- cd ../../../../
+- rm -rf $ZULU_JDK-macosx_x64.zip
 # Build uml designer
 - mvn clean verify
 # Build uml designer products
