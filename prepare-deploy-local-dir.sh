@@ -10,11 +10,13 @@ mkdir $DEPLOY_LOCAL_DIR
 cp -r $UPDATE_SITE_DIR/repository $DEPLOY_LOCAL_DIR
 cp -r $UPDATE_SITE_DIR/*.zip $DEPLOY_LOCAL_DIR
 cp -r $TP $DEPLOY_LOCAL_DIR
+cp -r UMLDesigner.zip $DEPLOY_LOCAL_DIR
 echo "ls ${DEPLOY_LOCAL_DIR}"
 ls $DEPLOY_LOCAL_DIR
 # Create bundles folder
 mkdir $DEPLOY_LOCAL_DIR/bundles
 # Copy bundles
+mv $TRAVIS_BUILD_DIR/UMLDesigner-macosx.cocoa.x86_64.dmg.zip $DEPLOY_LOCAL_DIR/bundles
 cp -r $BUNDLE_DIR $DEPLOY_LOCAL_DIR/bundles
 echo "ls ${DEPLOY_LOCAL_DIR}/bundles"
 ls $DEPLOY_LOCAL_DIR/bundles
