@@ -88,18 +88,14 @@ after_script:
 - chmod a+x travis-promote.sh
 - if [[ "$TRAVIS_BRANCH" == "master" ]]; then ./travis-promote.sh; fi
 
+before_deploy: pip install --user awscli
+
 deploy:
 # Deploy nightly on s3
-  - provider: s3
-    access_key_id: AKIAJJVZATSVUD3VGHXA
-    secret_access_key:
-     secure: JR+FhCfNYeOp1kg6VsNFxDpXeI0MB27DZyzZ31krTrYhogtn5lPQZoRVc1e7/C/jaZqsbY3RZvjXnZOzTVxOgOV2VqbWGUzTwsnzLATiqtIvlq6MJvwDfaB/zRzYs3aVjss7QiVVsCsYh6rlihD4C3Xn2lRZIRMarTUYbVNYWyk=
-    bucket: obeo-umldesigner-nightly
-    local-dir: "${TRAVIS_BUILD_DIR}/nightly"
-    acl: public_read
+  - provider: script
+    script: ~/.local/bin/aws s3 sync ${TRAVIS_BUILD_DIR}/nightly s3://obeo-umldesigner-nightly/${TRAVIS_BRANCH} --region=eu-west-1 --delete
     skip_cleanup: true
-    region: eu-west-1
-    upload-dir: "${TRAVIS_BRANCH}"
+    acl: public_read
     on:
       branch: master 
   - provider: s3
