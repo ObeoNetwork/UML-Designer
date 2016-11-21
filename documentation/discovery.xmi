@@ -14,7 +14,7 @@
         description="SysML Designer provides a set of common diagrams to work with SysML models."
         license="EPL"
         image32="images/sysml_designer.png">
-      <sitesURLS>http://marketplace.obeonetwork.com/updates/sirius4.0</sitesURLS>
+      <sitesURLS>http://releases.obeonetwork.com/sirius_4_1</sitesURLS>
       <overview
           summary="SysML Designer is a graphical tool to edit and vizualize SysML 1.3 models. As it is based on Sirius, it provides an easy way to combine SysML with domain specific modelling. You can extend the provided diagram definitions and seamlessly work on both SysML and DSL models at the same time. "
           screenshot="images/sysml_designer_screenshot-320x240.png"
