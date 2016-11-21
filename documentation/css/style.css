@@ -340,23 +340,3 @@ td, th {
 }
 
 }
-
-/* Sirius con banner */
-.back1 {
-    background-image: url(http://www.eclipse.org/sirius/images/banners/banner_siriuscon_2016.jpg);
-}
-.parallax {
-    background-position: 50% 50%;
-    background-size: cover;
-    width: 100%;
-    height: 445px;
-    position: relative;
-}
-.ad p {
-    text-align: center;
-    font-size: 24px;
-    font-weight: 200;
-    line-height: 1.25;
-    margin-bottom: 40px;
-    color: #fff;
-}
