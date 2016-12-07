@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.gmf.runtime.diagram.ui.extension.feature"
       label="GMF Runtime UI Extension Feature"
-      version="7.1.0.qualifier"
+      version="8.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://ww.umldesigner.org">

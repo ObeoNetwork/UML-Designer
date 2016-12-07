@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer Extended Properties
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.properties;singleton:=true
-Bundle-Version: 7.1.0.qualifier
+Bundle-Version: 8.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.properties.Activator
 Bundle-Vendor: Obeo Network
 Require-Bundle: org.eclipse.ui,
