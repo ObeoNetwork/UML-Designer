@@ -729,14 +729,25 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_evosYMxNEeKJdOq6yzVo-Q" name="Actors">
       <packagedElement xmi:type="uml:Actor" xmi:id="_rRsm4MTZEeC0wZa75TykZw" name="Customer">
+        <eAnnotations xmi:id="_4MtacN1ZEea2NsS0L2_Nkw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:id="_6i_8YN1ZEea2NsS0L2_Nkw" key="Human"/>
+        </eAnnotations>
         <ownedComment xmi:id="_WN2kIL79EeKMl6d2yQs6Cw" annotatedElement="_rRsm4MTZEeC0wZa75TykZw">
           <body>A person that interacts with the agency to purchase a travel</body>
         </ownedComment>
       </packagedElement>
       <packagedElement xmi:type="uml:Actor" xmi:id="_snWyQMTZEeC0wZa75TykZw" name="Commercial Counsellor"/>
       <packagedElement xmi:type="uml:Actor" xmi:id="_uXwY4MTZEeC0wZa75TykZw" name="Marketing"/>
-      <packagedElement xmi:type="uml:Actor" xmi:id="_v5i7wMTZEeC0wZa75TykZw" name="Partners Manager"/>
-      <packagedElement xmi:type="uml:Actor" xmi:id="_x6p34MTZEeC0wZa75TykZw" name="Accountant"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_v5i7wMTZEeC0wZa75TykZw" name="Partners Manager">
+        <eAnnotations xmi:id="_xZOUcN1ZEea2NsS0L2_Nkw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:id="_0MEPgN1ZEea2NsS0L2_Nkw" key="Human"/>
+        </eAnnotations>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_x6p34MTZEeC0wZa75TykZw" name="Accountant">
+        <eAnnotations xmi:id="_9HTFIN1ZEea2NsS0L2_Nkw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:id="_--JSAN1ZEea2NsS0L2_Nkw" key="Human"/>
+        </eAnnotations>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Activity" xmi:id="_gv3_sPUnEeK25Zs1XL0IGQ" name="New Activity"/>
   </packagedElement>
