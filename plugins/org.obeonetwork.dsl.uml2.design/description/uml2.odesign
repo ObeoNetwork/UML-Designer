@@ -113,11 +113,11 @@
               <containerViewVariable name="containerView"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new Class Diagram" name="Create class diagram from component" label="Class diagram" precondition="service:isComponent" titleExpression="aql:self.name+ ' Class Diagram'" browseExpression="aql:self.packagedElement->filter(uml::Package)->asSequence()->first()" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new Class Diagram" name="Create class diagram from component" label="Class diagram" precondition="service:isComponent" titleExpression="aql:self.name+ ' Class Diagram'" browseExpression="aql:self.oclAsType(uml::Component).packagedElement->filter(uml::Package)->asSequence()->first()" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']">
               <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="aql:self.packagedElement->select(elt | elt.oclIsTypeOf(uml::Package))->size() = 0">
+                <firstModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclAsType(uml::Component).packagedElement->select(elt | elt.oclIsTypeOf(uml::Package))->size() = 0">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement" variableName="newPackage">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:containerView.target.name"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::NamedElement).name"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -158,7 +158,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:If" conditionExpression="aql:self.packagedElement->select(elt | elt.oclIsTypeOf(uml::Package))->size() = 0">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement" variableName="newPackage">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:containerView.target.name"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::NamedElement).name"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -169,12 +169,12 @@
           <subSections name="Activity diagram">
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Create activity diagram" label="Activity diagram" titleExpression="aql:self.name + 'Activity Diagram'" browseExpression="aql:self.eContents()->filter(uml::Activity)->asSequence()->first()" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target/]">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::BehavioredClassifier)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target.initActivityForClass()"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::BehavioredClassifier).initActivityForClass()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsTypeOf(uml::Package)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target.initActivityForPackage()"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::Package).initActivityForPackage()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -183,7 +183,7 @@
             </ownedTools>
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Create activity diagram from operation" label="Activity diagram" titleExpression="aql:self.name+' Activity Diagram'" browseExpression="aql:self.oclAsType(uml::Operation).method->filter(uml::Activity)->asSequence()->first()" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target.initActivityForOperation()"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::Operation).initActivityForOperation()"/>
               </initialOperation>
               <containerViewVariable name="containerView"/>
               <representationNameVariable name="diagramName"/>
@@ -207,12 +207,12 @@
           <subSections name="State Machine diagram">
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Create statemachine diagram" label="State Machine diagram" titleExpression="aql:self.name + ' State Machine Diagram'" browseExpression="aql:self.eContents()->filter(uml::StateMachine)->asSequence()->first()" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']">
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target/]">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::BehavioredClassifier)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target.initStatemachineForClass()"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::BehavioredClassifier).initStatemachineForClass()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsTypeOf(uml::Package)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target.initStatemachineForPackage()"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::Package).initStatemachineForPackage()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -221,13 +221,13 @@
             </ownedTools>
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new StateMachine" name="State Machine for Operation" label="State Machine diagram" browseExpression="aql:self.eContainer(uml::BehavioredClassifier).eContents()->filter(uml::StateMachine)->last()" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']">
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:containerView">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target">
+                <firstModelOperations xsi:type="tool:If" conditionExpression="aql:containerView.oclIsKindOf(viewpoint::DSemanticDecorator)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsTypeOf(uml::BehavioralFeature)">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::BehavioredClassifier)">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StateMachine" referenceName="ownedBehavior">
                           <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New StateMachine"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="specification" valueExpression="aql:containerView.target/]"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="specification" valueExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
@@ -263,7 +263,7 @@
           <subSections name="Sequence diagram">
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Create sequence diagram from package" label="Sequence diagram" browseExpression="aql:self.eContents()->filter(uml::Interaction)->last()" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target.createInteraction()"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.createInteraction()"/>
               </initialOperation>
               <containerViewVariable name="containerView"/>
               <representationNameVariable name="diagramName"/>
@@ -273,7 +273,7 @@
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from operation" label="for operation" browseExpression="aql:container.eInverse()->select(elt | elt.oclIsTypeOf(uml::Message)).interaction" navigationNameExpression="aql:'Open '+self.name+' Sequence Diagram'" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from operation" label="for operation" browseExpression="aql:container.eInverse()->select(elt ecore::EObject | elt.oclIsTypeOf(uml::Message)).interaction" navigationNameExpression="aql:'Open '+self.name+' Sequence Diagram'" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
@@ -336,7 +336,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" message="Select stereotypes to apply" choiceOfValuesMessage="Applicable stereotypes" candidatesExpression="service:self.getAllStereotypesAndProfiles" tree="true" rootExpression="service:self.getAllProfilesInPlatform" childrenExpression="feature:ownedStereotype" selectedValuesMessage="Stereotypes to apply" preSelectedCandidatesExpression="aql:self.getAppliedStereotypes()">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" message="Select stereotypes to apply" choiceOfValuesMessage="Applicable stereotypes" candidatesExpression="service:self.getAllStereotypesAndProfiles" tree="true" rootExpression="service:self.getAllProfilesInPlatform" childrenExpression="feature:ownedStereotype" selectedValuesMessage="Stereotypes to apply" preSelectedCandidatesExpression="aql:self.oclIsKindOf(uml::Stereotype) and self.oclAsType(uml::Stereotype).getAppliedStereotypes()">
             <element name="stereotype"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -357,9 +357,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="Empty comment"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="feature:eContainer"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:diagram">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:refreshDiagram"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.eContainer(viewpoint::DRepresentation).refreshDiagram()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -379,8 +377,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
-                <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="aql:elementView.targetNode.target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.oclAsType(viewpoint::DSemanticDecorator).target">
+                <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="aql:elementView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -392,9 +390,9 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="aql:edgeView.targetNode.target"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="aql:edgeView.targetNode.target"/>
+                  <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -407,7 +405,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView.sourceNode.target">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView.sourceNode.oclAsType(viewpoint::DSemanticDecorator).target">
                 <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="var:source"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="var:target"/>
               </firstModelOperations>
@@ -451,7 +449,7 @@
             </menuItemDescription>
             <menuItemDescription xsi:type="tool:OperationAction" name="Delete" precondition="aql:self.oclIsKindOf(ecore::EModelElement)">
               <view name="views">
-                <subVariables xsi:type="tool:SelectModelElementVariable" name="selected" candidatesExpression="aql:views.target.eAnnotations" multiple="true" message="Select the EAnnotations to delete."/>
+                <subVariables xsi:type="tool:SelectModelElementVariable" name="selected" candidatesExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(ecore::EModelElement).eAnnotations" multiple="true" message="Select the EAnnotations to delete."/>
               </view>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:selected">
@@ -464,9 +462,9 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Properties and Operations and Literals" label="Up">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::Operation).moveUpOperations(views.target->filter(uml::Operation))">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::Property).moveUpProperties(views.target->filter(uml::Property))">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::EnumerationLiteral).moveUpEnumerationLiterals(views.target->filter(uml::EnumerationLiteral))"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Operation).moveUpOperations(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Operation))">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property).moveUpProperties(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property))">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::EnumerationLiteral).moveUpEnumerationLiterals(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::EnumerationLiteral))"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -474,9 +472,9 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Properties and Operations and Literals" label="Down">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::Operation).moveDownOperations(views.target->filter(uml::Operation))">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::Property).moveDownProperties(views.target->filter(uml::Property))">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::EnumerationLiteral).moveDownEnumerationLiterals(views.target->filter(uml::EnumerationLiteral))"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Operation).moveDownOperations(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Operation))">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property).moveDownProperties(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property))">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::EnumerationLiteral).moveDownEnumerationLiterals(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::EnumerationLiteral))"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -486,16 +484,16 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Elements" label="Up" precondition="aql:views->filter(diagram::DNodeListElement )->size() = views->size()">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::PackageableElement).moveUpPackageableElements(views.target->filter(uml::PackageableElement))">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::Property).moveUpProperties(views.target->filter(uml::Property))"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::PackageableElement).moveUpPackageableElements(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::PackageableElement))">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property).moveUpProperties(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property))"/>
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
             <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Elements" label="Down" precondition="aql:views->filter(diagram::DNodeListElement )->size() = views->size()">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::PackageableElement).moveDownPackageableElements(views.target->filter(uml::PackageableElement))">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target->filter(uml::Property).moveDownProperties(views.target->filter(uml::Property))"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::PackageableElement).moveDownPackageableElements(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::PackageableElement))">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property).moveDownProperties(views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property))"/>
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
@@ -514,13 +512,7 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="from Model" icon="/org.obeonetwork.dsl.uml2.design/icons/deleteModel.gif">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:views">
-                  <subModelOperations xsi:type="tool:For" expression="var:views">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:destroy"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views->filter(viewpoint::DSemanticDecorator).target.destroy()"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
@@ -663,9 +655,9 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:edgeView.targetNode.target.eContainer()" featureName="packagedElement">
+              <firstModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target.eContainer()" featureName="packagedElement">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:edgeView.targetNode.target" featureName="packagedElement"/>
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target" featureName="packagedElement"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -761,7 +753,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new contained in link from contained element to container element" name="Contained in" precondition="aql:preSourceView.target &lt;> preTargetView.target" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new contained in link from contained element to container element" name="Contained in" precondition="aql:preSourceView.oclAsType(viewpoint::DSemanticDecorator).target &lt;> preTargetView.oclAsType(viewpoint::DSemanticDecorator).target" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -934,7 +926,7 @@
           <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to diagram" name="UCD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:views">
+              <firstModelOperations xsi:type="tool:For" expression="aql:views->filter(viewpoint::DSemanticDecorator)">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target">
                   <subModelOperations xsi:type="tool:For" expression="service:getRelatedForUseCase" iteratorName="selection">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:markForAutosize">
@@ -943,25 +935,23 @@
                           <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" containerViewExpression="var:diagram"/>
                         </cases>
                         <cases conditionExpression="aql:selection.oclIsTypeOf(uml::UseCase)">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:selection.subject->size() > 0">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.containers->select(elt | elt.target=selection.subject)">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:selection.oclAsType(uml::UseCase).subject->size() > 0">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.containers->select(elt | elt.target=selection.oclAsType(uml::UseCase).subject)->size() > 0">
                               <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
-                                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="aql:diagram.containers->select(elt | elt.target=selection.subject)"/>
+                                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="aql:diagram.containers->select(elt | elt.target=selection.oclAsType(uml::UseCase).subject)"/>
                               </subModelOperations>
                             </subModelOperations>
-                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:not diagram.containers->select(elt | elt.target=selection.subject)">
-                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
-                                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:subject">
-                                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="var:diagram" variableName="newView">
-                                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
-                                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="var:newView"/>
-                                    </subModelOperations>
+                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.containers->select(elt | elt.target=selection.oclAsType(uml::UseCase).subject)->size() = 0">
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection.oclAsType(uml::UseCase).subject">
+                                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="var:diagram" variableName="newView">
+                                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
+                                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="var:newView"/>
                                   </subModelOperations>
                                 </subModelOperations>
                               </subModelOperations>
                             </subModelOperations>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:selection.subject->size() = 0">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:selection.oclAsType(uml::UseCase).subject->size() = 0">
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="var:diagram"/>
                           </subModelOperations>
                         </cases>
@@ -1427,14 +1417,14 @@
           </style>
         </edgeMappings>
         <containerMappings name="CD_ReusedMappingForFeatures" semanticCandidatesExpression="null" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Classifier">
-          <subNodeMappings name="CD_Operation" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram%20from%20operation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='State%20Machine%20for%20Operation']" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20operation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Sequence%20diagram']/@ownedTools[name='Open%20sequence%20diagram%20from%20operation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:ownedOperation" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Operation">
+          <subNodeMappings name="CD_Operation" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram%20from%20operation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='State%20Machine%20for%20Operation']" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20operation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Sequence%20diagram']/@ownedTools[name='Open%20sequence%20diagram%20from%20operation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:if(self.oclIsKindOf(uml::Class) or self.oclIsKindOf(uml::Interface)) then self.ownedOperation else null endif" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Operation">
             <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="CD_Property" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:ownedAttribute" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Property">
+          <subNodeMappings name="CD_Property" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:if(self.oclIsKindOf(uml::Class) or self.oclIsKindOf(uml::Interface)) then self.ownedAttribute else null endif" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Property">
             <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1563,7 +1553,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="CD_AssociationClass" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Create%20statemachine%20diagram']" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Sequence%20diagram']/@ownedTools[name='Open%20sequence%20diagram%20from%20class'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20classifier'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='DEL_Profilable%20Element']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:diagram.getVisibleAssociationClass(containerView.target)" semanticElements="service:getSemanticElements" domainClass="uml.AssociationClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Drop%20Attributes%20or%20Operations']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" childrenPresentation="List">
+        <containerMappings name="CD_AssociationClass" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Create%20statemachine%20diagram']" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Sequence%20diagram']/@ownedTools[name='Open%20sequence%20diagram%20from%20class'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20classifier'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='DEL_Profilable%20Element']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:diagram.getVisibleAssociationClass(containerView.oclAsType(diagram::DSemanticDiagram).target)" semanticElements="service:getSemanticElements" domainClass="uml.AssociationClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Drop%20Attributes%20or%20Operations']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" borderSizeComputationExpression="1" labelSize="9" labelExpression="service:computeUmlLabel" tooltipExpression="service:computeTooltip" roundedCorner="true" widthComputationExpression="service:defaultWidth" heightComputationExpression="service:defaultHeight" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <labelFormat>bold</labelFormat>
@@ -2073,7 +2063,7 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="aql:self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).nameExpression = null" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:For" expression="aql:views.target">
+                <firstModelOperations xsi:type="tool:For" expression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="StringExpression" referenceName="nameExpression"/>
                   </subModelOperations>
@@ -2084,7 +2074,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target.nameExpression">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::Property).nameExpression">
                     <subModelOperations xsi:type="tool:RemoveElement"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2095,7 +2085,7 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="aql:self.oclIsTypeOf(uml::Property) and self.defaultValue &lt;> null">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:For" expression="aql:views.target.defaultValue">
+                <firstModelOperations xsi:type="tool:For" expression="aql:views.oclAsType(viewpoint::DSemanticDecorator).target->filter(uml::Property).defaultValue">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
                     <subModelOperations xsi:type="tool:RemoveElement"/>
                   </subModelOperations>
@@ -2106,7 +2096,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Duration" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2116,7 +2106,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="DurationInterval" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2126,7 +2116,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Expression" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2136,7 +2126,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceValue" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2146,7 +2136,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Interval" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2156,7 +2146,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralBoolean" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2166,7 +2156,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralInteger" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2176,7 +2166,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralNull" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2186,7 +2176,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralString" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2196,7 +2186,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralUnlimitedNatural" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2206,7 +2196,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OpaqueExpression" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2216,7 +2206,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="StringExpression" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2226,7 +2216,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(viewpoint::DSemanticDecorator).target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="TimeInterval" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2416,7 +2406,7 @@
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <defaultLayer name="Composite structure" reusedMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
-        <edgeMappings name="CS_Connector" preconditionExpression="aql:self.isValidConnector(sourceView,targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_MainStructuredClassifier']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_MainStructuredClassifier']" targetFinderExpression="aql:self.getConnectorTarget(diagram)" sourceFinderExpression="aql:self.getConnectorSource(diagram)" domainClass="uml.Connector" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+        <edgeMappings name="CS_Connector" preconditionExpression="aql:sourceView.oclIsKindOf(diagram::AbstractDNode) and targetView.oclIsKindOf(diagram::AbstractDNode) and self.isValidConnector(sourceView,targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_MainStructuredClassifier']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_MainStructuredClassifier']" targetFinderExpression="aql:self.getConnectorTarget(diagram)" sourceFinderExpression="aql:self.getConnectorSource(diagram)" domainClass="uml.Connector" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -2433,8 +2423,8 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="CS_Part" preconditionExpression="aql:self.oclIsTypeOf(uml::Property) and self.isComposite()" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:ownedAttribute" createElements="false" domainClass="uml.Property" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram']">
-            <borderedNodeMappings name="CS_Part_Port" semanticCandidatesExpression="aql:self.type.ownedAttribute->select(Element elt|elt.oclIsTypeOf(uml::Port))" domainClass="uml.Port">
+          <subContainerMappings name="CS_Part" preconditionExpression="aql:self.oclIsTypeOf(uml::Property) and self.isComposite()" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_Property']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:ownedAttribute" createElements="false" domainClass="uml.Property" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram']">
+            <borderedNodeMappings name="CS_Part_Port" semanticCandidatesExpression="aql:self.type->filter(uml::StructuredClassifier).ownedAttribute" domainClass="uml.Port">
               <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>italic</labelFormat>
@@ -2477,7 +2467,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="CS_MainStructuredClassifier" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:diagram.target.oclAsType(uml::StructuredClassifier)" domainClass="uml.StructuredClassifier" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port']" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']">
+        <containerMappings name="CS_MainStructuredClassifier" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:diagram.oclAsType(diagram::DSemanticDiagram).target" domainClass="uml.StructuredClassifier" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port']" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="9" roundedCorner="true" widthComputationExpression="service:defaultWidth" heightComputationExpression="service:defaultHeight" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2555,13 +2545,13 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="CS_Delete_Property">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="CS_Delete_Property" label="Delete Property">
             <element name="property"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:property">
-                <subModelOperations xsi:type="tool:For" expression="aql:property.end.eContainer(uml::Connector)->flatten()" iteratorName="connector">
+                <subModelOperations xsi:type="tool:For" expression="aql:property.oclAsType(uml::Property).end.eContainer(uml::Connector)" iteratorName="connector">
                   <subModelOperations xsi:type="tool:RemoveElement"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:RemoveElement"/>
@@ -2635,12 +2625,12 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CS_PortInterfaceRealization" preconditionExpression="aql:source.isValidPortInterfaceRealization(target)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface']" targetFinderExpression="service:diagram.getPortInterfaceRealization" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+        <edgeMappings name="CS_PortInterfaceRealization" preconditionExpression="aql:source.oclIsKindOf(uml::Port) and target.oclIsKindOf(uml::Interface) and source.isValidPortInterfaceRealization(target)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface']" targetFinderExpression="service:diagram.getPortInterfaceRealization" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CS_Interface_Connector" preconditionExpression="aql:self.isValidConnector(sourceView,targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface']" targetFinderExpression="service:getConnectorTarget(diagram)" sourceFinderExpression="service:getConnectorSource(diagram)" domainClass="uml.Connector" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+        <edgeMappings name="CS_Interface_Connector" preconditionExpression="aql:sourceView.oclIsKindOf(diagram::AbstractDNode) and targetView.oclIsKindOf(diagram::AbstractDNode) and self.isValidConnector(sourceView,targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface']" targetFinderExpression="service:getConnectorTarget(diagram)" sourceFinderExpression="service:getConnectorSource(diagram)" domainClass="uml.Connector" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -2684,7 +2674,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="CO_U_Interface2ComponentOrPort" preconditionExpression="aql:target.validSourceTarget4Dependency(targetView, source, sourceView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getUsageInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetFinderExpression="service:getClient" sourceFinderExpression="feature:supplier" domainClass="uml.Usage" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Usage%20source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Usage%20target']">
+        <edgeMappings name="CO_U_Interface2ComponentOrPort" preconditionExpression="aql:source.oclIsKindOf(uml::Element) and target.oclIsKindOf(uml::Element) and target.validSourceTarget4Dependency(targetView, source, sourceView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getUsageInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetFinderExpression="service:getClient" sourceFinderExpression="feature:supplier" domainClass="uml.Usage" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Usage%20source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Usage%20target']">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           </style>
@@ -2694,7 +2684,7 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_IR_ComponentOrPort2Interface" preconditionExpression="aql:source.validSourceTarget4Dependency(sourceView, target, targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getInterfaceRealizationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']" targetFinderExpression="feature:supplier" sourceFinderExpression="service:getClient" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20target']">
+        <edgeMappings name="CO_IR_ComponentOrPort2Interface" preconditionExpression="aql:source.oclIsKindOf(uml::Element) and target.oclIsKindOf(uml::Element) and source.validSourceTarget4Dependency(sourceView, target, targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getInterfaceRealizationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']" targetFinderExpression="feature:supplier" sourceFinderExpression="service:getClient" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20target']">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
@@ -2720,7 +2710,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_C_ProvidedInterface2RequiredInterface" preconditionExpression="aql:source.validSourceTarget4Connector(sourceView, target, targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" targetFinderExpression="service:getTarget4ProvidedInterface2RequiredInterface" sourceFinderExpression="service:getSource4ProvidedInterface2RequiredInterface" targetExpression="var:self" domainClass="uml.Connector" useDomainElement="true">
+        <edgeMappings name="CO_C_ProvidedInterface2RequiredInterface" preconditionExpression="aql:source.oclIsKindOf(uml::Element) and target.oclIsKindOf(uml::Element) and source.validSourceTarget4Connector(sourceView, target, targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" targetFinderExpression="service:getTarget4ProvidedInterface2RequiredInterface" sourceFinderExpression="service:getSource4ProvidedInterface2RequiredInterface" targetExpression="var:self" domainClass="uml.Connector" useDomainElement="true">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
@@ -2730,7 +2720,7 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_C_SubProvidedInterface2Port" preconditionExpression="aql:source.validSourceTarget4DelegatedConnector(sourceView, target, targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" semanticElements="service:getSemanticElements" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetFinderExpression="service:getTarget4SubProvidedInterface2Port" sourceFinderExpression="service:getSource4SubProvidedInterface2Port" targetExpression="var:self" domainClass="uml.Connector" useDomainElement="true">
+        <edgeMappings name="CO_C_SubProvidedInterface2Port" preconditionExpression="aql:source.oclIsKindOf(uml::Element) and target.oclIsKindOf(uml::Element) and source.validSourceTarget4DelegatedConnector(sourceView, target, targetView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" semanticElements="service:getSemanticElements" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetFinderExpression="service:getTarget4SubProvidedInterface2Port" sourceFinderExpression="service:getSource4SubProvidedInterface2Port" targetExpression="var:self" domainClass="uml.Connector" useDomainElement="true">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
@@ -2740,7 +2730,7 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_C_Port2SubRequiredInterface" preconditionExpression="aql:target.validSourceTarget4DelegatedConnector(targetView, source, sourceView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" semanticElements="service:getSemanticElements" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" targetFinderExpression="service:getTarget4Port2SubRequiredInterface" sourceFinderExpression="service:getSource4Port2SubRequiredInterface" targetExpression="var:self" domainClass="uml.Connector" useDomainElement="true">
+        <edgeMappings name="CO_C_Port2SubRequiredInterface" preconditionExpression="aql:source.oclIsKindOf(uml::Element) and target.oclIsKindOf(uml::Element) and target.validSourceTarget4DelegatedConnector(targetView, source, sourceView)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getConnectorInverseRefs" semanticElements="service:getSemanticElements" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" targetFinderExpression="service:getTarget4Port2SubRequiredInterface" sourceFinderExpression="service:getSource4Port2SubRequiredInterface" targetExpression="var:self" domainClass="uml.Connector" useDomainElement="true">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
@@ -2898,7 +2888,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Create a new typed port" name="CS_Add_TypedPort" label="Typed Port" precondition="aql:self.oclIsKindOf(uml::StructuredClassifier)" candidatesExpression="aql:self.getValidsForComponentDiagram()->select(EObject eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))" tree="true" rootExpression="service:getAllRootsInSession" childrenExpression="aql:self.eContents()->select(EObject eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif" windowTitle="Select the port type">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Create a new typed port" name="CS_Add_TypedPort" label="Typed Port" precondition="aql:self.oclIsKindOf(uml::StructuredClassifier)" candidatesExpression="aql:self.getAllRootsInSession()->getCandidatesForTypedPort()" tree="true" rootExpression="service:getAllRootsInSession" childrenExpression="aql:self.eContents()" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif" windowTitle="Select the port type">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -2958,7 +2948,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new connector" name="Connector" label="Connector" precondition="aql:preSource.isConnectable(preSourceView, preTarget, preTargetView)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_RequiredInterface2ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubProvidedInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubRequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubRequiredInterface2Port']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new connector" name="Connector" label="Connector" precondition="aql:preSource.oclIsKindOf(uml::Element) and preTarget.oclIsKindOf(uml::Element) and preSourceView.oclIsKindOf(viewpoint::DSemanticDecorator) and preTargetView.oclIsKindOf(viewpoint::DSemanticDecorator) and preSource.isConnectable(preSourceView, preTarget, preTargetView)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_RequiredInterface2ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubProvidedInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubRequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubRequiredInterface2Port']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3076,9 +3066,9 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="aql:edgeView.targetNode.target"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="redefinedPort" elementExpression="aql:edgeView.targetNode.target"/>
+                  <subModelOperations xsi:type="tool:Unset" featureName="redefinedPort" elementExpression="aql:edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -3091,7 +3081,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView.sourceNode.target">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView.sourceNode.oclAsType(viewpoint::DSemanticDecorator).target">
                 <subModelOperations xsi:type="tool:Unset" featureName="redefinedPort" elementExpression="var:source"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="var:target"/>
               </firstModelOperations>
@@ -3177,7 +3167,7 @@
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <defaultLayer name="Deployment diagram" reusedMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
-        <edgeMappings name="DE_Link" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="service:getTargetType" sourceFinderExpression="service:getSourceType" targetExpression="aql:self->including(Element elt|elt.getSource())->including(Element elt|elt.getTarget())" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkTarget']">
+        <edgeMappings name="DE_Link" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="service:getTargetType" sourceFinderExpression="service:getSourceType" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkTarget']">
           <style targetArrow="NoDecoration" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="feature:name">
@@ -4235,7 +4225,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new control flow" name="Control Flow" precondition="aql:preSource.isValidActivityEdgeEnd(preTarget)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" connectionStartPrecondition="service:preSource.isValidControlFlowStart">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new control flow" name="Control Flow" precondition="aql:preSource.oclIsKindOf(uml::Element) and preTarget.oclIsKindOf(uml::Element) and preSource.isValidActivityEdgeEnd(preTarget)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" connectionStartPrecondition="service:preSource.isValidControlFlowStart">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -4258,7 +4248,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new object flow" name="Object Flow" precondition="aql:preSource.isValidActivityEdgeEnd(preTarget)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow']" connectionStartPrecondition="service:preSource.isValidObjectFlowStart">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new object flow" name="Object Flow" precondition="aql:preSource.oclIsKindOf(uml::Element) and preTarget.oclIsKindOf(uml::Element) and preSource.isValidActivityEdgeEnd(preTarget)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow']" connectionStartPrecondition="service:preSource.isValidObjectFlowStart">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -4274,7 +4264,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new interrupting edge" name="Interrupting Edge" precondition="service:preTarget.isValidInterruptingEdgeEnd(preSource)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif" connectionStartPrecondition="aql:preSource.inInterruptibleRegion->size() > 0">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new interrupting edge" name="Interrupting Edge" precondition="service:preTarget.isValidInterruptingEdgeEnd(preSource)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif" connectionStartPrecondition="aql:preSource.oclIsKindOf(uml::ActivityNode) and preSource.inInterruptibleRegion->size() > 0">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -4346,7 +4336,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="AD_ReconnectObjectFlowTarget" precondition="aql:self.source.isValidActivityEdgeEnd(target)">
+            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="AD_ReconnectObjectFlowTarget" precondition="aql:self.source.isValidActivityEdgeEnd(self.target)">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -4376,7 +4366,7 @@
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new statemachine diagram" name="CR_StateMachineDiagramFromCallBehaviorAction" label="Create StateMachine diagram" precondition="aql:self.oclIsTypeOf(uml::CallBehaviorAction) and self.behavior.oclIsTypeOf(uml::StateMachine)" titleExpression="aql:self.behavior.name +' State Machine Diagram'" browseExpression="aql:self.behavior" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new statemachine diagram" name="CR_StateMachineDiagramFromCallBehaviorAction" label="Create StateMachine diagram" precondition="aql:self.oclIsTypeOf(uml::CallBehaviorAction) and self.behavior.oclIsTypeOf(uml::StateMachine)" titleExpression="aql:self.oclAsType(uml::CallBehaviorAction).behavior.name +' State Machine Diagram'" browseExpression="aql:self.oclAsType(uml::CallBehaviorAction).behavior" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']">
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
@@ -4530,7 +4520,7 @@
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
-          <subContainerMappings name="SM_Region" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:region" semanticElements="service:getSemanticElements" domainClass="uml.Region" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20States']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState']/@subContainerMappings[name='SM_CompositeStateHorizontal'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState']/@subContainerMappings[name='SM_CompositeStateVertical']">
+          <subContainerMappings name="SM_Region" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:if(self.oclIsKindOf(uml::State) or self.oclIsKindOf(uml::StateMachine)) then self.region else null endif" semanticElements="service:getSemanticElements" domainClass="uml.Region" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20States']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState']/@subContainerMappings[name='SM_CompositeStateHorizontal'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState']/@subContainerMappings[name='SM_CompositeStateVertical']">
             <subNodeMappings name="SM_PseudoState" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:subvertex" semanticElements="service:getSemanticElements" domainClass="uml.Pseudostate">
               <style xsi:type="style:SquareDescription" hideLabelByDefault="true" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5240,12 +5230,12 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createLifeline(property)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Use an existing operation to create a synchronous message" name="CR_SynchronousMessage" label="Synchronous Message" precondition="aql:preTarget.represents.type.ownedOperation->size() > 0" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Message_synchCall.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Use an existing operation to create a synchronous message" name="CR_SynchronousMessage" label="Synchronous Message" precondition="aql:preTarget.oclAsType(uml::Lifeline).represents.type->filter(uml::Class).ownedOperation->size() > 0" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Message_synchCall.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="aql:source.eContainer(uml::Interaction)"/>
             </sourceVariable>
             <targetVariable name="target">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="aql:target.represents.type.ownedOperation" message="Select an operation"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="aql:target.represents.type->filter(uml::Class).ownedOperation" message="Select an operation"/>
             </targetVariable>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
@@ -5255,12 +5245,12 @@
             <startingEndPredecessor name="startingEndPredecessor"/>
             <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Use an existing operation to create an asynchronous message" name="CR_AsynchronousMessage" label="Asynchronous Message" precondition="aql:preTarget.represents.type.ownedOperation->size() > 0" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Message_asynchCall.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Use an existing operation to create an asynchronous message" name="CR_AsynchronousMessage" label="Asynchronous Message" precondition="aql:preTarget.oclAsType(uml::Lifeline).represents.type->filter(uml::Class).ownedOperation->size() > 0" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Message_asynchCall.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="aql:source.eContainer(uml::Interaction)"/>
             </sourceVariable>
             <targetVariable name="target">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="aql:target.represents.type.ownedOperation" message="Select an operation"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="aql:target.represents.type->filter(uml::Class).ownedOperation" message="Select an operation"/>
             </targetVariable>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
@@ -5409,7 +5399,7 @@
           </backgroundConditionalStyle>
         </ownedSubLines>
       </ownedLineMappings>
-      <ownedColumnMappings name="DT_CommentColumn" headerLabelExpression="Comments" featureName="ownedComment" labelExpression="aql:lineSemantic.getCommentBody()">
+      <ownedColumnMappings name="DT_CommentColumn" headerLabelExpression="Comments" featureName="ownedComment" labelExpression="aql:lineSemantic.oclAsType(uml::Element).getCommentBody()">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -5530,10 +5520,9 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']" containerViewExpression="aql:elementView.eContainer(diagram::DDiagram)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -6070,10 +6059,10 @@
           </ownedTools>
         </toolSections>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.getTarget().isNavigable()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.oclIsKindOf(uml::Association) and self.oclAsType(uml::Association).getTarget().isNavigable()">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']/@style" attributeName="targetArrow" value="aql:diagram::EdgeArrows::InputArrow"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.oclAsType(uml::Association).getSource().isNavigable()">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.oclIsKindOf(uml::Association) and self.oclAsType(uml::Association).getSource().isNavigable()">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']/@style" attributeName="sourceArrow" value="aql:diagram::EdgeArrows::InputArrow"/>
           </vsmElementCustomizations>
         </customization>
