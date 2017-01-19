@@ -12,7 +12,9 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -29,7 +31,9 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
@@ -237,6 +241,48 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 		}
 
 		return result;
+	}
+
+	/**
+	 * Get the candidates to be a Typed Port for the given root {@link Element}s.
+	 *
+	 * @param rootsInSessions
+	 *            the given root elements.
+	 * @return the candidates.
+	 */
+	public Collection<EObject> getCandidatesForTypedPort(Collection<Element> rootsInSessions) {
+		final Set<EObject> candidates = new HashSet<EObject>();
+		for (final Element element : rootsInSessions) {
+			if (element instanceof Model
+					&& (isEcoreMetamodel((Model)element) || isUMLMetamodel((Model)element))) {
+				continue;
+			}
+			if (element instanceof Type | element instanceof Package) {
+				candidates.add(element);
+			}
+			for (final EObject child : element.eContents()) {
+				candidates.addAll(getCandidatesForTypedPort(child));
+			}
+		}
+		return candidates;
+	}
+
+	/**
+	 * Get the candidates to be a Typed Port for the given EObject.
+	 *
+	 * @param object
+	 *            the given {@link EObject}.
+	 * @return the candidates.
+	 */
+	private Collection<EObject> getCandidatesForTypedPort(EObject object) {
+		final Set<EObject> candidates = new HashSet<EObject>();
+		if (object instanceof Type | object instanceof Package) {
+			candidates.add(object);
+		}
+		for (final EObject child : object.eContents()) {
+			candidates.addAll(getCandidatesForTypedPort(child));
+		}
+		return candidates;
 	}
 
 	/**

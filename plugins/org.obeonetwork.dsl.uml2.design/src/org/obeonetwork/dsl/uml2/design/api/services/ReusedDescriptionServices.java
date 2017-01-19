@@ -863,7 +863,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *            EnumerationLiterals to move
 	 */
 	public void moveDownEnumerationLiterals(EnumerationLiteral currentEnumerationLiteral,
-			List<EnumerationLiteral> enumerationLiteralsToMove) {
+			Collection<EnumerationLiteral> enumerationLiteralsToMove) {
 		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = retrieveTheRightOrderForEnumerationLiteral(
 				enumerationLiteralsToMove);
 		final Object[] operationsArray = enumerationLiteralsInRightOrder.toArray();
@@ -883,7 +883,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @param operationsToMove
 	 *            operations to move
 	 */
-	public void moveDownOperations(Operation currentOperation, List<Operation> operationsToMove) {
+	public void moveDownOperations(Operation currentOperation, Collection<Operation> operationsToMove) {
 		final List<Operation> operationsInRightOrder = retrieveTheRightOrderForOperation(operationsToMove);
 		final Object[] operationsArray = operationsInRightOrder.toArray();
 		final MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
@@ -903,7 +903,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *            packageableElements to move
 	 */
 	public void moveDownPackageableElements(PackageableElement packageableElement,
-			List<PackageableElement> packageableElementsToMove) {
+			Collection<PackageableElement> packageableElementsToMove) {
 
 		final MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
 		final List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrderForPackageableElement(
@@ -924,7 +924,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @param propertiesToMove
 	 *            properties to move
 	 */
-	public void moveDownProperties(Property currentProperty, List<Property> propertiesToMove) {
+	public void moveDownProperties(Property currentProperty, Collection<Property> propertiesToMove) {
 
 		final List<Property> propertiesInRightOrder = retrieveTheRightOrderForProperties(propertiesToMove);
 		final Object[] propertiesArray = propertiesInRightOrder.toArray();
@@ -945,7 +945,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *            Enumeration literals to move
 	 */
 	public void moveUpEnumerationLiterals(EnumerationLiteral currentEnumerationLiteral,
-			List<EnumerationLiteral> enumerationLiteralsToMove) {
+			Collection<EnumerationLiteral> enumerationLiteralsToMove) {
 
 		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = retrieveTheRightOrderForEnumerationLiteral(
 				enumerationLiteralsToMove);
@@ -965,7 +965,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @param operationsToMove
 	 *            operations to move
 	 */
-	public void moveUpOperations(Operation currentOperation, List<Operation> operationsToMove) {
+	public void moveUpOperations(Operation currentOperation, Collection<Operation> operationsToMove) {
 
 		final List<Operation> operationsInRightOrder = retrieveTheRightOrderForOperation(operationsToMove);
 		final MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
@@ -985,7 +985,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *            packageableElements to move
 	 */
 	public void moveUpPackageableElements(PackageableElement packageableElement,
-			List<PackageableElement> packageableElementsToMove) {
+			Collection<PackageableElement> packageableElementsToMove) {
 		final MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
 		final List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrderForPackageableElement(
 				packageableElementsToMove);
@@ -1004,7 +1004,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @param propertiesToMove
 	 *            properties to move
 	 */
-	public void moveUpProperties(Property currentProperty, List<Property> propertiesToMove) {
+	public void moveUpProperties(Property currentProperty, Collection<Property> propertiesToMove) {
 
 		final List<Property> propertiesInRightOrder = retrieveTheRightOrderForProperties(propertiesToMove);
 		final MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
@@ -1152,7 +1152,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	private List<EnumerationLiteral> retrieveTheRightOrderForEnumerationLiteral(
-			List<EnumerationLiteral> enumerationLiteralsInWrongOrder) {
+			Collection<EnumerationLiteral> enumerationLiteralsInWrongOrder) {
 
 		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = new ArrayList<EnumerationLiteral>();
 
@@ -1188,7 +1188,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		return enumerationLiteralsInRightOrder;
 	}
 
-	private List<Operation> retrieveTheRightOrderForOperation(List<Operation> operationsInWrongOrder) {
+	private List<Operation> retrieveTheRightOrderForOperation(Collection<Operation> operationsInWrongOrder) {
 
 		final List<Operation> operationsInRightOrder = new ArrayList<Operation>();
 
@@ -1231,7 +1231,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	private List<PackageableElement> retrieveTheRightOrderForPackageableElement(
-			List<PackageableElement> packageableElementsInWrongOrder) {
+			Collection<PackageableElement> packageableElementsInWrongOrder) {
 
 		final List<PackageableElement> packageableElementsInRightOrder = new ArrayList<PackageableElement>();
 
@@ -1274,7 +1274,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		return packageableElementsInRightOrder;
 	}
 
-	private List<Property> retrieveTheRightOrderForProperties(List<Property> propertiesInWrongOrder) {
+	private List<Property> retrieveTheRightOrderForProperties(Collection<Property> propertiesInWrongOrder) {
 
 		final List<Property> propertiesInRightOrder = new ArrayList<Property>();
 
