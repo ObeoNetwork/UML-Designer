@@ -1028,7 +1028,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 */
 	@SuppressWarnings("unchecked")
 	public void openSelectExistingElementsDialog(EObject selectedContainer,
-			DSemanticDecorator selectedContainerView, DDiagram diagram) {
+			EObject selectedContainerView, DDiagram diagram) {
 		final ModelElementsSelectionDialog dlg = new ModelElementsSelectionDialog("Add existing elements", //$NON-NLS-1$
 				"Select elements to add in current representation."); //$NON-NLS-1$
 		dlg.setGrayedPredicate(getNonSelectablePredicate(diagram));

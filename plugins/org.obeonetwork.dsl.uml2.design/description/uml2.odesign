@@ -273,7 +273,7 @@
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from operation" label="for operation" browseExpression="aql:container.eInverse()->select(elt ecore::EObject | elt.oclIsTypeOf(uml::Message)).interaction" navigationNameExpression="aql:'Open '+self.name+' Sequence Diagram'" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from operation" label="for operation" browseExpression="aql:container.eInverse()->select(elt | elt.oclIsTypeOf(uml::Message)).interaction" navigationNameExpression="aql:'Open '+self.name+' Sequence Diagram'" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
@@ -336,7 +336,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" message="Select stereotypes to apply" choiceOfValuesMessage="Applicable stereotypes" candidatesExpression="service:self.getAllStereotypesAndProfiles" tree="true" rootExpression="service:self.getAllProfilesInPlatform" childrenExpression="feature:ownedStereotype" selectedValuesMessage="Stereotypes to apply" preSelectedCandidatesExpression="aql:self.oclIsKindOf(uml::Stereotype) and self.oclAsType(uml::Stereotype).getAppliedStereotypes()">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" message="Select stereotypes to apply" choiceOfValuesMessage="Applicable stereotypes" candidatesExpression="service:self.getAllStereotypesAndProfiles" tree="true" rootExpression="service:self.getAllProfilesInPlatform" childrenExpression="feature:ownedStereotype" selectedValuesMessage="Stereotypes to apply" preSelectedCandidatesExpression="aql:self.oclIsKindOf(uml::Stereotype) and self.oclAsType(uml::Stereotype).getAppliedStereotypes()->size() > 0">
             <element name="stereotype"/>
             <containerView name="containerView"/>
             <container name="container"/>
