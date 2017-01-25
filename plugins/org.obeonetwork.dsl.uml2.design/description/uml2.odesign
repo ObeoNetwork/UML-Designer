@@ -3585,7 +3585,7 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
       </additionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Activity Diagram" titleExpression="aql:self.name +' Activity Diagram'" domainClass="uml.Activity" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Activity Diagram" titleExpression="aql:self.name +' Activity Diagram'" domainClass="uml.Element" preconditionExpression="aql:self.oclIsTypeOf(uml::Activity) or self.oclIsTypeOf(uml::StructuredActivityNode)" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
@@ -3598,7 +3598,7 @@
         </ownedRules>
       </validationSet>
       <defaultLayer name="Activity">
-        <edgeMappings name="AD_ControlFlow" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:edge" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Edge specified with source mapping as the target semantic (&amp; vice versa) to work around top to bottom layout (see VP-930)" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_OpaqueAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_OpaqueAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="uml.ControlFlow" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='reconnect']/@ownedTools[name='AD_ReconnectControlSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='reconnect']/@ownedTools[name='AD_ReconnectControlTarget']">
+        <edgeMappings name="AD_ControlFlow" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:edge" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Edge specified with source mapping as the target semantic (&amp; vice versa) to work around top to bottom layout (see VP-930)" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_OpaqueAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_StructuredActivityNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_OpaqueAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_StructuredActivityNode']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="uml.ControlFlow" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='reconnect']/@ownedTools[name='AD_ReconnectControlSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='reconnect']/@ownedTools[name='AD_ReconnectControlTarget']">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="service:computeUmlLabel">
@@ -3622,8 +3622,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="AD_Activity" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="var:self" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Activity" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='AD_activityPartitionDrop']">
-          <borderedNodeMappings name="AD_Parameter" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:node" semanticElements="aql:self->including(self.getStereotypeApplications())->including(self.parameter)" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.ActivityParameterNode">
+        <containerMappings name="AD_Activity" preconditionExpression="aql:self.oclIsTypeOf(uml::Activity) or self.oclIsTypeOf(uml::StructuredActivityNode)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="var:self" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Element" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='AD_activityPartitionDrop']">
+          <borderedNodeMappings name="AD_Parameter" preconditionExpression="aql:self.oclIsTypeOf(uml::Activity)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:node" semanticElements="aql:self->including(self.getStereotypeApplications())->including(self.parameter)" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.ActivityParameterNode">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel" sizeComputationExpression="2">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3783,6 +3783,14 @@
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
+          <subContainerMappings name="AD_StructuredActivityNode" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigate']/@ownedTools[name='CR_ActivityDiagramFromStructuredActivityNode']" semanticCandidatesExpression="aql:if(self.oclIsTypeOf(uml::Activity)) then self.structuredNode else if(self.oclIsTypeOf(uml::StructuredActivityNode)) then self.node else null endif endif" domainClass="uml.StructuredActivityNode">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20purple']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="9" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20purple']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3791,7 +3799,7 @@
         </containerMappings>
         <toolSections name="activity tools" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='EAnnotation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Group">
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new partition" name="Partition" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new partition" name="Partition" precondition="aql:container.oclIsTypeOf(uml::Activity)" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3813,7 +3821,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new interruptible activity region" name="InterruptibleActivityRegion" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_InterruptibleActivityRegion']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new interruptible activity region" name="InterruptibleActivityRegion" precondition="aql:container.oclIsTypeOf(uml::Activity)" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_InterruptibleActivityRegion']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3828,6 +3836,24 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="StructuredActivityNode" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_StructuredActivityNode']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StructuredActivityNode" referenceName="structuredNode">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StructuredActivityNode" referenceName="node">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Control Node">
             <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new initial node" name="Initial Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InitialNode.gif">
@@ -3835,15 +3861,22 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InitialNode" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InitialNode" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InitialNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3854,15 +3887,22 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityFinalNode" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityFinalNode" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityFinalNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3873,15 +3913,22 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.FlowFinalNode" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.FlowFinalNode" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.FlowFinalNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3892,15 +3939,22 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DecisionNode" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DecisionNode" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DecisionNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3911,15 +3965,22 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.MergeNode" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.MergeNode" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.MergeNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3930,15 +3991,22 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ForkNode" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ForkNode" referenceName="ownedNode">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3949,15 +4017,26 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.JoinNode" referenceName="ownedNode" variableName="joinNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.JoinNode" referenceName="ownedNode" variableName="joinNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="joinSpec">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:joinNode.name"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.JoinNode" referenceName="node" variableName="joinNode">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="joinSpec">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:joinNode.name"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
@@ -3974,16 +4053,24 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="aql:'// TODO body of '+instance.name"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="aql:'// TODO body of '+instance.name"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3995,9 +4082,42 @@
               <container name="container"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:element.oclIsTypeOf(uml::Operation)">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="ownedNode" variableName="action">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="operation" valueExpression="var:element"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name+'_call'"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                            <subModelOperations xsi:type="tool:For" expression="service:getInputParameters" iteratorName="input">
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:action">
+                                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createInputPinFromParameter(input)"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                            <subModelOperations xsi:type="tool:For" expression="service:getOutputParameters" iteratorName="output">
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:action">
+                                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createOutputPinFromParameter(output)"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="service:createInputPin">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="target"/>
+                            </subModelOperations>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:element.oclIsTypeOf(uml::Operation)">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="ownedNode" variableName="action">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="node" variableName="action">
                         <subModelOperations xsi:type="tool:SetValue" featureName="operation" valueExpression="var:element"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name+'_call'"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
@@ -4017,12 +4137,6 @@
                             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="target"/>
                           </subModelOperations>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4035,15 +4149,22 @@
               <container name="container"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallBehaviorAction" referenceName="ownedNode" variableName="action">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallBehaviorAction" referenceName="ownedNode" variableName="action">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="behavior" valueExpression="var:element"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallBehaviorAction" referenceName="node" variableName="action">
                       <subModelOperations xsi:type="tool:SetValue" featureName="behavior" valueExpression="var:element"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4054,8 +4175,32 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Package)">
+                            <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ChangeEvent" referenceName="packagedElement" variableName="event">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:trigger">
+                                <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="var:event"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="node">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Package)">
@@ -4068,12 +4213,6 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4084,8 +4223,32 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode" variableName="action">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode" variableName="action">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Package)">
+                            <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.TimeEvent" referenceName="packagedElement" variableName="event">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:trigger">
+                                <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="var:event"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="node" variableName="action">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Package)">
@@ -4098,12 +4261,6 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4116,8 +4273,33 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Package)">
+                            <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.SignalEvent" referenceName="packagedElement" variableName="event">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:trigger">
+                                <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="var:event"/>
+                              </subModelOperations>
+                              <subModelOperations xsi:type="tool:SetValue" featureName="signal" valueExpression="var:signal"/>
+                            </subModelOperations>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="node">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Package)">
@@ -4131,12 +4313,6 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4149,8 +4325,33 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Package)">
+                            <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallEvent" referenceName="packagedElement" variableName="event">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                              <subModelOperations xsi:type="tool:SetValue" featureName="operation" valueExpression="var:operation"/>
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:trigger">
+                                <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="var:event"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="node">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Package)">
@@ -4164,12 +4365,6 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4177,7 +4372,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Object">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new activity parameter" name="Activity Parameter" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new activity parameter" name="Activity Parameter" precondition="aql:container.oclIsTypeOf(uml::Activity)" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4202,15 +4397,22 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataStoreNode" referenceName="ownedNode">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataStoreNode" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataStoreNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::ActivityPartition)->size() > 0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4380,6 +4582,11 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
+              <containerViewVariable name="containerView"/>
+              <representationNameVariable name="diagramName"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="CR_ActivityDiagramFromStructuredActivityNode" label="Create Activity diagram" titleExpression="aql:self.name + ' Activity Diagram'" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
+              <initialOperation/>
               <containerViewVariable name="containerView"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
