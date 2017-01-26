@@ -51,6 +51,7 @@ import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Pin;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
+import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
@@ -305,7 +306,7 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 	/**
 	 * Get the child {@link ActivityNode} elements for the given context. This is used to retrieve the
 	 * semantic candidates of {@link ActivityNode} mappings from the context semantic object which can be
-	 * either the {@link Activity} or an {@link ActivityPartition}.
+	 * either the {@link Activity}, an {@link StructuredActivityNode} or an {@link ActivityPartition}.
 	 *
 	 * @param context
 	 *            the context object on which to execute this service.
@@ -335,6 +336,23 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			childNodes = ((ActivityPartition)context).getNodes();
 		} else if (context instanceof InterruptibleActivityRegion) {
 			childNodes = ((InterruptibleActivityRegion)context).getNodes();
+		} else if (context instanceof StructuredActivityNode) {
+			final List<ActivityNode> allActivityNodes = ((StructuredActivityNode)context).getNodes();
+			childNodes = new ArrayList<ActivityNode>(allActivityNodes);
+
+			for (final ActivityNode activityNode : allActivityNodes) {
+				if (activityNode.getInPartitions().size() > 0) {
+					for (final ActivityPartition partition : activityNode.getInPartitions()) {
+						childNodes.removeAll(partition.getNodes());
+					}
+				}
+				if (activityNode.getInInterruptibleRegions().size() > 0) {
+					for (final InterruptibleActivityRegion interruptRegion : activityNode
+							.getInInterruptibleRegions()) {
+						childNodes.removeAll(interruptRegion.getNodes());
+					}
+				}
+			}
 		} else {
 			childNodes = Collections.emptyList();
 		}
@@ -343,9 +361,9 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieves the child {@link ActivityPartition} from either {@link Activity} or {@link ActivityPartition}
-	 * context object. This is used has the semantic candidates expression of AD_ActivityPartition container
-	 * mapping.
+	 * Retrieves the child {@link ActivityPartition} from either {@link Activity},
+	 * {@link StructuredActivityNode} or {@link ActivityPartition} context object. This is used has the
+	 * semantic candidates expression of AD_ActivityPartition container mapping.
 	 *
 	 * @param context
 	 *            the context object on which to execute this service.
@@ -356,6 +374,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 			return ((Activity)context).getPartitions();
 		} else if (context instanceof ActivityPartition) {
 			return ((ActivityPartition)context).getSubpartitions();
+		} else if (context instanceof StructuredActivityNode) {
+			return ((StructuredActivityNode)context).getInPartitions();
 		}
 
 		return null;
@@ -608,8 +628,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 
 	/**
 	 * Retrieves the child {@link InterruptibleActivityRegion} from either {@link Activity} or
-	 * {@link InterruptibleActivityRegion} context object. This is used has the semantic candidates expression
-	 * of AD_InterruptibleActivityRegion container mapping.
+	 * {@link StructuredActivityNode} context object. This is used has the semantic candidates expression of
+	 * AD_InterruptibleActivityRegion container mapping.
 	 *
 	 * @param context
 	 *            the context object on which to execute this service.
@@ -623,6 +643,8 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 					interruptibleRegions.add((InterruptibleActivityRegion)group);
 				}
 			}
+		} else if (context instanceof StructuredActivityNode) {
+			interruptibleRegions.addAll(((StructuredActivityNode)context).getInInterruptibleRegions());
 		}
 
 		return interruptibleRegions;

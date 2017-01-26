@@ -39,15 +39,15 @@ Contributors:
            category="org.obeonetwork.dsl.uml2.design.category"
            class="org.obeonetwork.dsl.uml2.design.internal.wizards.newproject.UMLProjectWizard"
            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
-           icon="icons/NewUmlModel.gif"
-           id="org.obeonetwork.dsl.uml2.design.wizard1"
+           icon="icons/NewUmlProject.gif"
+           id="org.obeonetwork.dsl.uml2.wizard.newUmlProject"
            name="UML Project"
            preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
            project="true">
      </wizard>
      <category
             id="org.obeonetwork.dsl.uml.examples.category"
-            name="UML Designer"
+            name="%_UI_Wizard_category"
             parentCategory="org.eclipse.ui.Examples">
         </category>
         <wizard
@@ -375,7 +375,7 @@ Contributors:
                 id="org.obeonetwork.dsl.uml2.wizard.newUmlModel">
           </newWizardShortcut>
           <newWizardShortcut
-                id="org.obeonetwork.dsl.uml2.design.wizard1">
+                id="org.obeonetwork.dsl.uml2.wizard.newUmlProject">
           </newWizardShortcut>
        </perspectiveExtension>
     </extension>
@@ -493,6 +493,21 @@ Contributors:
       <initializer
             class="org.obeonetwork.dsl.uml2.design.preferences.UmlDesignerPreferenceInitializer">
       </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            menuGroupId="org.obeonetwork.dsl.uml2.design.category"
+            type="new"
+            wizardId="org.obeonetwork.dsl.uml2.wizard.newUmlProject">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            menuGroupId="org.obeonetwork.dsl.uml2.design.category"
+            type="new"
+            wizardId="org.obeonetwork.dsl.uml2.wizard.newUmlModel">
+         <enablement></enablement>
+      </commonWizard>
    </extension>
    
 </plugin>
