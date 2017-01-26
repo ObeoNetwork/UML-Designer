@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -575,6 +576,17 @@ public abstract class AbstractDiagramServices {
 	}
 
 	/**
+	 * Check if the given {@link Model} is the Ecore metamodel.
+	 *
+	 * @param model
+	 *            the given {@link Model}.
+	 * @return <code>true</code> if the given {@link Model} is the Ecore metamodel, false otherwise.
+	 */
+	public boolean isEcoreMetamodel(Model model) {
+		return EcorePackage.eNS_URI.equals(model.getURI());
+	}
+
+	/**
 	 * States if the given object is related to the context {@link Classifier}.
 	 *
 	 * @param toFilter
@@ -790,6 +802,22 @@ public abstract class AbstractDiagramServices {
 	 */
 	public boolean isSameType(final EObject source, final EObject target) {
 		return source.eClass().equals(target.eClass());
+	}
+
+	/**
+	 * Check if the given {@link Model} is the UML metamodel.
+	 *
+	 * @param model
+	 *            the given {@link Model}.
+	 * @return <code>true</code> if the given {@link Model} is the UML metamodel, false otherwise.
+	 */
+	public boolean isUMLMetamodel(Model model) {
+		final String uri = model.getURI();
+		if (uri != null
+				&& (UMLPackage.eNS_URI.equals(uri) || uri.startsWith("http://www.omg.org/spec/UML"))) { //$NON-NLS-1$
+			return true;
+		}
+		return false;
 	}
 
 	/**
