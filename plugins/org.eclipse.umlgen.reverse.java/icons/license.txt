@@ -1,0 +1,11 @@
+******************************************************************************************************
+The following icons are covered by 
+Copyright (c) 2012, 2015 Obeo and others.
+All rights reserved. They are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ 
+icons/acceleo_module_16x16.png
+icons/acceleo_module_26x26.png
+icons/acceleo_module_32x32.png
+icons/acceleo_module_7x7.png
+******************************************************************************************************

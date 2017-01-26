@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipse.umlgen.reverse.java.generate"
+            name="Reverse Java code">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.umlgen.reverse.java.internal.handler.UMLFromJavaAction"
+            commandId="org.eclipse.umlgen.reverse.java.generate">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.umlgen.ui.menu?endof=org.eclipse.umlgen.ui.reverse">
+         <command
+               commandId="org.eclipse.umlgen.reverse.java.generate"
+               label="Reverse Java code"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <or>
+                  <reference
+                        definitionId="org.eclipse.umlgen.ui.definition.isPackage">
+                  </reference>
+                  <reference
+                        definitionId="org.eclipse.umlgen.ui.definition.isJavaProject">
+                  </reference>
+               </or>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>

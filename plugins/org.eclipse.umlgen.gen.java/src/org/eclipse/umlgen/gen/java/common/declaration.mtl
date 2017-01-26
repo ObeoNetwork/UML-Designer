@@ -1,0 +1,85 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module declaration('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[import org::eclipse::umlgen::gen::java::services::typesServices /]
+
+[template public genName(aNamedElement : NamedElement)]
+[aNamedElement.name/]
+[/template]
+
+[template public genMethodPrototype(anOperation : Operation)]
+[genVisibility()/][genAbstract()/][genFinal()/][genStatic()/][reqReturnTypeName()/] [genName()/]([genOperationParameters()/])[genOperationExceptions()/]
+[/template]
+
+[template public genInheritedMethodPrototype(anOperation : Operation)]
+[genVisibility()/][reqReturnTypeName()/] [genName()/]([genOperationParameters()/])
+[/template]
+
+[template public genOperationExceptions(anOperation : Operation)]
+[if (anOperation.raisedException->size() > 0)] throws [anOperation.raisedException.genName()->sep(', ')/][/if]
+[/template]
+
+[template public genOperationParameters(anOperation : Operation)]
+[anOperation.ownedParameter->select(param : Parameter | not (param.direction = ParameterDirectionKind::return)).genOperationParameter()->sep(', ')/]
+[/template]
+
+[template public genOperationParameter(aParameter : Parameter)]
+[aParameter.reqTypeName()/] [aParameter.genName()/]
+[/template]
+
+[template public genInheritance(aClassifier : Classifier)]
+[if (aClassifier.general->size() > 0)] extends [for (extendedClassifier : Classifier | aClassifier.general)][extendedClassifier.genName()/][/for][/if]
+[/template]
+
+[template public genInterfaceRealization(aClass : Class)]
+[if (not aClass.clientDependency->filter(Realization)->isEmpty())] implements [for (namedElement : NamedElement | aClass.getAllInterfaces()) separator(', ')][namedElement.genName()/][/for][/if]
+[/template]
+
+[template public genPropertyParent(aProperty : Property)]
+
+[/template]
+
+[**
+ * Returns all the interface of a given class.
+ * @param aClass The class.
+ */]
+[query public getAllInterfaces(aClass : Class) : Bag(NamedElement) = aClass.clientDependency->filter(Realization).supplier /]
+
+
+[template public genVisibility(aNamedElement : NamedElement)]
+[if (not (aNamedElement.visibility = VisibilityKind::_package))][aNamedElement.visibility/] [else]/*package*/ [/if]
+[/template]
+
+[template public genAbstract(aClass : Class)]
+[if (aClass.isAbstract)]abstract [/if]
+[/template]
+
+[template public genAbstract(anOperation : Operation)]
+[if (anOperation.isAbstract)]abstract [/if]
+[/template]
+
+[template public genFinal(aRedefinableElement : RedefinableElement)]
+[if (aRedefinableElement.isLeaf)]final [/if]
+[/template]
+
+[template public genFinal(aProperty : Property)]
+[if (aProperty.isLeaf)]final [/if]
+[/template]
+
+[template public genStatic(aFeature : Feature)]
+[if (aFeature.isStatic)]static [/if]
+[/template]
+
+[template public addQuotes(aString : String)]
+"[aString/]"
+[/template]

@@ -1,0 +1,34 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module componentBuildPropertiesFile('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[import org::eclipse::umlgen::gen::java::common::path/]
+
+[import org::eclipse::umlgen::gen::java::services::configurationServices /]
+[import org::eclipse::umlgen::gen::java::services::workspaceServices /]
+
+[template private componentBuildPropertiesFile(aComponent : Component)]
+[aComponent.genComponentPath()/]/build.properties
+[/template]
+
+[template public genComponentBuildPropertiesFile(aComponent : Component) ? (not (aComponent.reqGetGenerationRootPath() + '/' + aComponent.componentBuildPropertiesFile()).reqResourceExists())]
+[file (aComponent.componentBuildPropertiesFile(), false, 'UTF-8')]
+#################################################################################
+## [aComponent.reqGetCopyrightAndLicense()/]
+#################################################################################
+source.. = [aComponent.reqGetSourceFolderPath()/]/
+output.. = [aComponent.reqGetOutputFolderPath()/]/
+bin.includes = META-INF/,\
+			   .,\
+			   plugin.properties
+[/file]
+[/template]

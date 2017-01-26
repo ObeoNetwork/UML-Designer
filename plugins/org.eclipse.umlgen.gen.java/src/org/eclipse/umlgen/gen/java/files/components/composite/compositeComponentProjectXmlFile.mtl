@@ -1,0 +1,61 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module compositeComponentProjectXmlFile('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[import org::eclipse::umlgen::gen::java::common::path/]
+
+[import org::eclipse::umlgen::gen::java::services::configurationServices /]
+[import org::eclipse::umlgen::gen::java::services::workspaceServices /]
+
+[template private compositeComponentProjectXmlFile(aComponent : Component)]
+[aComponent.genComponentPath()/]/.project
+[/template]
+
+[template public genCompositeComponentProjectXmlFile(aComponent : Component) ? (not (aComponent.reqGetGenerationRootPath() + '/' + aComponent.compositeComponentProjectXmlFile()).reqResourceExists())]
+[file (aComponent.compositeComponentProjectXmlFile(), false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>[aComponent.name/]</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+[if (aComponent.reqShouldGenerateEclipseArtifacts())]
+		<buildCommand>
+			<name>org.eclipse.pde.FeatureBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+[elseif (aComponent.reqShouldGenerateOSGiArtifacts())]
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>bndtools.core.bndbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>	
+[/if]
+	</buildSpec>
+	<natures>
+[if (aComponent.reqShouldGenerateEclipseArtifacts())]
+		<nature>org.eclipse.pde.FeatureNature</nature>
+[elseif (aComponent.reqShouldGenerateOSGiArtifacts())]
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>bndtools.core.bndnature</nature>
+[/if]
+	</natures>
+</projectDescription>
+[/file]
+[/template]

@@ -1,0 +1,109 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module configurationServices('http://www.eclipse.org/uml2/5.0.0/UML')/]
+
+[query public reqGetGenerationRootPath(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getGenerationRootPath(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+
+
+
+[query public reqGetDefaultProjectName(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getDefaultProjectName(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetSourceFolderPath(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getSourceFolderPath(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetOutputFolderPath(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getOutputFolderPath(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetJREExecutionEnvironment(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getJREExecutionEnvironment(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+
+
+
+[query public reqGetComponentsToIgnore(anOclAny : OclAny) : Sequence(String)
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getComponentsToIgnore(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetComponentBasedArchitecture(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getComponentBasedArchitecture(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetBundleProvider(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getBundleProvider(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqShouldGenerateOSGiArtifacts(anOclAny : OclAny) : Boolean = 
+	anOclAny.reqGetComponentBasedArchitecture() = 'OSGi Bundles and Subsystems' /]
+
+[query public reqShouldGenerateEclipseArtifacts(anOclAny : OclAny) : Boolean = 
+	anOclAny.reqGetComponentBasedArchitecture() = 'Eclipse Plugins, Features and Update Sites' /]
+
+[query public reqShouldGenerateJavaArtifacts(anOclAny : OclAny) : Boolean = 
+	anOclAny.reqGetComponentBasedArchitecture() = 'Java Projects' /]
+
+
+
+
+
+[query public reqGetPackagesToIgnoreDuringGeneration(anOclAny : OclAny) : Sequence(String)
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getPackagesToIgnoreDuringGeneration(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetPackagesToIgnoreDuringImports(anOclAny : OclAny) : Sequence(String)
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getPackagesToIgnoreDuringImports(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqShouldGenerateGettersAndSetters(anOclAny : OclAny) : Boolean
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'shouldGenerateGettersAndSetters(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqShouldGenerateGettersForCollections(anOclAny : OclAny) : Boolean
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'shouldGenerateGettersForCollections(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqShouldGenerateSettersForCollections(anOclAny : OclAny) : Boolean
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'shouldGenerateSettersForCollections(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqShouldGenerateAdvancedAccessorsForCollections(anOclAny : OclAny) : Boolean
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'shouldGenerateAdvancedAccessorsForCollections(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetAuthor(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getAuthor(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetVersion(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getVersion(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetCopyrightAndLicense(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getCopyrightAndLicense(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+
+
+
+[query public reqGetOrderedUniqueCollectionsType(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getOrderedUniqueCollectionsType(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetNotOrderedNotUniqueCollectionsType(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getNotOrderedNotUniqueCollectionsType(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetOrderedNotUniqueCollectionsType(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getOrderedNotUniqueCollectionsType(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetNotOrderedUniqueCollectionsType(anOclAny : OclAny) : String
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getNotOrderedUniqueCollectionsType(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqShouldIgnoreJavaTypes(anOclAny : OclAny) : Boolean
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'shouldIgnoreJavaTypes(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetTypesToIgnoreDuringTheGeneration(anOclAny : OclAny) : Sequence(String)
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getTypesToIgnoreDuringTheGeneration(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+[query public reqGetTypesToIgnoreDuringTheImports(anOclAny : OclAny) : Sequence(String)
+	= invoke('org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder', 'getTypesToIgnoreDuringTheImports(org.eclipse.emf.ecore.EObject)', Sequence{anOclAny}) /]
+
+
+

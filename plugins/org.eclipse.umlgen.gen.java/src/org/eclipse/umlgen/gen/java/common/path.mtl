@@ -1,0 +1,38 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module path('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[import org::eclipse::umlgen::gen::java::services::configurationServices /]
+
+[template public genPackageDeclaration(anElement : Element)]
+[anElement.packagePath().normalizeName()->reverse()->sep('.')/]
+[/template]
+
+[template public genPackagePath(anElement : Element)]
+[if (anElement.ancestors(Component)->size() > 0)][anElement.ancestors(Component)->first().genComponentPath()/][else][anElement.reqGetDefaultProjectName()/][/if]/[anElement.reqGetSourceFolderPath()/]/[anElement.genPackageDeclaration().substituteAll('.', '/').concat('/')/]
+[/template]
+
+[template public genComponentPath(aComponent : Component)]
+[aComponent.name/]
+[/template]
+
+[query private packagePath(anElement : Element) : Sequence(Package) = 
+	Sequence{anElement.getNearestPackage()}->union(anElement.getNearestPackage().ancestors()->filter(Package))->select(pack : Package | pack.oclIsTypeOf(Package))
+/]
+
+[template private normalizeName(anElement : NamedElement) post(trim())]
+[if ((anElement.name = 'package') or (anElement.name = 'interface') or (anElement.name = 'class'))]
+[anElement.name.concat('_')/]
+[else]
+[anElement.name/]
+[/if]
+[/template]

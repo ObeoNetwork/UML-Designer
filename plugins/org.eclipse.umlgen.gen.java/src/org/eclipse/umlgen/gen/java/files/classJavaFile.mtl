@@ -1,0 +1,212 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module classJavaFile('http://www.eclipse.org/uml2/5.0.0/UML') extends org::eclipse::umlgen::gen::java::files::classifierJavaFile]
+
+[import org::eclipse::umlgen::gen::java::common::documentation /]
+[import org::eclipse::umlgen::gen::java::common::path /]
+[import org::eclipse::umlgen::gen::java::common::declaration/]
+[import org::eclipse::umlgen::gen::java::common::attribute/]
+[import org::eclipse::umlgen::gen::java::common::behavior/]
+
+[import org::eclipse::umlgen::gen::java::request::request/]
+
+[import org::eclipse::umlgen::gen::java::services::classifierServices /]
+[import org::eclipse::umlgen::gen::java::services::commonServices/]
+[import org::eclipse::umlgen::gen::java::services::configurationServices /]
+[import org::eclipse::umlgen::gen::java::services::importService /]
+[import org::eclipse::umlgen::gen::java::services::typesServices /]
+
+[template private genClassifierBody(aClassifier : Classifier) overrides genClassifierBody ? (aClassifier.oclIsKindOf(Class))]
+[let aClass : Class = aClassifier.oclAsType(Class)]
+[aClass.declaration()/] {
+	[aClass.attributes()/]
+	[aClass.constructor()/]
+	[aClass.operations()/]
+[for (aProperty : Property | aClass.ownedAttribute->union(aClass.reqOutgoingNavigableOwnedEnd()))]
+	[aProperty.accessors()/]
+
+[/for]
+[/let]
+[/template]
+
+[template private declaration(aClass : Class)]
+[aClass.genVisibility()/][aClass.genAbstract()/][aClass.genFinal()/]class [aClass.genName()/][aClass.genInheritance()/][aClass.genInterfaceRealization()/]
+[/template]
+
+[template private attributes(aClass : Class)]
+[for (aProperty : Property | aClass.ownedAttribute->union(aClass.reqOutgoingNavigableOwnedEnd()))]
+[aProperty.genAttributeComment()/]
+[aProperty.genVisibility()/][aProperty.genFinal()/][aProperty.genStatic()/][aProperty.reqTypeName()/] [aProperty.genName()/] = [aProperty.reqDefaultValue()/];
+
+[/for]
+// [protected ('(user defined attributes for ' + aClass.name + ')')]
+
+// [/protected]
+
+[/template]
+
+[template private constructor(aClass : Class)]
+[if (ownedOperation->select(anOperation : Operation | anOperation.name.equalsIgnoreCase(aClass.name))->size() = 0)]
+/**
+ * The constructor.
+ */
+public [aClass.genName()/]() {
+	// [protected ('constructor for ' + aClass.name + ')')]
+	super();
+	// [/protected]
+}
+[for (aConstructor : Operation | ownedOperation->select(anOperation : Operation | anOperation.name.equalsIgnoreCase(aClass.name)))]
+/**
+ * The constructor.
+[for (aParameter : Parameter | aConstructor.ownedParameter)]
+ * @param [aParameter.genName()/][aParameter.genComment()/]
+[/for]
+ */
+[aConstructor.genVisibility()/][aConstructor.genName()/]([aConstructor.genOperationParameters()/]) {
+	// [protected ('constructor with ' + aConstructor.ownedParameter.genName()->sep(', ') + ' for ' + aClass.name + ')')]
+	super();
+	// [/protected]
+}
+[/for]
+[/if]
+[/template]
+
+[template private operations(aClass : Class)]
+[for (anOperation : Operation | aClass.ownedOperation->reject(ope : Operation | ope.name.equalsIgnoreCase(aClass.name)))]
+[anOperation.genOperationComment()/]
+[if (anOperation.isAbstract)]
+[anOperation.genMethodPrototype()/];
+[else]
+[anOperation.genMethodPrototype()/] {
+	[anOperation.genBehavior()/]
+}
+[/if]
+ 
+[/for]
+[for (anOperation : Operation | aClass.reqGetAllInheritedOperations()->reject(ope : Operation | ope.name.equalsIgnoreCase(aClass.name)))]
+[anOperation.genOperationComment()/]
+[if (anOperation.isAbstract)]
+[anOperation.genInheritedMethodPrototype()/] {
+	[anOperation.genBehavior()/]
+}
+[else]
+[anOperation.genMethodPrototype()/] {
+	[anOperation.genBehavior()/]
+}
+[/if]
+ 
+[/for]
+// [protected ('(user defined methods for ' + aClass.name + ')')]
+
+// [/protected]
+[/template]
+
+[template private accessors(aProperty : Property) post(trim())]
+
+[if (aProperty.reqShouldGenerateGettersAndSetters())][aProperty.getterAndSetter()/][/if]
+[if (not (aProperty.upper = 1) and aProperty.reqShouldGenerateGettersForCollections())][aProperty.collectionGetter()/][/if]
+[if (not (aProperty.upper = 1) and aProperty.reqShouldGenerateSettersForCollections())][aProperty.collectionSetter()/][/if]
+[if (not (aProperty.upper = 1) and aProperty.reqShouldGenerateAdvancedAccessorsForCollections())][aProperty.collectionAdvancedAccessors()/][/if]
+
+[/template]
+
+[template private getterAndSetter(aProperty : Property) ? (aProperty.upper = 1)]
+/**
+ * Returns [aProperty.genName()/].
+ * @return [aProperty.genName()/] [aProperty.genComment()/]
+ */
+public [if(aProperty.isStatic)]static [/if][aProperty.reqTypeName()/] get[aProperty.genName().toUpperFirst()/]() {
+	return [if(not aProperty.isStatic)]this.[/if][aProperty.genName()/];
+}
+[if (not aProperty.isLeaf)]
+
+/**
+ * Sets a value to attribute [aProperty.genName()/]. 
+ * @param new[aProperty.genName().toUpperFirst()/] [aProperty.genComment()/]
+ */
+public [if(aProperty.isStatic)]static [/if]void set[aProperty.genName().toUpperFirst()/]([aProperty.reqTypeName()/] new[aProperty.genName().toUpperFirst()/]) {
+[if (not aProperty.opposite.oclIsUndefined() and aProperty.upper = 1 and aProperty.opposite.upper = 1)]
+	if([if(not aProperty.isStatic)]this.[/if][aProperty.genName()/] != null) {
+		[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].set[aProperty.genPropertyParent()/](null);
+	}
+	[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].set[aProperty.genPropertyParent()/](this);
+[else]
+    [if(not aProperty.isStatic)]this.[/if][aProperty.genName()/] = new[aProperty.genName().toUpperFirst()/];
+[/if]
+}
+[/if]
+[/template]
+
+[template private collectionGetter(aProperty : Property)]
+
+/**
+ * Returns [aProperty.genName()/].
+ * @return [aProperty.genName()/] [aProperty.genComment()/]
+ */
+public [if(aProperty.isStatic)]static [/if][aProperty.reqTypeName()/] get[aProperty.genName().toUpperFirst()/]() {
+	return [if(not aProperty.isStatic)]this.[/if][aProperty.genName()/];
+}
+[/template]
+
+[template private collectionSetter(aProperty : Property) ? (not aProperty.isLeaf)]
+
+/**
+ * Sets a value to attribute [aProperty.genName()/]. 
+ * @param new[aProperty.genName().toUpperFirst()/] [aProperty.genComment()/]
+ */
+public [if(aProperty.isStatic)]static [/if]void set[aProperty.genName().toUpperFirst()/]([aProperty.reqTypeName()/] new[aProperty.genName().toUpperFirst()/]) {
+[if (not aProperty.opposite.oclIsUndefined() and aProperty.upper = 1 and aProperty.opposite.upper = 1)]
+	if([if(not aProperty.isStatic)]this.[/if][aProperty.genName()/] != null) {
+		[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].set[aProperty.genPropertyParent()/](null);
+	}
+	[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].set[aProperty.genPropertyParent()/](this);
+[else]
+    [if(not aProperty.isStatic)]this.[/if][aProperty.genName()/] = new[aProperty.genName().toUpperFirst()/];
+[/if]
+}
+[/template]
+
+
+[template private collectionAdvancedAccessors(aProperty : Property)]
+
+/**
+ * Adds one attribute (if [aProperty.genName()/] had a multiple cardinality)
+ * @param [aProperty.type.name.toUpperFirst().toLowerFirst()/]ToAdd in [aProperty.genName()/]
+ */
+public [if(aProperty.isStatic)]static [/if]void add[aProperty.type.name.toUpperFirst()/]To[aProperty.genName().toUpperFirst()/]([aProperty.type.name.toUpperFirst()/] [aProperty.type.name.toUpperFirst().toLowerFirst()/]ToAdd) {
+	[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].add([aProperty.type.name.toUpperFirst().toLowerFirst()/]ToAdd);
+}
+
+/**
+ * Removes an attribute (if [aProperty.genName()/] had a multiple cardinality)
+ * @param [aProperty.type.name.toUpperFirst().toLowerFirst()/]ToRemove in [aProperty.genName()/]
+ */
+public [if(aProperty.isStatic)]static [/if]void remove[aProperty.type.name.toUpperFirst()/]To[aProperty.genName().toUpperFirst()/]([aProperty.type.name.toUpperFirst()/] [aProperty.type.name.toUpperFirst().toLowerFirst()/]ToRemove) {
+	[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].remove([aProperty.type.name.toUpperFirst().toLowerFirst()/]ToRemove);
+}
+
+/**
+ * Adds all the attribute (if [aProperty.genName()/] had a multiple cardinality)
+ * @param [aProperty.type.name.toUpperFirst().toLowerFirst()/]sToAdd in [aProperty.genName()/]
+ */
+public [if(aProperty.isStatic)]static [/if]void addAll[aProperty.type.name.toUpperFirst()/]To[aProperty.genName().toUpperFirst()/]([aProperty.reqTypeName()/] [aProperty.type.name.toUpperFirst().toLowerFirst()/]sToAdd) {
+	[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].addAll([aProperty.type.name.toUpperFirst().toLowerFirst()/]sToAdd);
+}
+
+/**
+ * Removes all the attribute (if [aProperty.genName()/] had a multiple cardinality)
+ * @param [aProperty.type.name.toUpperFirst().toLowerFirst()/]sToRemove in [aProperty.genName()/]
+ */
+public [if(aProperty.isStatic)]static [/if]void removeAll[aProperty.type.name.toUpperFirst()/]To[aProperty.genName().toUpperFirst()/]([aProperty.reqTypeName()/] [aProperty.type.name.toUpperFirst().toLowerFirst()/]sToRemove) {
+	[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].removeAll([aProperty.type.name.toUpperFirst().toLowerFirst()/]sToRemove);
+}
+[/template]

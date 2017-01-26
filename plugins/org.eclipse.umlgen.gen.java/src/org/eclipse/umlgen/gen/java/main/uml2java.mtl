@@ -1,0 +1,142 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+
+[**
+ * This module is the starting point of the generation.
+ * @author Stephane Begaudeau - Obeo
+ */]
+[module uml2java('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[import org::eclipse::umlgen::gen::java::common::documentation /]
+[import org::eclipse::umlgen::gen::java::common::path /]
+
+[import org::eclipse::umlgen::gen::java::files::classJavaFile /]
+[import org::eclipse::umlgen::gen::java::files::enumJavaFile /]
+[import org::eclipse::umlgen::gen::java::files::interfaceJavaFile /]
+[import org::eclipse::umlgen::gen::java::files::packageInfoJavaFile /]
+
+[import org::eclipse::umlgen::gen::java::files::components::componentBuildPropertiesFile/]
+[import org::eclipse::umlgen::gen::java::files::components::componentClassPathXmlFile/]
+[import org::eclipse::umlgen::gen::java::files::components::componentProjectXmlFile /]
+[import org::eclipse::umlgen::gen::java::files::components::componentCoreSettingsFile/]
+[import org::eclipse::umlgen::gen::java::files::components::componentJdtSettingsFile/]
+[import org::eclipse::umlgen::gen::java::files::components::componentManifestMFFile/]
+[import org::eclipse::umlgen::gen::java::files::components::componentPluginPropertiesFile/]
+
+[import org::eclipse::umlgen::gen::java::files::components::composite::compositeComponentBuildPropertiesFile /]
+[import org::eclipse::umlgen::gen::java::files::components::composite::compositeComponentFeaturePropertiesFile /]
+[import org::eclipse::umlgen::gen::java::files::components::composite::compositeComponentProjectXmlFile /]
+[import org::eclipse::umlgen::gen::java::files::components::composite::compositeComponentFeatureXmlFile /]
+
+[import org::eclipse::umlgen::gen::java::services::configurationServices /]
+[import org::eclipse::umlgen::gen::java::services::workspaceServices/]
+
+
+[template public main(aModel : Model)]
+[comment @main /]
+
+[comment Components artifacts generation /]
+[for (aComponent : Component | aModel.eAllContents(Component)->select(shouldGenerateComponent()))]
+	[if (aComponent.eAllContents(Component)->size() = 0)]
+		[comment simple component /]		
+		[aComponent.generateComponent()/]
+	[else]
+		[comment composite component /]
+		[aComponent.generateCompositeComponent()/]
+	[/if]
+[/for]
+
+[comment Type artifacts generation /]
+[for (aPackage : Package | aModel.eAllContents(Package)->including(aModel))]
+	[if (aPackage.shouldGenerateContent())]
+		[for (aType : Type | aPackage.packagedElement->filter(Type)->select(shouldGenerateType()))]
+			[if (aType.oclIsTypeOf(Class) or aType.oclIsTypeOf(Interface) or aType.oclIsTypeOf(Enumeration))]
+				[comment For all type outside of a component, create a project if it does not exists /]
+				[if (aType.ancestors(Component)->size() = 0)]
+					[aModel.reqCreateDefaultProject()/]
+				[/if]
+			[/if]
+		
+			[if (aType.oclIsTypeOf(Class))]
+				[aType.oclAsType(Class).genClassifierJavaFile()/]
+			[elseif (aType.oclIsTypeOf(Interface))]
+				[aType.oclAsType(Interface).genClassifierJavaFile()/]
+			[elseif (aType.oclIsTypeOf(Enumeration))]
+				[aType.oclAsType(Enumeration).genClassifierJavaFile()/]
+			[/if]
+		[/for]
+		
+		[comment Generate package-info.java if the package has a documentation/]
+		[if (aPackage.hasDocumentation() or aPackage.hasComment())]
+			[aPackage.genPackageInfoJavaFile()/]
+		[/if]
+	[/if]
+[/for]
+
+[comment Format everything/]
+[aModel.reqFormatProjectCode(aModel.reqGetDefaultProjectName())/]
+
+[for (aComponent : Component | aModel.eAllContents(Component)->select(shouldGenerateComponent()))]
+	[if (aComponent.eAllContents(Component)->size() = 0)]
+		[comment simple component /]		
+		[aModel.reqFormatProjectCode(aComponent.name)/]
+	[/if]
+[/for]
+
+[/template]
+
+[query private shouldGenerateContent(aPackage : Package) : Boolean = 
+	aPackage.ancestors()->including(aPackage)->select(oclIsTypeOf(Package))->filter(Package)->any(aP : Package | reqGetPackagesToIgnoreDuringGeneration()->includes(aP.name))->size() = 0
+/]
+
+[query private shouldGenerateType(aType : Type) : Boolean = 
+	(not aType.reqGetTypesToIgnoreDuringTheGeneration()->includes(aType.name))
+	and (aType.ancestors(Component)->reject(aC: Component | aC.shouldGenerateComponent())->size() = 0)
+/]
+
+[query private shouldGenerateComponent(aComponent : Component) : Boolean = 
+	(not aComponent.reqGetComponentsToIgnore()->includes(aComponent.name))
+	and (aComponent.ancestors(Component)->reject(aC: Component | not aC.reqGetComponentsToIgnore()->includes(aC.name))->size() = 0)
+/]
+
+
+[template private generateComponent(aComponent : Component) ? (not aComponent.reqGetComponentsToIgnore()->includes(aComponent.name))]
+[aComponent.genComponentClassPathXmlFile() /]
+[aComponent.genComponentProjectXmlFile() /]
+[aComponent.genComponentCoreSettingsFile() /]
+[aComponent.genComponentJdtSettingsFile() /]
+[if (aComponent.reqShouldGenerateOSGiArtifacts() or aComponent.reqShouldGenerateEclipseArtifacts())]
+[aComponent.genComponentManifestMFFile() /]
+[aComponent.genComponentBuildPropertiesFile() /]
+[aComponent.genComponentPluginPropertiesFile() /]
+[/if]
+
+[comment Create the default source and output folder /]
+[(aComponent.reqGetGenerationRootPath() + '/' + aComponent.name + '/' + aComponent.reqGetSourceFolderPath()).reqCreateFolder()/]
+[(aComponent.reqGetGenerationRootPath() + '/' + aComponent.name + '/' + aComponent.reqGetOutputFolderPath()).reqCreateFolder()/]
+
+[aComponent.genComponentPath().reqImportProject() /]
+[/template]
+
+[template private generateCompositeComponent(aComponent : Component) ? (not aComponent.reqGetComponentsToIgnore()->includes(aComponent.name))]
+[aComponent.genCompositeComponentProjectXmlFile()/]
+[if (aComponent.reqShouldGenerateEclipseArtifacts())]
+[aComponent.genCompositeComponentBuildPropertiesFile()/]
+[aComponent.genCompositeComponentFeaturePropertiesFile()/]
+[aComponent.genCompositeComponentFeatureXmlFile()/]
+[elseif (aComponent.reqShouldGenerateOSGiArtifacts())]
+
+[/if]
+
+[aComponent.genComponentPath().reqImportProject()/]
+[/template]
+

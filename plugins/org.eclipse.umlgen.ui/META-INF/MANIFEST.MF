@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.umlgen.ui;singleton:=true
+Bundle-Version: 8.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.ui.workbench,
+ org.eclipse.ui;bundle-version="3.106.0",
+ org.eclipse.core.runtime;bundle-version="3.10.0",
+ org.eclipse.core.resources;bundle-version="3.9.0",
+ org.eclipse.emf.ecore;bundle-version="2.10.1"
+Export-Package: org.eclipse.umlgen.ui.properties;x-internal:=true
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

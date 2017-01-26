@@ -1,0 +1,62 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module compositeComponentFeatureXmlFile('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[import org::eclipse::umlgen::gen::java::common::path/]
+
+[import org::eclipse::umlgen::gen::java::services::configurationServices /]
+[import org::eclipse::umlgen::gen::java::services::workspaceServices /]
+
+[template private compositeComponentFeatureXmlFile(aComponent : Component)]
+[aComponent.genComponentPath()/]/feature.xml
+[/template]
+
+[template public genCompositeComponentFeatureXmlFile(aComponent : Component) ? (not (aComponent.reqGetGenerationRootPath() + '/' + aComponent.compositeComponentFeatureXmlFile()).reqResourceExists())]
+[file (aComponent.compositeComponentFeatureXmlFile(), false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="[aComponent.name/]"
+      label="%Feature-Label"
+      version="[aComponent.reqGetVersion()/].qualifier"
+      provider-name="[aComponent.reqGetBundleProvider()/]">
+
+   <description>
+      %Feature-Description
+   </description>
+
+   <copyright url="%Copyright-URL">
+      %Copyright
+   </copyright>
+
+   <license>
+      %Licence
+   </license>
+
+[for (aSubComponent : Component | aComponent.nestedClassifier->filter(Component))]
+	[if (aSubComponent.eAllContents(Component)->size() = 0)]
+   <plugin
+         id="[aSubComponent.name/]"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+    [else]
+   <includes
+         id="[aSubComponent.name/]"
+         version="0.0.0"/>
+	[/if]
+[/for]
+
+</feature>
+
+[/file]
+[/template]
