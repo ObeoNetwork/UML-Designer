@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2011, 2017 Obeo and others.
+   All rights reserved. This program and the accompanying materials
+   are made available under the terms of the Eclipse Public License v1.0
+   which accompanies this distribution, and is available at
+   http://www.eclipse.org/legal/epl-v10.html
+   
+   Contributors:
+		Stephane Begaudeau (Obeo) - initial API and implementation
+		Cedric Notot (Obeo) - changes for migration and move of Acceleo Maven repository
+		Axel Richard (Obeo) - move plugin to UML Designer
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.obeonetwork.dsl.uml2</groupId>
+    <artifactId>parent</artifactId>
+    <version>8.0.0-SNAPSHOT</version>
+    <relativePath>../../releng/org.obeonetwork.dsl.uml2.parent</relativePath>
+  </parent>
+
+  <artifactId>org.eclipse.umlgen.gen.java</artifactId>
+  <packaging>eclipse-plugin</packaging>
+
+  <name>Eclipse UML2 to Java Generator</name>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>Eclipse - Acceleo Snapshots</id>
+      <url>https://repo.eclipse.org/content/repositories/acceleo-snapshots</url>
+    </pluginRepository>
+	<pluginRepository>
+      <id>Eclipse - Acceleo Release</id>
+      <url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+    </pluginRepository>
+  </pluginRepositories>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.acceleo</groupId>
+        <artifactId>org.eclipse.acceleo.maven</artifactId>
+        <version>3.5.2</version>
+        <configuration>
+          <useBinaryResources>false</useBinaryResources>
+          <usePlatformResourcePath>true</usePlatformResourcePath>
+          <acceleoProject>
+            <root>${project.basedir}</root>
+            <entries>
+              <entry>
+                <input>src</input>
+                <output>target/classes</output>
+              </entry>
+            </entries>
+          </acceleoProject>
+          <packagesToRegister>
+          	<packageToRegister>org.eclipse.emf.ecore.EcorePackage</packageToRegister>
+		    <packageToRegister>org.eclipse.uml2.uml.UMLPackage</packageToRegister>
+          </packagesToRegister>
+          <uriHandler>org.eclipse.acceleo.maven.AcceleoURIHandler</uriHandler>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

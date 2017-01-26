@@ -23,8 +23,8 @@
     </components>
   </categories>
   <categories
-      name="Generators"
-      description="UML generators."
+      name="Generator &amp; Reverse"
+      description="UML to Java generator and reverse"
       image48="">
     <components
         name="UML to Java"
@@ -32,13 +32,12 @@
         description="The UML to Java generator provides an Acceleo generator to produce Java from an UML model."
         license="EPL"
         image32="images/Uml2Java.png">
-      <sitesURLS>http://download.eclipse.org/umlgen/updates/releases/1.0.0/mars</sitesURLS>
+      <sitesURLS>https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/8.0.0/repository/</sitesURLS>
       <overview
-          summary="This generator allows you to produce Java source code from a UML model. This module uses the standard UML2 metamodel provided by Eclipse Foundation and as such is compatible with any UML tools using this standard like the UML Designer. It's based on the award winning code generation project, Acceleo."
+          summary="This module allows you to produce Java source code from a UML model &amp; to reverse Java source code to a UML model. This module uses the standard UML2 metamodel provided by Eclipse Foundation and as such is compatible with any UML tools using this standard like the UML Designer. It's based on the award winning code generation project, Acceleo."
           screenshot="images/uml2java-screenshot-320x240.png"
-          url="https://wiki.eclipse.org/Eclipse_UML_Generators"/>
-      <id>org.eclipse.umlgen.gen.java.feature</id>
-      <id>org.eclipse.umlgen.gen.java.ui.feature</id>
+          url="http://www.umldesigner.org/ref-doc/umlgen.html"/>
+      <id>org.obeonetwork.dsl.uml2.umlgen.feature</id>
     </components>
   </categories>
   <filters name="Incubation"/>

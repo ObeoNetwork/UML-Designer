@@ -1,0 +1,30 @@
+******************************************************************************************************
+The following icons are covered by 
+Copyright (c) 2012, 2014 Obeo and others.
+All rights reserved. They are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ 
+icons/acceleo_module_16x16.png
+icons/acceleo_module_26x26.png
+icons/acceleo_module_32x32.png
+icons/acceleo_module_7x7.png
+******************************************************************************************************
+
+******************************************************************************************************
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/add_obj.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/add_obj.gif
+icons/delete_obj.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
+icons/properties.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/elcl16/properties.gif
+icons/composite_obj.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/obj16/composite_obj.gif
+icons/class_obj.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif
+icons/component_obj.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif
+icons/datatype_obj.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/DataType.gif
+icons/model_obj.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Model.gif
+icons/package_obj.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Package.gif
+icons/stereotype_obj.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif
+******************************************************************************************************

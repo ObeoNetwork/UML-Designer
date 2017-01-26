@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.umlgen.gen.java;singleton:=true
+Bundle-Version: 8.0.0.qualifier
+Bundle-Activator: org.eclipse.umlgen.gen.java.UML2JavaActivator
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.resources;bundle-version="3.9.0",
+ org.eclipse.core.runtime;bundle-version="3.10.0",
+ org.eclipse.jdt.core;bundle-version="3.10.0",
+ org.eclipse.jdt.launching;bundle-version="3.7.100",
+ org.eclipse.text;bundle-version="3.5.300",
+ org.eclipse.acceleo.model;bundle-version="3.5.0",
+ org.eclipse.acceleo.engine;bundle-version="3.5.0",
+ org.eclipse.uml2.uml;bundle-version="5.0.1"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Eclipse-LazyStart: true
+Export-Package: org.eclipse.umlgen.gen.java.main;x-internal:=true,
+ org.eclipse.umlgen.gen.java.services;x-internal:=true,
+ org.eclipse.umlgen.gen.java.utils;x-internal:=true
+

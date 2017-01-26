@@ -1,0 +1,43 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module attribute('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[import org::eclipse::umlgen::gen::java::common::declaration/]
+
+[import org::eclipse::umlgen::gen::java::request::request/]
+
+[import org::eclipse::umlgen::gen::java::services::typesServices /]
+
+
+[template public genAttributes(aClass : Class)]
+[for (aProperty : Property | aClass.ownedAttribute->union(aClass.reqOutgoingNavigableOwnedEnd()))]
+[aProperty.genAttributeComment()/]
+[aProperty.genVisibility()/][aProperty.genFinal()/][aProperty.genStatic()/][aProperty.reqTypeName()/] [aProperty.genName()/] = [aProperty.reqDefaultValue()/];
+
+[/for]
+// [protected ('(user defined attributes)')]
+
+// [/protected]
+
+[/template]
+
+[template public genAttributeComment(aProperty : Property)]
+/**
+[if (aProperty.ownedComment->size() > 0 and aProperty.ownedComment._body->forAll(b : String | not ''.equalsIgnoreCase(b)))]
+[for (propertyComment : Comment | aProperty.ownedComment)]
+ * [propertyComment._body/]
+[/for]
+[else]
+ * Description of the property [aProperty.genName()/].
+[/if]
+ */
+[/template]

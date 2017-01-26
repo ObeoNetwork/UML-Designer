@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2011, 2015 Obeo and others.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Stephane Begaudeau (Obeo) - initial API and implementation
+-->
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="org.eclipse.umlgen.gen.java.ui.launch.UML2JavaLaunchDelegate"
+            id="org.eclipse.umlgen.gen.java.ui.launchConfigurationType"
+            modes="run"
+            name="%launchConfigurationName"
+            sourceLocatorId="org.eclipse.umlgen.gen.java.ui.sourceLocator">
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.sourceLocators">
+      <sourceLocator
+            class="org.eclipse.umlgen.gen.java.ui.launch.UML2JavaPersistableSourceLocator"
+            id="org.eclipse.umlgen.gen.java.ui.sourceLocator"
+            name="%sourceLocatorName">
+      </sourceLocator>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="org.eclipse.umlgen.gen.java.ui.launch.LaunchShortcut"
+            icon="icons/acceleo_module_16x16.png"
+            id="org.eclipse.umlgen.gen.java.ui.UML2JavaGenerationShortcut"
+            label="%launchConfigurationShortcutLabel"
+            modes="run">
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <test
+                           property="org.eclipse.debug.ui.matchesPattern"
+                           value="*.uml">
+                     </test>
+                  </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+      </shortcut>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="org.eclipse.umlgen.gen.java.ui.launch.UML2JavaLaunchConfigurationTabGroup"
+            description="%launchConfigurationTabGroupsName"
+            id="org.eclipse.umlgen.gen.java.ui.launchConfigurationTabGroup"
+            type="org.eclipse.umlgen.gen.java.ui.launchConfigurationType">
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.umlgen.gen.java.ui.launchConfigurationType"
+            icon="icons/acceleo_module_16x16.png"
+            id="org.eclipse.umlgen.gen.java.ui.launchConfigurationTypeImage">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.eclipse.umlgen.ui.properties"
+            class="org.eclipse.umlgen.gen.java.ui.properties.LaunchConfigurationPropertiesPage"
+            id="org.eclipse.umlgen.gen.java.ui.properties.LaunchConfigurationPropertiesPage"
+            name="Java code"
+            nameFilter="*.uml">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipse.umlgen.gen.java.ui.generate"
+            name="Generate Java Code">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.umlgen.gen.java.ui.handler.GenerateJavaHandler"
+            commandId="org.eclipse.umlgen.gen.java.ui.generate">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.umlgen.ui.menu?endof=org.eclipse.umlgen.ui.gen">
+         <command
+               commandId="org.eclipse.umlgen.gen.java.ui.generate"
+               icon="icons/acceleo_module_16x16.png"
+               label="Generate Java Code"
+               style="push">
+            <visibleWhen
+                checkEnabled="false">
+               <reference
+                     definitionId="org.eclipse.umlgen.ui.definition.isUmlFile">
+               </reference>
+                
+             </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+</plugin>

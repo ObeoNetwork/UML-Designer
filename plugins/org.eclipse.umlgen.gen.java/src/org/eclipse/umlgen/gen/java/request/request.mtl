@@ -1,0 +1,30 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2011, 2014 Obeo and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
+[/comment]
+[module request('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+
+[query public reqOutgoingNavigableOwnedEnd(aClass : Class) : Set(Property)
+   = reqSelfAssociationsNavigableOwnedEnd(aClass)
+      ->union(reqOtherAssociationsNavigableOwnedEnd(aClass))->asOrderedSet()
+/]
+
+[query private reqSelfAssociationsNavigableOwnedEnd(aClass : Class) : Set(Property)
+   = aClass.getAssociations()->select(ownedEnd.type->asSet()->size() = 1).navigableOwnedEnd->asOrderedSet()
+/]
+
+[query private reqOtherAssociationsNavigableOwnedEnd(aClass : Class) : Set(Property)
+   = aClass.getAssociations()->select(navigableOwnedEnd->select(type <> aClass)->size() = 1).navigableOwnedEnd->select(type <> aClass)->asOrderedSet()
+/]
+
+
+	
+
