@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 Obeo and others.
+ * Copyright (c) 2008, 2017 Obeo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,13 @@ package org.eclipse.umlgen.gen.java.services;
 
 import java.util.List;
 
+import org.eclipse.uml2.uml.LiteralNull;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.TypedElement;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 /**
  * Service class to compute the types and their default values.
@@ -60,9 +62,8 @@ public class TypesServices {
             return typeName;
         }
 
-        if (aTypedElement instanceof MultiplicityElement
-                && (((MultiplicityElement)aTypedElement).getUpper() > 1 || ((MultiplicityElement)aTypedElement)
-                        .getUpper() == -1)) {
+        if (aTypedElement instanceof MultiplicityElement && (((MultiplicityElement)aTypedElement)
+                .getUpper() > 1 || ((MultiplicityElement)aTypedElement).getUpper() == -1)) {
             MultiplicityElement multiplicityElement = (MultiplicityElement)aTypedElement;
 
             String collectionType = "";
@@ -139,15 +140,21 @@ public class TypesServices {
                 }
                 shortcut = true;
             }
+            if (!shortcut) {
+                ValueSpecification valueSpecification = property.getDefaultValue();
+                if (valueSpecification instanceof LiteralNull) {
+                    defaultValue = "null";
+                    shortcut = true;
+                }
+            }
         }
 
         if (shortcut) {
             return defaultValue;
         }
 
-        if (aTypedElement instanceof MultiplicityElement
-                && (((MultiplicityElement)aTypedElement).getUpper() > 1 || ((MultiplicityElement)aTypedElement)
-                        .getUpper() == -1)) {
+        if (aTypedElement instanceof MultiplicityElement && (((MultiplicityElement)aTypedElement)
+                .getUpper() > 1 || ((MultiplicityElement)aTypedElement).getUpper() == -1)) {
             MultiplicityElement multiplicityElement = (MultiplicityElement)aTypedElement;
 
             String collectionType = "";
