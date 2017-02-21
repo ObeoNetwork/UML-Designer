@@ -157,6 +157,14 @@ When the user goes over the main graphical area with his mouse, after a short de
 
 As UML Designer is based on Sirius, the diagram editor shows the graphical elements according to the style defined in the viewpoint specification (uml.odesign).
 
+h5. Search
+
+Another feature available on the editor is the *search tool* :
+!{{ page.relativePath }}/images/ClassDiagramSearchCtrlO.png!
+
+This search tool is available with the shortcut *Ctrl + O*. This allows you to rapidly search text in the displayed name or the contained String attributes of your diagram elements elements.
+The star, *, is a joker character, allowing you to search with more complicated patterns. Regarding this, an element is found if there is a word in its name or one of its attributes that match with the text in the filter, so if you want to search within words too, add * at the start of your pattern. Also, you can navigate along the matching elements with left and down arrows, and go to the selected element in your editor with Enter.
+
 h3. Outline
 
 The outline view has two display modes that the user can select in its upper toolbar:
