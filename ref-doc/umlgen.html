@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UML Designer documentation">
+  <meta name="author" content="Mt&eacute;lanie Bats">
+  
+  <title>UML to Java generator & reverse</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  
+  <!-- Pygments CSS -->
+  <link href="../css/pygments.css" rel="stylesheet">
+
+  <!-- Add custom CSS here -->
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap CDN to add Font Awesom -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="../overview">Overview</a></li>
+        
+      
+        
+        <li><a href="../download">Download</a></li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+            	
+      	    	<li><a href="../tutorials/tuto-getting-started.html">Getting started</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../tutorials/tuto-create-project.html">Create project</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../tutorials/tuto-create-representation.html">Create representation</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../tutorials/tuto-import-model.html">Import model</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../tutorials/tuto-start-example.html">Open example</a></li>
+      	    	
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+            	
+            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/implement-the-application.html#Class_Diagram">Class Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Component_Diagram">Component Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Composite_Structure_Diagram">Composite Structure Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Deployment_Diagram">Deployment Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Package_Diagram">Package Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Profile_Diagram">Profile Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/implement-the-application.html#Sequence_Diagram">Sequence Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/implement-the-application.html#State_Machine_Diagram">State Machine Diagram</a></li>
+            	
+            
+            	
+            	<li><a href="../ref-doc/define-the-application.html#Use_Case_Diagram">Use Case Diagram</a></li>
+            	
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+            	
+      	    	<li><a href="../developer-guide/contribute.html">Contribute</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/build.html">Build</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/test.html">Test</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/release.html">Release</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
+      	    	
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+            	
+      	    	<li><a href="../ref-doc/presentation.html">Presentation</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/define-the-system.html">Define the system</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/define-the-application.html">Define the application</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/implement-the-application.html">Implement the application</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/write-the-application-documentation.html">Write the application documentation</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/refactor-an-application.html">Refactor an application</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/validate-an-application.html">Validate an application</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/non-goals.html">Non Goals</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/usage.html">Usage</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/migration.html">Migration</a></li>
+      	    	
+            
+            	
+      	    	<li><a href="../ref-doc/discovery.html">Install UML components</a></li>
+      	    	
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li><a href="../support">Support</a></li>
+        
+      
+        
+        <li><a href="../faq">FAQ</a></li>
+        
+      
+
+      </ul>
+    </div><!-- /.navbar-header -->
+  </div><!-- /.container -->
+</nav>
+
+
+<div id="mainbody">
+  <div class="page-masthead bg_green2">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">UML to Java generator & reverse <small class="green1">Reference documentation</small></h1>
+    </div>
+  </div>
+  </div><!-- /.container -->
+</div><!-- /.page-masthead -->
+ 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <p>A <span class="caps">UML</span> to Java generator module and a Java to <span class="caps">UML</span> reverse module are available along with <span class="caps">UML</span> Designer.<br />
+You can install them via the <a href="../ref-doc/discovery.html"><span class="caps">UML</span> Discovery catalog</a>, or via the &quot;UML Designer update site &quot;:.. /download/index.html.</p>
+<h2 class="UML_to_Java"><span class="caps">UML</span> to Java</h2>
+<h3>Generate code from any kind of <span class="caps">UML</span> model&#8230;</h3>
+<p>The <span class="caps">UML</span> to Java code generator let you generate code from any <span class="caps">UML</span> model compatible with the Eclipse UML2 project. You can build your model with the tool of your choice like the regular tree-based <span class="caps">UML</span> editor or even <span class="caps">UML</span> Designer.</p>
+<p><img src="../images/umlgen/designer.png" alt="" /> <img src="../images/umlgen/tree.png" alt="" /> <img src="../images/umlgen/class.png" alt="" /></p>
+<h3>With a dedicated launch configuration</h3>
+<p>Forget the properties files of a basic Acceleo generator, this new version of the <span class="caps">UML</span> to Java generator comes with a dedicated launch configuration where you can select all the details of the generation. This launch configuration can also be saved on your disk and shared with your team, giving you that way, the ability to reproduce easily a generation with specific settings. In this new launch configuration, you can choose the types to ignore, the Java runtime environment to associate with the generated project and much more.</p>
+<p><img src="../images/umlgen/launch.png" alt="" /></p>
+<h3>Support for the component diagrams</h3>
+<p>The generator now consider components as first class citizens. The generation will not use a regular folder as a target but instead, it will generate a new Java project for each components in your model. You can even opt-in to have Eclipse plug-ins and features generated to represent your component architecture. With this option, you will have an internationalized <span class="caps">MANIFEST</span>.MF files with exported and imported packages along with features.xml files grouping your plug-ins just like in your model. If your model does not have any component, you can configure in the launch configuration the name, classpath and Java runtime environment of the default Java project to create for your code.</p>
+<p><img src="../images/umlgen/manifest.png" alt="" /></p>
+<h2 class="Java_to_UML">Java to <span class="caps">UML</span></h2>
+<p>The Package Explorer view shows all the projects in your workspace and the files they contain. Right click on your project (or package) and select the &#8220;Reverse Java code&#8221; menu entry to generate the <span class="caps">UML</span> model.</p>
+<p><img src="../images/umlgen/reverse_menu_entry.png" alt="" /></p>
+<p>In either, the following window will appear:</p>
+<p><img src="../images/umlgen/reverse_dialog.png" alt="" /></p>
+<p>Here are the different editable parameters:</p>
+<ul>
+	<li>Container : where the generated files will be created</li>
+	<li>File name : Name of the generated file</li>
+	<li>Limit visibility : the minimum visibility (private, protected, etc…) of the elements to reverse</li>
+	<li>Logging Level : verbosity settings for the logging mechanism</li>
+	<li>Model Imports : select <span class="caps">UML</span> models containing profile definitions that are used in your code to avoid re-generating them</li>
+	<li>Activity Generation :
+	<ul>
+		<li>None : The tool generates no activity diagrams</li>
+		<li>Annotated only : The tool will generate only the annotated diagrams</li>
+		<li>All : The tool will generate all diagrams</li>
+	</ul></li>
+</ul>
+<p>When you are done, click Finish to create the reverse file(s).</p>
+<p>If you choose to generate only the <span class="caps">UML</span> file, two files will be generated in the package or project you selected: the log file and the model uml</p>
+<p><img src="../images/umlgen/reverse_package_explorer.png" alt="" /></p>
+<p>Double click on the “.uml” to open it and you will obtain a similar window to the following:</p>
+<p><img src="../images/umlgen/reverse_uml_editor.png" alt="" /></p>
+    </div>
+  </div>
+</div><!-- /.container -->
+
+</div><!-- /#mainbody -->
+
+  <footer class="bg_green3 center">
+	<div class="container">
+	    <div class="row">
+	      <div class="col-lg-12">
+	        <p>Made with &#10084; Copyright  &copy; <span id="year">YEAR</span> <a href="http://www.obeo.fr">Obeo</a> - All Rights Reserved</p>
+	      </div>
+	    </div>
+	</div>
+</footer>
+<!-- JavaScript -->
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/modern-business.js"></script>
+
+  <!-- JavaScript -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52689660-1', 'auto');
+  ga('send', 'pageview');
+
+</script> 
+
+</body>
+</html>
