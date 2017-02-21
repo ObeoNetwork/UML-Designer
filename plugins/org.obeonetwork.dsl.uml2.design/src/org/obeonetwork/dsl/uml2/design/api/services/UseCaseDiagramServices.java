@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,10 +13,15 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedServices;
@@ -114,6 +119,54 @@ public class UseCaseDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get the Package containing the given UseCase, or create an new Package if it is a sub-UseCase. In this
+	 * case, the new Package will be put under the parent Package of the UseCase.
+	 *
+	 * @param useCase
+	 *            the given UseCase.
+	 * @return the Package containing the given UseCase, or create an new Package if it is a sub-UseCase. In
+	 *         this case, the new Package will be put under the parent Package of the UseCase.
+	 */
+	public Package getOrCreatePackage(UseCase useCase) {
+		Package pkg = null;
+		final EObject container = useCase.eContainer();
+		// If it is a sub-UseCase, then create a sub-Package to be the root element of the new UseCase diagram.
+		// But try to search for such an existing Package first.
+		if (container instanceof UseCase) {
+			final Package containerPackage = getPackage(container);
+			pkg = getSubPackage(containerPackage, useCase.getName());
+			if (pkg == null) {
+				pkg = (Package)EcoreUtil.create(UMLPackage.Literals.PACKAGE);
+				pkg.setName(useCase.getName());
+				containerPackage.getPackagedElements().add(pkg);
+			}
+		} else {
+			pkg = getPackage(useCase);
+		}
+		return pkg;
+	}
+
+	/**
+	 * Get the Package containing the given EObject.
+	 *
+	 * @param object
+	 *            the given EObject.
+	 * @return the Package containing the given EObject.uuh
+	 */
+	private Package getPackage(EObject object) {
+		Package pkg = null;
+		if (object != null) {
+			final EObject container = object.eContainer();
+			if (container instanceof Package) {
+				pkg = (Package)container;
+			} else {
+				pkg = getPackage(container);
+			}
+		}
+		return pkg;
+	}
+
+	/**
 	 * Get related elements for use case diagram.
 	 *
 	 * @param cur
@@ -132,6 +185,25 @@ public class UseCaseDiagramServices extends AbstractDiagramServices {
 			return result;
 		}
 		return RelatedServices.INSTANCE.getRelated(cur);
+	}
+
+	/**
+	 * Get the sub-Package with the given name if it exists.
+	 *
+	 * @param container
+	 *            the Package container to search into.
+	 * @param name
+	 *            the name of the Package to get.
+	 * @return the sub-Package with the given name if it exists, <code>null</code> otherwise.
+	 */
+	private Package getSubPackage(Package container, String name) {
+		final EList<Element> ownedElements = container.getOwnedElements();
+		for (final Element element : ownedElements) {
+			if (element instanceof Package && name.equals(((Package)element).getName())) {
+				return (Package)element;
+			}
+		}
+		return null;
 	}
 
 	private boolean hasKeyword(EObject actor, String keyword) {
