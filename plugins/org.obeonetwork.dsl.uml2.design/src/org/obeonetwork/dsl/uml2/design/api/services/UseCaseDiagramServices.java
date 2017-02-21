@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedServices;
@@ -57,6 +58,32 @@ public class UseCaseDiagramServices extends AbstractDiagramServices {
 	private void addActorKeyword(Actor actor, String type) {
 		clearActorKeywords(actor);
 		actor.addKeyword(type);
+	}
+
+	/**
+	 * Check if the source and the target of the association in a usecase diagram is valid. From UML 2.5
+	 * documentation, section 18.2.1.4: An Actor can only have Associations to UseCases, Components, and
+	 * Classes.
+	 *
+	 * @param source
+	 *            the source EObject.
+	 * @param target
+	 *            the target EObject.
+	 * @return <code>true</code> if the source and the target of the association are valid, <code>false</code>
+	 *         otherwise.
+	 */
+	public boolean checkUseCaseAssociationValidity(Object source, Object target) {
+		boolean valid = false;
+		if (source instanceof Actor) {
+			valid = target instanceof UseCase || target instanceof Component
+					|| target instanceof org.eclipse.uml2.uml.Class;
+		} else if (target instanceof Actor) {
+			valid = source instanceof UseCase || source instanceof Component
+					|| source instanceof org.eclipse.uml2.uml.Class;
+		} else {
+			valid = true;
+		}
+		return valid;
 	}
 
 	private void clearActorKeywords(Actor actor) {
