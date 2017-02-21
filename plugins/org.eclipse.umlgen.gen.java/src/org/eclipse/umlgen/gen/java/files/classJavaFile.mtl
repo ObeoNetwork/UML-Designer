@@ -135,12 +135,12 @@ public [if(aProperty.isStatic)]static [/if][aProperty.reqTypeName()/] get[aPrope
  */
 public [if(aProperty.isStatic)]static [/if]void set[aProperty.genName().toUpperFirst()/]([aProperty.reqTypeName()/] new[aProperty.genName().toUpperFirst()/]) {
 [if (not aProperty.opposite.oclIsUndefined() and aProperty.upper = 1 and aProperty.opposite.upper = 1)]
+	[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/] = new[aProperty.genName().toUpperFirst()/];
+[else]
 	if([if(not aProperty.isStatic)]this.[/if][aProperty.genName()/] != null) {
 		[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].set[aProperty.genPropertyParent()/](null);
 	}
 	[if(not aProperty.isStatic)]this.[/if][aProperty.genName()/].set[aProperty.genPropertyParent()/](this);
-[else]
-    [if(not aProperty.isStatic)]this.[/if][aProperty.genName()/] = new[aProperty.genName().toUpperFirst()/];
 [/if]
 }
 [/if]
