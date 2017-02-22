@@ -12,7 +12,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edit.ui,
  org.eclipse.uml2.uml,
  org.eclipse.uml2.uml.editor,
- org.eclipse.sirius.common.ui
+ org.eclipse.sirius.common.ui,
+ org.eclipse.sirius.ui,
+ org.eclipse.ui.views.properties.tabbed
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.sirius.business.api.session

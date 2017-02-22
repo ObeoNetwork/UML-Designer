@@ -73,6 +73,29 @@
             </possibleDropTargets>
          </dropAssistant>
       </navigatorContent>
+      <navigatorContent
+            activeByDefault="true"
+            appearsBefore="org.eclipse.sirius.ui.resource.content.session"
+            contentProvider="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider"
+            id="org.obeonetwork.dsl.uml2.editor.SortProvider"
+            labelProvider="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider"
+            name="UML Designer Sort Support"
+            priority="higher"
+            providesSaveables="false">
+         <commonSorter
+               class="org.obeonetwork.dsl.uml2.editor.internal.UMLDesignerViewerSorter"
+               id="org.obeonetwork.dsl.uml2.editor.CommonSorter">
+            <parentExpression>
+               <instanceof
+                     value="org.eclipse.emf.ecore.EObject">
+               </instanceof>
+            </parentExpression>
+         </commonSorter>
+         <triggerPoints>
+            <instanceof
+                  value="org.eclipse.emf.ecore.EObject">
+            </instanceof></triggerPoints>
+      </navigatorContent>
    </extension>
   <extension
         point="org.eclipse.ui.commands">
@@ -90,6 +113,14 @@
            categoryId="org.eclipse.ui.category.edit"
            id="org.obeonetwork.dsl.uml2.navigator.commands.cut"
            name="Cut">
+     </command>
+     <command
+           id="org.obeonetwork.dsl.uml2.navigator.commands.sort"
+           name="Sort Model Elements">
+        <state
+              class="org.eclipse.ui.handlers.RegistryToggleState:true"
+              id="org.eclipse.ui.commands.toggleState">
+        </state>
      </command>
   </extension>
   <extension
@@ -151,6 +182,16 @@
                  </iterate>
               </and>
            </visibleWhen>
+        </command>
+     </menuContribution>
+     <menuContribution
+           allPopups="false"
+           locationURI="toolbar:org.eclipse.sirius.ui.tools.views.model.explorer">
+        <command
+              commandId="org.obeonetwork.dsl.uml2.navigator.commands.sort"
+              icon="icons/alphab_sort_co.gif"
+              label="Sort Model Elements"
+              style="toggle">
         </command>
      </menuContribution>
   </extension>
@@ -266,6 +307,10 @@
               </instanceof>
            </iterate>
         </enabledWhen>
+     </handler>
+     <handler
+           class="org.obeonetwork.dsl.uml2.editor.internal.SortCommandHandler"
+           commandId="org.obeonetwork.dsl.uml2.navigator.commands.sort">
      </handler>
   </extension>
 </plugin>
