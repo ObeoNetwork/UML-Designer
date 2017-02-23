@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -28,6 +33,21 @@ import org.osgi.framework.BundleContext;
  */
 @SuppressWarnings("restriction")
 public class UMLDesignerPlugin extends AbstractUIPlugin {
+
+	/**
+	 * The plug-in ID.
+	 */
+	public static final String PLUGIN_ID = "org.obeonetwork.dsl.uml2.design"; //$NON-NLS-1$
+
+	/**
+	 * The shared instance.
+	 */
+	private static UMLDesignerPlugin plugin;
+
+	/**
+	 * The {@link Viewpoint}s registered in this plug-in.
+	 */
+	private static Set<Viewpoint> viewpoints;
 
 	/**
 	 * Returns the shared instance.
@@ -53,24 +73,11 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * The plug-in ID.
-	 */
-	public static final String PLUGIN_ID = "org.obeonetwork.dsl.uml2.design"; //$NON-NLS-1$
-
-	/**
-	 * The shared instance.
-	 */
-	private static UMLDesignerPlugin plugin;
-
-	/**
-	 * The {@link Viewpoint}s registered in this plug-in.
-	 */
-	private static Set<Viewpoint> viewpoints;
-
-	/**
 	 * Label provider.
 	 */
 	private ICommonLabelProvider labelProvider = null;
+
+	private SessionManagerListener notifWhenSessionAreCreated;
 
 	/**
 	 * The constructor.
@@ -100,6 +107,14 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 		viewpoints = new HashSet<Viewpoint>();
 		viewpoints.addAll(
 				ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/uml2.odesign")); //$NON-NLS-1$
+		notifWhenSessionAreCreated = new SessionManagerListener.Stub() {
+			@Override
+			public void notifyAddSession(Session newSession) {
+				final ResourceSet set = newSession.getTransactionalEditingDomain().getResourceSet();
+				UMLResourcesUtil.init(set);
+			}
+		};
+		SessionManager.INSTANCE.addSessionsListener(notifWhenSessionAreCreated);
 	}
 
 	/**
@@ -114,6 +129,9 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 			}
 			viewpoints.clear();
 			viewpoints = null;
+		}
+		if (notifWhenSessionAreCreated != null) {
+			SessionManager.INSTANCE.removeSessionsListener(notifWhenSessionAreCreated);
 		}
 		super.stop(context);
 	}
