@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,18 +13,19 @@ package org.obeonetwork.dsl.uml2.design.internal.triggers;
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.uml2.uml.Element;
-import org.obeonetwork.dsl.uml2.design.internal.dialogs.CancelOperationException;
 import org.obeonetwork.dsl.uml2.design.internal.dialogs.ConfirmDeletionDialog;
 import org.obeonetwork.dsl.uml2.design.preferences.UmlDesignerPreferences;
 
@@ -61,6 +62,11 @@ public class ConfirmDeletionTrigger extends DanglingRefRemovalTrigger {
 	private final UmlDesignerPreferences preferences = new UmlDesignerPreferences();
 
 	/**
+	 * Thanks to DanglingRefRemovalTrigger, we don't have access to the session, so let's declare it again.
+	 */
+	protected Session siriusSession;
+
+	/**
 	 * Constructor.
 	 *
 	 * @see DanglingRefRemovalTrigger
@@ -69,6 +75,7 @@ public class ConfirmDeletionTrigger extends DanglingRefRemovalTrigger {
 	 */
 	public ConfirmDeletionTrigger(Session session) {
 		super(session);
+		siriusSession = session;
 	}
 
 	/**
@@ -112,8 +119,14 @@ public class ConfirmDeletionTrigger extends DanglingRefRemovalTrigger {
 		if (allDetachedObjects.size() > 0) {
 			final ConfirmDeletionDialog dialog = new ConfirmDeletionDialog(allDetachedObjects);
 			if (!dialog.openConfirm()) {
-				// Cancel operation
-				throw new CancelOperationException("Deletion operation canceled"); //$NON-NLS-1$
+				final Command result = new RecordingCommand(siriusSession.getTransactionalEditingDomain()) {
+					@Override
+					protected void doExecute() {
+						// Cancel operation
+						throw new OperationCanceledException("Deletion operation canceled"); //$NON-NLS-1$
+					}
+				};
+				return Options.newSome(result);
 			}
 
 		}
