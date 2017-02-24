@@ -211,6 +211,21 @@ UML in colors examples are available from Eclipse menu File > New > Example... >
 
 For more detailed explanation on UML in colors have a look to "Peter Coad's website":http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html.
 
+h3(#Constraints). Handle constraints
+
+A _Constraint_ is an assertion that indicates a restriction that must be satisfied by any valid realization of the model containing the _Constraint_.
+
+A @Constraints@ layer is available in the UML Designer @class diagram@.
+!{{ page.relativePath }}/images/class_diagram_constraints/layer.png!
+
+When the layer is selected, new tools are available in the palette:
+!{{ page.relativePath }}/images/class_diagram_constraints/palette.png!
+
+For the moment, only these types of _ValueSpecifications_ are handled for constraints in the @class diagram@ : _Expression_, _Instance Value_, _Literal Boolean_, _Literal Integer_, _Literal Null_, _Literal Real_, _Literal String_, _Literal Unlimited Natural_, _Opaque Expression_, _String Expression_.
+_Duration_, _Duration Interval_, _Interval_, _Time Expression_ and _Time Interval_ are not handled yet.
+
+You can apply a _Constraint_ on any diagram element except the _Relationships_. It is not handled yet.
+
 h2(#Object_Diagram). Instanciate the application
 
 __This diagram is not yet implemented.__ 

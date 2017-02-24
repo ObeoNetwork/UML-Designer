@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,6 +75,8 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+
+import com.google.common.base.Strings;
 
 /**
  * A switch that handle the label computation for each UML types.
@@ -275,6 +277,30 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseComponentRealization(org.eclipse.uml2.uml.ComponentRealization object) {
 		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseConstraint(Constraint object) {
+		final StringBuilder label = new StringBuilder();
+		label.append('{');
+		if (object != null) {
+			final String constraintName = object.getName();
+			if (!Strings.isNullOrEmpty(constraintName)) {
+				label.append(constraintName);
+				label.append(':');
+			}
+			final ValueSpecification specification = object.getSpecification();
+			if (specification == null) {
+				label.append("missing specification"); //$NON-NLS-1$
+			} else {
+				label.append(specification.stringValue());
+			}
+		}
+		label.append('}');
+		return label.toString();
 	}
 
 	/**

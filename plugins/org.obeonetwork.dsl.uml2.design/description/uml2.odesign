@@ -2406,6 +2406,203 @@
           </vsmElementCustomizations>
         </customization>
       </additionalLayers>
+      <additionalLayers name="Constraints">
+        <edgeMappings name="CD_ConstraintsAttachment" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_AssociationClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Constraints']/@containerMappings[name='CD_Constraints']" targetFinderExpression="var:self">
+          <style lineStyle="dash" targetArrow="NoDecoration">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CD_Constraints" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Constraints']/@toolSections.1/@ownedTools[name='Delete%20Constraints']" semanticCandidatesExpression="aql:diagram.diagramElements.target->filter(uml::Namespace)->select(n | n.ownedRule->size() > 0)" domainClass="uml.Namespace" childrenPresentation="List">
+          <subNodeMappings name="CD_Constraint" semanticCandidatesExpression="feature:ownedRule" domainClass="uml.Constraint">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" borderSizeComputationExpression="1" showIcon="false" labelExpression="" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20yellow']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_yellow']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Constraints">
+          <ownedTools xsi:type="tool:ToolDescription" name="Expression" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Expression.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Expression" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="expression"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Instance Value" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/InstanceValue.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InstanceValue" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="instance value"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Literal Boolean" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LiteralBoolean.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="literal boolean"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="false"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Literal Integer" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LiteralInteger.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="literal integer"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="0"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Literal Null" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LiteralNull.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralNull" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="literal null"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Literal Real" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LiteralReal.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralReal" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="literal real"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="0.0"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Literal String" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LiteralString.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralString" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="literal string"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="newValue"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Literal Unlimited Natural" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LiteralUnlimitedNatural.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralUnlimitedNatural" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="literal unlimited natural"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="0"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Opaque Expression" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/OpaqueExpression.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueExpression" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="opaque expression"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="body"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="String Expression" precondition="aql:not(elementView.oclIsTypeOf(diagram::DSemanticDiagram) or element.oclIsKindOf(uml::Relationship) or element.oclIsKindOf(uml::Comment))" iconPath="/org.obeonetwork.dsl.uml2.design/icons/StringExpression.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StringExpression" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="string expression"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElement" valueExpression="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Constraints Edit">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Constraints">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:For" expression="feature:ownedRule">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" documentation="Description to edit composite structure diagrams" name="Composite Structure Diagram" titleExpression="aql:self.name +' Composite Structure Diagram'" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.PackageableElement" preconditionExpression="aql:self.oclIsKindOf(uml::Package) or self.oclIsKindOf(uml::StructuredClassifier)" rootExpression="var:self" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -5591,6 +5788,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.ActivityDiagramServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.StateMachineDiagramServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.SequenceDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.ConstraintServices"/>
   </ownedViewpoints>
   <ownedViewpoints endUserDocumentation="To document, get some overview and metrics of the application." name="Review" label="Review" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="Documentation Table" titleExpression="aql:self.oclAsType(uml::NamedElement).name +' Documentation Table'" domainClass="uml.Package">
@@ -6298,6 +6496,7 @@
     <entries xsi:type="description:UserFixedColor" red="236" green="250" blue="222" name="lighter green"/>
     <entries xsi:type="description:UserFixedColor" red="245" green="239" blue="244" name="lighter purple"/>
     <entries xsi:type="description:UserFixedColor" red="254" green="238" blue="214" name="lighter orange"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="249" blue="218" name="lighter yellow"/>
     <entries xsi:type="description:UserFixedColor" red="228" green="249" blue="239" name="lagune"/>
     <entries xsi:type="description:UserFixedColor" red="110" green="132" blue="132" name="dark lagune"/>
     <entries xsi:type="description:UserFixedColor" red="238" green="249" blue="244" name="light lagune"/>
