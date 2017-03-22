@@ -369,20 +369,35 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	private List<Stereotype> getAllStereotypes(Element element, Collection<Profile> profiles) {
 		final List<Stereotype> stereotypes = Lists.newArrayList();
 		for (final Profile profile : profiles) {
-			final org.eclipse.uml2.uml.Package pkg = element.getNearestPackage();
-			boolean isProfileApplied = false;
-			if (pkg.isProfileApplied(profile)) {
-				isProfileApplied = true;
-			}
+			stereotypes.addAll(getAllStereotypes(element, profile));
+		}
+		return stereotypes;
+	}
 
-			if (!isProfileApplied) {
-				pkg.applyProfile(profile);
-			}
-			stereotypes.addAll(element.getApplicableStereotypes());
+	/**
+	 * Get all applicable stereotypes.
+	 * 
+	 * @param element
+	 *            element
+	 * @param profile
+	 *            profile
+	 * @return list of stereotypes
+	 */
+	public List<Stereotype> getAllStereotypes(Element element, Profile profile) {
+		final List<Stereotype> stereotypes = Lists.newArrayList();
+		final org.eclipse.uml2.uml.Package pkg = element.getNearestPackage();
+		boolean isProfileApplied = false;
+		if (pkg.isProfileApplied(profile)) {
+			isProfileApplied = true;
+		}
 
-			if (!isProfileApplied) {
-				pkg.unapplyProfile(profile);
-			}
+		if (!isProfileApplied) {
+			pkg.applyProfile(profile);
+		}
+		stereotypes.addAll(element.getApplicableStereotypes());
+
+		if (!isProfileApplied) {
+			pkg.unapplyProfile(profile);
 		}
 
 		return stereotypes;

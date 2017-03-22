@@ -317,6 +317,17 @@ public class LabelServices {
 	}
 
 	/**
+	 * @param bound
+	 * @return
+	 */
+	public String convertBound(int bound) {
+		if (bound == -1) {
+			return "*"; //$NON-NLS-1$
+		}
+		return String.valueOf(bound);
+	}
+
+	/**
 	 * {@link String} to {@link Integer} bound conversion.
 	 *
 	 * @param bound

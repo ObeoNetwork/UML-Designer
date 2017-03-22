@@ -58,6 +58,7 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Pin;
+import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.Slot;
@@ -669,6 +670,14 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * {@inheritDoc}
 	 */
 	@Override
+	public String caseProfile(Profile profile) {
+		return profile.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String caseProperty(Property property) {
 		if (property != null) {
 			// Qualifier are end properties displayed as bordered node
@@ -742,6 +751,15 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		return object.getName();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseStereotype(Stereotype stereotype) {
+		final String name = stereotype.getName();
+		final String profileName = stereotype.containingProfile().getName();
+		return profileName + " :: " + name; //$NON-NLS-1$
+	}
 	/**
 	 * {@inheritDoc}
 	 */
