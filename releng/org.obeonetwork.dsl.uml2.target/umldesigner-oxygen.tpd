@@ -21,9 +21,9 @@ location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.x/oxy
 // UML
 
 location "http://download.eclipse.org/releases/oxygen/" {
-	org.eclipse.uml2.uml.feature.group [5.2.0,5.3.0)
-	org.eclipse.uml2.uml.edit.feature.group [5.2.0,5.3.0)
-	org.eclipse.uml2.feature.group [5.2.0,5.3.0)
+	org.eclipse.uml2.uml.feature.group [5.3.0,5.4.0)
+	org.eclipse.uml2.uml.edit.feature.group [5.3.0,5.4.0)
+	org.eclipse.uml2.feature.group [5.3.0,5.4.0)
 }
 
 // Orbit

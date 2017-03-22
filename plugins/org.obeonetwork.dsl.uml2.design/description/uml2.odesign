@@ -30,7 +30,7 @@
       </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
         <subSections name="existingElements">
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Add existing elements to the diagram" name="AddExistingElements" label="Add" precondition="service:containerView.isValidContainerMapping" iconPath="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Add existing elements to the diagram" name="AddExistingElements" label="Add" precondition="service:containerView.isValidContainerMapping" iconPath="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -74,7 +74,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Remove an existing element from the diagram" name="RemoveExistingElements" label="Remove" precondition="service:containerView.isNotDiagram" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/dtool16/search.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Remove an existing element from the diagram" name="RemoveExistingElements" label="Remove" precondition="service:containerView.isNotDiagram" forceRefresh="true" iconPath="/org.obeonetwork.dsl.uml2.design/icons/properties/unset.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -499,7 +499,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Delete" label="Delete" precondition="service:containerView.isNotDiagram">
-            <menuItemDescription xsi:type="tool:OperationAction" name="from Diagram" icon="/org.eclipse.search/icons/full/dtool16/search.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="from Diagram" icon="/org.obeonetwork.dsl.uml2.design/icons/properties/unset.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:views">
@@ -548,7 +548,9 @@
                     <initialOperation/>
                   </buttons>
                   <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
-                    <initialOperation/>
+                    <initialOperation>
+                      <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+                    </initialOperation>
                   </buttons>
                   <page name="EditDialogPage" extends="//@extensions.0/@categories.0/@pages.0"/>
                 </subModelOperations>
@@ -636,7 +638,7 @@
           </style>
         </edgeMappings>
         <toolSections name="PH_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="PH_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="PH_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -891,7 +893,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="UCD_UseCase" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Create%20statemachine%20diagram']" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20classifier'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" documentation="Mapping to create Use Cases" domainClass="uml.UseCase" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']">
+        <nodeMappings name="UCD_UseCase" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Create%20statemachine%20diagram']" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20classifier'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" documentation="Mapping to create Use Cases" domainClass="uml::UseCase" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']">
           <style xsi:type="style:WorkspaceImageDescription" labelSize="9" showIcon="false" sizeComputationExpression="14" labelPosition="node" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/use_case.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -938,7 +940,7 @@
           </style>
         </containerMappings>
         <toolSections name="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to diagram" name="UCD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to diagram" name="UCD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:For" expression="aql:views->filter(viewpoint::DSemanticDecorator)">
@@ -1585,7 +1587,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="CD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements" name="CD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements" name="CD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -2513,7 +2515,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="CS_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="CS_AddRelatedElements" label="Add Related Elements" precondition="aql:self.oclIsKindOf(uml::Interface) or self.oclIsKindOf(uml::Port) or self.oclIsKindOf(uml::EncapsulatedClassifier) or self.oclIsKindOf(uml::PackageableElement)" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="CS_AddRelatedElements" label="Add Related Elements" precondition="aql:self.oclIsKindOf(uml::Interface) or self.oclIsKindOf(uml::Port) or self.oclIsKindOf(uml::EncapsulatedClassifier) or self.oclIsKindOf(uml::PackageableElement)" forceRefresh="true" icon="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -2844,7 +2846,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="CO_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="CO_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="CO_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -3259,7 +3261,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="DE_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="DE_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="DE_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -5715,7 +5717,7 @@
           </style>
         </containerMappings>
         <toolSections name="Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" documentation="Move an element" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="service:getAllPackageableElements" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="aql:container.packagedElement">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" documentation="Move an element" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="service:getAllPackageableElements" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="aql:container.packagedElement">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -6566,7 +6568,7 @@
       <groups name="PR_AssociationEndsGroup" labelExpression="Ends" domainClass="uml::Association" semanticCandidateExpression="aql:self">
         <controls xsi:type="properties:ContainerDescription" name="PR_EndsMainContainer">
           <controls xsi:type="properties:ContainerDescription" name="PR_AssociationEnds" label="Ends">
-            <controls xsi:type="properties:DynamicMappingForDescription" iterator="end" iterableExpression="aql:self.getAssociationEnds()" forceRefresh="true">
+            <controls xsi:type="properties:DynamicMappingForDescription" name="PR_AssociationEndsFor" iterator="end" iterableExpression="aql:self.getAssociationEnds()" forceRefresh="true">
               <ifs name="isVisibleAssociationEndLabel" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
                 <widget xsi:type="properties:HyperlinkDescription" name="AssociationEndHyperLink" valueExpression="aql:end" displayExpression="aql:end.name">
                   <initialOperation>
@@ -6635,7 +6637,7 @@
         </actions>
       </groups>
       <groups name="PR_ProfilesGroup" labelExpression="Profiles" domainClass="uml::Package" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:ListDescription" label="Profiles" labelExpression="Applied Profiles:" helpExpression="Applied profiles to the Package" valueExpression="aql:self.oclAsType(uml::Package).getAppliedProfiles()" displayExpression="aql:value.computeUmlLabel()">
+        <controls xsi:type="properties:ListDescription" name="PR_Profiles" label="Profiles" labelExpression="Applied Profiles:" helpExpression="Applied profiles to the Package" valueExpression="aql:self.oclAsType(uml::Package).getAppliedProfiles()" displayExpression="aql:value.computeUmlLabel()">
           <onClickOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
           </onClickOperation>
@@ -6735,7 +6737,7 @@
     <categories name="PR_Advanced">
       <pages name="PR_AdvancedPage" labelExpression="Advanced" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.1/@groups.0"/>
       <groups name="PR_rAdvancedGroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
-        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()->select(feature | feature.isNotGeneralFeature(self))">
+        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()->select(EStructuralFeature feature | feature.isNotGeneralFeature(self))">
           <ifs name="advanced_rules_mono_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.0"/>
           </ifs>

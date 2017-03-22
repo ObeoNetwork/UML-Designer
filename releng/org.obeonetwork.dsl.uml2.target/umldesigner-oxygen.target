@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UML Designer Oxygen" sequenceNumber="1494856177">
+<target name="UML Designer Oxygen" sequenceNumber="1496129542">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.amalgam.discovery.feature.group" version="0.0.0"/>
@@ -9,13 +9,13 @@
       <repository location="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.x/oxygen"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.uml2.uml.feature.group" version="5.2.0.v20160516-0939"/>
-      <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.2.0.v20160516-0939"/>
-      <unit id="org.eclipse.uml2.feature.group" version="5.2.0.v20160516-0939"/>
+      <unit id="org.eclipse.uml2.uml.feature.group" version="5.3.0.v20170522-1938"/>
+      <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.3.0.v20170522-1938"/>
+      <unit id="org.eclipse.uml2.feature.group" version="5.3.0.v20170522-1938"/>
       <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.epp.mpc.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.edit.feature.group" version="2.12.0.v20170313-0823"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.12.0.v20170504-0807"/>
       <unit id="org.eclipse.emf.mapping.ecore.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.importer.ecore" version="0.0.0"/>
       <unit id="org.eclipse.core.runtime.feature.feature.group" version="0.0.0"/>
