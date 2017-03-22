@@ -56,6 +56,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
@@ -642,7 +643,9 @@ public class ModelElementsSelectionDialog {
 					show = dialog.isMatchingExpregOrHasMatchingExpregDescendantsSubMode(element);
 					break;
 				case SHOW_ONLY_UNDISPLAYED_ELEMENTS:
-					show = dialog.isMatchingExpregOrHasMatchingExpregDescendantsUnrepresentedMode(element);
+					if (diagram != null) {
+						show = dialog.isMatchingExpregOrHasMatchingExpregDescendantsUnrepresentedMode(element);
+					}
 					break;
 				default:
 					show = true;
@@ -871,6 +874,33 @@ public class ModelElementsSelectionDialog {
 
 		return false;
 	}
+
+	/**
+	 * Asks the end-user for a list of elements to select/de-select, and applies the corresponding changes.
+	 * 
+	 * @param element
+	 *            uml element
+	 * @return list of element
+	 */
+	public List<Object> open(Element element) {
+		final List<Object> result = Lists.newArrayList();
+		eObject = element;
+		final Shell parent = Display.getDefault().getActiveShell();
+
+		initContentProvider();
+
+		final Set<Object> allSelectedElements = Collections.unmodifiableSet(Sets.newHashSet());
+		final Option<Set<Object>> response = askUserForNewSelection(parent, allSelectedElements);
+		if (response.some()) {
+			final Set<Object> selectedAfter = response.get();
+			result.addAll(selectedAfter);
+		}
+		eObject = null;
+		dialog = null;
+		contentProvider = null;
+		return result;
+	}
+
 
 	/**
 	 * Asks the end-user for a list of elements to select/de-select, and applies the corresponding changes.

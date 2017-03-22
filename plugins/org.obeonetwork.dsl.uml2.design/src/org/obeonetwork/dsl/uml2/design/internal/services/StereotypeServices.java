@@ -42,6 +42,33 @@ public class StereotypeServices {
 	public static final StereotypeServices INSTANCE = new StereotypeServices();
 
 	/**
+	 * Apply Profiles.
+	 *
+	 * @param pkg
+	 *            Package
+	 * @param profilesToApply
+	 *            list of profile to apply to package
+	 * @return The element on which profiles are applied
+	 */
+	public Package applyAllProfiles(Package pkg, List<Profile> profilesToApply) {
+		final Session session = SessionManager.INSTANCE.getSession(pkg);
+		final List<Profile> alreadyAppliedProfiles = pkg.getAppliedProfiles();
+		for (final Profile profile : profilesToApply) {
+			if (!alreadyAppliedProfiles.contains(profile)) {
+				pkg.applyProfile(profile);
+				// Register metamodel
+				for (final ProfileApplication profileApplication : profile.getAllProfileApplications()) {
+					final Set<MetamodelDescriptor> descriptorsForInterpreter = Sets.newLinkedHashSet();
+					descriptorsForInterpreter
+					.add(new EcoreMetamodelDescriptor(profileApplication.getAppliedDefinition()));
+					session.getInterpreter().activateMetamodels(descriptorsForInterpreter);
+				}
+			}
+		}
+		return pkg;
+	}
+
+	/**
 	 * Apply stereotypes.
 	 *
 	 * @param element
@@ -64,23 +91,20 @@ public class StereotypeServices {
 		if (stereotypesToApply == null) {
 			return element;
 		}
-
 		// Applying selected stereotypes
 		for (final Stereotype stereotypeToApply : stereotypesToApply) {
 			final Profile profile = stereotypeToApply.getProfile();
 			final Package pkg = element.getNearestPackage();
 			if (!pkg.isProfileApplied(profile)) {
 				pkg.applyProfile(profile);
-
 				// Register metamodel
 				for (final ProfileApplication profileApplication : profile.getAllProfileApplications()) {
 					final Set<MetamodelDescriptor> descriptorsForInterpreter = Sets.newLinkedHashSet();
 					descriptorsForInterpreter
-							.add(new EcoreMetamodelDescriptor(profileApplication.getAppliedDefinition()));
+					.add(new EcoreMetamodelDescriptor(profileApplication.getAppliedDefinition()));
 					session.getInterpreter().activateMetamodels(descriptorsForInterpreter);
 				}
 			}
-
 			if (!element.isStereotypeApplied(stereotypeToApply)) {
 				element.applyStereotype(stereotypeToApply);
 			}
@@ -135,5 +159,38 @@ public class StereotypeServices {
 			}
 		}
 		pkg.unapplyProfile(profile);
+	}
+
+	/**
+	 * Unapply a profile for a Package.
+	 *
+	 * @param pkg
+	 *            package
+	 * @param appliedProfiles
+	 *            profileto unapply
+	 */
+	public void unapplyProfile(Package pkg, List<Profile> appliedProfiles) {
+		for (final Profile profile : appliedProfiles) {
+			pkg.unapplyProfile(profile);
+		}
+	}
+
+	/**
+	 * Unapply selected stereotypes.
+	 *
+	 * @param element
+	 *            UML element
+	 * @param stereotypesToUnapply
+	 *            list of stereotypes
+	 */
+	public void unapplyStereotypes(Element element, List<Stereotype> stereotypesToUnapply) {
+		// Unapplying selected stereotypes
+		final List<Stereotype> alreadyAppliedStereotypes = element.getAppliedStereotypes();
+		for (final Stereotype stereotype : stereotypesToUnapply) {
+			if (stereotype == null || alreadyAppliedStereotypes.contains(stereotype)) {
+				element.unapplyStereotype(stereotype);
+				unapplyProfile(element, stereotype);
+			}
+		}
 	}
 }

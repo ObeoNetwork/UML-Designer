@@ -13,16 +13,32 @@ package org.obeonetwork.dsl.uml2.design.internal.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.AssociationClass;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.design.api.wizards.ModelElementsSelectionDialog;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 
 /**
@@ -41,6 +57,107 @@ public class AssociationServices {
 	 */
 	private AssociationServices() {
 
+	}
+
+	/**
+	 * Add Association end.
+	 *
+	 * @param association
+	 *            association
+	 */
+	public void addAssociationEnd(final Association association) {
+		if (createNaryAssociationPrecondition(association)) {
+			final ModelElementsSelectionDialog dlg = new ModelElementsSelectionDialog(
+					"Create N-ary Association",
+					"Select additional elements to add to the association." + System.lineSeparator()
+					+ " At least one element have to be selected, else n-Ary association will not be created "
+					+ System.lineSeparator());
+			final List<Element> endOwners = new ArrayList<Element>();
+			for (final Property property : association.getMemberEnds()) {
+				endOwners.add(property.getType());
+			}
+			dlg.setGrayedPredicate(new Predicate<EObject>() {
+				public boolean apply(EObject input) {
+					if (endOwners.contains(input)) {
+						return true;
+					} else if (input instanceof Class || input instanceof AssociationClass
+							|| input instanceof Interface || input instanceof Enumeration
+							|| input instanceof DataType || input instanceof PrimitiveType) {
+						return false;
+					}
+					return true;
+				}
+			});
+			final List<?> elementsToAdd = dlg.open(association);
+			if (elementsToAdd.size() > 0) {
+				for (final Object element : elementsToAdd) {
+					if (element instanceof Type) {
+						final Property end = createAssociationEnd((Type)element);
+						association.getOwnedEnds().add(end);
+						association.getMemberEnds().add(end);
+						association.getNavigableOwnedEnds().add(end);
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Create association end.
+	 *
+	 * @param type
+	 *            type of end
+	 * @return property
+	 */
+	public Property createAssociationEnd(Type type) {
+		final Property property = UMLFactory.eINSTANCE.createProperty();
+		property.setName(getAssociationEndsName(type));
+		property.setType(type);
+		property.setLower(0);
+		property.setUpper(-1);
+		return property;
+	}
+
+	/**
+	 * Precondition for n-ary association creation.
+	 *
+	 * @param object
+	 *            selected association
+	 * @return true if association is binary and no end have no qualifiers
+	 */
+	public boolean createNaryAssociationPrecondition(EObject object) {
+		// aql:self.oclIsKindOf(uml::Association) and
+		// self.oclAsType(uml::Association).getEndTypes()->size()<=2
+		if (object instanceof Association) {
+			boolean res = true;
+			// if (((Association)object).getMemberEnds().size() == 2) {
+			for (final Property end : ((Association)object).getMemberEnds()) {
+				if (!end.getQualifiers().isEmpty()) {
+					res = false;
+				}
+			}
+			// }
+			return res;
+		}
+		return false;
+	}
+
+
+	/**
+	 * Compute Association end name.
+	 *
+	 * @param type
+	 *            type of end
+	 * @return name
+	 */
+	public String getAssociationEndsName(Type type) {
+		String name = ((NamedElement)type).getName();
+		if (!com.google.common.base.Strings.isNullOrEmpty(name)) {
+			final char c[] = name.toCharArray();
+			c[0] = Character.toLowerCase(c[0]);
+			name = new String(c) + 's';
+		}
+		return name;
 	}
 
 	/**
@@ -153,5 +270,62 @@ public class AssociationServices {
 		types.add(getSourceType(association));
 		types.add(getTargetType(association));
 		return types;
+	}
+
+	/**
+	 * Remove ends or association.
+	 *
+	 * @param association
+	 *            association
+	 */
+	public void removeAssociationEnd(final Association association){
+		final EList<Property> ends = association.getMemberEnds();
+		final ModelElementsSelectionDialog dlg = new ModelElementsSelectionDialog(
+				"Remove end Association", //$NON-NLS-1$
+				"Select end to remove from association." + System.lineSeparator() //$NON-NLS-1$
+				+ " If all ends are selected except one the association will be deleted else end are remove from association " //$NON-NLS-1$
+				+ System.lineSeparator());
+		final List<Element> endOwners = new ArrayList<Element>();
+
+		dlg.setGrayedPredicate(new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				if (endOwners.contains(input)) {
+					return true;
+				} else if (input instanceof Property) {
+					return false;
+				}
+				return true;
+			}
+		});
+		final List<?> elementsToAdd = dlg.open(association);
+		final Session session = SessionManager.INSTANCE.getSession(association);
+		TransactionalEditingDomain editingDomain = null;
+		if (session!=null){
+			editingDomain = session.getTransactionalEditingDomain();
+		}
+		if (editingDomain != null && elementsToAdd.size() > 0 && ends.containsAll(elementsToAdd)
+				&& ends.size() - elementsToAdd.size() > 2) {
+			final RecordingCommand command = new RecordingCommand(editingDomain) {
+				@Override
+				protected void doExecute() {
+					for (final Object element : elementsToAdd){
+						if (element instanceof Element){
+							((Element)element).destroy();
+						}
+					}
+				}
+			};
+			editingDomain.getCommandStack().execute(command);
+		} else if (editingDomain != null && elementsToAdd.size() > 0 && ends.containsAll(elementsToAdd)
+				&& ends.size() - elementsToAdd.size() < 2) {
+			final RecordingCommand command = new RecordingCommand(editingDomain) {
+				@Override
+				protected void doExecute() {
+					association.destroy();
+				}
+			};
+			editingDomain.getCommandStack().execute(command);
+		}
 	}
 }

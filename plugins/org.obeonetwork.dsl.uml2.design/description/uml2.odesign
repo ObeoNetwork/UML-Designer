@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" documentation="Copyright (c) 2009, 2014 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="UML2 modelers" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" documentation="Copyright (c) 2009, 2014 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="UML2 modelers" version="12.0.0.201704030900">
   <ownedViewpoints name="Reused" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="" preconditionExpression="service:inactive">
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
@@ -543,7 +543,15 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="openPropertiesWizard" id="org.eclipse.sirius.eef.actions.openPropertiesWizard"/>
+                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="aql:self.eContainingFeature()">
+                  <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                    <initialOperation/>
+                  </buttons>
+                  <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                    <initialOperation/>
+                  </buttons>
+                  <page name="EditDialogPage" labelExpression="aql:element.computeUmlLabel()" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -561,6 +569,7 @@
       </toolSection>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.properties.services.PropertiesViewServices"/>
   </ownedViewpoints>
   <ownedViewpoints endUserDocumentation="To capture the actors and their interactions with the application and define the main structure of the application." name="Capture" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" name="Package Hierarchy" titleExpression="aql:self.name +' Package Hierarchy'" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
@@ -4589,10 +4598,10 @@
           </subSections>
         </toolSections>
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Activity" position="NORTH_EAST" decoratorPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Activity.gif" preconditionExpression="aql:self.behavior.oclIsTypeOf(uml::Activity)" domainClass="CallBehaviorAction"/>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="StateMachine" position="NORTH_EAST" decoratorPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif" preconditionExpression="aql:self.behavior.oclIsTypeOf(uml::StateMachine)" domainClass="CallBehaviorAction"/>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="InconsistentPin" position="NORTH_EAST" decoratorPath="/org.eclipse.gmf.runtime.diagram.ui/icons/error.gif" preconditionExpression="service:isNotConsistent" domainClass="Pin"/>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="InconsistentCallOperationAction" position="NORTH_EAST" decoratorPath="/org.eclipse.gmf.runtime.diagram.ui/icons/error.gif" preconditionExpression="service:isNotConsistent" domainClass="CallOperationAction"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Activity" position="NORTH_EAST" preconditionExpression="aql:self.behavior.oclIsTypeOf(uml::Activity)" imageExpression="/org.eclipse.uml2.uml.edit/icons/full/obj16/Activity.gif" domainClass="CallBehaviorAction"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="StateMachine" position="NORTH_EAST" preconditionExpression="aql:self.behavior.oclIsTypeOf(uml::StateMachine)" imageExpression="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif" domainClass="CallBehaviorAction"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="InconsistentPin" position="NORTH_EAST" preconditionExpression="service:isNotConsistent" imageExpression="/org.eclipse.gmf.runtime.diagram.ui/icons/error.gif" domainClass="Pin"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="InconsistentCallOperationAction" position="NORTH_EAST" preconditionExpression="service:isNotConsistent" imageExpression="/org.eclipse.gmf.runtime.diagram.ui/icons/error.gif" domainClass="CallOperationAction"/>
         </decorationDescriptionsSet>
       </defaultLayer>
       <additionalLayers name="Profiles">
@@ -6314,4 +6323,427 @@
     <entries xsi:type="description:UserFixedColor" red="180" green="200" blue="210" name="Description"/>
     <entries xsi:type="description:UserFixedColor" red="241" green="243" blue="254" name="QualifierBackground"/>
   </userColorsPalettes>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
+    <categories name="General">
+      <pages name="General" labelExpression="General" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0 //@extensions.0/@categories.0/@groups.1 //@extensions.0/@categories.0/@groups.2 //@extensions.0/@categories.0/@groups.3 //@extensions.0/@categories.0/@groups.4 //@extensions.0/@categories.0/@groups.5 //@extensions.0/@categories.0/@groups.6 //@extensions.0/@categories.0/@groups.7 //@extensions.0/@categories.0/@groups.8 //@extensions.0/@categories.0/@groups.9"/>
+      <groups name="General" labelExpression="General" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:self.eClass().eAllStructuralFeatures->select(feature | feature.isGeneralFeature(self))">
+          <ifs name="general_mono_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
+            <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.0"/>
+          </ifs>
+          <ifs name="general_multi_lines_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and input.emfEditServices(self).isMultiline(eStructuralFeature)">
+            <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.1"/>
+          </ifs>
+          <ifs name="general_boolean_if" predicateExpression="aql:input.emfEditServices(self).needsCheckboxWidget(eStructuralFeature)">
+            <widget xsi:type="properties:CheckboxDescription" name="general_rules_mono_boolean" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)">
+              <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.2/@widget"/>
+            </widget>
+          </ifs>
+          <ifs name="general_enum_if" predicateExpression="aql:eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many)">
+            <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.3"/>
+          </ifs>
+          <ifs name="general_attribute_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many">
+            <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.4"/>
+          </ifs>
+          <ifs name="general_reference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)  and not eStructuralFeature.isEnumerationLiterals() and not eStructuralFeature.isDisplayedOperationsList() and not  self.isDisplayedAttributesList()">
+            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name"/>
+          </ifs>
+          <ifs name="general_enum_literal_if" predicateExpression="aql:eStructuralFeature.isEnumerationLiterals()">
+            <widget xsi:type="properties:ListDescription" name="EnumerationLiteralList" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="Owned Literal" valueExpression="aql:self.oclAsType(uml::Enumeration).ownedLiteral" displayExpression="aql:value.name">
+              <onClickOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation/>
+                    </buttons>
+                    <page name="Default Page" labelExpression="Properties:" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </onClickOperation>
+            </widget>
+          </ifs>
+        </controls>
+      </groups>
+      <groups name="Attributes" labelExpression="Attributes" semanticCandidateExpression="var:self" preconditionExpression="aql:input.getSemanticElement().isDisplayedAttributesList() or input.getSemanticElement().isTaggedValuesAvailable()">
+        <controls xsi:type="properties:ListDescription" labelExpression="Attributes:" helpExpression="Attributes from Element or applied Stereotype" valueExpression="aql:input.getSemanticElement().getAttributes()" displayExpression="aql:value.getAttributesLabel(input.getSemanticElement())">
+          <onClickOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
+              <subModelOperations xsi:type="tool:If" conditionExpression="aql: onClickEventKind = 'DOUBLE_CLICK'">
+                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                  <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                    <initialOperation/>
+                  </buttons>
+                  <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                    <initialOperation/>
+                  </buttons>
+                  <page name="Default Page" labelExpression="Properties:" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+                </subModelOperations>
+              </subModelOperations>
+            </firstModelOperations>
+          </onClickOperation>
+          <actions labelExpression="Add">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isAttributesOwner()">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml::Property" referenceName="ownedAttribute"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </actions>
+          <actions labelExpression="Delete">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.isRemovableAttribute(selection)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection..destroy()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </actions>
+          <actions labelExpression="Up">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection.organizeUpAttributes(self, true)"/>
+            </initialOperation>
+          </actions>
+          <actions labelExpression="Down">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection.organizeUpAttributes(self, false)"/>
+            </initialOperation>
+          </actions>
+          <actions labelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.isRemovableAttribute(selection)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection.get(0)">
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation/>
+                      </buttons>
+                      <page name="Default Page" labelExpression="Properties:" semanticCandidateExpression="aql:selection.get(0)" groups="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql: not self.isRemovableAttribute(selection)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection.get(0)">
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation/>
+                      </buttons>
+                      <page name="Default Page" labelExpression="Properties:" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.10"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </actions>
+        </controls>
+      </groups>
+      <groups name="Operations" labelExpression="Operations" semanticCandidateExpression="var:self" preconditionExpression="aql: input.getSemanticElement().isDisplayedOperationsList()">
+        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:self.eClass().eAllStructuralFeatures->select(feature | feature.isGeneralFeature(self))">
+          <ifs name="operation_reference_if" predicateExpression="aql: eStructuralFeature.isDisplayedOperationsList()">
+            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name"/>
+          </ifs>
+        </controls>
+      </groups>
+      <groups name="Parameters" labelExpression="Parameters" domainClass="uml::Operation" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="Parameters" labelExpression="Parameters:" helpExpression="Operation Parameters" referenceNameExpression="ownedParameter"/>
+        <style/>
+      </groups>
+      <groups name="Ends" labelExpression="Ends" domainClass="uml::Association" semanticCandidateExpression="aql:self">
+        <controls xsi:type="properties:ContainerDescription" name="EndsMainContainer">
+          <controls xsi:type="properties:ContainerDescription" name="AssociationEnds" label="Ends">
+            <controls xsi:type="properties:DynamicMappingForDescription" iterator="end" iterableExpression="aql:self.getAssociationEnds()">
+              <ifs name="isVisibleAssociationEndLabel" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
+                <widget xsi:type="properties:HyperlinkDescription" valueExpression="aql:end" displayExpression="aql:end.name">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:end">
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Dialog">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation/>
+                        </buttons>
+                        <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
+                    </firstModelOperations>
+                  </initialOperation>
+                </widget>
+              </ifs>
+              <ifs name="isVisibleAssociationEndNavigability" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
+                <widget xsi:type="properties:CheckboxDescription" name="EndNavigable" labelExpression="Navigable" valueExpression="aql:end.isNavigableEnd()">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setIsNavigableEnd(newValue)"/>
+                  </initialOperation>
+                </widget>
+              </ifs>
+              <ifs name="isVisibleAssociationEndOwner" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
+                <widget xsi:type="properties:CheckboxDescription" name="EndOwner" labelExpression="Owned" valueExpression="aql:end.oclAsType(uml::Property).owner.oclIsKindOf(uml::Association)">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setIsOwnedEnd(newValue)"/>
+                  </initialOperation>
+                </widget>
+              </ifs>
+              <ifs name="isVisibleAssociationKind" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
+                <widget xsi:type="properties:SelectDescription" name="associationEndKindSelection" valueExpression="aql:end.aggregation" candidatesExpression="aql:end.getAggregationKinds()" candidateDisplayExpression="aql:candidate.getAggregationKindName()">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setAggregationKind(newValue)"/>
+                  </initialOperation>
+                </widget>
+              </ifs>
+              <ifs name="isVisibleAssociationEndLowerBound" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
+                <widget xsi:type="properties:TextDescription" name="associationEndLowerBound" labelExpression="Lower:" valueExpression="aql:end.getLower().getBoundValue()">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setPropertyLowerBound(end.getLower(), newValue)"/>
+                  </initialOperation>
+                </widget>
+              </ifs>
+              <ifs name="isVisibleAssociationEndUpperBound" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
+                <widget xsi:type="properties:TextDescription" name="associationEndLowerBound" labelExpression="Upper:" valueExpression="aql:end.getUpper().getBoundValue()">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setPropertyUpperBound(end.getUpper(), newValue)"/>
+                  </initialOperation>
+                </widget>
+              </ifs>
+            </controls>
+            <layout xsi:type="properties:GridLayoutDescription" numberOfColumns="6"/>
+          </controls>
+          <controls xsi:type="properties:ContainerDescription" name="endsButtonContainer">
+            <controls xsi:type="properties:ButtonDescription" name="associationEndAdd" buttonLabelExpression="Add">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.addAssociationEnd()"/>
+              </initialOperation>
+            </controls>
+            <controls xsi:type="properties:ButtonDescription" name="associationEndRemove" buttonLabelExpression="Remove">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.removeAssociationEnd()"/>
+              </initialOperation>
+            </controls>
+            <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription"/>
+        </controls>
+      </groups>
+      <groups name="ConnectorEnds" labelExpression="Ends" domainClass="uml::Connector" semanticCandidateExpression="aql:self" preconditionExpression="aql:true">
+        <controls xsi:type="properties:ContainerDescription" name="ConnectorEndsMainContainer">
+          <controls xsi:type="properties:ContainerDescription" name="ConnectorEnds" label="Ends">
+            <controls xsi:type="properties:DynamicMappingForDescription" name="ConnectorEndsLoop" iterator="end" iterableExpression="aql:self.getConnectorEnds()">
+              <ifs name="isVisibleConnectorEndLabel" predicateExpression="aql:true">
+                <widget xsi:type="properties:HyperlinkDescription" valueExpression="aql:end" displayExpression="aql:end.getConnectorEndName()">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:end">
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Dialog">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation/>
+                        </buttons>
+                        <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
+                    </firstModelOperations>
+                  </initialOperation>
+                </widget>
+              </ifs>
+            </controls>
+          </controls>
+          <controls xsi:type="properties:ContainerDescription" name="connectorEndsButtonContainer">
+            <controls xsi:type="properties:ButtonDescription" name="ConnectorEndAdd" buttonLabelExpression="Add">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.addAssociationEnd()"/>
+              </initialOperation>
+            </controls>
+            <controls xsi:type="properties:ButtonDescription" name="ConnectorEndRemove" buttonLabelExpression="Remove">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.removeAssociationEnd()"/>
+              </initialOperation>
+            </controls>
+            <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription"/>
+        </controls>
+      </groups>
+      <groups name="Profiles" labelExpression="Profiles" domainClass="uml::Package" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ListDescription" label="Profiles" labelExpression="Applied Profiles:" helpExpression="Applied profiles to the Package" valueExpression="aql:self.oclAsType(uml::Package).getAppliedProfiles()" displayExpression="aql:value.computeUmlLabel()">
+          <onClickOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+          </onClickOperation>
+          <actions labelExpression="Add">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.selectProfile()"/>
+            </initialOperation>
+          </actions>
+          <actions labelExpression="Delete">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unapplyProfiles(selection)"/>
+            </initialOperation>
+          </actions>
+        </controls>
+      </groups>
+      <groups name="Stereotypes" labelExpression="Stereotypes" domainClass="uml::Element" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ListDescription" label="Stereotypes" labelExpression="Applied Stereotypes:" helpExpression="The Stereotypes applied to the Element" valueExpression="aql:self.oclAsType(uml::Element).getAppliedStereotypes()" displayExpression="aql:value.computeUmlLabel()">
+          <actions labelExpression="Add">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:selectStereotype()"/>
+            </initialOperation>
+          </actions>
+          <actions labelExpression="Delete">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unapplyStereotypes(selection)"/>
+            </initialOperation>
+          </actions>
+        </controls>
+      </groups>
+      <groups name="Relationships" labelExpression="Relationships" semanticCandidateExpression="var:self" preconditionExpression="aql:self.isDisplayedRelationshipsGroup()">
+        <controls xsi:type="properties:ListDescription" name="RelationshipOriginating" label="Relationship Originating" labelExpression="Origin:" helpExpression="aql:self.getRelationshipOriginatingHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getRelationShipOrigin(true)" displayExpression="aql:value.computeRelationshipLabel()">
+          <onClickOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
+              <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                  <initialOperation/>
+                </buttons>
+                <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                  <initialOperation/>
+                </buttons>
+                <page name="Default Page" labelExpression="Properties:" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </onClickOperation>
+        </controls>
+        <controls xsi:type="properties:ListDescription" name="RelationshipTargeting" label="Relationship Targeting" labelExpression="Target:" helpExpression="aql:self.getRelationshipTargetingHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getRelationShipOrigin(false)" displayExpression="aql:value.computeRelationshipLabel()">
+          <onClickOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
+              <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                  <initialOperation/>
+                </buttons>
+                <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                  <initialOperation/>
+                </buttons>
+                <page name="Default Page" labelExpression="Properties:" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </onClickOperation>
+        </controls>
+        <style/>
+      </groups>
+      <groups name="Documentation" labelExpression="Comment" domainClass="uml::Element" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:TextAreaDescription" name="comment" labelExpression="Comment:" helpExpression="aql:self.getCommentHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getCommentBody()">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+              <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.existComments()">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getComment()">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="var:newValue"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="feature:eContainer"/>
+                </subModelOperations>
+              </subModelOperations>
+              <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.notExistComments()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml::Comment" referenceName="ownedComment">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="var:newValue"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="feature:eContainer"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </controls>
+        <style/>
+      </groups>
+      <groups name="TaggedValues" labelExpression="Tagged Values" semanticCandidateExpression="var:self" preconditionExpression="aql:self.isTaggedValuesAvailable()">
+        <controls xsi:type="properties:DynamicMappingForDescription" name="sirius_default_rules_structural_features_for" iterator="eStructuralFeature" iterableExpression="aql:input.getSemanticElement().getTaggedValues()">
+          <ifs name="tagged_values_rules_mono_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
+            <widget xsi:type="properties:TextDescription" name="tagged_values_rules_mono_string" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(input.getSemanticElement())" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(input.getSemanticElement())">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:eStructuralFeature.setTaggedValuesValue(input.getSemanticElement(), newValue)"/>
+              </initialOperation>
+              <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+                <style>
+                  <labelFontFormat>bold</labelFontFormat>
+                </style>
+              </conditionalStyles>
+            </widget>
+          </ifs>
+          <ifs name="tagged_values_rules_multi_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and input.emfEditServices(self).isMultiline(eStructuralFeature)">
+            <widget xsi:type="properties:TextAreaDescription" name="tagged_values_rules_multi_string" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(input.getSemanticElement())" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(input.getSemanticElement())">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:eStructuralFeature.setTaggedValuesValue(input.getSemanticElement(), newValue)"/>
+              </initialOperation>
+              <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+                <style>
+                  <labelFontFormat>bold</labelFontFormat>
+                </style>
+              </conditionalStyles>
+            </widget>
+          </ifs>
+          <ifs name="tagged_values_rules_mono_boolean" predicateExpression="aql:input.emfEditServices(self).needsCheckboxWidget(eStructuralFeature)">
+            <widget xsi:type="properties:CheckboxDescription" name="tagged_values_rules_mono_boolean" labelExpression="aql:eStructuralFeature.name" helpExpression="aql:eStructuralFeature.getHelp(input.getSemanticElement())" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(input.getSemanticElement())">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:eStructuralFeature.setTaggedValuesValue(input.getSemanticElement(), newValue)"/>
+              </initialOperation>
+              <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+                <style>
+                  <labelFontFormat>bold</labelFontFormat>
+                </style>
+              </conditionalStyles>
+            </widget>
+          </ifs>
+          <ifs name="tagged_values_rules_enum_if" predicateExpression="aql:eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many)">
+            <widget xsi:type="properties:RadioDescription" name="tagged_values_rules_enum" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(input.getSemanticElement())" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(input.getSemanticElement())" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:eStructuralFeature.setTaggedValuesValue(input.getSemanticElement(), newValue)"/>
+              </initialOperation>
+              <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+                <style>
+                  <labelFontFormat>bold</labelFontFormat>
+                </style>
+              </conditionalStyles>
+            </widget>
+          </ifs>
+          <ifs name="tagged_values_rules_eattribute_many_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many">
+            <widget xsi:type="properties:ListDescription" name="tagged_values_rules_eattribute_many" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(input.getSemanticElement())" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="var:value"/>
+          </ifs>
+          <ifs name="tagged_values_rules_ereference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)">
+            <widget xsi:type="properties:ListDescription" name="tagged_values_rules_ereference" labelExpression="aql:input.getSemanticElement().getTaggedValuesWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:eStructuralFeature.getHelp(input.getSemanticElement())" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(input.getSemanticElement())" displayExpression="aql:value.name"/>
+          </ifs>
+        </controls>
+        <style/>
+      </groups>
+    </categories>
+    <categories name="Advanced">
+      <pages name="Advanced" labelExpression="Advanced" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.1/@groups.0"/>
+      <groups name="AdvancedGroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
+        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()->select(feature | feature.isNotGeneralFeature(self))">
+          <ifs name="advanced_rules_mono_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
+            <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.0"/>
+          </ifs>
+          <ifs name="advanced_rules_multi_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and input.emfEditServices(self).isMultiline(eStructuralFeature)">
+            <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.1"/>
+          </ifs>
+          <ifs name="advanced_rules_mono_boolean" predicateExpression="aql:input.emfEditServices(self).needsCheckboxWidget(eStructuralFeature)">
+            <widget xsi:type="properties:CheckboxDescription" name="general_rules_mono_boolean" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)">
+              <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.2/@widget"/>
+            </widget>
+          </ifs>
+          <ifs name="advanced_rules_enum_if" predicateExpression="aql:eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many)">
+            <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.3"/>
+          </ifs>
+          <ifs name="advanced_rules_eattribute_many_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many">
+            <extends href="platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.4"/>
+          </ifs>
+          <ifs name="advanced_rules_ereference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)  and eStructuralFeature.isDisplayedAdvancedFeature()">
+            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name"/>
+          </ifs>
+        </controls>
+      </groups>
+    </categories>
+  </extensions>
 </description:Group>

@@ -124,9 +124,9 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	private Association createAssociation(Element source, Element target) {
 		final Association association = UMLFactory.eINSTANCE.createAssociation();
-		final Property end1 = createAssociationEnd((Type)source);
+		final Property end1 = AssociationServices.INSTANCE.createAssociationEnd((Type)source);
 		association.getMemberEnds().add(end1);
-		final Property end2 = createAssociationEnd((Type)target);
+		final Property end2 = AssociationServices.INSTANCE.createAssociationEnd((Type)target);
 		association.getMemberEnds().add(end2);
 
 		association.getOwnedEnds().add(end1);
@@ -194,21 +194,14 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		if (isBroken(association)) { // Look for broken association
 			fixAssociation(association, type);
 		} else { // create new end
-			final Property end = createAssociationEnd(type);
+			final Property end = AssociationServices.INSTANCE.createAssociationEnd(type);
 			association.getNavigableOwnedEnds().add(end);
 			association.getOwnedEnds().add(end);
 		}
 		return association;
 	}
 
-	private Property createAssociationEnd(Type type) {
-		final Property property = UMLFactory.eINSTANCE.createProperty();
-		property.setName(getAssociationEndsName(type));
-		property.setType(type);
-		property.setLower(0);
-		property.setUpper(-1);
-		return property;
-	}
+
 
 	/**
 	 * Precondition for n-ary association creation.
@@ -218,18 +211,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @return true if association is binary and no end have no qualifiers
 	 */
 	public boolean createNaryAssociationPrecondition(EObject object) {
-		// aql:self.oclIsKindOf(uml::Association) and
-		// self.oclAsType(uml::Association).getEndTypes()->size()<=2
-		if (object instanceof Association) {
-			if (((Association)object).getMemberEnds().size() == 2) {
-				for (final Property end : ((Association)object).getMemberEnds()) {
-					if (end.getQualifiers().isEmpty()) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
+		return AssociationServices.INSTANCE.createNaryAssociationPrecondition(object);
 	}
 
 	/**
@@ -389,13 +371,13 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 				if (types != null && types.length == 1) {
 					final Property endToFix = (Property)types[0];
 					endToFix.setType(type);
-					endToFix.setName(getAssociationEndsName(type));
+					endToFix.setName(AssociationServices.INSTANCE.getAssociationEndsName(type));
 				}
 			}
 		} else {
 			final Property endToFix = brokenEnds.get(0);
 			endToFix.setType(type);
-			endToFix.setName(getAssociationEndsName(type));
+			endToFix.setName(AssociationServices.INSTANCE.getAssociationEndsName(type));
 		}
 	}
 
@@ -483,15 +465,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return result;
 	}
 
-	private String getAssociationEndsName(Type type) {
-		String name = ((NamedElement)type).getName();
-		if (!com.google.common.base.Strings.isNullOrEmpty(name)) {
-			final char c[] = name.toCharArray();
-			c[0] = Character.toLowerCase(c[0]);
-			name = new String(c) + 's';
-		}
-		return name;
-	}
 
 	/**
 	 * Retrieve the cross references of the association of all the UML elements displayed as node in a
@@ -1095,7 +1068,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 			final Association association = createAssociation((Element)source, (Element)target);
 			for (final Object element : elementsToAdd) {
 				if (element instanceof Type) {
-					final Property end = createAssociationEnd((Type)element);
+					final Property end = AssociationServices.INSTANCE.createAssociationEnd((Type)element);
 					association.getOwnedEnds().add(end);
 					association.getMemberEnds().add(end);
 					association.getNavigableOwnedEnds().add(end);
