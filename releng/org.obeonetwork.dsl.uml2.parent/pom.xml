@@ -33,7 +33,6 @@ Contributors:
     <module>../../plugins/org.obeonetwork.dsl.uml2.branding</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.design.doc</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.usage</module>
-    <module>../../plugins/org.obeonetwork.dsl.uml2.properties</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.navigator</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.migration</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.discovery</module>
