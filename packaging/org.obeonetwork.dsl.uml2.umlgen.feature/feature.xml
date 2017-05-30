@@ -231,4 +231,25 @@ litigation.
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.eclipse.umlgen.gen.java.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.umlgen.reverse.java"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.umlgen.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

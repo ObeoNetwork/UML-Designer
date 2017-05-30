@@ -32,7 +32,7 @@
         description="The UML to Java generator provides an Acceleo generator to produce Java from an UML model."
         license="EPL"
         image32="images/Uml2Java.png">
-      <sitesURLS>https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/8.0.0/repository/</sitesURLS>
+      <sitesURLS>https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/repository/</sitesURLS>
       <overview
           summary="This module allows you to produce Java source code from a UML model &amp; to reverse Java source code to a UML model. This module uses the standard UML2 metamodel provided by Eclipse Foundation and as such is compatible with any UML tools using this standard like the UML Designer. It's based on the award winning code generation project, Acceleo."
           screenshot="images/uml2java-screenshot-320x240.png"
