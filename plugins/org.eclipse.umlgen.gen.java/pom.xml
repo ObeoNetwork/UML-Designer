@@ -46,6 +46,14 @@
         <groupId>org.eclipse.acceleo</groupId>
         <artifactId>org.eclipse.acceleo.maven</artifactId>
         <version>3.5.2</version>
+        <executions>
+			<execution>
+				<phase>compile</phase>
+				<goals>
+					<goal>acceleo-compile</goal>
+				</goals>
+			</execution>
+		</executions>
         <configuration>
           <useBinaryResources>false</useBinaryResources>
           <usePlatformResourcePath>true</usePlatformResourcePath>
