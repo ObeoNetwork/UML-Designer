@@ -509,5 +509,13 @@ Contributors:
          <enablement></enablement>
       </commonWizard>
    </extension>
-   
+
+   <extension point="org.eclipse.sirius.common.package_meta_data">
+     <ePackageMetaData nsURI="http://www.eclipse.org/uml2/5.0.0/UML"
+                       displayName="UML (Unified Modeling Language) 5.0"
+                       documentation="EMF implementation of the UML 5.0 standard.">
+       <suggestedRoot className="Model" />
+       <suggestedRoot className="Package" />
+     </ePackageMetaData>
+   </extension>
 </plugin>
