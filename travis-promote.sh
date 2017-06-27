@@ -23,7 +23,7 @@ git status
 git add .
 git commit -m "Promoting new website for https://github.com/ObeoNetwork/UML-Designer/commit/$TRAVIS_COMMIT [$TRAVIS_BRANCH]"
 git status
-git push origin gh-pages --quiet &>/dev/null
+git push origin gh-pages
 
 echo "Build promoted."
 fi
