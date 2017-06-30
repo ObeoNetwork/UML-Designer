@@ -34,7 +34,6 @@ Contributors:
     <module>../../plugins/org.obeonetwork.dsl.uml2.design.doc</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.usage</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.navigator</module>
-    <module>../../plugins/org.obeonetwork.dsl.uml2.migration</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.discovery</module>
     <module>../../plugins/org.eclipse.umlgen.ui</module>
     <module>../../plugins/org.eclipse.umlgen.gen.java</module>
