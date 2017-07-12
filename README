@@ -1,2 +1,2 @@
-The web site is built thanks to travis build : https://travis-ci.org/ObeoNetwork/UML-Designer
+The web site is built thanks to travis build : https://travis-ci.org/ObeoNetwork/UML-Designer.
 Then this documentation is integrated to Eclipse Help Content by the Hudson build which takes the documentation directly from the ObeoNetwork/UML-Designer gh-pages branch.
