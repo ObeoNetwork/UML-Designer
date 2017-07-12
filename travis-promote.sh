@@ -7,7 +7,7 @@ echo "Root dir: $TRAVIS_BUILD_DIR"
 cd $TRAVIS_BUILD_DIR
 echo "Promote umldesigner.org web site -- Start"
 echo "Clone UML Designer repo"
-git clone https://$GITHUB_TOKEN@github.com/ObeoNetwork/UML-Designer.git -b gh-pages --quiet
+git clone https://1b4c95609b39759204c68d18460382328c1c667b@github.com/ObeoNetwork/UML-Designer.git -b gh-pages --quiet
 cd UML-Designer/
 echo "Remove the old version of the web site"
 git rm -rf *
