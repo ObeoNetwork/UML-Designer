@@ -580,7 +580,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseNamedElement(NamedElement object) {
-		return computeStereotypes(object) + object.getName();
+		return computeStereotypes(object) + (object.getName() == null ? "" : object.getName()); //$NON-NLS-1$
 	}
 
 	/**
@@ -786,6 +786,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		final String profileName = stereotype.containingProfile().getName();
 		return profileName + " :: " + name; //$NON-NLS-1$
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */

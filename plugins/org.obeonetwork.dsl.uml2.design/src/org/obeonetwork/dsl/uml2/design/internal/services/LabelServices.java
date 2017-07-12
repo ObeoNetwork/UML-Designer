@@ -126,6 +126,7 @@ public class LabelServices {
 	public String computeAssociationEndLabel(Association association) {
 		return computeAssociationEndLabel(AssociationServices.INSTANCE.getTarget(association));
 	}
+
 	/**
 	 * Compute the label of the given property with mutiplicity and such.
 	 *
@@ -147,6 +148,12 @@ public class LabelServices {
 	 *         the same type.
 	 */
 	public String computeDefaultName(final EObject element) {
+		if (element instanceof NamedElement) {
+			if (((NamedElement)element).getName() != null) {
+				return ((NamedElement)element).getName();
+			}
+		}
+
 		Predicate<EObject> predicate = null;
 		String name = element.getClass().getSimpleName();
 		name = name.substring(0, name.indexOf("Impl")); //$NON-NLS-1$
@@ -183,8 +190,8 @@ public class LabelServices {
 			name = "port"; //$NON-NLS-1$
 		} else if (element instanceof Property) {
 			if (element.eContainingFeature().getFeatureID() == UMLPackage.PROPERTY__QUALIFIER) {
-				name="qualifier"; //$NON-NLS-1$
-			}else{
+				name = "qualifier"; //$NON-NLS-1$
+			} else {
 				name = "property"; //$NON-NLS-1$
 			}
 		} else if (element instanceof FinalState) {
@@ -411,6 +418,17 @@ public class LabelServices {
 			return " <" + templateParameters + ">"; //$NON-NLS-1$ //$NON-NLS-2$
 		}
 		return null;
+	}
+
+	/**
+	 * Return true if a named element has a name set otherwise false
+	 *
+	 * @param element
+	 * @return True if the name is not null or empty
+	 */
+	public boolean isNameNotSet(final Element element) {
+		final String label = computeUmlLabel(element);
+		return label == null || label.isEmpty();
 	}
 
 	private boolean startWithVowel(String str) {

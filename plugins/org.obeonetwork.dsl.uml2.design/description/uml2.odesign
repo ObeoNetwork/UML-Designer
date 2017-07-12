@@ -1621,7 +1621,22 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Package">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                          </subModelOperations>
+                        </firstModelOperations>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_CD_CreatePackage_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Package']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="D_CD_CreatePackage_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1634,6 +1649,19 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="service:container.isNotTypeOfClass">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CD_CreateClass_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Class']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_CD_CreateClass_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="service:container.isTypeOfClass">
@@ -1649,6 +1677,23 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interface">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                          </subModelOperations>
+                        </firstModelOperations>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_CD_CreateInterface_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Interface']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_CD_CreateInterface_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1661,6 +1706,23 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Enumeration" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Enumeration">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                            </subModelOperations>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CD_CreateEnumeration_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DataTypes']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_CD_CreateEnumeration_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -1672,6 +1734,23 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.PrimitiveType" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Primitive Type">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                            </subModelOperations>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CD_CreatePrimitiveType_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DataTypes']/@tools.1/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_CD_CreatePrimitiveType_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -1681,8 +1760,25 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Type">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                            </subModelOperations>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CD_CreateDataType_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DataTypes']/@tools.2/@initialOperation/@firstModelOperations/@subModelOperations.2/@subModelOperations.0/@groups.0"/>
+                      <groups name="D_CD_CreateDataType_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -1690,49 +1786,58 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Features" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Attributes%20or%20Operations%20or%20Literals']">
-          <ownedTools xsi:type="tool_1:ToolGroup" name="Properties">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new property" name="Property" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/PropertyCreation.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="aProperty">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:aProperty.findTypeByName('String') &lt;> null">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:self.findTypeByName('String')"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="public"/>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new property" name="Property" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/PropertyCreation.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="aProperty">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:aProperty.findTypeByName('String') &lt;> null">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:self.findTypeByName('String')"/>
                   </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Create a new typed property" name="Typed Property" precondition="aql:self.oclIsKindOf(uml::Classifier)" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="service:openSelectTypeDialog"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="public"/>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclAsType(uml::Property).type = null">
-                      <subModelOperations xsi:type="tool:RemoveElement"/>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="public"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Property">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_CD_CreateProperty_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Property']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.5/@groups.0"/>
+                    <groups name="D_CD_CreateProperty_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
                   </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new operation" name="Operation" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createOperation"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createOperation">
+                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Operation">
+                  <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                    <initialOperation/>
+                  </buttons>
+                  <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                    <initialOperation>
+                      <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        </subModelOperations>
+                      </firstModelOperations>
+                    </initialOperation>
+                  </buttons>
+                  <page name="D_CD_CreateOperation_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Operation']/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0"/>
+                  <groups name="D_CD_CreateOperation_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  <groups name="D_CD_CreateOperation_ParametersGroup" extends="//@extensions.0/@categories.0/@groups.3"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new literal" name="Literal" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral']">
@@ -1744,6 +1849,22 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="specification">
                     <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="aql:self.eContainer().eContainer().eAllContents(uml::EnumerationLiteral)->size() - 1"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Literal">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                          </subModelOperations>
+                        </firstModelOperations>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_CD_CreateLiteral_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Literal']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_CD_CreateLiteral_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -1770,7 +1891,24 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createQualifier"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createQualifier">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Qualifier">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                          </subModelOperations>
+                        </firstModelOperations>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_CD_CreateQualifier_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Qualifier']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="D_CD_CreateQualifier_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2334,6 +2472,19 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addArchetypeMomentIntervalKeyword"/>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CD_CreateMomentInterval_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Archetypes']/@toolSections.0/@ownedTools[name='MomentInterval']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_CD_CreateMomentInterval_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="service:container.isTypeOfClass">
@@ -2351,6 +2502,19 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addArchetypeDescriptionKeyword"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CD_CreateDescription_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Archetypes']/@toolSections.0/@ownedTools[name='Description']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_CD_CreateDescription_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -2370,6 +2534,19 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addArchetypeRoleKeyword"/>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CD_CreateRole_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Archetypes']/@toolSections.0/@ownedTools[name='Role']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_CD_CreateRole_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="service:container.isTypeOfClass">
@@ -2387,6 +2564,19 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addArchetypeThingKeyword"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CD_CreatePlaceThing_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Archetypes']/@toolSections.0/@ownedTools[name='Place%2FThing']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_CD_CreatePlaceThing_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -2742,6 +2932,18 @@
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Part'+self.eContainer().eContents()->filter(uml::Property)->size()"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="service:self.getAggregationKindComposite"/>
+                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Property">
+                  <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                    <initialOperation/>
+                  </buttons>
+                  <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                    <initialOperation>
+                      <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                    </initialOperation>
+                  </buttons>
+                  <page name="D_CS_CreateProperty_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Create_Part']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                  <groups name="D_CS_CreateProperty_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2754,6 +2956,18 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Port">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_CS_CreatePort_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Add_Port']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_CS_CreatePort_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -3070,6 +3284,18 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Component">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_CO_CreateComponent_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Component']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.1/@groups.0"/>
+                    <groups name="D_CO_CreateComponent_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -3081,6 +3307,18 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_CO_CreateClass_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Component']/@tools.1/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_CO_CreateClass_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Class)">
@@ -3099,19 +3337,19 @@
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Create a new typed port" name="CS_Add_TypedPort" label="Typed Port" precondition="aql:self.oclIsKindOf(uml::StructuredClassifier)" candidatesExpression="aql:self.getAllRootsInSession()->getCandidatesForTypedPort()" tree="true" rootExpression="service:getAllRootsInSession" childrenExpression="aql:self.eContents()" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif" windowTitle="Select the port type">
-            <element name="element"/>
-            <containerView name="containerView"/>
-            <container name="container"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="isConjugated" valueExpression="true"/>
+                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Port">
+                  <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                    <initialOperation/>
+                  </buttons>
+                  <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                    <initialOperation>
+                      <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                    </initialOperation>
+                  </buttons>
+                  <page name="D_CO_CreatePort_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Port']/@initialOperation/@firstModelOperations/@subModelOperations.3/@groups.0"/>
+                  <groups name="D_CO_CreatePort_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -3122,6 +3360,18 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement" variableName="newInterface">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interface">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_CO_CreateInterface_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Interface']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                    <groups name="D_CO_CreateInterface_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" containerViewExpression="var:containerView"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -3482,11 +3732,35 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Node" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Node">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_DE_CreateNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Create%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_DE_CreateNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Node" referenceName="nestedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Node">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_DE_CreateNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Create%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_DE_CreateNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -3500,11 +3774,35 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Device" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Device">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_DE_CreateDevice_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Create%20Device']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_DE_CreateDevice_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Device" referenceName="nestedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Device">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_DE_CreateNestedDevice_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Create%20Device']/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_DE_CreateNestedDevice_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -3518,11 +3816,35 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ExecutionEnvironment" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Execution Environment">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_DE_CreateExecutionEnvironment_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Create%20Execution%20Environment']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_DE_CreateExecutionEnvironment_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ExecutionEnvironment" referenceName="nestedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Execution Environment">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_DE_CreateNestedExecutionEnvironment_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Create%20Execution%20Environment']/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_DE_CreateNestedExecutionEnvironment_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -3536,11 +3858,35 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Artifact" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Artifact">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_DE_CreateArtifact_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Create%20Artifact']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_DE_CreateArtifact_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Artifact" referenceName="nestedClassifier">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Artifact">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_DE_CreateNestedArtifact_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Create%20Artifact']/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_DE_CreateNestedArtifact_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -4012,6 +4358,18 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityPartition" referenceName="partition">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Partition">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateActivityPartition_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Group']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                          <groups name="D_AD_CreateActivityPartition_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4019,6 +4377,18 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityPartition" referenceName="subpartition">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Partition">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateSubActivityPartition_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Group']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                          <groups name="D_AD_CreateSubActivityPartition_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4034,6 +4404,18 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InterruptibleActivityRegion" referenceName="ownedGroup">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interruptible Activity Region">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateInterruptibleActivityRegion_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Group']/@tools.1/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                          <groups name="D_AD_CreateInterruptibleActivityRegion_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4048,11 +4430,35 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StructuredActivityNode" referenceName="structuredNode">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Structured Activity Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateStructuredActivityNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Group']/@tools.2/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateStructuredActivityNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StructuredActivityNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Structured Activity Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateActivityNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Group']/@tools.2/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateActivityNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4075,12 +4481,36 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial Node">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateInitialOwnedNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.3/@groups.0"/>
+                          <groups name="D_AD_CreateInitialOwnedNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InitialNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateInitialNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateInitialNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4101,12 +4531,36 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final Node">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateFinalNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.1/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.3/@groups.0"/>
+                          <groups name="D_AD_CreateFinalNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityFinalNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateActivityFinalNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.1/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateActivityFinalNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4127,12 +4581,36 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Flow Final Node">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedFlowFinalNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.2/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.3/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedFlowFinalNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.FlowFinalNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Flow Final Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateFlowFinalNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.2/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateFlowFinalNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4153,12 +4631,36 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Decision Node">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedDecisionNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.3/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.3/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedDecisionNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DecisionNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Decision Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateDecisionNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.3/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateDecisionNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4179,12 +4681,36 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Merge Node">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedMergeNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.4/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.3/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedMergeNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.MergeNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Merge Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateMergeNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.4/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateMergeNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4205,12 +4731,36 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork Node">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedForkNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.5/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.3/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedForkNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ForkNode" referenceName="ownedNode">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateForkNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.5/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateForkNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4235,6 +4785,18 @@
                           <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:joinNode.name"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join Node">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedJoinNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.6/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.4/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedJoinNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4244,6 +4806,18 @@
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="joinSpec">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:joinNode.name"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join Node">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateJoinNode_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Control%20Node']/@tools.6/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                        <groups name="D_AD_CreateJoinNode_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4268,6 +4842,18 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Opaque Action">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedOpaqueAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.4/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedOpaqueAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4275,6 +4861,18 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="aql:'// TODO body of '+instance.name"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Opaque Action">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateOpaqueAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                        <groups name="D_AD_CreateOpaqueAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4400,6 +4998,18 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Event Action">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedAcceptEventAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.3/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.4/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedAcceptEventAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4417,6 +5027,18 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Event Action">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateAcceptEventAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.3/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                        <groups name="D_AD_CreateAcceptEventAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4448,6 +5070,18 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Wait Time Action">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedWaitTimeAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.4/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.4/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedWaitTimeAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4465,6 +5099,18 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Wait Time Action">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateWaitTimeAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.4/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                        <groups name="D_AD_CreateWaitTimeAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4499,6 +5145,18 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Signal Action">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedAcceptSignalAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.5/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.4/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedAcceptSignalAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4517,6 +5175,18 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Signal Action">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateAcceptSignalAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.5/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                        <groups name="D_AD_CreateAcceptSignalAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4551,6 +5221,18 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Call Action">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedAcceptCallAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.6/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.4/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedAcceptCallAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -4569,6 +5251,18 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Call Action">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateAcceptCallAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.6/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                        <groups name="D_AD_CreateAcceptCallAction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4592,11 +5286,23 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="parameter" valueExpression="var:parameter"/>
                       </subModelOperations>
                     </subModelOperations>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Parameter">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_AD_CreateActivityParameter_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Object']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                      <groups name="D_AD_CreateActivityParameter_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new datastore" name="Data store" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new datastore" name="Data Store" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4611,12 +5317,36 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Store">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_AD_CreateOwnedDataStore_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Object']/@tools.1/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.3/@groups.0"/>
+                          <groups name="D_AD_CreateOwnedDataStore_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataStoreNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Store">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_AD_CreateDataStore_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Object']/@tools.1/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_AD_CreateDataStore_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4627,7 +5357,20 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createInputPin"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createInputPin">
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Input Pin">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_AD_CreateInputPin_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Object']/@tools.2/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                      <groups name="D_AD_CreateInputPin_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -4636,7 +5379,20 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createOutputPin"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createOutputPin">
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Output Pin">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_AD_CreateOutputPin_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Object']/@tools.3/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                      <groups name="D_AD_CreateOutputPin_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -5100,12 +5856,36 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::State) or self.oclIsKindOf(uml::StateMachine)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Region" referenceName="region">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Region">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_SM_CreateRegion_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Region']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_SM_CreateRegion_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Region)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer()">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Region" referenceName="region">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Region">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_SM_CreateRegion_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Region']/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                        <groups name="D_SM_CreateRegion_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -5130,6 +5910,18 @@
                 <cases conditionExpression="aql:self.oclIsTypeOf(uml::Region)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.State" referenceName="subvertex">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create State">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_SM_CreateState_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='State']/@initialOperation/@firstModelOperations/@cases.1/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_SM_CreateState_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </cases>
                 <default/>
@@ -5177,6 +5969,18 @@
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create State Machine">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_SM_CreateStateMachine_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='StateMachine']/@initialOperation/@firstModelOperations/@subModelOperations.0/@default/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                          <groups name="D_SM_CreateStateMachine_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </default>
@@ -5203,6 +6007,18 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="initial"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateInitial_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Initial%20PseudoState']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SM_CreateInitial_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5212,6 +6028,18 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.FinalState" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateFinal_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Final%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.1/@groups.0"/>
+                    <groups name="D_SM_CreateFinal_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5222,6 +6050,18 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="fork"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateFork_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Fork%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SM_CreateFork_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5232,6 +6072,18 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="join"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateJoin_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Join%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SM_CreateJoin_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5242,6 +6094,18 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="choice"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Choice">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateChoice_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Choice%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SM_CreateChoice_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5252,6 +6116,18 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="junction"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Junction">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateJunction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Junction%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SM_CreateJunction_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5262,6 +6138,18 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="terminate"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Terminate">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateTerminate_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Terminate%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SM_CreateTerminate_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5272,6 +6160,18 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="shallowHistory"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Shallow History">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateShallowHistory_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Shallow%20History%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SM_CreateShallowHistory_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5282,6 +6182,18 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="deepHistory"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Deep History">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SM_CreateDeepHistory_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Deep%20History%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SM_CreateDeepHistory_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -5294,6 +6206,18 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
                       <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="entryPoint"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Entry Point">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_SM_CreateEntryPoint_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Entry%20Point%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                        <groups name="D_SM_CreateEntryPoint_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Region)">
@@ -5301,6 +6225,18 @@
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
                         <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="entryPoint"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Entry Point">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_SM_CreateEntryPoint_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Entry%20Point%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                          <groups name="D_SM_CreateEntryPoint_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -5316,6 +6252,18 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
                       <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="exitPoint"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Exit Point">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          </initialOperation>
+                        </buttons>
+                        <page name="D_SM_CreateExitPoint_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Exit%20Point%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                        <groups name="D_SM_CreateExitPoint_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Region)">
@@ -5323,6 +6271,18 @@
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
                         <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="exitPoint"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Exit Point">
+                          <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                            <initialOperation/>
+                          </buttons>
+                          <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                            </initialOperation>
+                          </buttons>
+                          <page name="D_SM_CreateExitPoint_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Other%20pseudo%20states']/@ownedTools[name='Exit%20Point%20State%20Node']/@initialOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                          <groups name="D_SM_CreateExitPoint_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -5704,6 +6664,18 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_SD_CreateClass_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='CR_Lifeline']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_SD_CreateClass_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -5727,6 +6699,18 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lifeline">
                       <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="var:property"/>
                     </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Actor">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_SD_CreateActor_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='CR_Actor']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_SD_CreateActor_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -6250,6 +7234,18 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Package">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_PD_CreatePackage_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Package']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                    <groups name="D_PD_CreatePackage_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -6261,6 +7257,18 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Profile" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Profile">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_PD_CreateProfile_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Profile']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                    <groups name="D_PD_CreateProfile_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -6274,6 +7282,18 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:self.createStereotype">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Stereotype">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_PD_CreateStereotype_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Stereotype']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                    <groups name="D_PD_CreateStereotype_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -6283,7 +7303,20 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importMetaclass"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importMetaclass">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Import Metaclass">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_PD_CreateImportMetaclass_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Import%20Metaclass']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="D_PD_CreateImportMetaclass_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -6305,6 +7338,18 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Enumeration" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Enumeration">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_PD_CreateEnumeration_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DataTypes']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_PD_CreateEnumeration_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -6316,6 +7361,18 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.PrimitiveType" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Primitive Type">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_PD_CreatePrimitiveType_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DataTypes']/@tools.1/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_PD_CreatePrimitiveType_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -6327,6 +7384,18 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Type">
+                      <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                        <initialOperation/>
+                      </buttons>
+                      <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        </initialOperation>
+                      </buttons>
+                      <page name="D_PD_CreateDataType_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DataTypes']/@tools.2/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                      <groups name="D_PD_CreateDataType_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -6354,6 +7423,18 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:self.findTypeByName('String')"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Property">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_PD_CreateProperty_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Property']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.4/@groups.0"/>
+                    <groups name="D_PD_CreateProperty_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -6367,6 +7448,18 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="specification">
                     <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="aql:self.eContainer().eContainer().eAllContents(uml::EnumerationLiteral)->size() - 1"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Literal">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                      </initialOperation>
+                    </buttons>
+                    <page name="D_PD_CreateLiteral_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Literal']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
+                    <groups name="D_PD_CreateLiteral_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -6551,7 +7644,38 @@
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.4"/>
           </ifs>
           <ifs name="general_reference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)  and not eStructuralFeature.isEnumerationLiterals() and not eStructuralFeature.isDisplayedOperationsList() and not  self.isDisplayedAttributesList()">
-            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name"/>
+            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name">
+              <onClickOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:eStructuralFeature.many and onClickEventKind='DOUBLE_CLICK'">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->first()">
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit Many">
+                        <buttons labelExpression="Cancel" default="true" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation/>
+                        </buttons>
+                        <page name="Edit Page" labelExpression="aql:self.computeUmlLabel()" extends="//@extensions.0/@categories.0/@pages.0"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not(eStructuralFeature.many) and onClickEventKind='SINGLE_CLICK'">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection">
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit Mono">
+                        <buttons labelExpression="Cancel" default="true" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation/>
+                        </buttons>
+                        <page name="Edit Page" labelExpression="aql:self.computeUmlLabel()" extends="//@extensions.0/@categories.0/@pages.0"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </onClickOperation>
+            </widget>
           </ifs>
           <ifs name="general_enum_literal_if" predicateExpression="aql:eStructuralFeature.isEnumerationLiterals()">
             <widget xsi:type="properties:ListDescription" name="EnumerationLiteralList" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="Owned Literal" valueExpression="aql:self.oclAsType(uml::Enumeration).ownedLiteral" displayExpression="aql:value.name">
@@ -6935,8 +8059,8 @@
     </categories>
     <categories name="PR_Advanced">
       <pages name="PR_AdvancedPage" labelExpression="Advanced" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.1/@groups.0"/>
-      <groups name="PR_rAdvancedGroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
-        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()->select(EStructuralFeature feature | feature.isNotGeneralFeature(self))">
+      <groups name="PR_AdvancedGroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
+        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()->select(feature | feature.isNotGeneralFeature(self))">
           <ifs name="advanced_rules_mono_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.0"/>
           </ifs>
@@ -6954,9 +8078,7 @@
           <ifs name="advanced_rules_eattribute_many_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many">
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.4"/>
           </ifs>
-          <ifs name="advanced_rules_ereference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)  and eStructuralFeature.isDisplayedAdvancedFeature()">
-            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name"/>
-          </ifs>
+          <ifs name="advanced_rules_ereference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)  and eStructuralFeature.isDisplayedAdvancedFeature()" extends="//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.5"/>
         </controls>
       </groups>
     </categories>

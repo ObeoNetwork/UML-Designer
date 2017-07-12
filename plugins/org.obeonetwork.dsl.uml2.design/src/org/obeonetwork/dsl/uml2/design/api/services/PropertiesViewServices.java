@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.FinalState;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Port;
@@ -648,7 +647,7 @@ public class PropertiesViewServices {
 			return toTest instanceof org.eclipse.uml2.uml.Package || toTest instanceof Class
 					|| toTest instanceof Interface || toTest instanceof DataType
 					|| toTest instanceof PrimitiveType || toTest instanceof Enumeration
-					|| toTest instanceof Operation || toTest instanceof Parameter
+					|| toTest instanceof Parameter
 					|| toTest instanceof Property || toTest instanceof Component || toTest instanceof Port
 					|| toTest instanceof Actor || toTest instanceof Artifact
 					|| toTest instanceof Collaboration || toTest instanceof FinalState

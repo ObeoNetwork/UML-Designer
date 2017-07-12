@@ -587,6 +587,17 @@ public abstract class AbstractDiagramServices {
 	}
 
 	/**
+	 * Return if the name of an element is set.
+	 *
+	 * @param element
+	 *            the {@link Element} for which to retrieve a label.
+	 * @return True if the name is not null or empty.
+	 */
+	public boolean isNameNotSet(Element element) {
+		return LabelServices.INSTANCE.isNameNotSet(element);
+	}
+
+	/**
 	 * States if the given object is related to the context {@link Classifier}.
 	 *
 	 * @param toFilter
