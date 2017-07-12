@@ -1,4 +1,4 @@
-target "UML Designer Oxygen" with source requirements
+target "UML Designer Nightly" with source requirements
 
 // Eclipse
 
@@ -14,8 +14,7 @@ location "http://download.eclipse.org/releases/oxygen/" {
 }
 
 // Amalgam
-
-location "http://download.eclipse.org/releases/oxygen/" {
+location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.x/oxygen" {
 	org.eclipse.amalgam.discovery.feature.group lazy
 	org.eclipse.amalgam.explorer.activity.feature.group lazy
 }
@@ -48,21 +47,21 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2017030718063
 
 // Acceleo 3
 
-location "http://download.eclipse.org/acceleo/updates/milestones/3.7/S201705121344" {
+location "http://download.eclipse.org/acceleo/updates/nightly/latest" {
 	org.eclipse.acceleo.query.feature.group lazy
 	org.eclipse.acceleo.feature.group lazy
 }
 
 // EEF 2.0
 
-location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon" {
+location EEF-Latest "http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon" {
 	org.eclipse.eef.sdk.feature.feature.group lazy
 	org.eclipse.eef.ext.widgets.reference.feature.feature.group lazy
 }
 
 // Sirius
 
-location "http://download.eclipse.org/sirius/updates/releases/5.0.1/oxygen" {
+location "http://download.eclipse.org/sirius/updates/nightly/latest/oxygen" {
 	org.eclipse.sirius.runtime.feature.group lazy
 	org.eclipse.sirius.runtime.acceleo.feature.group lazy
 	org.eclipse.sirius.runtime.aql.feature.group lazy
@@ -79,7 +78,7 @@ location "http://download.eclipse.org/sirius/updates/releases/5.0.1/oxygen" {
 
 // UML compare 
 
-location "http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.3/S201706130827" {
+location "http://download.eclipse.org/modeling/emf/compare/updates/nightly/latest" {
 	org.eclipse.emf.compare.diagram.gmf.feature.group lazy
 	org.eclipse.emf.compare.ide.ui.feature.group lazy
 	org.eclipse.emf.compare.rcp.ui.feature.group lazy
