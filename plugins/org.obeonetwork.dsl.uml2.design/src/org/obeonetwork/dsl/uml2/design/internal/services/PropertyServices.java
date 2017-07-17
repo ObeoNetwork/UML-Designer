@@ -21,6 +21,7 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
@@ -131,11 +132,18 @@ public final class PropertyServices {
 
 				// Get the primitive type
 				foundType = ElementServices.INSTANCE.findTypeByName(property, typeName);
+
+				if (foundType == null) {
+					// Create a new class
+					foundType = UMLFactory.eINSTANCE.createClass();
+					foundType.setName(typeName);
+					final Package pkg = property.getOwner().getNearestPackage();
+					pkg.getPackagedElements().add(foundType);
+				}
 			}
 
-			if (foundType != null) {
-				property.setType(foundType);
-			}
+			property.setType(foundType);
+
 		}
 	}
 
