@@ -72,16 +72,14 @@ script:
 # Prepare the nightly dir
 - ./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/nightly
 
+after_script:		
+# Promote web site on gh-pages only for master branch		
+- chmod a+x travis-promote.sh		
+- if [[ "$TRAVIS_BRANCH" == "master" ]]; then ./travis-promote.sh; fi
+
 before_deploy: pip install --user awscli
 
 deploy:
-# Deploy gh-pages
-  - provider: pages
-    skip_cleanup: true
-    local_dir: ../documentation/_site/
-    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-    on:
-      branch: master
 # Deploy nightly on s3
   - provider: script
     script: ~/.local/bin/aws s3 sync ${TRAVIS_BUILD_DIR}/nightly s3://obeo-umldesigner-nightly/${TRAVIS_BRANCH} --region=eu-west-1 --delete
