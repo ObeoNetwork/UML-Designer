@@ -114,8 +114,20 @@ public class ConfirmDeletionTrigger extends DanglingRefRemovalTrigger {
 		if (!preferences.isDeletionConfirmationEnabled()) {
 			return Options.newNone();
 		}
+		// Filter notifications to keep only remove notifications. This prevents from getting the dialog
+		// window while doing a move which means in term of notifications REMOVE+ADD
 		final Map<EObject, Object> allDetachedObjects = getDetachedEObjectsAndChildren(
 				Iterables.filter(notifications, IS_DETACHMENT));
+		for (final Notification notification : notifications) {
+			if (notification.getEventType() == Notification.ADD) {
+				if (notification.getNotifier() instanceof EObject) {
+					for (final EObject eObject : getNotificationValues(notification)) {
+						allDetachedObjects.remove(eObject);
+					}
+				}
+			}
+		}
+
 		if (allDetachedObjects.size() > 0) {
 			final ConfirmDeletionDialog dialog = new ConfirmDeletionDialog(allDetachedObjects);
 			if (!dialog.openConfirm()) {
