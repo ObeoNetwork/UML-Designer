@@ -3,7 +3,6 @@ jdk: oraclejdk8
 env:
   global:
     - MAVEN_OPTS="-XX:MaxPermSize=512m"
-    - secure: "KpzAMqnf5+K5PNmZbcoiaSjWS//sVkPlbjrpb662rrkQcZHslqnAVmy2h+OsSaA6pefhRpzrSmys9vu7Ou4ZPNOBgxlmePOUl+MfEXOe+9EO3G6GLooyvzzk/9rsOYuHMiM6hrJZsPWF2NyIibElqE/l6YKuTUH9XOWnVbGZ+oY="
     - JDK_VERSION="8.0.112"
     - ZULU_VERSION="8.19.0.1"
     - ZULU_JDK="zulu$ZULU_VERSION-jdk$JDK_VERSION"
