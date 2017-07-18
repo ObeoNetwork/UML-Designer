@@ -453,6 +453,15 @@ The archetypes are stored in <span class="caps">UML</span> model as stereotyped 
 To change an existing class to an archetype just selects the tool from the palette and the existing class. The stereotype of the selected archetype is applied on the class which is colored.</p>
 <p><span class="caps">UML</span> in colors examples are available from Eclipse menu File &gt; New &gt; Example&#8230; &gt; <span class="caps">UML</span> &gt; Uml in colors.</p>
 <p>For more detailed explanation on <span class="caps">UML</span> in colors have a look to <a href="http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html">Peter Coad&#8217;s website</a>.</p>
+<h3 id="Constraints">Handle constraints</h3>
+<p>A <em>Constraint</em> is an assertion that indicates a restriction that must be satisfied by any valid realization of the model containing the <em>Constraint</em>.</p>
+<p>A <code>Constraints</code> layer is available in the <span class="caps">UML</span> Designer <code>class diagram</code>.<br />
+<img src="../images/class_diagram_constraints/layer.png" alt="" /></p>
+<p>When the layer is selected, new tools are available in the palette:<br />
+<img src="../images/class_diagram_constraints/palette.png" alt="" /></p>
+<p>For the moment, only these types of <em>ValueSpecifications</em> are handled for constraints in the <code>class diagram</code> : <em>Expression</em>, <em>Instance Value</em>, <em>Literal Boolean</em>, <em>Literal Integer</em>, <em>Literal Null</em>, <em>Literal Real</em>, <em>Literal String</em>, <em>Literal Unlimited Natural</em>, <em>Opaque Expression</em>, <em>String Expression</em>.<br />
+<em>Duration</em>, <em>Duration Interval</em>, <em>Interval</em>, <em>Time Expression</em> and <em>Time Interval</em> are not handled yet.</p>
+<p>You can apply a <em>Constraint</em> on any diagram element except the <em>Relationships</em>. It is not handled yet.</p>
 <h2 id="Object_Diagram">Instanciate the application</h2>
 <p><i>This diagram is not yet implemented.</i></p>
 <p>The <strong>object diagram</strong> is used to describe the structure of the system by showing the objects at a specific time.</p>
