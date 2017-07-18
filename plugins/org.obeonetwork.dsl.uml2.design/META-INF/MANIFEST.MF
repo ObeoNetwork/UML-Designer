@@ -58,6 +58,7 @@ Export-Package: org.obeonetwork.dsl.uml2.design;x-friends:="org.obeonetwork.dsl.
  org.obeonetwork.dsl.uml2.design.api.services,
  org.obeonetwork.dsl.uml2.design.api.utils,
  org.obeonetwork.dsl.uml2.design.api.wizards,
+ org.obeonetwork.dsl.uml2.design.internal.listeners,
  org.obeonetwork.dsl.uml2.design.internal.services;x-friends:="org.obeonetwork.dsl.uml2.design.tests",
  org.obeonetwork.dsl.uml2.design.internal.wizards,
  org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel

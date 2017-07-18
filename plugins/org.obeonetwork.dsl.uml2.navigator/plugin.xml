@@ -244,6 +244,14 @@
               <instanceof
                     value="org.eclipse.uml2.uml.Element">
               </instanceof>
+              <and>
+                 <with
+                       variable="activePartId">
+                    <equals
+                          value="org.eclipse.sirius.ui.tools.views.model.explorer">
+                    </equals>
+                 </with>
+              </and>
            </iterate>
         </activeWhen>
         <enabledWhen>
@@ -269,6 +277,14 @@
                  <instanceof
                        value="org.eclipse.uml2.uml.Element">
                  </instanceof>
+                 <and>
+                    <with
+                          variable="activePartId">
+                       <equals
+                             value="org.eclipse.sirius.ui.tools.views.model.explorer">
+                       </equals>
+                    </with>
+                 </and>
               </iterate>
            </and>
         </activeWhen>
@@ -296,6 +312,14 @@
               <instanceof
                     value="org.eclipse.uml2.uml.Element">
               </instanceof>
+              <and>
+                 <with
+                       variable="activePartId">
+                    <equals
+                          value="org.eclipse.sirius.ui.tools.views.model.explorer">
+                    </equals>
+                 </with>
+              </and>
            </iterate>
         </activeWhen>
         <enabledWhen>
