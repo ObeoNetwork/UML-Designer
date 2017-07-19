@@ -104,7 +104,7 @@ public class PropertiesViewServices {
 	}
 
 	/**
-	 * Compute label for relationShip
+	 * Compute label for relationship.
 	 *
 	 * @param relation
 	 *            relation between two elements
@@ -224,7 +224,7 @@ public class PropertiesViewServices {
 	}
 
 	/**
-	 * Get attribute label
+	 * Get attribute label.
 	 *
 	 * @param element
 	 * @param umlElement
@@ -244,7 +244,7 @@ public class PropertiesViewServices {
 
 			return " «" + stereotypeName + "» :: " + ((EStructuralFeature)element).getName() + " : " + type; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
-		return "undefined name";
+		return "undefined name"; //$NON-NLS-1$
 	}
 
 	/**
@@ -268,24 +268,34 @@ public class PropertiesViewServices {
 	public String getCommentHelpLabel(Element element) {
 		String help = ""; //$NON-NLS-1$
 		String className = element.getClass().getSimpleName();
-		if (className.endsWith("Impl")) {
+		if (className.endsWith("Impl")) { //$NON-NLS-1$
 			className = className.substring(0, className.length() - 4);
 		}
-		help = "Comment for " + className;
+		help = "Comment for " + className; //$NON-NLS-1$
 		return help;
 	}
 
+	/**
+	 * Get connector end name
+	 *
+	 * @param end
+	 *            The end
+	 * @return The name
+	 */
 	public String getConnectorEndName(ConnectorEnd end) {
 		final ConnectableElement role = end.getRole();
 		if (role != null) {
 			return LabelServices.INSTANCE.computeUmlLabel(role);
 		}
-		return "Undefined Role";
+		return "Undefined Role"; //$NON-NLS-1$
 	}
 
 	/**
+	 * Get connector ends
+	 *
 	 * @param connector
-	 * @return
+	 *            Connector
+	 * @return The ends
 	 */
 	public List<ConnectorEnd> getConnectorEnds(Connector connector) {
 		final List<ConnectorEnd> res = new ArrayList<ConnectorEnd>();
@@ -295,25 +305,16 @@ public class PropertiesViewServices {
 	}
 
 	/**
+	 * Get help
+	 *
 	 * @param feature
+	 *            The feature
 	 * @param element
-	 * @return help
+	 *            The element
+	 * @return help The help
 	 */
 	public String getHelp(EStructuralFeature feature, Element element) {
-		return "The " + feature.getName() + " of " + element.eClass().getName(); //$NON-NLS-1$
-	}
-
-	/**
-	 * Get a List of Element.
-	 *
-	 * @param elem
-	 *            UML Element
-	 * @return list
-	 */
-	public List<Element> getList(Element elem) {
-		final ArrayList<Element> ret = new ArrayList<Element>();
-		ret.add(elem);
-		return ret;
+		return "The " + feature.getName() + " of " + element.eClass().getName(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -388,12 +389,12 @@ public class PropertiesViewServices {
 	 * @return help label
 	 */
 	public String getRelationshipOriginatingHelpLabel(Element element) {
-		String help = "";
+		String help = ""; //$NON-NLS-1$
 		String className = element.getClass().getSimpleName();
-		if (className.endsWith("Impl")) {
+		if (className.endsWith("Impl")) { //$NON-NLS-1$
 			className = className.substring(0, className.length() - 4);
 		}
-		help = "The Relationship from " + className;
+		help = "The Relationship from " + className; //$NON-NLS-1$
 		return help;
 	}
 
@@ -404,12 +405,12 @@ public class PropertiesViewServices {
 	 * @return help label
 	 */
 	public String getRelationshipTargetingHelpLabel(Element element) {
-		String help = "";
+		String help = ""; //$NON-NLS-1$
 		String className = element.getClass().getSimpleName();
-		if (className.endsWith("Impl")) {
+		if (className.endsWith("Impl")) { //$NON-NLS-1$
 			className = className.substring(0, className.length() - 4);
 		}
-		help = "The Relationship to " + className;
+		help = "The Relationship to " + className; //$NON-NLS-1$
 		return help;
 	}
 
@@ -483,7 +484,7 @@ public class PropertiesViewServices {
 	 *            UML Element
 	 * @param structuralFeature
 	 *            feature
-	 * @return a widget label.
+	 * @return a widget label
 	 */
 	public String getWidgetLabel(Element element, EStructuralFeature structuralFeature) {
 		final PropertiesLabelSwitch labelSwitch = new PropertiesLabelSwitch(structuralFeature);
@@ -524,7 +525,7 @@ public class PropertiesViewServices {
 	 *
 	 * @param toTest
 	 *            element
-	 * @return true if display is need
+	 * @return true if display is needed
 	 */
 	public boolean isDisplayedAttributesList(Artifact toTest) {
 		return isDisplayedAttributesList(UMLPackage.eINSTANCE.getArtifact_OwnedAttribute(), toTest);
@@ -535,7 +536,7 @@ public class PropertiesViewServices {
 	 *
 	 * @param toTest
 	 *            element
-	 * @return true if display is need
+	 * @return true if display is needed
 	 */
 	public boolean isDisplayedAttributesList(DataType toTest) {
 		return isDisplayedAttributesList(UMLPackage.eINSTANCE.getDataType_OwnedAttribute(), toTest);
@@ -546,18 +547,20 @@ public class PropertiesViewServices {
 	 *
 	 * @param toTest
 	 *            element
-	 * @return true if display is need
+	 * @return true if display is needed
 	 */
 	public boolean isDisplayedAttributesList(Element toTest) {
 		return isDisplayedAttributesList(null, toTest);
 	}
 
 	/**
-	 * Is Attribute group have to be displayed.
+	 * Is Attributes list have to be displayed.
 	 *
-	 * @param toTest
-	 *            element
-	 * @return true if display is need
+	 * @param feature
+	 *            The feature
+	 * @param elem
+	 *            The element
+	 * @return true if display is needed
 	 */
 	public boolean isDisplayedAttributesList(EStructuralFeature feature, Element elem) {
 		if (feature != null) {
@@ -571,7 +574,7 @@ public class PropertiesViewServices {
 	 *
 	 * @param toTest
 	 *            element
-	 * @return true if display is need
+	 * @return true if display is needed
 	 */
 	public boolean isDisplayedAttributesList(Interface toTest) {
 		return isDisplayedAttributesList(UMLPackage.eINSTANCE.getInterface_OwnedAttribute(), toTest);
@@ -582,7 +585,7 @@ public class PropertiesViewServices {
 	 *
 	 * @param toTest
 	 *            element
-	 * @return true if display is need
+	 * @return true if display is needed
 	 */
 	public boolean isDisplayedAttributesList(StructuredClassifier toTest) {
 		return isDisplayedAttributesList(UMLPackage.eINSTANCE.getStructuredClassifier_OwnedAttribute(),
@@ -647,13 +650,35 @@ public class PropertiesViewServices {
 			return toTest instanceof org.eclipse.uml2.uml.Package || toTest instanceof Class
 					|| toTest instanceof Interface || toTest instanceof DataType
 					|| toTest instanceof PrimitiveType || toTest instanceof Enumeration
-					|| toTest instanceof Parameter
-					|| toTest instanceof Property || toTest instanceof Component || toTest instanceof Port
-					|| toTest instanceof Actor || toTest instanceof Artifact
-					|| toTest instanceof Collaboration || toTest instanceof FinalState
-					|| toTest instanceof Vertex || toTest instanceof Region || toTest instanceof UseCase;
+					|| toTest instanceof Parameter || toTest instanceof Property
+					|| toTest instanceof Component || toTest instanceof Port || toTest instanceof Actor
+					|| toTest instanceof Artifact || toTest instanceof Collaboration
+					|| toTest instanceof FinalState || toTest instanceof Vertex || toTest instanceof Region
+					|| toTest instanceof UseCase;
 		}
 		return false;
+	}
+
+	/**
+	 * Test if a feature must be enabled or not.
+	 *
+	 * @param feature
+	 *            The feature to test
+	 * @param eObject
+	 *            The semantic element
+	 * @return True if the feature must be enabled
+	 */
+	public boolean isEnabled(EObject eObject, EStructuralFeature feature) {
+		if (eObject instanceof Property) {
+			final Property property = (Property)eObject;
+			if (property.getUpper() == 0 || property.getUpper() == 1) {
+				if (UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE.equals(feature)
+						|| UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED.equals(feature)) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -776,6 +801,7 @@ public class PropertiesViewServices {
 			}
 
 			if (feature != null) {
+				@SuppressWarnings("unchecked")
 				final EList<Property> ownedAttributes = (EList<Property>)element.eGet(feature);
 				final int index = ownedAttributes.lastIndexOf(attribute);
 				if (index > 0 && up) {
@@ -795,19 +821,6 @@ public class PropertiesViewServices {
 	 */
 	public void removeAssociationEnd(final Association association) {
 		AssociationServices.INSTANCE.removeAssociationEnd(association);
-	}
-
-	/**
-	 * Remove an end or association.
-	 *
-	 * @param associations
-	 *            selected association
-	 */
-	public void removeAssociationEnd(Object associations) {
-		System.out.println("Stop");
-		// for (final Association association : associations) {
-		// AssociationServices.INSTANCE.removeAssociationEnd(association);
-		// }
 	}
 
 	private Stereotype retrieveStereotype(EObject tagVal, Element umlElement) {
@@ -844,11 +857,11 @@ public class PropertiesViewServices {
 	 */
 	public void selectProfile(Package elem) {
 
-		final String windowTitle = "Select profiles to apply";
-		final String wizardPageTitle = "Select profiles to apply";
+		final String windowTitle = "Select profiles to apply"; //$NON-NLS-1$
+		final String wizardPageTitle = "Select profiles to apply"; //$NON-NLS-1$
 		final ImageDescriptor wizardPageTitleImage = null;
-		final String choiceOfValuesMessage = "Applicable profiles";
-		final String selectedValuesMessage = "Profiles to apply";
+		final String choiceOfValuesMessage = "Applicable profiles"; //$NON-NLS-1$
+		final String selectedValuesMessage = "Profiles to apply"; //$NON-NLS-1$
 
 		final AdapterFactory factory = new UMLItemProviderAdapterFactory();
 
@@ -889,11 +902,11 @@ public class PropertiesViewServices {
 	 */
 	public void selectStereotype(Element elem) {
 
-		final String windowTitle = "Select stereotypes to apply";
-		final String wizardPageTitle = "Select stereotypes to apply";
+		final String windowTitle = "Select stereotypes to apply"; //$NON-NLS-1$
+		final String wizardPageTitle = "Select stereotypes to apply"; //$NON-NLS-1$
 		final ImageDescriptor wizardPageTitleImage = null;
-		final String choiceOfValuesMessage = "Applicable stereotypes";
-		final String selectedValuesMessage = "Stereotypes to apply";
+		final String choiceOfValuesMessage = "Applicable stereotypes"; //$NON-NLS-1$
+		final String selectedValuesMessage = "Stereotypes to apply"; //$NON-NLS-1$
 
 		final AdapterFactory factory = new UMLItemProviderAdapterFactory();
 
@@ -979,8 +992,8 @@ public class PropertiesViewServices {
 						}
 					}
 					final ListDialog dialog = new ListDialog(Display.getCurrent().getActiveShell());
-					dialog.setTitle("Owner selection:");
-					dialog.setMessage("Please select the new owner: ");
+					dialog.setTitle("Owner selection:"); //$NON-NLS-1$
+					dialog.setMessage("Please select the new owner: "); //$NON-NLS-1$
 					dialog.setInput(types.toArray());
 					dialog.setContentProvider(new ArrayContentProvider());
 					dialog.setLabelProvider(new LabelProvider() {
@@ -1059,17 +1072,13 @@ public class PropertiesViewServices {
 		}
 	}
 
-	public void toto(Collection coll) {
-		System.out.println(coll);
-	}
-
 	/**
 	 * Unapply a Profile for a package.
 	 *
 	 * @param pkg
 	 *            package
 	 * @param selection
-	 *            lis of profile
+	 *            list of profile
 	 */
 	public void unapplyProfiles(Package pkg, ArrayList<Profile> selection) {
 		StereotypeServices.INSTANCE.unapplyProfile(pkg, selection);

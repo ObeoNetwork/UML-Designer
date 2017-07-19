@@ -7801,7 +7801,7 @@
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.1"/>
           </ifs>
           <ifs name="general_boolean_if" predicateExpression="aql:input.emfEditServices(self).needsCheckboxWidget(eStructuralFeature)">
-            <widget xsi:type="properties:CheckboxDescription" name="general_rules_mono_boolean" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)">
+            <widget xsi:type="properties:CheckboxDescription" name="general_rules_mono_boolean" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)" isEnabledExpression="aql:input.getSemanticElement().isEnabled(eStructuralFeature)">
               <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.2/@widget"/>
             </widget>
           </ifs>

@@ -984,7 +984,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			}
 			propertyModifier.append("unique"); //$NON-NLS-1$
 		}
-		if (!object.isUnique() && !object.isOrdered()) {
+		if (!object.isUnique() && object.isOrdered()) {
 			if (propertyModifier.length() > 0) {
 				propertyModifier.append(", "); //$NON-NLS-1$
 			}

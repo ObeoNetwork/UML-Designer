@@ -506,7 +506,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 	@Override
 	public Boolean caseProperty(Property object) {
 		if (UMLPackage.Literals.PROPERTY__IS_DERIVED.equals(feature)
-				|| UMLPackage.Literals.PROPERTY__IS_DERIVED_UNION.equals(feature)
+				|| UMLPackage.Literals.PROPERTY__IS_ID.equals(feature)
 				|| UMLPackage.Literals.PROPERTY__AGGREGATION.equals(feature)
 				|| UMLPackage.Literals.PROPERTY__DEFAULT_VALUE.equals(feature)
 				|| UMLPackage.Literals.PROPERTY__QUALIFIER.equals(feature)) {
