@@ -120,7 +120,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			markForAutosize(semanticElement);
 			// add to diagram
 			showView(semanticElement, (DSemanticDecorator)diagram, session,
-					"aql:elementView.oclAsType(DNode).getParentDiagram()"); //$NON-NLS-1$
+					"aql:elementView.oclAsType(diagram::DNode).getParentDiagram()"); //$NON-NLS-1$
 		}
 	}
 
@@ -376,7 +376,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 
 	/**
 	 * Get all applicable stereotypes.
-	 * 
+	 *
 	 * @param element
 	 *            element
 	 * @param profile
