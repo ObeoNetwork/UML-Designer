@@ -87,6 +87,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 		super();
 		this.feature = feature;
 	}
+
 	@Override
 	public Boolean caseAcceptEventAction(AcceptEventAction object) {
 		if (UMLPackage.Literals.ACCEPT_EVENT_ACTION__IS_UNMARSHALL.equals(feature)
@@ -164,7 +165,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 
 	@Override
 	public Boolean caseBehavior(Behavior object) {
-		if (UMLPackage.Literals.BEHAVIOR__IS_REENTRANT.equals(feature)){
+		if (UMLPackage.Literals.BEHAVIOR__IS_REENTRANT.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
@@ -213,7 +214,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 
 	@Override
 	public Boolean caseComment(Comment object) {
-		if (UMLPackage.Literals.COMMENT__BODY.equals(feature)){
+		if (UMLPackage.Literals.COMMENT__BODY.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
@@ -229,7 +230,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 
 	@Override
 	public Boolean caseConnector(Connector object) {
-		if (UMLPackage.Literals.CONNECTOR___GET_KIND.equals(feature)){
+		if (UMLPackage.Literals.CONNECTOR___GET_KIND.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
@@ -248,7 +249,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 	@Override
 	public Boolean caseDependency(Dependency object) {
 		if (UMLPackage.Literals.DEPENDENCY__CLIENT.equals(feature)
-				|| UMLPackage.Literals.DEPENDENCY__SUPPLIER.equals(feature)){
+				|| UMLPackage.Literals.DEPENDENCY__SUPPLIER.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
@@ -256,7 +257,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 
 	@Override
 	public Boolean caseElement(Element object) {
-		if (UMLPackage.Literals.ELEMENT___GET_RELATIONSHIPS.equals(feature)){
+		if (UMLPackage.Literals.ELEMENT___GET_RELATIONSHIPS.equals(feature)) {
 			return new Boolean(true);
 		}
 		return new Boolean(false);
@@ -289,7 +290,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 
 	@Override
 	public Boolean caseFeature(Feature object) {
-		if (UMLPackage.Literals.FEATURE__IS_STATIC.equals(feature)){
+		if (UMLPackage.Literals.FEATURE__IS_STATIC.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
@@ -407,18 +408,18 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 	@Override
 	public Boolean caseMultiplicityElement(MultiplicityElement object) {
 		if (UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED.equals(feature)
-				||UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE.equals(feature)
-				||UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER.equals(feature)
-				|| UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER.equals(feature)){
+				|| UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE.equals(feature)
+				|| UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER.equals(feature)
+				|| UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
 	}
 
 	@Override
-	public  Boolean caseNamedElement(NamedElement object) {
+	public Boolean caseNamedElement(NamedElement object) {
 		if (UMLPackage.Literals.NAMED_ELEMENT__NAME.equals(feature)
-				|| UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY.equals(feature)){
+				|| UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
@@ -454,7 +455,7 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 
 	@Override
 	public Boolean casePackageImport(PackageImport object) {
-		if (UMLPackage.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE.equals(feature)){
+		if (UMLPackage.Literals.PACKAGE_IMPORT__IMPORTED_PACKAGE.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
@@ -496,12 +497,11 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 
 	@Override
 	public Boolean caseProfileApplication(ProfileApplication object) {
-		if (UMLPackage.Literals.PROFILE_APPLICATION__APPLIED_PROFILE.equals(feature)){
+		if (UMLPackage.Literals.PROFILE_APPLICATION__APPLIED_PROFILE.equals(feature)) {
 			return new Boolean(true);
 		}
 		return null;
 	}
-
 
 	@Override
 	public Boolean caseProperty(Property object) {
@@ -580,10 +580,13 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 				|| UMLPackage.Literals.TRANSITION__EFFECT.equals(feature)
 				|| UMLPackage.Literals.TRANSITION__GUARD.equals(feature)
 				|| UMLPackage.Literals.TRANSITION__SOURCE.equals(feature)
-				|| UMLPackage.Literals.TRANSITION__TARGET.equals(feature)) {
+				|| UMLPackage.Literals.TRANSITION__TARGET.equals(feature)
+				|| UMLPackage.Literals.NAMESPACE__OWNED_RULE.equals(feature)) {
 			return new Boolean(true);
-		} else if (UMLPackage.Literals.NAMESPACE__OWNED_RULE.equals(feature)) {
-			return new Boolean(true);
+		}
+		if (UMLPackage.Literals.NAMED_ELEMENT__NAME.equals(feature)
+				|| UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY.equals(feature)) {
+			return new Boolean(false);
 		}
 		return null;
 	}
