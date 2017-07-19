@@ -17,7 +17,7 @@ If the &apos;Modeling&apos;perspective is not active, in the title bar select Wi
 First, you need to create an UML Project.
 </description>
 <subitem
-      label="In the title bar, select File &gt; New &gt; UML Project."
+      label="In the title bar, select File &gt; New &gt; Project... &gt; UML Designer &gt; UML Project."
       skip="true">
 </subitem>
 <subitem

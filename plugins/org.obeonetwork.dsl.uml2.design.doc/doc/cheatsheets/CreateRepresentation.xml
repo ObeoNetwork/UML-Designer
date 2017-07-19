@@ -19,7 +19,7 @@
             label="Right-click on the project and select &apos;Create Representation&apos;">
       </subitem>
        <subitem
-            label="In the wizard, expand &apos;UML Structural Modeling&apos;, select &apos;Class Diagram&apos; and then &apos;Next&apos;.">
+            label="In the wizard, expand &apos;Design&apos;, select &apos;Class Diagram&apos; and then &apos;Next&apos;.">
       </subitem>
        <subitem
             label="On the next page, select &apos;Model&apos; as semantic element to which the diagram will be attached.  In our example the new class diagram will be attached to the root element of the UML model.">

@@ -14,4 +14,4 @@ Click in the title bar and select File > New > Example > UML > Travel Agency UML
 
 h2. Navigate through the example project
 
-The TravelAgency project appears in the 'Model Explorer' view. You can navigate to the existing diagrams by selecting items under the 'representations.aird' file. For example if you double-click on representations.aird > UML Structural Modeling > Class Diagram > entities, the example class diagram will be opened in a new editor.
+The TravelAgency project appears in the 'Model Explorer' view. You can navigate to the existing diagrams by selecting items under the 'representations.aird' file. For example if you double-click on representations.aird > Design > Class Diagram > entities, the example class diagram will be opened in a new editor.

@@ -13,7 +13,7 @@ Learn how to import the Travel Agency project provided with UML Designer as exam
 </item>
 <item title="Navigate through the example project" dialog="true" skip="false">
 <description>
-The TravelAgency project appears in the &apos;Model Explorer&apos; view. You can navigate to the existing diagrams by selecting items under the &apos;representations.aird&apos; file. For example if you double-click on representations.aird &gt; UML Structural Modeling &gt; Class Diagram &gt; entities, the example class diagram will be opened in a new editor.
+The TravelAgency project appears in the &apos;Model Explorer&apos; view. You can navigate to the existing diagrams by selecting items under the &apos;representations.aird&apos; file. For example if you double-click on representations.aird &gt;  Design  &gt; Class Diagram &gt; entities, the example class diagram will be opened in a new editor.
 </description>
 </item>
 
