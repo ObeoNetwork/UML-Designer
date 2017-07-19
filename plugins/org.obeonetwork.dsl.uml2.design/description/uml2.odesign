@@ -19,7 +19,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="RED_CommentLink" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='DEL_CommentLink_PreventDeletion']" semanticElements="var:self" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ReuseMappingForExecutableNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ReuseMappingForExecutableNode']/@borderedNodeMappings[name='AD_InputPin'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@additionalLayers[name='Components']/@containerMappings[name='PC_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Association'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Extend'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Include'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_AssociationClassToAssociation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_BrokenAssociationToClasses'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Generalization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_InterfaceRealization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_NestedClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_TemplateBinding'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubRequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_RequiredInterface2ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubProvidedInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubRequiredInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_ComponentRealization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Dependency'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_ComponentOrPort2Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_Interface2ComponentOrPort'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Redefined'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_ComponentOrPort2Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_Interface2ComponentOrPort'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Deployment'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Generalization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Link'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Manifestation'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Dependency'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Import'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Merge'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_InterruptibleActivityRegion'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_AssociationClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_OpaqueAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ReuseMappingForExecutableNode']/@borderedNodeMappings[name='AD_OutputPin'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_StructuredActivityNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody']/@subContainerMappings[name='AD_Body'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_Association_NAry'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_AssociationNAryEdge'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_BrokenAssociationToAssociation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Qualifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Constraints']/@containerMappings[name='CD_Constraints'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Constraints']/@containerMappings[name='CD_Constraints']/@subNodeMappings[name='CD_Constraint'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Constraints']/@edgeMappings[name='CD_ConstraintsAttachment'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Stereotypes']/@containerMappings[name='CD_StereotypeApplication'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Stereotypes']/@containerMappings[name='CD_StereotypeApplication']/@subNodeMappings[name='CD_TaggedValue'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Stereotypes']/@edgeMappings[name='CD_StereotypeApplicationLink'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Generalization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_NestedPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_Connector'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_MainStructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@edgeMappings[name='CS_Interface_Connector'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@edgeMappings[name='CS_InterfaceRealization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@edgeMappings[name='CS_PortInterfaceRealization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@edgeMappings[name='CS_Usage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Lifeline%20EOL'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@additionalLayers[name='Informations']/@nodeMappings[name='LifelineComment'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@additionalLayers[name='Informations']/@edgeMappings[name='LifelineCommentLink'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState']/@subContainerMappings[name='SM_CompositeStateHorizontal'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState']/@subContainerMappings[name='SM_CompositeStateVertical'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@subNodeMappings[name='SM_Do'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@subNodeMappings[name='SM_Entry'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@subNodeMappings[name='SM_Exit'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@subNodeMappings[name='SM_InternalTransition'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_reusedMappingsForStateMachine'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_reusedMappingsForStateMachine']/@subContainerMappings[name='SM_StateMachineHorizontal'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_reusedMappingsForStateMachine']/@subContainerMappings[name='SM_StateMachineVertical'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_AbstractAssociationStereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_AbstractAssociationStereotypeLink'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@edgeMappings[name='PC_Containment'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" targetFinderExpression="feature:annotatedElement" reconnections="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='REC_CommentLink_Target'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='REC_CommentLink_Source']">
+        <edgeMappings name="RED_CommentLink" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='DEL_CommentLink_PreventDeletion']" semanticElements="var:self" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ReuseMappingForExecutableNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ReuseMappingForExecutableNode']/@borderedNodeMappings[name='AD_InputPin'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@additionalLayers[name='Components']/@containerMappings[name='PC_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Association'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Extend'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Include'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_AssociationClassToAssociation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_BrokenAssociationToClasses'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Generalization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_InterfaceRealization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_NestedClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_TemplateBinding'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubRequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_RequiredInterface2ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubProvidedInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubRequiredInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_ComponentRealization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Dependency'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_ComponentOrPort2Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_Interface2ComponentOrPort'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Redefined'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_ComponentOrPort2Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_Interface2ComponentOrPort'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Deployment'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Generalization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Link'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Manifestation'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Dependency'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Import'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Merge'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_InterruptibleActivityRegion'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_AssociationClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_OpaqueAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ReuseMappingForExecutableNode']/@borderedNodeMappings[name='AD_OutputPin'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_StructuredActivityNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody']/@subContainerMappings[name='AD_Body'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_Association_NAry'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_AssociationNAryEdge'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_BrokenAssociationToAssociation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Qualifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Constraints']/@containerMappings[name='CD_Constraints'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Constraints']/@containerMappings[name='CD_Constraints']/@subNodeMappings[name='CD_Constraint'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Constraints']/@edgeMappings[name='CD_ConstraintsAttachment'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Stereotypes']/@containerMappings[name='CD_StereotypeApplication'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Stereotypes']/@containerMappings[name='CD_StereotypeApplication']/@subNodeMappings[name='CD_TaggedValue'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Stereotypes']/@edgeMappings[name='CD_StereotypeApplicationLink'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Generalization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_NestedPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_Connector'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_MainStructuredClassifier'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@edgeMappings[name='CS_Interface_Connector'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@edgeMappings[name='CS_InterfaceRealization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@edgeMappings[name='CS_PortInterfaceRealization'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@edgeMappings[name='CS_Usage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Lifeline%20EOL'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@additionalLayers[name='Informations']/@nodeMappings[name='LifelineComment'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@additionalLayers[name='Informations']/@edgeMappings[name='LifelineCommentLink'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState']/@subContainerMappings[name='SM_CompositeStateHorizontal'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappingForCompositeState']/@subContainerMappings[name='SM_CompositeStateVertical'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@subNodeMappings[name='SM_Do'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@subNodeMappings[name='SM_Entry'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@subNodeMappings[name='SM_Exit'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@subNodeMappings[name='SM_InternalTransition'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_reusedMappingsForStateMachine'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_reusedMappingsForStateMachine']/@subContainerMappings[name='SM_StateMachineHorizontal'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_reusedMappingsForStateMachine']/@subContainerMappings[name='SM_StateMachineVertical'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_AbstractAssociationStereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_AbstractAssociationStereotypeLink'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@edgeMappings[name='PC_Containment'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" targetFinderExpression="feature:annotatedElement" reconnections="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='REC_CommentLink_Target'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='REC_CommentLink_Source']">
           <style lineStyle="dot" targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -116,8 +116,10 @@
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new Class Diagram" name="Create class diagram from component" label="Class diagram" precondition="service:isComponent" titleExpression="aql:self.name+ ' Class Diagram'" browseExpression="aql:self.oclAsType(uml::Component).packagedElement->filter(uml::Package)->asSequence()->first()" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']">
               <initialOperation>
                 <firstModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclAsType(uml::Component).packagedElement->select(elt | elt.oclIsTypeOf(uml::Package))->size() = 0">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement" variableName="newPackage">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::NamedElement).name"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getNearestPackage()">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement" variableName="newPackage">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::NamedElement).name"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -545,7 +547,9 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                    <initialOperation/>
+                    <initialOperation>
+                      <firstModelOperations xsi:type="tool:ChangeContext"/>
+                    </initialOperation>
                   </buttons>
                   <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                     <initialOperation>
@@ -1623,7 +1627,9 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Package">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -1652,7 +1658,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -1680,7 +1688,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interface">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -1709,7 +1719,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Enumeration">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -1737,7 +1749,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Primitive Type">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -1765,7 +1779,9 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Type">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -1801,11 +1817,13 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="public"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Property">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
-                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
                       </initialOperation>
                     </buttons>
                     <page name="D_CD_CreateProperty_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Property']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.5/@groups.0"/>
@@ -1822,11 +1840,13 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createOperation">
                 <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Operation">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                    <initialOperation/>
+                    <initialOperation>
+                      <firstModelOperations xsi:type="tool:ChangeContext"/>
+                    </initialOperation>
                   </buttons>
                   <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                     <initialOperation>
-                      <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                      <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                         <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
                           <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         </subModelOperations>
@@ -1852,7 +1872,9 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Literal">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -1894,11 +1916,13 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createQualifier">
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Qualifier">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
-                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                           <subModelOperations xsi:type="tool:If" conditionExpression="service:isNameNotSet">
                             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                           </subModelOperations>
@@ -2475,7 +2499,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -2506,7 +2532,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -2537,7 +2565,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -2568,7 +2598,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -2637,8 +2669,8 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.getAssociatedNamespace()">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Constraint" referenceName="ownedRule">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Expression" referenceName="specification">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml::Constraint" referenceName="ownedRule">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml::Expression" referenceName="specification">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="expression"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:element.name"/>
@@ -2934,7 +2966,9 @@
                 <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="service:self.getAggregationKindComposite"/>
                 <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Property">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                    <initialOperation/>
+                    <initialOperation>
+                      <firstModelOperations xsi:type="tool:ChangeContext"/>
+                    </initialOperation>
                   </buttons>
                   <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                     <initialOperation>
@@ -2958,7 +2992,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Port">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -3286,7 +3322,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Component">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -3309,7 +3347,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -3340,7 +3380,9 @@
                 <subModelOperations xsi:type="tool:SetValue" featureName="isConjugated" valueExpression="true"/>
                 <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Port">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                    <initialOperation/>
+                    <initialOperation>
+                      <firstModelOperations xsi:type="tool:ChangeContext"/>
+                    </initialOperation>
                   </buttons>
                   <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                     <initialOperation>
@@ -3362,11 +3404,13 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interface">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
-                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                        <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
                       </initialOperation>
                     </buttons>
                     <page name="D_CO_CreateInterface_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Interface']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
@@ -3734,7 +3778,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Node">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -3751,7 +3797,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Node">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -3776,7 +3824,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Device">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -3793,7 +3843,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Device">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -3818,7 +3870,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Execution Environment">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -3835,7 +3889,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Execution Environment">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -3860,7 +3916,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Artifact">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -3877,7 +3935,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Artifact">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -4361,7 +4421,9 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Partition">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4380,7 +4442,9 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Partition">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4407,7 +4471,9 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interruptible Activity Region">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4433,7 +4499,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Structured Activity Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4450,7 +4518,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Structured Activity Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4484,7 +4554,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4502,7 +4574,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4534,7 +4608,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4552,7 +4628,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4584,7 +4662,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Flow Final Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4602,7 +4682,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Flow Final Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4634,7 +4716,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Decision Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4652,7 +4736,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Decision Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4684,7 +4770,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Merge Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4702,7 +4790,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Merge Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4734,7 +4824,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4752,7 +4844,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4788,7 +4882,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4810,7 +4906,9 @@
                       </subModelOperations>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -4845,7 +4943,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Opaque Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -4864,7 +4964,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="aql:'// TODO body of '+instance.name"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Opaque Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -5001,7 +5103,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Event Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -5030,7 +5134,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Event Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -5073,11 +5179,13 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Wait Time Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
-                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
                             </initialOperation>
                           </buttons>
                           <page name="D_AD_CreateOwnedWaitTimeAction_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Action']/@tools.4/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.4/@groups.0"/>
@@ -5102,7 +5210,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Wait Time Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -5148,7 +5258,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Signal Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -5178,7 +5290,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Signal Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -5224,7 +5338,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Call Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -5254,7 +5370,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Call Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -5289,11 +5407,13 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Parameter">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
-                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
                         </initialOperation>
                       </buttons>
                       <page name="D_AD_CreateActivityParameter_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Object']/@tools.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2/@groups.0"/>
@@ -5320,7 +5440,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Store">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -5338,7 +5460,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Store">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -5361,7 +5485,9 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createInputPin">
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Input Pin">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -5383,11 +5509,13 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createOutputPin">
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Output Pin">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
-                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
                         </initialOperation>
                       </buttons>
                       <page name="D_AD_CreateOutputPin_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Object']/@tools.3/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
@@ -5547,7 +5675,9 @@
               <representationNameVariable name="diagramName"/>
             </ownedTools>
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="CR_ActivityDiagramFromStructuredActivityNode" label="Create Activity diagram" titleExpression="aql:self.name + ' Activity Diagram'" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
-              <initialOperation/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext"/>
+              </initialOperation>
               <containerViewVariable name="containerView"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
@@ -5860,7 +5990,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Region">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -5878,7 +6010,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Region">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -5914,7 +6048,9 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create State">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
@@ -5973,7 +6109,9 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create State Machine">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -6011,7 +6149,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -6032,7 +6172,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -6054,7 +6196,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -6076,7 +6220,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -6120,7 +6266,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Junction">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -6142,7 +6290,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Terminate">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -6164,7 +6314,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Shallow History">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -6186,7 +6338,9 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Deep History">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
@@ -6210,7 +6364,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Entry Point">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -6229,7 +6385,9 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Entry Point">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -6256,7 +6414,9 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Exit Point">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                          <initialOperation/>
+                          <initialOperation>
+                            <firstModelOperations xsi:type="tool:ChangeContext"/>
+                          </initialOperation>
                         </buttons>
                         <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                           <initialOperation>
@@ -6275,7 +6435,9 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Exit Point">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                            <initialOperation/>
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool:ChangeContext"/>
+                            </initialOperation>
                           </buttons>
                           <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                             <initialOperation>
@@ -6668,11 +6830,13 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                        <initialOperation/>
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool:ChangeContext"/>
+                        </initialOperation>
                       </buttons>
                       <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                         <initialOperation>
-                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance"/>
+                          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
                         </initialOperation>
                       </buttons>
                       <page name="D_SD_CreateClass_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='CR_Lifeline']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
@@ -6704,7 +6868,9 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Actor">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool:ChangeContext"/>
+                      </initialOperation>
                     </buttons>
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation>
