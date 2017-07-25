@@ -87,6 +87,8 @@
     file: ref-doc/non-goals
   - title: Usage
     file: ref-doc/usage
+  - title: Generators
+    file: ref-doc/umlgen
   - title: Install UML components
     file: ref-doc/discovery
 
