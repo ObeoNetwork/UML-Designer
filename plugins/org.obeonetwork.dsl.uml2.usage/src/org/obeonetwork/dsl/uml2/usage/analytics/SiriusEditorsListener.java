@@ -163,22 +163,6 @@ public class SiriusEditorsListener extends Stub implements IPartListener2 {
 	 * Ask to user if it is ok to send some statistics about its usage of UML Designer.
 	 */
 	private void askUser() {
-		// Check preference to see if user already answer the question
-		if (preferences.hasAnswered()) {
-			return;
-		}
-
-		// User does not answer to the question, ask him
-		Shell shell = PlatformUI.getWorkbench().getModalDialogShellProvider().getShell();
-		UsageDialog dialog = new UsageDialog(shell);
-		int answer = dialog.open();
-
-		// Set the user answer to the preference store in order to not ask him
-		// anymore if he answered. If the user just close the dialog, the
-		// question will be ask again at next startup. The user can update its
-		// answer at any time in the preferences page.
-		preferences.storeUserAnswer(answer);
-
 		// Send to google analytics information of usage report activation
 		if (preferences.isEnabled()) {
 			tracker.trackPageViewFromReferrer(UsageMessages.Usage_ActivationPageURL + "/" + bundleVersion,
