@@ -4394,7 +4394,7 @@
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="AD_StructuredActivityNode" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigate']/@ownedTools[name='CR_ActivityDiagramFromStructuredActivityNode']" semanticCandidatesExpression="aql:if(self.oclIsTypeOf(uml::Activity)) then self.structuredNode else if(self.oclIsTypeOf(uml::StructuredActivityNode)) then self.node else null endif endif" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.StructuredActivityNode">
+          <subContainerMappings name="AD_StructuredActivityNode" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigate']/@ownedTools[name='CR_ActivityDiagramFromStructuredActivityNode']" semanticCandidatesExpression="aql:if(self.oclIsTypeOf(uml::Activity)) then self.structuredNode else if(self.oclIsTypeOf(uml::StructuredActivityNode)) then self.node else null endif endif" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.StructuredActivityNode" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_OpaqueAction'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ReuseMappingForExecutableNode']">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20purple']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <labelFormat>bold</labelFormat>
@@ -4930,7 +4930,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity) or container.oclIsTypeOf(uml::ActivityPartition) or container.oclIsTypeOf(uml::InterruptibleActivityRegion)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="ownedNode">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
@@ -4987,7 +4987,7 @@
               <container name="container"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity) or container.oclIsTypeOf(uml::ActivityPartition) or container.oclIsTypeOf(uml::InterruptibleActivityRegion)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:element.oclIsTypeOf(uml::Operation)">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="ownedNode" variableName="action">
@@ -5054,7 +5054,7 @@
               <container name="container"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity) or container.oclIsTypeOf(uml::ActivityPartition) or container.oclIsTypeOf(uml::InterruptibleActivityRegion)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallBehaviorAction" referenceName="ownedNode" variableName="action">
                         <subModelOperations xsi:type="tool:SetValue" featureName="behavior" valueExpression="var:element"/>
@@ -5080,7 +5080,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity) or container.oclIsTypeOf(uml::ActivityPartition) or container.oclIsTypeOf(uml::InterruptibleActivityRegion)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
@@ -5156,7 +5156,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity) or container.oclIsTypeOf(uml::ActivityPartition) or container.oclIsTypeOf(uml::InterruptibleActivityRegion)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode" variableName="action">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
@@ -5234,7 +5234,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity) or container.oclIsTypeOf(uml::ActivityPartition) or container.oclIsTypeOf(uml::InterruptibleActivityRegion)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
@@ -5314,7 +5314,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity) or container.oclIsTypeOf(uml::ActivityPartition) or container.oclIsTypeOf(uml::InterruptibleActivityRegion)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
@@ -5428,7 +5428,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity) or container.oclIsTypeOf(uml::ActivityPartition) or container.oclIsTypeOf(uml::InterruptibleActivityRegion)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataStoreNode" referenceName="ownedNode">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
