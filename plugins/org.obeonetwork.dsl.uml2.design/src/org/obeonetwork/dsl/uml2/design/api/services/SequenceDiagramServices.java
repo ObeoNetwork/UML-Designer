@@ -41,7 +41,6 @@ import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
-import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Property;
@@ -52,7 +51,10 @@ import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.OperationServices;
 
+import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -188,7 +190,7 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 		if (!(element instanceof org.eclipse.uml2.uml.Class) && !(element instanceof Property)) {
 			LogServices.INSTANCE.warning(
 					"An instance specification or a property must be selected to import a lifeline but you have selected " //$NON-NLS-1$
-							+ element.getName() + " which is a " + element.getClass().getSimpleName(), //$NON-NLS-1$
+					+ element.getName() + " which is a " + element.getClass().getSimpleName(), //$NON-NLS-1$
 					null);
 		}
 
@@ -614,29 +616,19 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 	 *            a model element
 	 * @return all actors and their containers of the UML model
 	 */
-	public Set<Element> getAllActorsAndContainers(EObject element) {
-		final Element rootContainer = (Element)EcoreUtil.getRootContainer(element);
-		final Iterator<EObject> eObjects = rootContainer.eAllContents();
+	public Set<EObject> getAllActorsAndContainers(Element element) {
+		final List<EObject> actors = Lists.newArrayList();
+		final List<org.eclipse.uml2.uml.Package> rootPkgs = getAllAvailableRootPackages(element);
+		for (final org.eclipse.uml2.uml.Package pkg : rootPkgs) {
+			Iterators.addAll(actors,
+					Iterators.filter(pkg.eAllContents(), Predicates.instanceOf(Actor.class)));
+		}
 
-		final Set<Element> result = new HashSet<Element>();
-
-		result.add(rootContainer);
-
-		while (eObjects.hasNext()) {
-			final Element eObject = (Element)eObjects.next();
-			if (eObject instanceof Actor) {
-				result.add(eObject);
-				final Set<Element> containers = getAllContainers(eObject);
-				result.addAll(containers);
-			}
-			if (eObject instanceof Property) {
-				final Property property = (Property)eObject;
-				if (property.getType() instanceof Actor) {
-					result.add(property);
-					final Set<Element> containers = getAllContainers(property);
-					result.addAll(containers);
-				}
-			}
+		final Set<EObject> result = new HashSet<EObject>();
+		result.addAll(actors);
+		for (final EObject actor : actors) {
+			final Set<Element> containers = getAllContainers((Element)actor);
+			result.addAll(containers);
 		}
 
 		return result;
@@ -649,29 +641,19 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 	 *            a model element
 	 * @return all classes and their containers of the UML model
 	 */
-	public Set<Element> getAllClassesAndContainers(Element element) {
-		final Element rootContainer = (Element)EcoreUtil.getRootContainer(element);
-		final Iterator<EObject> eObjects = rootContainer.eAllContents();
+	public Set<EObject> getAllClassesAndContainers(Element element) {
+		final List<EObject> classes = Lists.newArrayList();
+		final List<org.eclipse.uml2.uml.Package> rootPkgs = getAllAvailableRootPackages(element);
+		for (final org.eclipse.uml2.uml.Package pkg : rootPkgs) {
+			Iterators.addAll(classes, Iterators.filter(pkg.eAllContents(),
+					Predicates.instanceOf(org.eclipse.uml2.uml.Class.class)));
+		}
 
-		final Set<Element> result = new HashSet<Element>();
-
-		result.add(rootContainer);
-
-		while (eObjects.hasNext()) {
-			final Element eObject = (Element)eObjects.next();
-			if (eObject instanceof org.eclipse.uml2.uml.Class && !(eObject instanceof OpaqueBehavior)) {
-				result.add(eObject);
-				final Set<Element> containers = getAllContainers(eObject);
-				result.addAll(containers);
-			}
-			if (eObject instanceof Property) {
-				final Property property = (Property)eObject;
-				if (property.getType() instanceof org.eclipse.uml2.uml.Class) {
-					result.add(property);
-					final Set<Element> containers = getAllContainers(property);
-					result.addAll(containers);
-				}
-			}
+		final Set<EObject> result = new HashSet<EObject>();
+		result.addAll(classes);
+		for (final EObject clazz : classes) {
+			final Set<Element> containers = getAllContainers((Element)clazz);
+			result.addAll(containers);
 		}
 
 		return result;
@@ -688,7 +670,7 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 		Element container = (Element)eObject.eContainer();
 		final Set<Element> result = new HashSet<Element>();
 
-		while (container.eContainer() != null) {
+		while (container != null) {
 			result.add(container);
 			container = (Element)container.eContainer();
 		}
@@ -924,7 +906,7 @@ public class SequenceDiagramServices extends AbstractDiagramServices {
 		// preTarget->filter(uml::ExecutionSpecification).covered.clientDependency.supplier.classifier<>null/]
 		return element instanceof Lifeline && ((Lifeline)element).getRepresents() != null
 				|| element instanceof ExecutionSpecification
-						&& internalService.isCoveredTypeSet((ExecutionSpecification)element)
+				&& internalService.isCoveredTypeSet((ExecutionSpecification)element)
 				|| element instanceof Lifeline && ((Lifeline)element).getRepresents() != null;
 	}
 
