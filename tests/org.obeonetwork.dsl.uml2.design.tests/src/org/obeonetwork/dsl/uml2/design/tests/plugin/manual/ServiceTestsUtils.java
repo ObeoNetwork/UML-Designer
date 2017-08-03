@@ -46,8 +46,6 @@ public class ServiceTestsUtils {
 
 	private static final String VP_CAPTURE = "Capture";
 
-	private static final String VP_DASHBOARD = "Dashboard";
-
 	private static final String UML_VP_URI = "viewpoint:/org.obeonetwork.dsl.uml2.design/";
 
 	public static Set<String> acceleoWhiteList = Sets.newHashSet("->", "eContainer", "toLowerFirst",
@@ -76,7 +74,6 @@ public class ServiceTestsUtils {
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_REVIEW);
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_EXTEND);
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_REUSED);
-		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_DASHBOARD);
 	}
 
 	public static void collectDeclaredServicesFromDesignerViewpoints(Set<Method> allDeclaredServices,
@@ -296,7 +293,6 @@ public class ServiceTestsUtils {
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_REVIEW);
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_EXTEND);
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_REUSED);
-		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_DASHBOARD);
 	}
 
 	public static void collectServiceExpressionFromUmlDesignerViewpoint(
@@ -310,7 +306,6 @@ public class ServiceTestsUtils {
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_REVIEW, allExtensions);
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_EXTEND, allExtensions);
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_REUSED, allExtensions);
-		collectJavaExtensionsFromUmlDesignerViewpoints(VP_DASHBOARD, allExtensions);
 	}
 
 	public static void collectJavaExtensionsFromUmlDesignerViewpoint(Set<JavaExtension> allExtensions,

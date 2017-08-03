@@ -49,7 +49,6 @@ public class InterpretedExpressionTests {
 	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Design");
 	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Review");
 	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Extend");
-	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Dashboard");
 	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Reused");
 	for (String expr : allExpressions.elementSet()) {
 		System.out.println(allExpressions.count(expr) + " : " + expr);
