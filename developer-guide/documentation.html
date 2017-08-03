@@ -7,7 +7,7 @@
   <meta name="author" content="Mt&eacute;lanie Bats">
   
   <title>Documentation</title>
-  
+  <link href="../images/favicon.ico" rel="shortcut icon" />
   <!-- Bootstrap core CSS -->
   <link href="../css/bootstrap.css" rel="stylesheet">
   
@@ -40,7 +40,7 @@
       </button>
 
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="50"></a>
+      <a class="navbar-brand" href=".."><img src="../images/logo_UMLDesigner.png" alt="" height="54"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -345,8 +345,11 @@ Then launch :</p>
 <p>The documentation will be available at <code>localhost:4000/index.html</code>. Use a web browser and go to this <span class="caps">URL</span> to browse the documentation. If you want to iterate and try new changes, modify the documentation then stop the <code>jekyll serve</code> by using <code>Ctrl+C</code> and relaunch it using <code>jekyll serve</code>.</p>
 <h3>Continuous integration</h3>
 <p>To build the documentation, commit and push the changes on the ObeoNetwork/<span class="caps">UML</span>-Designer <code>master</code> branch.<br />
-The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> is launched, it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.<br />
-The <a href="https://build.obeonetwork.com/hudson/job/UML--master/">Hudson build</a> is in charge of the integration of the web site inside the Eclipse Help Content.</p>
+The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> is launched :</p>
+<ul>
+	<li>it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.</li>
+	<li>it is also in charge of the integration of the web site inside the Eclipse Help Content.</li>
+</ul>
 <p>The different steps done by the builds are explained below.</p>
 <h4>Build the web-site</h4>
 <p>The Travis build :</p>
@@ -358,7 +361,7 @@ This operation will generate a new <code>_site</code> folder containing all the 
 </ul>
 <p>The new web site will be available immediately on : <a href="http://www.umldesigner.org/">http://www.umldesigner.org/</a></p>
 <h4>Integrate the documentation to Eclipse</h4>
-<p>The web site is integrated inside Eclipse as embedded documentation for <span class="caps">UML</span> Designer. This is done by the <a href="https://build.obeonetwork.com/hudson/job/UML--master/">Hudson build</a> which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the <code>gh-pages</code> is just copied to <code>UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html</code>.</p>
+<p>The web site is integrated inside Eclipse as embedded documentation for <span class="caps">UML</span> Designer. This is done by the <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the <code>gh-pages</code> is just copied to <code>UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html</code>.</p>
 <p>Pay attention when you update the documentation structure to update also the Eclipse toc. We defined an Eclipse specific <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml">toc.xml</a> file which is used to integrate the web site content into the Eclipse Help Content table of content.</p>
 <p>When a change is done in the documentation, the Travis build runs after the commit of the change. If you want to see this documentation update also in the Eclipse documentation, the Hudson build must be run manually after the end of the Travis build.</p>
 <p>To test the Eclipse documentation integration locally :</p>
