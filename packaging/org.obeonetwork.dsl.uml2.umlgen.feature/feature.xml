@@ -5,7 +5,7 @@
       version="8.0.0.qualifier"
       provider-name="Obeo">
 
-   <description url="http://docs.obeonetwork.com/uml">
+   <description url="http://umldesigner.org">
       This feature provides a set of plugins to generate UML 5.0 models to Java and reverse Java to UML 5.0 models.
    </description>
 

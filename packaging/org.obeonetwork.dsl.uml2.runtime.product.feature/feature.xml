@@ -6,7 +6,7 @@
       provider-name="Obeo"
       plugin="org.obeonetwork.dsl.uml2.branding">
 
-   <description url="http://docs.obeonetwork.com/uml">
+   <description url="http://umldesigner.org">
       This modeler provides a set of common diagrams to work with
 UML 5.0 models.
 Provides same features as org.obeonetwork.dsl.uml2.runtime.feature

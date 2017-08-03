@@ -41,7 +41,7 @@ _Pay attention that the nightly build is unstable, this build is for testing pur
 
 h3(#Marketplace). Marketplace
 
-It is also possible to install UML Designer from the "Eclipse marketplace":http://marketplace.eclipse.org/search/site/UML%2520Designer or the "Obeo marketplace":http://marketplace.obeonetwork.com/module/uml/download. Don't know how to install a module from the marketplace? Have a look to the "marketplace client introduction":http://marketplace.eclipse.org/marketplace-client-intro.
+It is also possible to install UML Designer from the "Eclipse marketplace":http://marketplace.eclipse.org/search/site/UML%2520Designer. Don't know how to install a module from the marketplace? Have a look to the "marketplace client introduction":http://marketplace.eclipse.org/marketplace-client-intro.
 
 h3(#Update_Sites). Update Sites
 

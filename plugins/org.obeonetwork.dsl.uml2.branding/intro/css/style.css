@@ -6,19 +6,19 @@ body {
 	margin: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	line-height: 18px;
-	color: #003e5e;
+	color: #000000;
 	background-color: #ffffff;
 	padding: 20px 0 10px 0;
 	text-align: justify;
 }
 
 a {
-	color: #408BBC;
+	color: #726aa5;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #003E5E;
+	color: #726aa5;
 	text-decoration: none;
 }
 
@@ -45,7 +45,7 @@ a:hover {
 
 hr {
 	border: 0 none;
-	color: #003E5E;
+	color: #000000;
 }
 
 .row-fluid:before,.row-fluid:after {
@@ -242,7 +242,7 @@ li {
     padding: 0 3px;
 }
 .breadcrumb .active {
-    color: #003E5E;
+    color: #000000;
 	text-shadow: 0 0 1pt rgba(17, 17, 17, 0.2), 0 1.2pt 1pt rgba(0, 0, 0, 0.2)
 		;
 }

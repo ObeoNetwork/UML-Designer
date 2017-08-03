@@ -28,7 +28,7 @@ img {
 }
 
 a, .first_section h3 a:hover, .section h3 a:hover, .section-colored h3 a:hover {
-	color: #faa542;
+	color: #fbb800;
 	font-weight: 600;
 }
 
@@ -48,7 +48,7 @@ h2, h3 {
 }
 
 h4 {
-    color: #faa542;
+    color: #fbb800;
 }
 
 h2, h3, h4, h5 {
@@ -64,15 +64,15 @@ h5, .h5 {
 }
 
 .btn-default {
-	border: 2px solid #faa542;
+	border: 2px solid #fbb800;
     background: transparent;
-    color: #faa542;
+    color: #fbb800;
 }
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
 	color: #fff;
-	background-color: #faa542;
-	border: 2px solid #faa542;
+	background-color: #fbb800;
+	border: 2px solid #fbb800;
 }
 	
 .btn-lg {
@@ -95,39 +95,46 @@ h5, .h5 {
 }
 
 .on_dark_bg {
-    border: 2px solid #5ec7bc;
+    border: 2px solid #badfe1;
     background: transparent;
-    color: #5ec7bc;
+    color: #badfe1;
 }
 
 .on_dark_bg:hover {
     color: #fff;
-    background-color: #5ec7bc;
-    border: 2px solid #5ec7bc;
+    background-color: #badfe1;
+    border: 2px solid #badfe1;
 }
 
 .bg_green1 {
-    background: #15ad9e;
+    background: #4ebbc2;
 }
 
 .bg_green2, .navbar-inverse .navbar-toggle .icon-bar {
-    background: #0d7374;
+    background: #007788;
 }
 
 .bg_green3 {
-    background: #3c535c;
+    background: #002B3C;
 }
 
 .green1 {
-    color: #15ad9e;
+    color: #4ebbc2;
 }
 
 .green2 {
-    color: #0d7374;
+    color: #007788;
 }
 
 .green3, h2, h3, h5, .h5, .first_section h3 a, .section h3 a, .section-colored h3 a, .navbar-inverse .navbar-nav > li > a  {
-    color: #3c535c;
+    color: #002B3C;
+}
+
+.nav > li {
+    position: relative;
+    display: block;
+    font-size: 13px;
+    text-transform: uppercase;
 }
 
 .nav > li > a {
@@ -151,11 +158,11 @@ h5, .h5 {
 
 .navbar-inverse, .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
   background-color: white;
-  color: #3c535c;
+  color: #002B3C;
  }
 
 .navbar-inverse{
-	border-bottom: 1px solid #5ec7bc;
+	border-bottom: 1px solid #badfe1;
 }
 
 .navbar-inverse .navbar-brand {
@@ -170,7 +177,7 @@ h5, .h5 {
 }
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
-	border-bottom: 3px solid #5ec7bc;
+	border-bottom: 3px solid #badfe1;
     color: #292929;
 }
 
