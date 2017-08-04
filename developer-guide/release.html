@@ -250,189 +250,93 @@
     <div class="col-lg-12">
       <p>This table lists all the steps to follow to release a new <span class="caps">UML</span> Designer version.</p>
 <h2>Prepare/validate nightly</h2>
-<table>
-	<tr>
-		<td>Action                                                                    </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release0">Release 0</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release1">Release 1</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release2">Release 2</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release3">Release 3</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release4">Release 4</a> </td>
-		<td> <br />
-|<a href="../developer-guide/release.html#release6">Release 6</a> </td>
-		<td>  <br />
-|<a href="../developer-guide/release.html#release7">Release 7</a> </td>
-		<td> <br />
-|<a href="../developer-guide/release.html#release8">Release 8</a> </td>
-</table>
-<h1>Deploy on umldesigner.org</h1>
-<table>
-	<tr>
-		<td>Action                                                                      </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release9">Release 9</a>   </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release10">Release 10</a> </td>
-		<td> <br />
-|<a href="../developer-guide/release.html#release11">Release 11</a> </td>
-		<td>  <br />
-|<a href="../developer-guide/release.html#release12">Release 12</a> </td>
-		<td> <br />
-|<a href="../developer-guide/release.html#release13">Release 13</a> </td>
-		<td> <br />
-|<a href="../developer-guide/release.html#release14">Release 14</a> </td>
-</table>
-<h2>Deploy on Eclipse marketplace</h2>
-<table>
-	<tr>
-		<td>Action                                                                      </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release15">Release 15</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release16">Release 16</a> </td>
-</table>
-<h2>Deploy on the obeonetwork</h2>
-<table>
-	<tr>
-		<td>Action                                                                      </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release17">Release 17</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release18">Release 18</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release19">Release 19</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release20">Release 20</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release21">Release 21</a> </td>
-		<td> <br />
-|<a href="../developer-guide/release.html#release22">Release 22</a> </td>
-	</tr>
-</table>
-<h2>Spread the world</h2>
-<table>
-	<tr>
-		<td>Action                                                                      </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release23">Release 23</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release24">Release 24</a> </td>
-		<td> <br />
-|<a href="../developer-guide/release.html#release25">Release 25</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release26">Release 26</a> </td>
-		<td> <br />
-|<a href="../developer-guide/release.html#release27">Release 27</a> </td>
-	</tr>
-	<tr>
-		<td><a href="../developer-guide/release.html#release28">Release 28</a> </td>
-	</tr>
-</table>
-<h2>Actions details</h2>
-<h3 id="release0">Release 0</h3>
+<h3 id="release0">Step 0</h3>
 <p>Update the &#8220;release checklist&#8221; page:&#8230;</p>
-<h3 id="release1">Release 1</h3>
+<h3 id="release1">Step 1</h3>
 <p>Bump plugins version numbers in git: In <span class="caps">UML</span> Designer all the org.obeonetwork.dsl.uml2.xxx plugins are synchronized to the same version.</p>
-<h3 id="release2">Release 2</h3>
+<h3 id="release2">Step 2</h3>
 <p>Bump <span class="caps">UML</span> product version:</p>
 <ul>
 	<li><a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/packaging/org.obeonetwork.dsl.uml2.product/sketcher.product">sketcher.product</a></li>
 	<li><a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/plugins/org.obeonetwork.dsl.uml2.branding/plugin.xml">branding/plugin.xml</a> the <code>aboutText</code>.</li>
 	<li>and for <em>major</em> version update also the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/plugins/org.obeonetwork.dsl.uml2.branding/" title="bmp, png">splash screen</a></li>
 </ul>
-<h3 id="release3">Release 3</h3>
+<h3 id="release3">Step 3</h3>
 <p>Prepare the draft release notes in github: <a href="https://github.com/ObeoNetwork/UML-Designer/releases">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/releases</a></p>
-<h3 id="release4">Release 4</h3>
+<h3 id="release4">Step 4</h3>
 <p>Update umldesigner.org <a href="http://www.umldesigner.org/download/">download</a> page to add the new release.<br />
 To do this, update in the documentation the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/download/index.textile">download page</a>.</p>
-<h3 id="release1">Release 5</h3>
+<h3 id="release1">Step 5</h3>
 <p>Build and deploy the <span class="caps">UML</span> Designer nightly update site and products: The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">build</a> is automatically launched when a commit is pushed on the <a href="https://github.com/ObeoNetwork/UML-Designer">github repository</a>.<br />
 The nightly build results are available on S3: <a href="http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.x86_64.zip">http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.&#215;86_64.zip</a><br />
 For more details about the build, have a look to the <a href="../developer-guide/build.html">build section</a> of the developer guide.</p>
-<h3 id="release6">Release 6</h3>
+<h3 id="release6">Step 6</h3>
 <p>Validate the unit tests: Check the results of the unit test in the nightly build: <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/builds">https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer/builds</a>.</p>
-<h3 id="release7">Release 7</h3>
+<h3 id="release7">Step 7</h3>
 <p>Validate the product: Relaunch the <a href="https://travis-ci.org/ObeoNetwork/UML-Designer-UI-Tests">UI tests build</a> for the branch which must be validated. A <em>re-launch</em> button is available on the build/job page. The tests results are available on S3: https://s3-eu-west-1.amazonaws.com/umldesigner/nightly/${BRANCH_NAME}/test-results/${JOB_NUMBER}/rcpttTests.html:https://s3-eu-west-1.amazonaws.com/umldesigner/nightly/master/test-results/28.13/rcpttTests.html</p>
-<h3 id="release8">Release 8</h3>
+<h3 id="release8">Step 8</h3>
 <p>Test install from jee (using nightly build update-site) : Download an Eclipse <span class="caps">JEE</span> and try to install the nightly build update-site.</p>
-<h3 id="release9">Release 9</h3>
+<h2>Deploy on umldesigner.org</h2>
+<h3 id="release9">Step 9</h3>
 <p>Tag <span class="caps">UML</span> Designer version in git : <br />
 <code>git tag x.x.x</code></p>
-<h3 id="release10">Release 10</h3>
+<h3 id="release10">Step 10</h3>
 <p><a href="https://github.com/ObeoNetwork/UML-Designer/releases">Release</a> the version in github.<br />
 Build and deploy the <span class="caps">UML</span> Designer released update site and products: The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">build</a> is automatically launched when a tag is pushed on the <a href="https://github.com/ObeoNetwork/UML-Designer">github repository</a>.<br />
 <code>git push origin master --tags</code></p>
 <p>The build results are available on S3: http://umldesigner.s3.amazonaws.com/x.&#215;.x/<br />
 For more details about the build, have a look to the <a href="../developer-guide/build.html">build section</a> of the developer guide.</p>
-<h3 id="release11">Release 11</h3>
+<h3 id="release11">Step 11</h3>
 <p>Test check for updates from previous version. From a previous installed version of the <span class="caps">UML</span> Designer product, try to use check for updates to update to the new released version.</p>
-<h3 id="release12">Release 12</h3>
+<h3 id="release12">Step 12</h3>
 <p>Close all the related <a href="https://github.com/ObeoNetwork/UML-Designer/issues">issues</a> in github.</p>
-<h3 id="release13">Release 13</h3>
+<h3 id="release13">Step 13</h3>
 <p>Close all the related <a href="https://github.com/ObeoNetwork/UML-Designer/milestones">milestones</a> in github.</p>
-<h3 id="release14">Release 14</h3>
+<h3 id="release14">Step 14</h3>
 <p>Test install from umldesigner.org <a href="http://www.umldesigner.org/download/">download</a> page :</p>
 <ul>
 	<li>Install product</li>
 	<li>Install update-site</li>
 </ul>
-<h3 id="release22">Release 15</h3>
+<h2>Deploy on Eclipse marketplace</h2>
+<h3 id="release22">Step 15</h3>
 <p><a href="http://www.umldesigner.org/download/">Download</a> the update site zip and test to install it locally.</p>
-<h3 id="release15">Release 16</h3>
+<h3 id="release15">Step 16</h3>
 <p>Update <span class="caps">UML</span> Designer description on the <a href="http://marketplace.eclipse.org">Eclipse marketplace</a></p>
-<h3 id="release16">Release 17</h3>
+<h2>Deploy on the obeonetwork</h2>
+<h3 id="release16">Step 17</h3>
 <p>Test install from <a href="https://marketplace.eclipse.org/content/uml-designer">Eclipse marketplace</a></p>
-<h3 id="release17">Release 18</h3>
+<h3 id="release17">Step 18</h3>
 <p>Modify aggregation network :<br />
 <code>git repo https://github.com/ObeoNetwork/Aggregation sirius_x_x branch</code></p>
-<h3 id="release18">Release 19</h3>
+<h3 id="release18">Step 19</h3>
 <p>Launch aggregation build : https://travis-ci.org/ObeoNetwork/Aggregation<br />
 Just push the updates on the repo. The build is launched automatically.</p>
-<h3 id="release19">Release 20</h3>
+<h3 id="release19">Step 20</h3>
 <p>Synchronize the <a href="http://marketplace.obeonetwork.com/admin">obeonetwork marketplace</a></p>
-<h3 id="release20">Release 21</h3>
+<h3 id="release20">Step 21</h3>
 <p>Synchronize the <a href="http://marketplace.obeonetwork.com/admin">obeonetwork jira</a></p>
-<h3 id="release21">Release 22</h3>
+<h3 id="release21">Step 22</h3>
 <p>Test install from <a href="http://marketplace.obeonetwork.com/module/uml/download">Obeo marketplace</a> using the update site.</p>
-<h3 id="release23">Release 23</h3>
+<h2>Spread the world</h2>
+<h3 id="release23">Step 23</h3>
 <p>Send mail to Obeo.</p>
-<h3 id="release24">Release 24</h3>
+<h3 id="release24">Step 24</h3>
 <p>Post a blog post.</p>
-<h3 id="release25">Release 25</h3>
+<h3 id="release25">Step 25</h3>
 <p>Post message on <a href="https://plus.google.com">G+</a> #<span class="caps">UML</span>-Designer.</p>
-<h3 id="release26">Release 26</h3>
+<h3 id="release26">Step 26</h3>
 <p>Post message on <a href="https://twitter.com/">twitter</a> #<span class="caps">UML</span>-Designer.</p>
-<h3 id="release27">Release 27</h3>
+<h3 id="release27">Step 27</h3>
 <p>Create <a href="https://www.google.com/analytics">google analytics</a> annotation for the web site and the usage plugin.</p>
-<h3 id="release28">Release 28</h3>
+<h3 id="release28">Step 28</h3>
 <p>Update wikipedia pages:</p>
 <ul>
 	<li><a href="http://fr.wikipedia.org/w/index.php?title=Comparaison_des_logiciels_d%27UML&amp;veaction=edit&amp;vesection=1">Comparaison des logiciels d&#8217;UML</a>,</li>
 	<li><a href="https://en.wikipedia.org/wiki/List_of_Unified_Modeling_Language_tools">List of Unified Modeling Language tools</a>,</li>
 	<li><a href="https://en.wikipedia.org/wiki/UML_Designer"><span class="caps">UML</span> Designer</a></li>
 </ul>
+<h3 id="release29">Step 29</h3>
 <p>Answer to the <a href="https://marketplace.eclipse.org/content/uml-designer">Eclipse marketplace</a> questions.</p>
     </div>
   </div>
