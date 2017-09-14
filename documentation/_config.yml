@@ -1,5 +1,4 @@
 name: UML Designer Documentation
-markdown: redcarpet
 highlighter: pygments
 plugins: [jekyll-paginate, jekyll-gist]
 exclude: ['vagrant.sh', 'Vagrantfile', '.vagrant']

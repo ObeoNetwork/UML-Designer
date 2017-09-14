@@ -5,19 +5,23 @@ subtitle: Reference Documentation
 relativePath: ..
 ---
 
-h2(#Package_Containment_Diagram). Refactor an application
+Refactor an application
+-----------------------
 
 Frequently, when John or Bob are working on an application, they change their mind and need to re-structure the application.
 The idea is to get a representation that represents the structure map of the application. The UML standard does not provide such kind of representation. The package hierarchy shows all the packages as a different element which could became really unreadable on big system.
 This representation is based on the UML standard and so the semantic elements are still saved as UML elements in the model. We just provide another kind of view for the application structure.
-The *package containment* representation is defined in the UML Extensions viewpoint as it is a non standard representation.
+The **package containment** representation is defined in the UML Extensions viewpoint as it is a non standard representation.
 This diagram represents the packages and the components as containers and each container lists all its direct sub elements.
-!{{ page.relativePath }}/images/PackageContainmentDiagram.png!
-			
+
+![]({{page.relativePath}}/images/PackageContainmentDiagram.png)
+
 It is also possible to see the hierarchy links between all the packages.
-!{{ page.relativePath }}/images/PackageContainmentDiagramWithLinks.png!
-			
+
+![]({{page.relativePath}}/images/PackageContainmentDiagramWithLinks.png)
+
 Thanks to this representation John and Bob can get a quick overview of the current application structure.
 Moreover a move tool, allows them to drag and drop sub elements from one container to another in one click.
 If some structure containers are missing, the user can define a new one with the creation tools Package and Component available in the palette and the diagram's tooltip.
-!{{ page.relativePath }}/images/PackageContainmentDiagramPalette.png!
+
+![]({{page.relativePath}}/images/PackageContainmentDiagramPalette.png)

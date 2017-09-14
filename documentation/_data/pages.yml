@@ -22,37 +22,37 @@
   pages:
   - title: Dashboard
     file: ref-doc/define-the-system
-    anchor: Dashboard
+    anchor: dashboard
   - title: Activity Diagram
     file: ref-doc/define-the-application
-    anchor: Activity_Diagram
+    anchor: activity-diagram
   - title: Class Diagram
     file: ref-doc/implement-the-application
-    anchor: Class_Diagram
+    anchor: class-diagram
   - title: Component Diagram
     file: ref-doc/define-the-application
-    anchor: Component_Diagram
+    anchor: component-diagram
   - title: Composite Structure Diagram
     file: ref-doc/define-the-application
-    anchor: Composite_Structure_Diagram
+    anchor: composite-structure-diagram
   - title: Deployment Diagram
     file: ref-doc/define-the-application
-    anchor: Deployment_Diagram
+    anchor: deployment-diagram
   - title: Package Diagram
     file: ref-doc/define-the-application
-    anchor: Package_Diagram
+    anchor: package-diagram
   - title: Profile Diagram
     file: ref-doc/define-the-application
-    anchor: Profile_Diagram
+    anchor: profile-diagram
   - title: Sequence Diagram
     file: ref-doc/implement-the-application
-    anchor: Sequence_Diagram
+    anchor: sequence-diagram
   - title: State Machine Diagram
     file: ref-doc/implement-the-application
-    anchor: State_Machine_Diagram
+    anchor: state-machine-diagram
   - title: Use Case Diagram
     file: ref-doc/define-the-application
-    anchor: Use_Case_Diagram
+    anchor: use-case-diagram
 
 - category: Developer Guide
   pages:
