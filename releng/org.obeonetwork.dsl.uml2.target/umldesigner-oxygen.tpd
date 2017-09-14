@@ -62,7 +62,7 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/n
 
 // Sirius
 
-location "http://download.eclipse.org/sirius/updates/releases/5.0.1/oxygen" {
+location "http://download.eclipse.org/sirius/updates/releases/5.0.2/oxygen" {
 	org.eclipse.sirius.runtime.feature.group lazy
 	org.eclipse.sirius.runtime.acceleo.feature.group lazy
 	org.eclipse.sirius.runtime.aql.feature.group lazy
