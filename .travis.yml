@@ -11,7 +11,12 @@ env:
 
 sudo: required
 before_script:
-- gem install jekyll --version '= 1.5.1'
+- sudo apt-get install ruby-dev
+- gem install jekyll
+- gem install jekyll-paginate
+- gem install jekyll-gist
+- gem install pygments.rb
+- gem install redcarpet
 - gem install RedCloth
 
 script:
