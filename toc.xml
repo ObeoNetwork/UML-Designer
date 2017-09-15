@@ -16,27 +16,27 @@
     </topic>
  </topic>
  <topic label="User Guide">
-    <topic href="html/ref-doc/define-the-system.html#Dashboard" label="Dashboard">
+    <topic href="html/ref-doc/define-the-system.html#dashboard" label="Dashboard">
     </topic>
-    <topic href="html/ref-doc/define-the-application.html#Activity_Diagram" label="Activity diagram">
+    <topic href="html/ref-doc/define-the-application.html#activity-diagram" label="Activity diagram">
     </topic>
-    <topic href="html/ref-doc/implement-the-application.html#Class_Diagram" label="Class diagram">
+    <topic href="html/ref-doc/implement-the-application.html#class-diagram" label="Class diagram">
     </topic>
-    <topic href="html/ref-doc/define-the-application.html#Component_Diagram" label="Component diagram">
+    <topic href="html/ref-doc/define-the-application.html#component-diagram" label="Component diagram">
     </topic>
-    <topic href="html/ref-doc/define-the-application.html#Composite_Structure_Diagram" label="Composite Structure diagram">
+    <topic href="html/ref-doc/define-the-application.html#composite-structure-diagram" label="Composite Structure diagram">
     </topic>
-    <topic href="html/ref-doc/define-the-application.html#Deployment_Diagram" label="Deployment diagram">
+    <topic href="html/ref-doc/define-the-application.html#deployment-diagram" label="Deployment diagram">
     </topic>
-    <topic href="html/ref-doc/define-the-application.html#Package_Diagram" label="Package diagram">
+    <topic href="html/ref-doc/define-the-application.html#package-diagram" label="Package diagram">
     </topic>
-    <topic href="html/ref-doc/define-the-application.html#Profile_Diagram" label="Profile diagram">
+    <topic href="html/ref-doc/define-the-application.html#profile-diagram" label="Profile diagram">
     </topic>
-    <topic href="html/ref-doc/implement-the-application.html#Sequence_Diagram" label="Sequence diagram">
+    <topic href="html/ref-doc/implement-the-application.html#sequence-diagram" label="Sequence diagram">
     </topic>
-    <topic href="html/ref-doc/implement-the-application.html#State_Machine_Diagram" label="State Machine diagram">
+    <topic href="html/ref-doc/implement-the-application.html#state-machine-diagram" label="State Machine diagram">
     </topic>
-    <topic href="html/ref-doc/define-the-application.html#Use_Case_Diagram" label="Use Case diagram">
+    <topic href="html/ref-doc/define-the-application.html#use-case-diagram" label="Use Case diagram">
     </topic>
  </topic>
  <topic label="Developer Guide">

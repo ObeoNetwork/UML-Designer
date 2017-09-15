@@ -90,47 +90,47 @@
           <ul class="dropdown-menu">
             
             	
-            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	<li><a href="../ref-doc/define-the-system.html#dashboard">Dashboard</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#activity-diagram">Activity Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Class_Diagram">Class Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#class-diagram">Class Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Component_Diagram">Component Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#component-diagram">Component Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Composite_Structure_Diagram">Composite Structure Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#composite-structure-diagram">Composite Structure Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Deployment_Diagram">Deployment Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#deployment-diagram">Deployment Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Package_Diagram">Package Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#package-diagram">Package Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Profile_Diagram">Profile Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#profile-diagram">Profile Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Sequence_Diagram">Sequence Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#sequence-diagram">Sequence Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#State_Machine_Diagram">State Machine Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#state-machine-diagram">State Machine Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Use_Case_Diagram">Use Case Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#use-case-diagram">Use Case Diagram</a></li>
             	
             
           </ul>
@@ -248,42 +248,70 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <p>A <span class="caps">UML</span> to Java generator module and a Java to <span class="caps">UML</span> reverse module are available along with <span class="caps">UML</span> Designer.<br />
-You can install them via the <a href="../ref-doc/discovery.html"><span class="caps">UML</span> Discovery catalog</a>, or via the &quot;UML Designer update site &quot;:.. /download/index.html.</p>
-<h2 class="UML_to_Java"><span class="caps">UML</span> to Java</h2>
-<h3>Generate code from any kind of <span class="caps">UML</span> model&#8230;</h3>
-<p>The <span class="caps">UML</span> to Java code generator let you generate code from any <span class="caps">UML</span> model compatible with the Eclipse UML2 project. You can build your model with the tool of your choice like the regular tree-based <span class="caps">UML</span> editor or even <span class="caps">UML</span> Designer.</p>
-<p><img src="../images/umlgen/designer.png" alt="" /> <img src="../images/umlgen/tree.png" alt="" /> <img src="../images/umlgen/class.png" alt="" /></p>
-<h3>With a dedicated launch configuration</h3>
-<p>Forget the properties files of a basic Acceleo generator, this new version of the <span class="caps">UML</span> to Java generator comes with a dedicated launch configuration where you can select all the details of the generation. This launch configuration can also be saved on your disk and shared with your team, giving you that way, the ability to reproduce easily a generation with specific settings. In this new launch configuration, you can choose the types to ignore, the Java runtime environment to associate with the generated project and much more.</p>
+      <p>A UML to Java generator module and a Java to UML reverse module are available along with UML Designer.
+You can install them via the <a href="../ref-doc/discovery.html">UML Discovery catalog</a>, or via the <a href=".. /download/index.html">UML Designer update site</a>.</p>
+
+<h2 id="uml-to-java">UML to Java</h2>
+
+<h3 id="generate-code-from-any-kind-of-uml-model">Generate code from any kind of UML model…</h3>
+
+<p>The UML to Java code generator let you generate code from any UML model compatible with the Eclipse UML2 project. You can build your model with the tool of your choice like the regular tree-based UML editor or even UML Designer.</p>
+
+<p><img src="../images/umlgen/designer.png" alt="" /></p>
+
+<p><img src="../images/umlgen/tree.png" alt="" /></p>
+
+<p><img src="../images/umlgen/class.png" alt="" /></p>
+
+<h3 id="with-a-dedicated-launch-configuration">With a dedicated launch configuration</h3>
+
+<p>Forget the properties files of a basic Acceleo generator, this new version of the UML to Java generator comes with a dedicated launch configuration where you can select all the details of the generation. This launch configuration can also be saved on your disk and shared with your team, giving you that way, the ability to reproduce easily a generation with specific settings. In this new launch configuration, you can choose the types to ignore, the Java runtime environment to associate with the generated project and much more.</p>
+
 <p><img src="../images/umlgen/launch.png" alt="" /></p>
-<h3>Support for the component diagrams</h3>
-<p>The generator now consider components as first class citizens. The generation will not use a regular folder as a target but instead, it will generate a new Java project for each components in your model. You can even opt-in to have Eclipse plug-ins and features generated to represent your component architecture. With this option, you will have an internationalized <span class="caps">MANIFEST</span>.MF files with exported and imported packages along with features.xml files grouping your plug-ins just like in your model. If your model does not have any component, you can configure in the launch configuration the name, classpath and Java runtime environment of the default Java project to create for your code.</p>
+
+<h3 id="support-for-the-component-diagrams">Support for the component diagrams</h3>
+
+<p>The generator now consider components as first class citizens. The generation will not use a regular folder as a target but instead, it will generate a new Java project for each components in your model. You can even opt-in to have Eclipse plug-ins and features generated to represent your component architecture. With this option, you will have an internationalized MANIFEST.MF files with exported and imported packages along with features.xml files grouping your plug-ins just like in your model. If your model does not have any component, you can configure in the launch configuration the name, classpath and Java runtime environment of the default Java project to create for your code.</p>
+
 <p><img src="../images/umlgen/manifest.png" alt="" /></p>
-<h2 class="Java_to_UML">Java to <span class="caps">UML</span></h2>
-<p>The Package Explorer view shows all the projects in your workspace and the files they contain. Right click on your project (or package) and select the &#8220;Reverse Java code&#8221; menu entry to generate the <span class="caps">UML</span> model.</p>
+
+<h2 id="java-to-uml">Java to UML</h2>
+
+<p>The Package Explorer view shows all the projects in your workspace and the files they contain. Right click on your project (or package) and select the “Reverse Java code” menu entry to generate the UML model.</p>
+
 <p><img src="../images/umlgen/reverse_menu_entry.png" alt="" /></p>
+
 <p>In either, the following window will appear:</p>
+
 <p><img src="../images/umlgen/reverse_dialog.png" alt="" /></p>
+
 <p>Here are the different editable parameters:</p>
+
 <ul>
-	<li>Container : where the generated files will be created</li>
-	<li>File name : Name of the generated file</li>
-	<li>Limit visibility : the minimum visibility (private, protected, etc…) of the elements to reverse</li>
-	<li>Logging Level : verbosity settings for the logging mechanism</li>
-	<li>Model Imports : select <span class="caps">UML</span> models containing profile definitions that are used in your code to avoid re-generating them</li>
-	<li>Activity Generation :
-	<ul>
-		<li>None : The tool generates no activity diagrams</li>
-		<li>Annotated only : The tool will generate only the annotated diagrams</li>
-		<li>All : The tool will generate all diagrams</li>
-	</ul></li>
+  <li>Container : where the generated files will be created</li>
+  <li>File name : Name of the generated file</li>
+  <li>Limit visibility : the minimum visibility (private, protected, etc…) of the elements to reverse</li>
+  <li>Logging Level : verbosity settings for the logging mechanism</li>
+  <li>Model Imports : select UML models containing profile definitions that are used in your code to avoid re-generating them</li>
+  <li>Activity Generation :
+    <ul>
+      <li>None : The tool generates no activity diagrams</li>
+      <li>Annotated only : The tool will generate only the annotated diagrams</li>
+      <li>All : The tool will generate all diagrams</li>
+    </ul>
+  </li>
 </ul>
+
 <p>When you are done, click Finish to create the reverse file(s).</p>
-<p>If you choose to generate only the <span class="caps">UML</span> file, two files will be generated in the package or project you selected: the log file and the model uml</p>
+
+<p>If you choose to generate only the UML file, two files will be generated in the package or project you selected: the log file and the model uml</p>
+
 <p><img src="../images/umlgen/reverse_package_explorer.png" alt="" /></p>
+
 <p>Double click on the “.uml” to open it and you will obtain a similar window to the following:</p>
+
 <p><img src="../images/umlgen/reverse_uml_editor.png" alt="" /></p>
+
     </div>
   </div>
 </div><!-- /.container -->

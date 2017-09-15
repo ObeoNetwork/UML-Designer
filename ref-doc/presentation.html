@@ -90,47 +90,47 @@
           <ul class="dropdown-menu">
             
             	
-            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	<li><a href="../ref-doc/define-the-system.html#dashboard">Dashboard</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#activity-diagram">Activity Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Class_Diagram">Class Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#class-diagram">Class Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Component_Diagram">Component Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#component-diagram">Component Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Composite_Structure_Diagram">Composite Structure Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#composite-structure-diagram">Composite Structure Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Deployment_Diagram">Deployment Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#deployment-diagram">Deployment Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Package_Diagram">Package Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#package-diagram">Package Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Profile_Diagram">Profile Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#profile-diagram">Profile Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Sequence_Diagram">Sequence Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#sequence-diagram">Sequence Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#State_Machine_Diagram">State Machine Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#state-machine-diagram">State Machine Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Use_Case_Diagram">Use Case Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#use-case-diagram">Use Case Diagram</a></li>
             	
             
           </ul>
@@ -248,43 +248,75 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <p>These reference documentation describes in detail all the features available in <span class="caps">UML</span> Designer. We will follow the different kind of users of <span class="caps">UML</span> Designer and see which features are available for them to develop systems.</p>
-<h2>Context</h2>
-<p>Today, it exists many proprietary <span class="caps">UML</span> modelers available on the market. Some of them are supporting the SysML standard. A large part of these tools are not completely compliant with the <span class="caps">UML</span> standard. None of them are providing viewpoint extensions. The purpose of <span class="caps">UML</span> Designer is to provide an industrial <span class="caps">UML</span>/SysML viewpoint based designers compliant with the standards.</p>
-<p>The <span class="caps">UML</span> Designer product is composed by one designer : a <span class="caps">UML</span> Designer. We provide a second designer to work with the SysML standard : SysML Designer.</p>
-<h3><span class="caps">UML</span> Designer</h3>
-<p>The <span class="caps">UML</span> Designer is a graphical designer compatible with the <a href="http://www.omg.org/spec/UML/2.5/Beta2">UML2 specification</a> and based on <a href="http://eclipse.org/sirius">Sirius</a>.<br />
-<span class="caps">UML</span> 2.5 has 23 types of diagrams divided into two categories:<br />
-<a href="http://www.uml-diagrams.org/uml-25-diagrams.html"><img src="../images/uml-25-diagrams.png" alt="" /></a></p>
-<p>It is released as Eclipse plugins under the <span class="caps">EPL</span> License and a standalone product is also built.</p>
-<h3 id="SysML_Designer">SysML Designer</h3>
-<p>The SysML Designer is a graphical designer compatible with the <a href="http://www.omg.org/spec/SysML/1.3/">SysML specification</a> and based on <a href="http://umldesigner.org"><span class="caps">UML</span> Designer</a> and <a href="http://eclipse.org/sirius">Sirius</a>.<br />
-SysML has 8 types of diagrams divided into three categories:<br />
-<img src="../images/SysML-Diagram-Taxonomy.png" alt="" /></p>
-<p>It is released as Eclipse plugins under the <span class="caps">EPL</span> License and is part of the <a href="../ref-doc/discovery.html"><span class="caps">UML</span> Discovery catalog</a>, have a look to the discovery feature to learn how to install SysML Designer in the <span class="caps">UML</span> Designer product.</p>
-<h2>System purpose</h2>
-<p>Presently, the <span class="caps">UML</span>/SysML Designer does not cover all the diagrams described in the <span class="caps">UML</span>/SysML Standard. It is mainly focused on the diagrams  which are used the most (Class diagrams, Use Case diagram&#8230;) and try to provide a straightforward user experience.<br />
-As these designers are based on Sirius, they offer the possibility to be extended through the viewpoint mechanism. Through this, the intent is also to provide an easy way to make the transition from <span class="caps">UML</span> to domain specific modeling. This way users can continue to manipulate legacy <span class="caps">UML</span> models and start working with <span class="caps">DSL</span>. Users can even re-use the provided representations and work in a total transparency on both <span class="caps">UML</span> and <span class="caps">DSL</span> models at the same time.</p>
-<h2>Actor and Roles</h2>
-<p>This section describes the typical users of <span class="caps">UML</span> and SysML Designers.</p>
+      <p>These reference documentation describes in detail all the features available in UML Designer. We will follow the different kind of users of UML Designer and see which features are available for them to develop systems.</p>
+
+<h2 id="context">Context</h2>
+
+<p>Today, it exists many proprietary UML modelers available on the market. Some of them are supporting the SysML standard. A large part of these tools are not completely compliant with the UML standard. None of them are providing viewpoint extensions. The purpose of UML Designer is to provide an industrial UML/SysML viewpoint based designers compliant with the standards.</p>
+
+<p>The UML Designer product is composed by one designer : a UML Designer. We provide a second designer to work with the SysML standard : SysML Designer.</p>
+
+<h3 id="uml-designer">UML Designer</h3>
+
+<p>The UML Designer is a graphical designer compatible with the <a href="http://www.omg.org/spec/UML/2.5/Beta2">UML2 specification</a> and based on <a href="http://eclipse.org/sirius">Sirius</a>.
+UML 2.5 has 23 types of diagrams divided into two categories:</p>
+
+<p><img src="../images/uml-25-diagrams.png" alt="" />](http://www.uml-diagrams.org/uml-25-diagrams.html)</p>
+
+<p>It is released as Eclipse plugins under the EPL License and a standalone product is also built.</p>
+
+<h3 id="sysml-designer">SysML Designer</h3>
+
+<p>The SysML Designer is a graphical designer compatible with the <a href="http://www.omg.org/spec/SysML/1.3/">SysML specification</a> and based on <a href="http://umldesigner.org">UML Designer</a> and <a href="http://eclipse.org/sirius">Sirius</a>.
+SysML has 8 types of diagrams divided into three categories:</p>
+
+<p><img src="../images/SysML-Diagram-Taxonomy.png" alt="" /></p>
+
+<p>It is released as Eclipse plugins under the EPL License and is part of the <a href="../ref-doc/discovery.html">UML Discovery catalog</a>, have a look to the discovery feature to learn how to install SysML Designer in the UML Designer product.</p>
+
+<h2 id="system-purpose">System purpose</h2>
+
+<p>Presently, the UML/SysML Designer does not cover all the diagrams described in the UML/SysML Standard. It is mainly focused on the diagrams which are used the most (Class diagrams, Use Case diagram…) and try to provide a straightforward user experience.
+As these designers are based on Sirius, they offer the possibility to be extended through the viewpoint mechanism. Through this, the intent is also to provide an easy way to make the transition from UML to domain specific modeling. This way users can continue to manipulate legacy UML models and start working with DSL. Users can even re-use the provided representations and work in a total transparency on both UML and DSL models at the same time.</p>
+
+<h2 id="actor-and-roles">Actor and Roles</h2>
+
+<p>This section describes the typical users of UML and SysML Designers.</p>
+
 <ul>
-	<li><strong>John</strong>: 40 years old, he is an business analyst working in the french national railway company. He supports the development teams by giving them insights about the business process related to a given project. He produces functional specifications which are the basis of the development phase. His daily work consists in writing requirements and software specifications to detail the structure of new applications. He knows the <span class="caps">UML</span> standard and has already tried many different <span class="caps">UML</span> modelers (open source and proprietary). He also describes the hardware and software platforms on which the application is built and deployed. Finally, he gives the justification of how the architecture satisfies the expectations. He stays all the time in contact with the software developers team to be able to review the software architecture according to implementation constraints.</li>
+  <li><strong>John</strong>: 40 years old, he is an business analyst working in the french national railway company. He supports the development teams by giving them insights about the business process related to a given project. He produces functional specifications which are the basis of the development phase. His daily work consists in writing requirements and software specifications to detail the structure of new applications. He knows the UML standard and has already tried many different UML modelers (open source and proprietary). He also describes the hardware and software platforms on which the application is built and deployed. Finally, he gives the justification of how the architecture satisfies the expectations. He stays all the time in contact with the software developers team to be able to review the software architecture according to implementation constraints.</li>
 </ul>
+
+<!-- -->
+
 <ul>
-	<li><strong>Bob</strong>: 30 years old, works as a software architect at SSIICorp. He works for different customers on missions lasting a few months each. His work involves drafting and defining the software architecture, producing the corresponding documents for the customer and making sure the team is on board and applying the principles. He uses <span class="caps">UML</span> standard to exchange with its colleagues about the structure of the software they are developing. He uses the <span class="caps">UML</span> model also to generate the application code and sometime for retro engineering existing projects.</li>
+  <li><strong>Bob</strong>: 30 years old, works as a software architect at SSIICorp. He works for different customers on missions lasting a few months each. His work involves drafting and defining the software architecture, producing the corresponding documents for the customer and making sure the team is on board and applying the principles. He uses UML standard to exchange with its colleagues about the structure of the software they are developing. He uses the UML model also to generate the application code and sometime for retro engineering existing projects.</li>
 </ul>
+
+<!-- -->
+
 <ul>
-	<li><strong>Alice</strong>: 42 years old, works as software quality engineer at SSIICorp in collaboration with Bob. She is used to read <span class="caps">UML</span> diagrams to get overview of the features provided by the projects she is monitoring. She is also checking that these projects are well documented using the <span class="caps">UML</span> standard and she is checking the traceability between the requirements, the software architecture, the code and the tests. She uses <span class="caps">UML</span> modeler for consultation only.</li>
+  <li><strong>Alice</strong>: 42 years old, works as software quality engineer at SSIICorp in collaboration with Bob. She is used to read UML diagrams to get overview of the features provided by the projects she is monitoring. She is also checking that these projects are well documented using the UML standard and she is checking the traceability between the requirements, the software architecture, the code and the tests. She uses UML modeler for consultation only.</li>
 </ul>
+
+<!-- -->
+
 <ul>
-	<li><strong>Kevin</strong>: 23 years old, works in a big company as software developer and does not care about <span class="caps">UML</span>, he learned the standard at school and found that it was boring. He has to use an <span class="caps">UML</span> modeler to write the documentation of the software he is developing. He does not choose to use <span class="caps">UML</span>, it was decided by its boss. He has to search a <span class="caps">UML</span> designer which is free. At the end it only needs beautiful images to put in its software documentation.</li>
+  <li><strong>Kevin</strong>: 23 years old, works in a big company as software developer and does not care about UML, he learned the standard at school and found that it was boring. He has to use an UML modeler to write the documentation of the software he is developing. He does not choose to use UML, it was decided by its boss. He has to search a UML designer which is free. At the end it only needs beautiful images to put in its software documentation.</li>
 </ul>
+
+<!-- -->
+
 <ul>
-	<li><strong>Teddy</strong>: 20 years old, is a student in computer science. He has many projects to tackle and barely some time to do them, yet he has to deliver both the software and comprehensive reports to his teachers. He doesn&#8217;t know much about IDEs or tools except those used during the courses.</li>
+  <li><strong>Teddy</strong>: 20 years old, is a student in computer science. He has many projects to tackle and barely some time to do them, yet he has to deliver both the software and comprehensive reports to his teachers. He doesn’t know much about IDEs or tools except those used during the courses.</li>
 </ul>
+
+<!-- -->
+
 <ul>
-	<li><strong>Alfred</strong>: 49 years old, works as system engineer in a big company. His daily work consists in designing heterogeneous systems. He knows the SysML standard and uses it every day in its specification. The systems he specifies are a mix of mechanics, electronics and softwares. He does not know the <span class="caps">UML</span> standard, just that SysML was developed based on it. He says that SysML is a good language to exchange with his colleagues but he thinks that the notation is too complicated. He tries to develop systems with some different SysML modelers by the past but usually he prefers to use a simple drawing tool with a SysML profile.</li>
+  <li><strong>Alfred</strong>: 49 years old, works as system engineer in a big company. His daily work consists in designing heterogeneous systems. He knows the SysML standard and uses it every day in its specification. The systems he specifies are a mix of mechanics, electronics and softwares. He does not know the UML standard, just that SysML was developed based on it. He says that SysML is a good language to exchange with his colleagues but he thinks that the notation is too complicated. He tries to develop systems with some different SysML modelers by the past but usually he prefers to use a simple drawing tool with a SysML profile.</li>
 </ul>
+
     </div>
   </div>
 </div><!-- /.container -->

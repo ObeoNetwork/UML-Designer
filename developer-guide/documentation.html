@@ -90,47 +90,47 @@
           <ul class="dropdown-menu">
             
             	
-            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	<li><a href="../ref-doc/define-the-system.html#dashboard">Dashboard</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#activity-diagram">Activity Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Class_Diagram">Class Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#class-diagram">Class Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Component_Diagram">Component Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#component-diagram">Component Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Composite_Structure_Diagram">Composite Structure Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#composite-structure-diagram">Composite Structure Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Deployment_Diagram">Deployment Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#deployment-diagram">Deployment Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Package_Diagram">Package Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#package-diagram">Package Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Profile_Diagram">Profile Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#profile-diagram">Profile Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Sequence_Diagram">Sequence Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#sequence-diagram">Sequence Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#State_Machine_Diagram">State Machine Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#state-machine-diagram">State Machine Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Use_Case_Diagram">Use Case Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#use-case-diagram">Use Case Diagram</a></li>
             	
             
           </ul>
@@ -248,128 +248,180 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <p>The <span class="caps">UML</span> Designer&#8217;s <strong>web site</strong> is hosted on Github: <br />
+      <p>The UML Designer’s <strong>web site</strong> is hosted on Github:
 <a href="http://www.umldesigner.org/">http://www.umldesigner.org/</a></p>
-<p>The documentation <strong>source</strong> code is available on :<br />
-<a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation</a></p>
-<p>The documentation <strong>build</strong> is on Travis :<br />
-<a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer/</a></p>
-<h2>Environment</h2>
+
+<p>The documentation <strong>source</strong> code is available on :
+<a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation">https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation</a></p>
+
+<p>The documentation <strong>build</strong> is on Travis :
+<a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">https://travis-ci.org/ObeoNetwork/UML-Designer/</a></p>
+
+<h2 id="environment">Environment</h2>
+
 <p>The documentation is built with <a href="http://jekyllrb.com/">Jekyll</a>.</p>
-<p>All the documentation is written with the <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">textile</a> syntax, in order that it is really easy to contribute.</p>
-<h2>Structure of the documentation</h2>
-<p>In a Jekyll-powered website, there are two basic kinds of resources, pages and posts. Both of those resources can be made visible on the navigation bar by modifying the file in <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/_data/pages.yml">_data/pages.yml</a>. If you want to create a top level link, add a &#8220;page&#8221; with the path of its &#8220;file&#8221; (without the extension). If you want to add a top level menu with submenus, add a &#8220;category&#8221; and child &#8220;pages&#8221; with their &#8220;title&#8221; and &#8220;file&#8221;. Then you just have to create your file in textile.</p>
-<div class="highlight"><pre><code class="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Overview</span>
-  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">overview</span>
 
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Download</span>
-  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">download</span>
+<p>All the documentation is written with the <a href="https://en.wikipedia.org/wiki/Markdown">markdown</a> syntax, in order that it is really easy to contribute.</p>
 
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Tutorials</span>
-  <span class="l-Scalar-Plain">pages</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Getting started</span>
-    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tutorials/tuto-getting-started</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Create project</span>
-    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tutorials/tuto-create-project</span>
-<span class="nn">...</span>
-</code></pre></div><p><code>- title: xxx</code> and  <code>- category: xxx</code> generate a menu in the main web site navbar.</p>
-<p>To create a menu which reference an anchor in an existing page use the syntax :<br />
-<div class="highlight"><pre><code class="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyCategory</span>
-  <span class="l-Scalar-Plain">pages</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyTitle</span>
-    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">path/filename</span>
-    <span class="l-Scalar-Plain">anchor</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyAnchor</span>
-</code></pre></div></p>
+<h2 id="structure-of-the-documentation">Structure of the documentation</h2>
+
+<p>In a Jekyll-powered website, there are two basic kinds of resources, pages and posts. Both of those resources can be made visible on the navigation bar by modifying the file in <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/_data/pages.yml">_data/pages.yml</a>. If you want to create a top level link, add a “page” with the path of its “file” (without the extension). If you want to add a top level menu with submenus, add a “category” and child “pages” with their “title” and “file”. Then you just have to create your file in textile.</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Overview</span>
+  <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">overview</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Download</span>
+  <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">download</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">category</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Tutorials</span>
+  <span class="l l-Scalar l-Scalar-Plain">pages</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Getting started</span>
+    <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tutorials/tuto-getting-started</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create project</span>
+    <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tutorials/tuto-create-project</span>
+<span class="nn">...</span></code></pre></figure>
+
+<p><code>- title: xxx</code> and <code>- category: xxx</code> generate a menu in the main web site navbar.</p>
+
+<p>To create a menu which reference an anchor in an existing page use the syntax :</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">category</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MyCategory</span>
+  <span class="l l-Scalar l-Scalar-Plain">pages</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MyTitle</span>
+    <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">path/filename</span>
+    <span class="l l-Scalar l-Scalar-Plain">anchor</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MyAnchor</span></code></pre></figure>
+
 <p>Have a look the section below to see how to define an anchor in a page.</p>
-<h3>Page</h3>
-<p>When you create a page, you don&#8217;t need to create the whole file manually, you can just reuse existing components automatically. For example, in order to create a very basic page,</p>
+
+<h3 id="page">Page</h3>
+
+<p>When you create a page, you don’t need to create the whole file manually, you can just reuse existing components automatically. For example, in order to create a very basic page,</p>
+
 <ul>
-	<li>Modify the file pages.yml to add the following content: <code>- title: New Page file: newpage</code></li>
-	<li>Use the following piece of code in a file named newpage.textile at the root of the documentation project:<br />
-<div class="highlight"><pre><code class="yaml"><span class="nn">---</span>
-<span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">page</span>
-<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">New Page</span>
-<span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">New Sub Title</span>
-<span class="l-Scalar-Plain">relativePath</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">..</span>
+  <li>Modify the file pages.yml to add the following content: <code>- title: New Page file: newpage</code></li>
+  <li>Use the following piece of code in a file named newpage.textile at the root of the documentation project:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">layout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">page</span>
+<span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">New Page</span>
+<span class="l l-Scalar l-Scalar-Plain">subtitle</span><span class="p p-Indicator">:</span>  <span class="l l-Scalar l-Scalar-Plain">New Sub Title</span>
+<span class="l l-Scalar l-Scalar-Plain">relativePath</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">..</span>
 <span class="nn">---</span>
-<span class="l-Scalar-Plain">Hello World in textile</span>
-</code></pre></div></li>
-</ul>
-<p>This allows to set the different variables. <br />
-All the pages reused the same includes : <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation/_includes</a></p>
+<span class="l l-Scalar l-Scalar-Plain">Hello World in textile</span></code></pre></figure>
+
+<p>This allows to set the different variables.
+All the pages reused the same includes : <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes">https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes</a></p>
+
 <p>The rest of the page, defines the main content.</p>
+
 <p>This textile page will be converted automatically in html. By indicating that you want to reuse the page layout, you will also have a header, a footer, the navigation bar etc. You only have to worry about your content.</p>
-<p>To edit the page content use the <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">textile</a> syntax.</p>
+
+<p>To edit the page content use the <a href="https://en.wikipedia.org/wiki/Markdown">markdown</a> syntax.</p>
+
 <p>Use the following syntax to :</p>
+
 <ul>
-	<li>Define an anchor in the page named <em>MyPage</em> and defined in the folder <em>path</em> : <code>h1(#MyAnchor). My title</code></li>
-	<li>Reference an anchor : <code>../path/MyPage.html#MyAnchor</code></li>
+  <li>Define an anchor in the page named <em>MyPage</em> and defined in the folder <em>path</em> : <code># My title</code></li>
+  <li>Reference an anchor : <code>../path/MyPage.html#my-title</code></li>
 </ul>
-<h3>Layouts</h3>
+
+<h3 id="layouts">Layouts</h3>
+
 <p>The available layouts are defined in the <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_layouts">_layouts</a> folder.</p>
+
 <p>There are several layout already available for the documentation. Those layouts may contain variables used to display some content in the page.</p>
+
 <ul>
-	<li><em>page</em>, a basic page with the navigation bar, header, footer.
-	<ul>
-		<li>title: the title of the page</li>
-	</ul></li>
-	<li>article, a full width article with its breadcrumb (it extends the page layout)
-	<ul>
-		<li>subtitle: subtitle</li>
-	</ul></li>
-	<li><em>article-with-image</em>, an article with an image (it extends the page layout)
-	<ul>
-		<li>image: A large image (750&#215;500 px) illustrating the article</li>
-		<li>description: Description of the image</li>
-	</ul></li>
-	<li><em>article-with-sidebar</em>, used for tutorials (it extends the page layout)
-	<ul>
-		<li>category: the name of the category of elements from the navigation bar to display in the sidebar</li>
-	</ul></li>
-	<li><em>blog-post</em>, used for blog posts (it extends the page layout)
-	<ul>
-		<li>author: The author of the post</li>
-		<li>date: The date of the post, using the following format: <span class="caps">YYYY</span>-MM-DD HH:MM:SS</li>
-		<li>image (optional): A wide image (900&#215;300 pixel) illustrating the post</li>
-		<li>excerpt (optional): A paragraph describing the article. It will be used in the page listing all the posts instead of the whole content of the post.</li>
-		<li>lead (optional): An introduction paragraph which will be highlighted at the top of the post.</li>
-	</ul></li>
+  <li><em>page</em>, a basic page with the navigation bar, header, footer.
+    <ul>
+      <li>title: the title of the page</li>
+    </ul>
+  </li>
+  <li>article, a full width article with its breadcrumb (it extends the page layout)
+    <ul>
+      <li>subtitle: subtitle</li>
+    </ul>
+  </li>
+  <li><em>article-with-image</em>, an article with an image (it extends the page layout)
+    <ul>
+      <li>image: A large image (750x500 px) illustrating the article</li>
+      <li>description: Description of the image</li>
+    </ul>
+  </li>
+  <li><em>article-with-sidebar</em>, used for tutorials (it extends the page layout)
+    <ul>
+      <li>category: the name of the category of elements from the navigation bar to display in the sidebar</li>
+    </ul>
+  </li>
+  <li><em>blog-post</em>, used for blog posts (it extends the page layout)
+    <ul>
+      <li>author: The author of the post</li>
+      <li>date: The date of the post, using the following format: YYYY-MM-DD HH:MM:SS</li>
+      <li>image (optional): A wide image (900x300 pixel) illustrating the post</li>
+      <li>excerpt (optional): A paragraph describing the article. It will be used in the page listing all the posts instead of the whole content of the post.</li>
+      <li>lead (optional): An introduction paragraph which will be highlighted at the top of the post.</li>
+    </ul>
+  </li>
 </ul>
-<h2>Build the documentation</h2>
-<h3>Locally</h3>
-<p>To test and generate the documentation locally, go to the folder containing the documentation content <code>UML-Designer/documentation</code> in the git repository.<br />
+
+<h2 id="build-the-documentation">Build the documentation</h2>
+
+<h3 id="locally">Locally</h3>
+
+<p>To test and generate the documentation locally, go to the folder containing the documentation content <code>UML-Designer/documentation</code> in the git repository.
 Then launch :</p>
+
 <p><code>jekyll build</code></p>
+
 <p>and the Jekyll server to see the result of your contribution</p>
+
 <p><code>jekyll serve</code></p>
-<p>The documentation will be available at <code>localhost:4000/index.html</code>. Use a web browser and go to this <span class="caps">URL</span> to browse the documentation. If you want to iterate and try new changes, modify the documentation then stop the <code>jekyll serve</code> by using <code>Ctrl+C</code> and relaunch it using <code>jekyll serve</code>.</p>
-<h3>Continuous integration</h3>
-<p>To build the documentation, commit and push the changes on the ObeoNetwork/<span class="caps">UML</span>-Designer <code>master</code> branch.<br />
+
+<p>The documentation will be available at <code>localhost:4000/index.html</code>. Use a web browser and go to this URL to browse the documentation. If you want to iterate and try new changes, modify the documentation then stop the <code>jekyll serve</code> by using <code>Ctrl+C</code> and relaunch it using <code>jekyll serve</code>.</p>
+
+<h3 id="continuous-integration">Continuous integration</h3>
+
+<p>To build the documentation, commit and push the changes on the ObeoNetwork/UML-Designer <code>master</code> branch.
 The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> is launched :</p>
+
 <ul>
-	<li>it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.</li>
-	<li>it is also in charge of the integration of the web site inside the Eclipse Help Content.</li>
+  <li>it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.</li>
+  <li>it is also in charge of the integration of the web site inside the Eclipse Help Content.</li>
 </ul>
+
 <p>The different steps done by the builds are explained below.</p>
-<h4>Build the web-site</h4>
+
+<h4 id="build-the-web-site">Build the web-site</h4>
+
 <p>The Travis build :</p>
+
 <ul>
-	<li>Go to <code>UML-Designer/documentation</code> folder in your local repo.</li>
-	<li>And launch : <code>jekyll build</code><br />
+  <li>Go to <code>UML-Designer/documentation</code> folder in your local repo.</li>
+  <li>And launch : <code>jekyll build</code>
 This operation will generate a new <code>_site</code> folder containing all the <code>.html</code> files generated from the textile files.</li>
-	<li>To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.</li>
+  <li>To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.</li>
 </ul>
+
 <p>The new web site will be available immediately on : <a href="http://www.umldesigner.org/">http://www.umldesigner.org/</a></p>
-<h4>Integrate the documentation to Eclipse</h4>
-<p>The web site is integrated inside Eclipse as embedded documentation for <span class="caps">UML</span> Designer. This is done by the <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the <code>gh-pages</code> is just copied to <code>UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html</code>.</p>
+
+<h4 id="integrate-the-documentation-to-eclipse">Integrate the documentation to Eclipse</h4>
+
+<p>The web site is integrated inside Eclipse as embedded documentation for UML Designer. This is done by the <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the <code>gh-pages</code> is just copied to <code>UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html</code>.</p>
+
 <p>Pay attention when you update the documentation structure to update also the Eclipse toc. We defined an Eclipse specific <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml">toc.xml</a> file which is used to integrate the web site content into the Eclipse Help Content table of content.</p>
+
 <p>When a change is done in the documentation, the Travis build runs after the commit of the change. If you want to see this documentation update also in the Eclipse documentation, the Hudson build must be run manually after the end of the Travis build.</p>
+
 <p>To test the Eclipse documentation integration locally :</p>
+
 <ul>
-	<li>go to  <code>UML-Modeling/plugins/org.obeonetwork.dsl.uml2.design.doc</code></li>
-	<li>launch <code>bower install</code></li>
+  <li>go to <code>UML-Modeling/plugins/org.obeonetwork.dsl.uml2.design.doc</code></li>
+  <li>launch <code>bower install</code></li>
 </ul>
+
 <p>This action uses the bower.json and .bowerrc files defined in the org.obeonetwork.dsl.uml2.design.doc to retrieve the documentation content from the online gh-pages to the local html folder.</p>
+
     </div>
   </div>
 </div><!-- /.container -->

@@ -90,47 +90,47 @@
           <ul class="dropdown-menu">
             
             	
-            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	<li><a href="../ref-doc/define-the-system.html#dashboard">Dashboard</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#activity-diagram">Activity Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Class_Diagram">Class Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#class-diagram">Class Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Component_Diagram">Component Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#component-diagram">Component Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Composite_Structure_Diagram">Composite Structure Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#composite-structure-diagram">Composite Structure Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Deployment_Diagram">Deployment Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#deployment-diagram">Deployment Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Package_Diagram">Package Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#package-diagram">Package Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Profile_Diagram">Profile Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#profile-diagram">Profile Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Sequence_Diagram">Sequence Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#sequence-diagram">Sequence Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#State_Machine_Diagram">State Machine Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#state-machine-diagram">State Machine Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Use_Case_Diagram">Use Case Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#use-case-diagram">Use Case Diagram</a></li>
             	
             
           </ul>
@@ -248,348 +248,501 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <p>When John has finished the specification of the application, he gives it to Bob. From the existing application <span class="caps">UML</span> definition, Bob defines the application at a lower level.<br />
+      <p>When John has finished the specification of the application, he gives it to Bob. From the existing application UML definition, Bob defines the application at a lower level.
 At this point, Bob breaks the components out into classes and objects.</p>
-<h2 id="Class_Diagram">Define the implementation structure</h2>
+
+<h2 id="define-the-implementation-structure">Define the implementation structure</h2>
+
 <p>The <strong>class diagram</strong> is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.</p>
+
 <p><img src="../images/ClassDiagram.png" alt="" /></p>
+
 <p>The class diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
-<h3>Manage elements</h3>
-<h4>Create element</h4>
-<p>It is possible to <strong>create an element</strong> by selecting the type creation tool from the palette and then clicking on the diagram or an element.<br />
-<img src="../images/ClassDiagramPalette.png" alt="" /></p>
-<p>A diagram is associated to a package and when the user clicks on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
-If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.</p>
-<p>Tooltip tools are also available to create any kind of elements. So, you have the ability to create elements in a contextual way related to the currently selected elements.<br />
-If your pointer is on the diagram background, after a few seconds you should see the following assistant :<br />
-<img src="../images/using_class_diagram/assistant.png" alt="" /></p>
-<p>If your pointer is <strong>on a class</strong> the assistant will be : <br />
-<img src="../images/using_class_diagram/assistant_class.png" alt="" /></p>
+
+<h3 id="-manage-elements"><a name="class-diagram"></a> Manage elements</h3>
+
+<h4 id="create-element">Create element</h4>
+
+<p>It is possible to <strong>create an element</strong> by selecting the type creation tool from the palette and then clicking on the diagram or an element.</p>
+
+<p><img src="../images/ClassDiagramPalette.png" alt="" /></p>
+
+<p>A diagram is associated to a package and when the user clicks on the diagram background the element is created under the corresponding package in the UML model.
+If the user selects a container, the element will be created under the corresponding semantic element in the UML model.</p>
+
+<p>Tooltip tools are also available to create any kind of elements. So, you have the ability to create elements in a contextual way related to the currently selected elements.
+If your pointer is on the diagram background, after a few seconds you should see the following assistant :</p>
+
+<p><img src="../images/using_class_diagram/assistant.png" alt="" /></p>
+
+<p>If your pointer is <strong>on a class</strong> the assistant will be :</p>
+
+<p><img src="../images/using_class_diagram/assistant_class.png" alt="" /></p>
+
 <p>Creation tools are available in the class diagram for the following types :</p>
+
 <table>
-	<tr>
-		<th>Element     </th>
-		<th>Representation </th>
-		<th>Comments</th>
-	</tr>
-	<tr>
-		<td>Class </td>
-		<td><img src="../images/ClassDiagramClass.png" alt="" /></td>
-		<td>Representation of objects</td>
-	</tr>
-	<tr>
-		<td>Enumeration </td>
-		<td><img src="../images/ClassDiagramEnumeration.png" alt="" /></td>
-		<td>A data type set of values</td>
-	</tr>
-	<tr>
-		<td>Interface </td>
-		<td><img src="../images/ClassDiagramInterface.png" alt="" /></td>
-		<td>Contract that implementers agree to meet</td>
-	</tr>
-	<tr>
-		<td>Datatype</td>
-		<td><img src="../images/ClassDiagramDataType.png" alt="" /></td>
-		<td>All copies of an instance of a data type are considered as same instance</td>
-	</tr>
-	<tr>
-		<td>Primitive type </td>
-		<td><img src="../images/ClassDiagramPrimitiveType.png" alt="" /></td>
-		<td>Default data type</td>
-	</tr>
-	<tr>
-		<td>Package </td>
-		<td><img src="../images/ClassDiagramPackage.png" alt="" /></td>
-		<td>Organize the model content</td>
-	</tr>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Representation</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Class</td>
+      <td><img src="../images/ClassDiagramClass.png" alt="" /></td>
+      <td>Representation of objects</td>
+    </tr>
+    <tr>
+      <td>Enumeration</td>
+      <td><img src="../images/ClassDiagramEnumeration.png" alt="" /></td>
+      <td>A data type set of values</td>
+    </tr>
+    <tr>
+      <td>Interface</td>
+      <td><img src="../images/ClassDiagramInterface.png" alt="" /></td>
+      <td>Contract that implementers agree to meet</td>
+    </tr>
+    <tr>
+      <td>Datatype</td>
+      <td><img src="../images/ClassDiagramDataType.png" alt="" /></td>
+      <td>All copies of an instance of a data type are considered as same instance</td>
+    </tr>
+    <tr>
+      <td>Primitive type</td>
+      <td><img src="../images/ClassDiagramPrimitiveType.png" alt="" /></td>
+      <td>Default data type</td>
+    </tr>
+    <tr>
+      <td>Package</td>
+      <td><img src="../images/ClassDiagramPackage.png" alt="" /></td>
+      <td>Organize the model content</td>
+    </tr>
+  </tbody>
 </table>
-<h5>Generic Class</h5>
+
+<h5 id="generic-class">Generic Class</h5>
+
 <p>To define a Generic Class, use the direct edit tool:</p>
+
 <p><img src="../images/using_class_diagram/generic_class.png" alt="" /></p>
-<p>To define a Binding, use the create edge tool called &#8220;Binding&#8221; from a Class to a Generic Class.<br />
-You may notice that &#8220;?&#8221; refers to an undefined actual type:</p>
+
+<p>To define a Binding, use the create edge tool called “Binding” from a Class to a Generic Class.
+You may notice that “?” refers to an undefined actual type:</p>
+
 <p><img src="../images/using_class_diagram/binding1_class.png" alt="" /></p>
+
 <p>To specify the binding association from the formal to the actual type use also the direct edit tool:</p>
+
 <p><img src="../images/using_class_diagram/binding2_class.png" alt="" /></p>
-<h4>Delete element</h4>
-<p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h4>Importing primitive types</h4>
+
+<h4 id="delete-element">Delete element</h4>
+
+<p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#delete-element-from-model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+
+<h4 id="importing-primitive-types">Importing primitive types</h4>
+
 <p>The contextual menu <code>Import primitive types</code> can import predefined types libraries from a <strong>right-click</strong> on the background of a class diagram. This menu allows to import primitives for :</p>
+
 <ul>
-	<li><span class="caps">UML</span></li>
-	<li>Java</li>
-	<li><span class="caps">XML</span></li>
-	<li>Ecore</li>
+  <li>UML</li>
+  <li>Java</li>
+  <li>XML</li>
+  <li>Ecore</li>
 </ul>
-<p>Then, the imported types can be used in the property&#8217;s definition.</p>
-<p>Another way to import primitive types is just by editing a property on a class (by typing directly on the selected property or by hitting F2) and type the wanted datatype. If it&#8217;s a known type, as String for example, the corresponding library is automatically imported : this library is visible in the model explorer when the project dependencies entry is expanded.<br />
-The case is not taken into account, so it is possible to type &#8220;string&#8221; and the &#8220;String&#8221; datatype of <span class="caps">UML</span> Primitive types library will be used.</p>
-<h3>Manage features</h3>
-<p>It is possible to <strong>create a feature</strong> by selecting the feature creation tool from the palette and then clicking on the diagram or an element.<br />
-If the user selects a container, the feature will be created under the corresponding semantic element in the <span class="caps">UML</span> model.</p>
-<p>Tooltip tools are also available to create any kind of features.<br />
+
+<p>Then, the imported types can be used in the property’s definition.</p>
+
+<p>Another way to import primitive types is just by editing a property on a class (by typing directly on the selected property or by hitting F2) and type the wanted datatype. If it’s a known type, as String for example, the corresponding library is automatically imported : this library is visible in the model explorer when the project dependencies entry is expanded.
+The case is not taken into account, so it is possible to type “string” and the “String” datatype of UML Primitive types library will be used.</p>
+
+<h3 id="manage-features">Manage features</h3>
+
+<p>It is possible to <strong>create a feature</strong> by selecting the feature creation tool from the palette and then clicking on the diagram or an element.
+If the user selects a container, the feature will be created under the corresponding semantic element in the UML model.</p>
+
+<p>Tooltip tools are also available to create any kind of features.
 Creation tools are available in the class diagram for the following features :</p>
+
 <ul>
-	<li>property : Can be created under classes, interfaces, datatypes, primitive types, enumerations.</li>
-	<li>typed property : Can be created under classes, interfaces, datatypes, primitive types, enumerations. When the user selects a container, a wizard is open which list all the available types existing in thee modeling project in order that the user selects a type for the property to create.</li>
-	<li>operation : Can be created under classes, interfaces, datatypes, primitive types, enumerations.</li>
-	<li>literal : Can be created under enumerations.</li>
-	<li>qualifier : Can be created under association end. When the user selects an association, a wizard is open which list the ends of the association. The qualifier will be created under the selected end.</li>
+  <li>property : Can be created under classes, interfaces, datatypes, primitive types, enumerations.</li>
+  <li>typed property : Can be created under classes, interfaces, datatypes, primitive types, enumerations. When the user selects a container, a wizard is open which list all the available types existing in thee modeling project in order that the user selects a type for the property to create.</li>
+  <li>operation : Can be created under classes, interfaces, datatypes, primitive types, enumerations.</li>
+  <li>literal : Can be created under enumerations.</li>
+  <li>qualifier : Can be created under association end. When the user selects an association, a wizard is open which list the ends of the association. The qualifier will be created under the selected end.</li>
 </ul>
+
 <p>It is possible to add and edit :</p>
+
 <ul>
-	<li>the property type :
-	<ul>
-		<li>thanks to direct edit by specifying the type as : <em>myProperty:PropertyType</em>. We added a few accelerators so that you can quickly edit <strong>properties</strong> in a class just by typing the label. Typing :
-		<ul>
-			<li><code>aNewName</code> will update the attribute name.</li>
-			<li><code>aNewName : SomeType</code> will update the attribute name and will look for the <strong>datatype</strong> with the given name. If found it will</li>
-			<li><code>/someName</code> will set the Attribute as <strong>derived</strong>.</li>
-			<li><code>=someValue</code> will set the <strong>default value</strong> of the Attribute.</li>
-			<li><code>[0..1]</code> will set the <strong>multiplicity</strong> of the attribute to 0 for the lower bound and 1 for the upper bound.</li>
-			<li><code>[0..*]</code> will set the <strong>multiplicity</strong> of the attribute to 0 for the lower bound and unbounded for the upper bound.</li>
-		</ul></li>
-		<li>from the General tab of the properties view</li>
-	</ul></li>
-	<li>the parameters of an operation :
-	<ul>
-		<li>thanks to direct edit by specifying the parameter as : <em>myOperation(param1:Param1Type, param2:Param2Type)</em></li>
-		<li>from Parameters tab of the properties view</li>
-	</ul></li>
+  <li>the property type :
+    <ul>
+      <li>thanks to direct edit by specifying the type as : <em>myProperty:PropertyType</em>. We added a few accelerators so that you can quickly edit <strong>properties</strong> in a class just by typing the label. Typing :
+        <ul>
+          <li><code>aNewName</code> will update the attribute name.</li>
+          <li><code>aNewName : SomeType</code> will update the attribute name and will look for the <strong>datatype</strong> with the given name. If found it will</li>
+          <li><code>/someName</code> will set the Attribute as <strong>derived</strong>.</li>
+          <li><code>=someValue</code> will set the <strong>default value</strong> of the Attribute.</li>
+          <li><code>[0..1]</code> will set the <strong>multiplicity</strong> of the attribute to 0 for the lower bound and 1 for the upper bound.</li>
+          <li><code>[0..*]</code> will set the <strong>multiplicity</strong> of the attribute to 0 for the lower bound and unbounded for the upper bound.</li>
+        </ul>
+      </li>
+      <li>from the General tab of the properties view</li>
+    </ul>
+  </li>
+  <li>the parameters of an operation :
+    <ul>
+      <li>thanks to direct edit by specifying the parameter as : <em>myOperation(param1:Param1Type, param2:Param2Type)</em></li>
+      <li>from Parameters tab of the properties view</li>
+    </ul>
+  </li>
 </ul>
-<p>The user can also <strong>delete a feature</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h3>Manage relationships</h3>
-<h4>Create relationships</h4>
-<p>It is possible to <strong>create a relationship</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element.<br />
+
+<p>The user can also <strong>delete a feature</strong> (see <a href="../ref-doc/define-the-system.html#delete-element-from-model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+
+<h3 id="manage-relationships">Manage relationships</h3>
+
+<h4 id="create-relationships">Create relationships</h4>
+
+<p>It is possible to <strong>create a relationship</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 The following edge creation tools exist in the palette :</p>
+
 <ul>
-	<li>association : is represented by a solid link with start and end labels and can be created between two classes. According to the association navigability an arrow will be visible at the start or end of the link. N-ary association with more than two ends are drawned with a diamond and solid lines connect each end to the diamond.</li>
-	<li>reference : is represented by a solid link with start and end labels and can be created between two classes. According to the reference navigability an arrow will be visible at the start or end of the link.</li>
-	<li>composition : is represented by a solid edge with fill diamond decorator and with start and end labels, it can be created between two classes. According to the composition navigability an arrow will be visible at the start or end of the link.</li>
-	<li>aggregation : is represented by a solid edge with diamond decorator and with start and end labels, it can be created between two classes. According to the aggregation navigability an arrow will be visible at the start or end of the link.</li>
-	<li>association class : is represented by a dashed edge with start and end labels and a class linked to the dashed edge, it can be created between two classes.</li>
-	<li>generalization : is represented by a solid edge without label, it can be created between two classifiers (class, interface, datatype, enumeration&#8230;).</li>
-	<li>interface realization : is represented by a dashed edge without label, it can be created between a class and an interface.</li>
-	<li>dependency : is represented by a dashed edge without label, it can be created between any classifiers.</li>
-	<li>usage : is represented by a dashed edge with <em>use</em> as label, it can be created between any classifiers.</li>
-	<li>nest classifier : is represented by a solid edge with an output fill closed arrow at start, it can be created between any classifiers.</li>
+  <li>association : is represented by a solid link with start and end labels and can be created between two classes. According to the association navigability an arrow will be visible at the start or end of the link. N-ary association with more than two ends are drawned with a diamond and solid lines connect each end to the diamond.</li>
+  <li>reference : is represented by a solid link with start and end labels and can be created between two classes. According to the reference navigability an arrow will be visible at the start or end of the link.</li>
+  <li>composition : is represented by a solid edge with fill diamond decorator and with start and end labels, it can be created between two classes. According to the composition navigability an arrow will be visible at the start or end of the link.</li>
+  <li>aggregation : is represented by a solid edge with diamond decorator and with start and end labels, it can be created between two classes. According to the aggregation navigability an arrow will be visible at the start or end of the link.</li>
+  <li>association class : is represented by a dashed edge with start and end labels and a class linked to the dashed edge, it can be created between two classes.</li>
+  <li>generalization : is represented by a solid edge without label, it can be created between two classifiers (class, interface, datatype, enumeration…).</li>
+  <li>interface realization : is represented by a dashed edge without label, it can be created between a class and an interface.</li>
+  <li>dependency : is represented by a dashed edge without label, it can be created between any classifiers.</li>
+  <li>usage : is represented by a dashed edge with <em>use</em> as label, it can be created between any classifiers.</li>
+  <li>nest classifier : is represented by a solid edge with an output fill closed arrow at start, it can be created between any classifiers.</li>
 </ul>
-<h4>Reconnect relationships</h4>
+
+<h4 id="reconnect-relationships">Reconnect relationships</h4>
+
 <p>And finally, he can <strong>reconnect relationships</strong>. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :</p>
+
 <ul>
-	<li>association</li>
-	<li>composition</li>
-	<li>aggregation</li>
-	<li>association class</li>
-	<li>generalization</li>
-	<li>interface realization</li>
-	<li>dependency</li>
-	<li>usage</li>
-	<li>nest classifier</li>
+  <li>association</li>
+  <li>composition</li>
+  <li>aggregation</li>
+  <li>association class</li>
+  <li>generalization</li>
+  <li>interface realization</li>
+  <li>dependency</li>
+  <li>usage</li>
+  <li>nest classifier</li>
 </ul>
-<h4>Support for Broken Associations</h4>
-<p>It might happen that for some reason you have an <strong>Association</strong> instance in your package which doesn&#8217;t have the proper <strong>ends</strong>. In that case<br />
+
+<h4 id="support-for-broken-associations">Support for Broken Associations</h4>
+
+<p>It might happen that for some reason you have an <strong>Association</strong> instance in your package which doesn’t have the proper <strong>ends</strong>. In that case
 the class diagram will show the broken associations as nodes :</p>
+
 <p>!../images/features/class_pics/broken associations Class Diagram.jpg!</p>
-<p>You can use the <strong>Association</strong> tools in the palette <i>(Association, Reference, Composition and Aggregation)</i> to re-attach the Association to a classifier.</p>
-<h3>Manage existing elements</h3>
-<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+
+<p>You can use the <strong>Association</strong> tools in the palette <em><span class="Aggregation and Composition Reference, Association,"></span></em> to re-attach the Association to a classifier.</p>
+
+<h3 id="manage-existing-elements">Manage existing elements</h3>
+
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to add existing elements by :</p>
+
 <ul>
-	<li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
-	<li>drag and droping an element from the model explorer.</li>
+  <li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
+  <li>drag and droping an element from the model explorer.</li>
 </ul>
+
 <p>The following elements can be added on a class diagram :</p>
+
 <ul>
-	<li>class</li>
-	<li>package</li>
-	<li>interface</li>
-	<li>data type</li>
-	<li>primitive type</li>
-	<li>enumeration</li>
-	<li>component</li>
+  <li>class</li>
+  <li>package</li>
+  <li>interface</li>
+  <li>data type</li>
+  <li>primitive type</li>
+  <li>enumeration</li>
+  <li>component</li>
 </ul>
+
 <p>The user can see that an element is not coming from the current package :</p>
+
 <ul>
-	<li>the element border is lighter than the element border of elements defined in the current package</li>
-	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+  <li>the element border is lighter than the element border of elements defined in the current package</li>
+  <li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
 </ul>
-<p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the <span class="caps">UML</span> model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (<br />
-see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h3>Add related elements</h3>
-<p>In the class diagram a contextual action is available to show on the diagram the element related to the selection.<br />
+
+<p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (
+see <a href="../ref-doc/define-the-system.html#delete-element-from-model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+
+<h3 id="add-related-elements">Add related elements</h3>
+
+<p>In the class diagram a contextual action is available to show on the diagram the element related to the selection.
 The <strong>add related elements</strong> action is available from :</p>
+
 <ul>
-	<li>a class, an interface, a package, an enumeration, a datatype, a primitive type : shows all the elements that define a relationship (dependency, association, composition&#8230;) with the selected element</li>
-	<li>a class diagram : shows all the elements contained in the package associated to the diagram.</li>
+  <li>a class, an interface, a package, an enumeration, a datatype, a primitive type : shows all the elements that define a relationship (dependency, association, composition…) with the selected element</li>
+  <li>a class diagram : shows all the elements contained in the package associated to the diagram.</li>
 </ul>
-<h3>Edit labels</h3>
-<p>In the class diagram, it is possible to edit the elements labels  (<br />
-			see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
+
+<h3 id="edit-labels">Edit labels</h3>
+
+<p>In the class diagram, it is possible to edit the elements labels (
+see <a href="../ref-doc/define-the-system.html#direct-edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
+
 <ul>
-	<li>class, interface, package, enumeration, datatype, primitive type labels</li>
-	<li>relationships labels</li>
+  <li>class, interface, package, enumeration, datatype, primitive type labels</li>
+  <li>relationships labels</li>
 </ul>
-<h3>Using <span class="caps">UML</span> in colors</h3>
-<p><a href="http://en.wikipedia.org/wiki/UML_colors"><span class="caps">UML</span> in colors</a> is an object modeling technique proposed by <a href="http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html">Peter Coad</a>, Eric Lefebvre, and Jeff De Luca in a series of articles in 1999.<br />
-<img src="../images/uml_in_colors/example.png" alt="" /><br />
-An <code>Archetypes</code> layer is available in the <span class="caps">UML</span> Designer <code>class diagram</code>.<br />
-<img src="../images/uml_in_colors/layer.png" alt="" /></p>
-<p>When the layer is selected, new tools are available in the palette :<br />
-<img src="../images/uml_in_colors/palette.png" alt="" /></p>
-<p>The modeling in color patterns and strategies are built around the idea of class archetypes.<br />
-<img src="http://www.step-10.com/SoftwareDesign/ModellingInColour/images/FourArchetypesWithContentSideBySide.gif" alt="" /><br />
-It exists four different kind of archetypes :</p>
+
+<h3 id="using-uml-in-colors">Using UML in colors</h3>
+
+<p><a href="http://en.wikipedia.org/wiki/UML_colors">UML in colors</a> is an object modeling technique proposed by <a href="http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html">Peter Coad</a>, Eric Lefebvre, and Jeff De Luca in a series of articles in 1999.</p>
+
+<p><img src="../images/uml_in_colors/example.png" alt="" /></p>
+
+<p>An <code>Archetypes</code> layer is available in the UML Designer <code>class diagram</code>.</p>
+
+<p><img src="../images/uml_in_colors/layer.png" alt="" /></p>
+
+<p>When the layer is selected, new tools are available in the palette :</p>
+
+<p><img src="../images/uml_in_colors/palette.png" alt="" /></p>
+
+<p>The modeling in color patterns and strategies are built around the idea of class archetypes.</p>
+
+<p><img src="http://www.step-10.com/SoftwareDesign/ModellingInColour/images/FourArchetypesWithContentSideBySide.gif" alt="" /></p>
+
+<p>It exists four different kind of archetypes :</p>
+
 <ul>
-	<li><strong>moment-interval</strong> and <strong>mi-detail</strong> (pink): represents a moment or interval of time, all things that happen in the software.</li>
-	<li><strong>role</strong> (yellow): represents something/someone who participates to moment-intervals.</li>
-	<li><strong>description</strong> (blue): represents a collection of values a kind of catalog.</li>
-	<li><strong>party, place, or thing</strong> (green): represents someone or something that plays a role.</li>
+  <li><strong>moment-interval</strong> and <strong>mi-detail</strong> (pink): represents a moment or interval of time, all things that happen in the software.</li>
+  <li><strong>role</strong> (yellow): represents something/someone who participates to moment-intervals.</li>
+  <li><strong>description</strong> (blue): represents a collection of values a kind of catalog.</li>
+  <li><strong>party, place, or thing</strong> (green): represents someone or something that plays a role.</li>
 </ul>
-<p>The Domain Neutral Component (<span class="caps">DNC</span>) is the common pattern applied with the <span class="caps">UML</span> in colors technique.<br />
-<img src="http://www.step-10.com/SoftwareDesign/ModellingInColour/images/DNC.gif" alt="" /></p>
-<p>To create an archetype in a class diagram just select an archetype from the palette of the tooltip.<br />
-The archetypes are stored in <span class="caps">UML</span> model as stereotyped classes.<br />
+
+<p>The Domain Neutral Component (DNC) is the common pattern applied with the UML in colors technique.</p>
+
+<p><img src="http://www.step-10.com/SoftwareDesign/ModellingInColour/images/DNC.gif" alt="" /></p>
+
+<p>To create an archetype in a class diagram just select an archetype from the palette of the tooltip.
+The archetypes are stored in UML model as stereotyped classes.
 To change an existing class to an archetype just selects the tool from the palette and the existing class. The stereotype of the selected archetype is applied on the class which is colored.</p>
-<p><span class="caps">UML</span> in colors examples are available from Eclipse menu File &gt; New &gt; Example&#8230; &gt; <span class="caps">UML</span> &gt; Uml in colors.</p>
-<p>For more detailed explanation on <span class="caps">UML</span> in colors have a look to <a href="http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html">Peter Coad&#8217;s website</a>.</p>
-<h3 id="Constraints">Handle constraints</h3>
+
+<p>UML in colors examples are available from Eclipse menu File &gt; New &gt; Example… &gt; UML &gt; Uml in colors.</p>
+
+<p>For more detailed explanation on UML in colors have a look to <a href="http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html">Peter Coad’s website</a>.</p>
+
+<h3 id="handle-constraints">Handle constraints</h3>
+
 <p>A <em>Constraint</em> is an assertion that indicates a restriction that must be satisfied by any valid realization of the model containing the <em>Constraint</em>.</p>
-<p>A <code>Constraints</code> layer is available in the <span class="caps">UML</span> Designer <code>class diagram</code>.<br />
-<img src="../images/class_diagram_constraints/layer.png" alt="" /></p>
-<p>When the layer is selected, new tools are available in the palette:<br />
-<img src="../images/class_diagram_constraints/palette.png" alt="" /></p>
-<p>For the moment, only these types of <em>ValueSpecifications</em> are handled for constraints in the <code>class diagram</code> : <em>Expression</em>, <em>Instance Value</em>, <em>Literal Boolean</em>, <em>Literal Integer</em>, <em>Literal Null</em>, <em>Literal Real</em>, <em>Literal String</em>, <em>Literal Unlimited Natural</em>, <em>Opaque Expression</em>, <em>String Expression</em>.<br />
+
+<p>A <code>Constraints</code> layer is available in the UML Designer <code>class diagram</code>.</p>
+
+<p><img src="../images/class_diagram_constraints/layer.png" alt="" /></p>
+
+<p>When the layer is selected, new tools are available in the palette:</p>
+
+<p><img src="../images/class_diagram_constraints/palette.png" alt="" /></p>
+
+<p>For the moment, only these types of <em>ValueSpecifications</em> are handled for constraints in the <code>class diagram</code> : <em>Expression</em>, <em>Instance Value</em>, <em>Literal Boolean</em>, <em>Literal Integer</em>, <em>Literal Null</em>, <em>Literal Real</em>, <em>Literal String</em>, <em>Literal Unlimited Natural</em>, <em>Opaque Expression</em>, <em>String Expression</em>.
 <em>Duration</em>, <em>Duration Interval</em>, <em>Interval</em>, <em>Time Expression</em> and <em>Time Interval</em> are not handled yet.</p>
+
 <p>You can apply a <em>Constraint</em> on any diagram element except the <em>Relationships</em>. It is not handled yet.</p>
-<h2 id="Object_Diagram">Instanciate the application</h2>
-<p><i>This diagram is not yet implemented.</i></p>
+
+<h2 id="instanciate-the-application">Instanciate the application</h2>
+
+<p><em>This diagram is not yet implemented.</em></p>
+
 <p>The <strong>object diagram</strong> is used to describe the structure of the system by showing the objects at a specific time.</p>
+
 <p><img src="../images/ObjectDiagram.png" alt="" /></p>
+
 <p>The object diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
-<h3>Manage instances</h3>
-<p>It is possible to create and delete instances in the object diagram.<br />
-<img src="../images/ObjectDiagramPalette.png" alt="" /></p>
-<h4>Create an instance</h4>
-<p>It is possible to create an instance by selecting the creation tool from the palette and then clicking on the diagram or an element. 	A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
-If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
+
+<h3 id="manage-instances">Manage instances</h3>
+
+<p>It is possible to create and delete instances in the object diagram.</p>
+
+<p><img src="../images/ObjectDiagramPalette.png" alt="" /></p>
+
+<h4 id="create-an-instance">Create an instance</h4>
+
+<p>It is possible to create an instance by selecting the creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 Tooltip tools are also available to create instances.</p>
-<h4>Set default value</h4>
+
+<h4 id="set-default-value">Set default value</h4>
+
 <p>It is possible to set a default value to an instance property by selecting the tool from the palette and then clicking on an instance. This tool opens a wizard to ask the user to select a property of the selected instance type.</p>
-<h4>Manage existing elements</h4>
-<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+
+<h4 id="manage-existing-elements-1">Manage existing elements</h4>
+
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to add existing elements by :</p>
+
 <ul>
-	<li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
-	<li>drag and droping an element from the model explorer.</li>
+  <li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
+  <li>drag and droping an element from the model explorer.</li>
 </ul>
+
 <p>Only instances can be added on an object diagram.</p>
+
 <p>The user can see that an element is not coming from the current package :</p>
+
 <ul>
-	<li>the element border is lighter than the element border of elements defined in the current package</li>
-	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+  <li>the element border is lighter than the element border of elements defined in the current package</li>
+  <li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
 </ul>
-<p>The user can also <strong>delete an instance</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h4>Add related elements</h4>
+
+<p>The user can also <strong>delete an instance</strong> (see <a href="../ref-doc/define-the-system.html#delete-element-from-model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+
+<h4 id="add-related-elements-1">Add related elements</h4>
+
 <p>In the class diagram a contextual action is available to show on the diagram the element related to the selection.</p>
+
 <p>The <strong>Add related elements</strong> action is available from :</p>
+
 <ul>
-	<li>an instance : shows all the elements that define a relationship (dependency, association, composition&#8230;) with the selected element</li>
-	<li>an object diagram : shows all the elements contained in the package associated to the diagram.</li>
+  <li>an instance : shows all the elements that define a relationship (dependency, association, composition…) with the selected element</li>
+  <li>an object diagram : shows all the elements contained in the package associated to the diagram.</li>
 </ul>
-<h4>Edit labels</h4>
-<p>In the class diagram, it is possible to edit the elements labels (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
+
+<h4 id="edit-labels-1">Edit labels</h4>
+
+<p>In the class diagram, it is possible to edit the elements labels (see <a href="../ref-doc/define-the-system.html\#Direct\_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
+
 <ul>
-	<li>class, interface, package, enumeration, datatype, primitive type labels</li>
-	<li>relationships labels</li>
+  <li>class, interface, package, enumeration, datatype, primitive type labels</li>
+  <li>relationships labels</li>
 </ul>
-<h2>Define the application behavior</h2>
+
+<h2 id="define-the-application-behavior">Define the application behavior</h2>
+
 <p>Bob describes the application behavior thanks to <strong>Statemachine diagrams</strong> and <strong>Sequence diagrams</strong>.</p>
-<h3 id="State_Machine_Diagram">Statemachines</h3>
-<p>The <strong>statemachine diagram</strong> is used to represent the different states and transitions of a system.<br />
-<img src="../images/StatemachineDiagram.png" alt="" /></p>
-<p>The statemachine diagram is a synchronized diagram which means that any elements existing under a statemachine in the <span class="caps">UML</span> model will be visible automatically in the statemachine diagram.</p>
-<h4>Manage statemachines</h4>
-<p>It is possible to <strong>create statemachine elements</strong> by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
-If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
-<img src="../images/StatemachineDiagramPalette.png" alt="" /></p>
+
+<h3 id="-statemachines"><a name="state-machine-diagram"></a> Statemachines</h3>
+
+<p>The <strong>statemachine diagram</strong> is used to represent the different states and transitions of a system.</p>
+
+<p><img src="../images/StatemachineDiagram.png" alt="" /></p>
+
+<p>The statemachine diagram is a synchronized diagram which means that any elements existing under a statemachine in the UML model will be visible automatically in the statemachine diagram.</p>
+
+<h4 id="manage-statemachines">Manage statemachines</h4>
+
+<p>It is possible to <strong>create statemachine elements</strong> by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+If the user selects a container, the element will be created under the corresponding semantic element in the UML model.</p>
+
+<p><img src="../images/StatemachineDiagramPalette.png" alt="" /></p>
+
 <p>Tooltip tools are also available to create any kind of elements.</p>
+
 <p>Creation tools are available in the statemachine diagram for the following types :</p>
+
 <ul>
-	<li>Region = Group logical states;</li>
-	<li>State = Describes the elements condition at a specific moment;</li>
-	<li>Submachine = Represents a sub state machine;</li>
-	<li>Initial =  The start of a flow;</li>
-	<li>Final =  Indicates the completion of a flow;</li>
-	<li>Fork = Split the flow into a number of concurrent flows;</li>
-	<li>Join = Join the flow from a number of concurrent flows to one flow;</li>
-	<li>Choice = Compose complex flows according to a runtime condition;</li>
-	<li>Junction = Merge multiple flows;</li>
-	<li>Terminate = Indicates execution end;</li>
-	<li>Shallow history = Represents the most recent active substate of its containing state;</li>
-	<li>Deep history =Represents the most recent active configuration of the composite state that directly contains this pseudostate;</li>
-	<li>Entry point = Defines the beginning of a State Machine;</li>
-	<li>Exit point = State machine exit.</li>
+  <li>Region = Group logical states;</li>
+  <li>State = Describes the elements condition at a specific moment;</li>
+  <li>Submachine = Represents a sub state machine;</li>
+  <li>Initial = The start of a flow;</li>
+  <li>Final = Indicates the completion of a flow;</li>
+  <li>Fork = Split the flow into a number of concurrent flows;</li>
+  <li>Join = Join the flow from a number of concurrent flows to one flow;</li>
+  <li>Choice = Compose complex flows according to a runtime condition;</li>
+  <li>Junction = Merge multiple flows;</li>
+  <li>Terminate = Indicates execution end;</li>
+  <li>Shallow history = Represents the most recent active substate of its containing state;</li>
+  <li>Deep history =Represents the most recent active configuration of the composite state that directly contains this pseudostate;</li>
+  <li>Entry point = Defines the beginning of a State Machine;</li>
+  <li>Exit point = State machine exit.</li>
 </ul>
-<p>The user can also <strong>delete a statemachine element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h4>Manage transitions</h4>
+
+<p>The user can also <strong>delete a statemachine element</strong> (see <a href="../ref-doc/define-the-system.html#delete-element-from-model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+
+<h4 id="manage-transitions">Manage transitions</h4>
+
 <p>It is possible to :</p>
+
 <ul>
-	<li><strong>create a transition</strong> : by selecting the edge creation tool from the palette and then clicking on a source element and a target element.</li>
-	<li><strong>delete a transition</strong> : by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</li>
-	<li><strong>reconnect transitions</strong> : to reconnect the source and the target of a transition in the statemachine diagram.</li>
+  <li><strong>create a transition</strong> : by selecting the edge creation tool from the palette and then clicking on a source element and a target element.</li>
+  <li><strong>delete a transition</strong> : by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action (see <a href="../ref-doc/define-the-system.html#delete-element-from-model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</li>
+  <li><strong>reconnect transitions</strong> : to reconnect the source and the target of a transition in the statemachine diagram.</li>
 </ul>
-<h4>Edit labels</h4>
-<p>In the statemachine diagram, it is possible to edit the elements labels (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit any statemachine elements labels.</p>
-<h3 id="Sequence_Diagram">Sequences</h3>
-<p>The <strong>sequence diagram</strong> is used to show how processes operate with one another and in what order.<br />
+
+<h4 id="edit-labels-2">Edit labels</h4>
+
+<p>In the statemachine diagram, it is possible to edit the elements labels (see <a href="../ref-doc/define-the-system.html#direct-edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit any statemachine elements labels.</p>
+
+<h3 id="-sequences"><a name="sequence-diagram"></a> Sequences</h3>
+
+<p>The <strong>sequence diagram</strong> is used to show how processes operate with one another and in what order.
 <img src="../images/SequenceDiagram.png" alt="" /></p>
-<p>The sequence diagram is a synchronized diagram which means that any elements existing under an interaction in the <span class="caps">UML</span> model will be visible automatically in the sequence diagram.</p>
-<h4>Manage interaction elements</h4>
+
+<p>The sequence diagram is a synchronized diagram which means that any elements existing under an interaction in the UML model will be visible automatically in the sequence diagram.</p>
+
+<h4 id="manage-interaction-elements">Manage interaction elements</h4>
+
 <p>It is possible to create:</p>
+
 <ul>
-	<li>lifeline : is an individual participant in an interaction
-	<ul>
-		<li>associated to a class</li>
-		<li>associated to an actor</li>
-		<li>destruction</li>
-		<li>creation</li>
-	</ul></li>
-	<li>message : indicates a flow of information between elements
-	<ul>
-		<li>synchronous</li>
-		<li>asynchronous</li>
-		<li>lost</li>
-		<li>found</li>
-	</ul></li>
-	<li>execution</li>
-	<li>state invariant : condition applied to a lifeline</li>
-	<li>interaction use : call another interaction</li>
-	<li>combined fragments : defines an expression of interaction fragments
-	<ul>
-		<li>alternatives</li>
-		<li>option</li>
-		<li>iteration</li>
-		<li>break</li>
-		<li>parallel</li>
-		<li>strict sequencing</li>
-		<li>critical region</li>
-		<li>ignore</li>
-		<li>consider</li>
-		<li>assertion</li>
-		<li>negative</li>
-	</ul></li>
+  <li>lifeline : is an individual participant in an interaction
+    <ul>
+      <li>associated to a class</li>
+      <li>associated to an actor</li>
+      <li>destruction</li>
+      <li>creation</li>
+    </ul>
+  </li>
+  <li>message : indicates a flow of information between elements
+    <ul>
+      <li>synchronous</li>
+      <li>asynchronous</li>
+      <li>lost</li>
+      <li>found</li>
+    </ul>
+  </li>
+  <li>execution</li>
+  <li>state invariant : condition applied to a lifeline</li>
+  <li>interaction use : call another interaction</li>
+  <li>combined fragments : defines an expression of interaction fragments
+    <ul>
+      <li>alternatives</li>
+      <li>option</li>
+      <li>iteration</li>
+      <li>break</li>
+      <li>parallel</li>
+      <li>strict sequencing</li>
+      <li>critical region</li>
+      <li>ignore</li>
+      <li>consider</li>
+      <li>assertion</li>
+      <li>negative</li>
+    </ul>
+  </li>
 </ul>
-<p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
-<h4>Reorder an interaction element</h4>
+
+<p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#delete-element-from-model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+
+<h4 id="reorder-an-interaction-element">Reorder an interaction element</h4>
+
 <p>It is possible to reorder the interaction elements :</p>
+
 <ul>
-	<li>lifeline can be reorder horizontally</li>
-	<li>other elements (execution, messages&#8230;) can be reordered vertically</li>
+  <li>lifeline can be reorder horizontally</li>
+  <li>other elements (execution, messages…) can be reordered vertically</li>
 </ul>
+
 <p>This tool updates the semantic element positioned in the interaction fragments list. If a representation is open, the view corresponding to the moved element is automatically updated.</p>
-<h4>Edit labels</h4>
-<p>In the sequence diagram, it is possible to edit the elements labels  (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit any interaction elements labels.</p>
+
+<h4 id="edit-labels-3">Edit labels</h4>
+
+<p>In the sequence diagram, it is possible to edit the elements labels (see <a href="../ref-doc/define-the-system.html#direct-edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit any interaction elements labels.</p>
+
     </div>
   </div>
 </div><!-- /.container -->

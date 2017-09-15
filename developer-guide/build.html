@@ -90,47 +90,47 @@
           <ul class="dropdown-menu">
             
             	
-            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	<li><a href="../ref-doc/define-the-system.html#dashboard">Dashboard</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#activity-diagram">Activity Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Class_Diagram">Class Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#class-diagram">Class Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Component_Diagram">Component Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#component-diagram">Component Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Composite_Structure_Diagram">Composite Structure Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#composite-structure-diagram">Composite Structure Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Deployment_Diagram">Deployment Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#deployment-diagram">Deployment Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Package_Diagram">Package Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#package-diagram">Package Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Profile_Diagram">Profile Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#profile-diagram">Profile Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Sequence_Diagram">Sequence Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#sequence-diagram">Sequence Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#State_Machine_Diagram">State Machine Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#state-machine-diagram">State Machine Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Use_Case_Diagram">Use Case Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#use-case-diagram">Use Case Diagram</a></li>
             	
             
           </ul>
@@ -248,38 +248,61 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h2>Building <span class="caps">UML</span> Designer update-site</h2>
-<p><span class="caps">UML</span> Designer and SysML Designer are both provided as Eclipse plugins but only <span class="caps">UML</span> Designer is included in the <strong><span class="caps">UML</span> Designer Product</strong>.</p>
-<p>You’ll need Apache Maven 3 to be installed on your computer and you must have <a href="../developer-guide/contribute.html#Get_source_code">cloned the <span class="caps">UML</span> Designer github repository</a> on your computer.<br />
+      <h2 id="building-uml-designer-update-site">Building UML Designer update-site</h2>
+
+<p>UML Designer and SysML Designer are both provided as Eclipse plugins but only UML Designer is included in the <strong>UML Designer Product</strong>.</p>
+
+<p>You’ll need Apache Maven 3 to be installed on your computer and you must have <a href="../developer-guide/contribute.html#Get_source_code">cloned the UML Designer github repository</a> on your computer.
 To launch the build, go to the root of the git repository and type :</p>
+
 <p><code>mvn clean package</code></p>
-<p>Maven will bootstrap itself, download all the dependencies and build <span class="caps">UML</span> Designer. The output of the build is a p2 repository (an update site) generated here :</p>
+
+<p>Maven will bootstrap itself, download all the dependencies and build UML Designer. The output of the build is a p2 repository (an update site) generated here :</p>
+
 <p><code>packaging/org.obeonetwork.dsl.uml2.update/target/repository</code></p>
+
 <p>To install it in an Eclipse installation use Help/Install New Software and point to this location.</p>
+
 <p>Launching the test is not harder, just type :</p>
+
 <p><code>mvn clean verify</code></p>
-<p>Maven will launch the tests and give you the result. <br />
+
+<p>Maven will launch the tests and give you the result.
 Code coverage is captured thanks to Jacoco.</p>
+
 <p>This command builds:</p>
+
 <p><img src="../images/UMLDesignerBuildPlugins.png" alt="" /></p>
-<h2>Building <span class="caps">UML</span> Designer product</h2>
+
+<h2 id="building-uml-designer-product">Building UML Designer product</h2>
+
 <p>We have a dedicated command for the product.</p>
+
 <p><code>mvn clean package -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml</code></p>
+
 <blockquote>
-<p>You will retrieve product in: <strong>packaging/org.obeonetwork.dsl.uml2.product/target/products/</strong></p>
+  <p>You will retrieve product in: <strong>packaging/org.obeonetwork.dsl.uml2.product/target/products/</strong></p>
 </blockquote>
+
 <p>This command builds:</p>
+
 <p><img src="../images/UMLDesignerBuildProduct.png" alt="" /></p>
-<h2>Maven Tycho</h2>
+
+<h2 id="maven-tycho">Maven Tycho</h2>
+
 <p>Technically, we use Maven Tycho to build these Eclipse artifacts.</p>
-<p>To reuse a maximum of properties and maven configurations, we have a hierarchy of parents.<br />
-All <span class="caps">UML</span> designer plugins/features/update-sites refers to a dedicated parent:<br />
+
+<p>To reuse a maximum of properties and maven configurations, we have a hierarchy of parents.
+All UML designer plugins/features/update-sites refers to a dedicated parent:
 <img src="../images/UMLDesignerMavenStructure.png" alt="" /></p>
-<p>For example, to add a new plugin org.obeonetwork.dsl.uml2.myplugin, add a<br />
-<div class="highlight"><pre><code class="xml">    <span class="nt">&lt;module&gt;</span>${root-path}/plugins/org.obeonetwork.dsl.uml2.myplugin<span class="nt">&lt;module&gt;</span>
-</code></pre></div></p>
-<p>in org.obeonetwork.dsl.uml2.parent and add a `pom.xml` in your plugin with the following header:<br />
-<div class="highlight"><pre><code class="xml">    <span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+
+<p>For example, to add a new plugin org.obeonetwork.dsl.uml2.myplugin, add a</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span>    <span class="nt">&lt;module&gt;</span>${root-path}/plugins/org.obeonetwork.dsl.uml2.myplugin<span class="nt">&lt;module&gt;</span></code></pre></figure>
+
+<p>in org.obeonetwork.dsl.uml2.parent and add a `pom.xml` in your plugin with the following header:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span>    <span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
     <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
@@ -292,40 +315,59 @@ All <span class="caps">UML</span> designer plugins/features/update-sites refers 
         <span class="nt">&lt;artifactId&gt;</span>org.obeonetwork.dsl.uml2.myplugin<span class="nt">&lt;/artifactId&gt;</span>
         <span class="nt">&lt;packaging&gt;</span>eclipse-plugin<span class="nt">&lt;/packaging&gt;</span>
         ...
-    <span class="nt">&lt;/project&gt;</span>
-</code></pre></div></p>
-<h2>Continuous integration</h2>
-<p>One continuous integration builds exists to build <span class="caps">UML</span> Designer. This build runs on <a href="https://travis-ci.org/">Travis-ci</a>.</p>
-<h3 id="Build"><span class="caps">UML</span>-Designer build</h3>
-<h4>Building branches</h4>
-<p>This Travis &#8220;build&#8221;: https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer/ is used to :</p>
+    <span class="nt">&lt;/project&gt;</span></code></pre></figure>
+
+<h2 id="continuous-integration">Continuous integration</h2>
+
+<p>One continuous integration builds exists to build UML Designer. This build runs on <a href="https://travis-ci.org/">Travis-ci</a>.</p>
+
+<h3 id="uml-designer-build">UML-Designer build</h3>
+
+<h4 id="building-branches">Building branches</h4>
+
+<p>This Travis <a href="">build</a> https://travis-ci.org/ObeoNetwork/UML-Designer/ is used to :</p>
+
 <ul>
-	<li>generate the documentation,</li>
-	<li>update the gh-pages (umldesigner.org web site),</li>
-	<li>create the <span class="caps">UML</span> Designer update site and products.</li>
+  <li>generate the documentation,</li>
+  <li>update the gh-pages (umldesigner.org web site),</li>
+  <li>create the UML Designer update site and products.</li>
 </ul>
+
 <p>This build deploys automatically the build artifacts on <a href="http://aws.amazon.com/fr/s3/">S3</a> : <a href="http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com">http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/</a></p>
+
 <p>The build is configured thanks to the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/.travis.yml"><code>.travis.yml</code></a> file.</p>
-<p>Each time a commit is integrated on the github repository a nightly build is executed and the resulting update-site and products are deployed on s3:<br />
+
+<p>Each time a commit is integrated on the github repository a nightly build is executed and the resulting update-site and products are deployed on s3:
 http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/$BRANCH_NAME.</p>
+
 <p>The build deploys in S3 <code>obeo-umldesigner-nightly</code> bucket:</p>
+
 <ul>
-	<li>the <code>repository</code> folder: the <span class="caps">UML</span> Designer nightly update site.</li>
-	<li>the <code>org.obeonetwork.dsl.uml2.update-nightly.zip</code> : a zip of the nightly update site.</li>
-	<li>the <code>bundles</code>: the nightly products.</li>
-	<li>the <code>umldesigner-xxx.tpd</code>: the target platform used to build the update site and products.</li>
+  <li>the <code>repository</code> folder: the UML Designer nightly update site.</li>
+  <li>the <code>org.obeonetwork.dsl.uml2.update-nightly.zip</code> : a zip of the nightly update site.</li>
+  <li>the <code>bundles</code>: the nightly products.</li>
+  <li>the <code>umldesigner-xxx.tpd</code>: the target platform used to build the update site and products.</li>
 </ul>
+
 <p>The deploy phase is active only for specific branches: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master"><code>master</code></a>, <a href="https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x"><code>5.0.x</code></a>, <a href="https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x_juno3.8"><code>5.0.x_juno3.8</code></a>.</p>
+
 <p>The <a href="http://www.umldesigner.org">umldesigner.org</a> web site is also updated and deployed thanks to this build. For more details about the web site have a look to the <a href="../developer-guide/documentation.html">documentation section</a> of the developer guide.</p>
-<h4>Pull-requests</h4>
+
+<h4 id="pull-requests">Pull-requests</h4>
+
 <p>When a pull request is sent, a build is automatically launched. In this case, the deploy phase and the web site updates phases are not performed. The pull request build results is directly <a href="http://blog.travis-ci.com/2012-09-04-pull-requests-just-got-even-more-awesome/">visible in the github interface</a>.</p>
-<h3 id="UI_Tests_build"><span class="caps">UML</span>-Designer-UI-Tests build</h3>
-<p>The Travis &#8220;UI tests build&#8221;: https://travis-ci.org/ObeoNetwork/<span class="caps">UML</span>-Designer-UI-Tests is used to launch the UI tests.<br />
-This build deploys the tests results on S3: <br />
+
+<h3 id="uml-designer-ui-tests-build">UML-Designer-UI-Tests build</h3>
+
+<p>The Travis <a href="">UI tests build</a> https://travis-ci.org/ObeoNetwork/UML-Designer-UI-Tests is used to launch the UI tests.
+This build deploys the tests results on S3:
 http://obeo-umldesigner-nightly.s3-website-eu-west-1.amazonaws.com/$BRANCH_NAME/test-results/$JOB_NUMBER.</p>
-<h4>Make a release</h4>
-<p>When a new tag is pushed on the git repository a release is deployed on the S3 : http://obeo-umldesigner-releases.s3-website-eu-west-1.amazonaws.com/$<span class="caps">TAG</span>. The same tag must be added on the test project in order that the UI tests are relaunched and the results will be provided in: <br />
-http://obeo-umldesigner-releases.s3-website-eu-west-1.amazonaws.com/$<span class="caps">TAG</span>/test-results.</p>
+
+<h4 id="make-a-release">Make a release</h4>
+
+<p>When a new tag is pushed on the git repository a release is deployed on the S3 : http://obeo-umldesigner-releases.s3-website-eu-west-1.amazonaws.com/$TAG. The same tag must be added on the test project in order that the UI tests are relaunched and the results will be provided in:
+http://obeo-umldesigner-releases.s3-website-eu-west-1.amazonaws.com/$TAG/test-results.</p>
+
     </div>
   </div>
 </div><!-- /.container -->

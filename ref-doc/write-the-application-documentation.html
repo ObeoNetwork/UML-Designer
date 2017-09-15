@@ -90,47 +90,47 @@
           <ul class="dropdown-menu">
             
             	
-            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	<li><a href="../ref-doc/define-the-system.html#dashboard">Dashboard</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#activity-diagram">Activity Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Class_Diagram">Class Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#class-diagram">Class Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Component_Diagram">Component Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#component-diagram">Component Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Composite_Structure_Diagram">Composite Structure Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#composite-structure-diagram">Composite Structure Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Deployment_Diagram">Deployment Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#deployment-diagram">Deployment Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Package_Diagram">Package Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#package-diagram">Package Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Profile_Diagram">Profile Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#profile-diagram">Profile Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#Sequence_Diagram">Sequence Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#sequence-diagram">Sequence Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/implement-the-application.html#State_Machine_Diagram">State Machine Diagram</a></li>
+            	<li><a href="../ref-doc/implement-the-application.html#state-machine-diagram">State Machine Diagram</a></li>
             	
             
             	
-            	<li><a href="../ref-doc/define-the-application.html#Use_Case_Diagram">Use Case Diagram</a></li>
+            	<li><a href="../ref-doc/define-the-application.html#use-case-diagram">Use Case Diagram</a></li>
             	
             
           </ul>
@@ -248,37 +248,63 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <p>Kevin wants to use <span class="caps">UML</span> Designer to document its application. It exists mainly two features to help him in this tasks :</p>
+      <p>Kevin wants to use UML Designer to document its application. It exists mainly two features to help him in this tasks :</p>
+
 <ul>
-	<li>Documentation table from the Review viewpoint,</li>
-	<li>Export to <span class="caps">HTML</span> site or to images.</li>
+  <li>Documentation table from the Review viewpoint,</li>
+  <li>Export to HTML site or to images.</li>
 </ul>
-<h2>Manage comments in diagram</h2>
-<p>In <span class="caps">UML</span> Designer, a <em>Comments</em> layer is available on all the diagrams. To document his application Kevin opens the existing diagrams and activates the comments layer.<br />
-<img src="../images/CommentsLayer.png" alt="" /></p>
-<p>This layer provides a new section in the palette. <br />
-<img src="../images/CommentsLayerPalette.png" alt="" /></p>
+
+<h2 id="manage-comments-in-diagram">Manage comments in diagram</h2>
+
+<p>In UML Designer, a <em>Comments</em> layer is available on all the diagrams. To document his application Kevin opens the existing diagrams and activates the comments layer.</p>
+
+<p><img src="../images/CommentsLayer.png" alt="" /></p>
+
+<p>This layer provides a new section in the palette.</p>
+
+<p><img src="../images/CommentsLayerPalette.png" alt="" /></p>
+
 <p>The following tools are available :</p>
+
 <ul>
-	<li><strong>create a comment</strong>  : the user selects the <em>Comment</em> tool in the palette and clicks on the diagram, a new <span class="caps">UML</span> comment is created attached to the package associated to the diagram. If the user selects an element on the diagram, the comment will be attached to the selected element. The comments are represented on the diagram as following :<br />
-<img src="../images/CommentsLayerComment.png" alt="" /></li>
-	<li><strong>link a comment to a semantic element</strong> : the user selects the <em>Link comment</em> tool in the palette and selects as source a comment and as target an element. Thias action attached the comment to the selected element. The link is represented on the diagram by a doted link :<br />
-<img src="../images/CommentsLayerLink.png" alt="" /></li>
+  <li>
+    <p><strong>create a comment</strong> : the user selects the <em>Comment</em> tool in the palette and clicks on the diagram, a new UML comment is created attached to the package associated to the diagram. If the user selects an element on the diagram, the comment will be attached to the selected element. The comments are represented on the diagram as following :</p>
+
+    <p><img src="../images/CommentsLayerComment.png" alt="" /></p>
+  </li>
+  <li>
+    <p><strong>link a comment to a semantic element</strong> : the user selects the <em>Link comment</em> tool in the palette and selects as source a comment and as target an element. This action attached the comment to the selected element. The link is represented on the diagram by a doted link :</p>
+
+    <p><img src="../images/CommentsLayerLink.png" alt="" /></p>
+  </li>
 </ul>
+
 <p>When the layer is activated the comments are visible on the diagram.</p>
-<p>The user can remove the comment (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>).</p>
-<h2 id="Documentation_Table">Comments table</h2>
-<p>Thanks to the <strong>documentation table</strong> available in <span class="caps">UML</span> Extensions viewpoint, a user can add and review comment on each model element easily. This representation is a table which lists all the elements available in the model sub tree and their related comment.<br />
-The first column show the element name and the second column the associated comment.<br />
+
+<p>The user can remove the comment (see <a href="../ref-doc/define-the-system.html#direct-edit">Diagram editor/Editor main graphical area/Direct edit</a>).</p>
+
+<h2 id="comments-table">Comments table</h2>
+
+<p>Thanks to the <strong>documentation table</strong> available in UML Extensions viewpoint, a user can add and review comment on each model element easily. This representation is a table which lists all the elements available in the model sub tree and their related comment.
+The first column show the element name and the second column the associated comment.
 The elements should be ordered using a tree in order to get the possibility to expand and collapse some sub elements.</p>
-<h2>Export</h2>
-<p><span class="caps">UML</span> Designer allows to export the defined diagrams.</p>
-<h3><span class="caps">HTML</span> export</h3>
-<p>This feature allows to export all the models with their representations into an <span class="caps">HTML</span> site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted. This features is only available in <a href="http://www.obeodesigner.com/">Obeo Designer</a> and not with the Sirius based product.</p>
-<h3>Export diagrams as images</h3>
+
+<h2 id="export">Export</h2>
+
+<p>UML Designer allows to export the defined diagrams.</p>
+
+<h3 id="html-export">HTML export</h3>
+
+<p>This feature allows to export all the models with their representations into an HTML site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted. This features is only available in <a href="http://www.obeodesigner.com/">Obeo Designer</a> and not with the Sirius based product.</p>
+
+<h3 id="export-diagrams-as-images">Export diagrams as images</h3>
+
 <p>It is possible to export a diagram to an image file. To do that right-click on the diagram and choose the menu <em>Export diagram as image</em> or select the corresponding icon in the diagram tab-bar. After selecting the file path, the user can choose the image format and he wants to overwrite an existing file without warning. On the first export of diagram as image the name is set by default with the representation name. After there is an history to select the last export. If you do not specify the file extension, the extension is determined from the selected image format. You can choose the directory in which to create the file using the Browse button.</p>
-<p>It is possible to export all diagram of a representations file at once. To do that, select the representations file (.aird file) and right-click on it. Then choose the menu Export diagrams as image&#8230;. On the opened pop-up select the path of the folder where the images will be exported.<br />
+
+<p>It is possible to export all diagram of a representations file at once. To do that, select the representations file (.aird file) and right-click on it. Then choose the menu Export diagrams as image…. On the opened pop-up select the path of the folder where the images will be exported.
 The same functionality is available on every semantic elements which has representations from the Model Explorer view. In this case, only the diagrams of the selected element will be exported.</p>
+
     </div>
   </div>
 </div><!-- /.container -->
