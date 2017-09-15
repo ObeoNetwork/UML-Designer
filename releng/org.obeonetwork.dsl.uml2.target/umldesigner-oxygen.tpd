@@ -85,4 +85,6 @@ location "http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.
 	org.eclipse.emf.compare.rcp.ui.feature.group lazy
 	org.eclipse.emf.compare.feature.group lazy
 	org.eclipse.emf.compare.uml2.feature.group lazy
+	org.eclipse.emf.compare.diagram.ide.ui.sirius lazy
+	org.eclipse.emf.compare.diagram.sirius lazy
 }

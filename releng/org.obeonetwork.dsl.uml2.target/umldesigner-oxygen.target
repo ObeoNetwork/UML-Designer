@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UML Designer Oxygen" sequenceNumber="1505379208">
+<target name="UML Designer Oxygen" sequenceNumber="1505475577">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.uml2.uml.feature.group" version="5.3.0.v20170605-1616"/>
@@ -56,6 +56,8 @@
       <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.compare.uml2.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.diagram.ide.ui.sirius" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.diagram.sirius" version="0.0.0"/>
       <repository location="http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.3/S201706130827"/>
     </location>
   </locations>
