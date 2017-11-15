@@ -17,7 +17,10 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -472,7 +475,12 @@ public class PropertiesViewServices {
 	public Object getTaggedValuesValue(EStructuralFeature feature, Element element) {
 		final Stereotype stereotype = retrieveStereotype(feature, element);
 		if (stereotype != null) {
-			return element.getValue(stereotype, feature.getName());
+			Object value = element.getValue(stereotype, feature.getName());
+			if (value instanceof Enumerator && feature.getEType() instanceof EEnum) {
+				// returns the literal.
+				value = ((EEnum)feature.getEType()).getEEnumLiteral(((Enumerator)value).getValue());
+			}
+			return value;
 		}
 		return null;
 	}
@@ -1067,7 +1075,9 @@ public class PropertiesViewServices {
 	 */
 	public void setTaggedValuesValue(EStructuralFeature feature, Element element, Object value) {
 		final Stereotype stereotype = retrieveStereotype(feature, element);
-		if (value != null) {
+		if (value instanceof EEnumLiteral) {
+			element.setValue(stereotype, feature.getName(), ((EEnumLiteral)value).getInstance());
+		} else if (value != null) {
 			element.setValue(stereotype, feature.getName(), value);
 		}
 	}
