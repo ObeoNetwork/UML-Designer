@@ -411,7 +411,7 @@ public class LaunchConfigurationPropertiesPage extends PropertyPage {
         }
 
         @Override
-        protected ILaunchConfiguration handleApplyPressed() {
+        public ILaunchConfiguration handleApplyPressed() {
             ILaunchConfiguration launchConfig = super.handleApplyPressed();
 
             if (launchConfig != null && !combo.getText().equals(launchConfig.getName())) {
