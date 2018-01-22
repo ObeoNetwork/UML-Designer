@@ -387,18 +387,6 @@ It is possible to create:
 -   execution
 -   state invariant : condition applied to a lifeline
 -   interaction use : call another interaction
--   combined fragments : defines an expression of interaction fragments
-    -   alternatives
-    -   option
-    -   iteration
-    -   break
-    -   parallel
-    -   strict sequencing
-    -   critical region
-    -   ignore
-    -   consider
-    -   assertion
-    -   negative
 
 The user can also **delete an element** (see [Diagram editor/Editor tab-bar/Delete element/from model]({{ page.relativePath }}/ref-doc/define-the-system.html#delete-element-from-model)).
 
