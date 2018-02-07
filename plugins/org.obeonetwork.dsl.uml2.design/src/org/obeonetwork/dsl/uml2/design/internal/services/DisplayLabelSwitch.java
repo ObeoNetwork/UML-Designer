@@ -952,11 +952,29 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		final StringBuilder propertyModifier = new StringBuilder();
 		if (object.getRedefinedElements() != null && object.getRedefinedElements().size() > 0
 				&& object.getRedefinedElements().get(0) != null) {
-			propertyModifier.append("redefines " + object.getRedefinedElements().get(0).getName()); //$NON-NLS-1$
+			String parentName = null;
+			if (object.getRedefinedElements().get(0).eContainer() instanceof NamedElement) {
+				final NamedElement elem = (NamedElement)object.getRedefinedElements().get(0).eContainer();
+				parentName = elem.getName();
+			}
+			String redefPropertyname = object.getRedefinedElements().get(0).getName();
+			if (parentName != null && !parentName.isEmpty()) {
+				redefPropertyname = parentName + "::" + object.getRedefinedElements().get(0).getName(); //$NON-NLS-1$
+			}
+			propertyModifier.append("redefines " + redefPropertyname); //$NON-NLS-1$
 		}
-		if (object.getRedefinedElements() != null && object.getSubsettedProperties().size() > 0
-				&& object.getRedefinedElements().get(0) != null) {
-			propertyModifier.append("subsets " + object.getSubsettedProperties().get(0).getName()); //$NON-NLS-1$
+		if (object.getSubsettedProperties() != null && object.getSubsettedProperties().size() > 0
+				&& object.getSubsettedProperties().get(0) != null) {
+			String parentName = null;
+			if (object.getSubsettedProperties().get(0).eContainer() instanceof NamedElement) {
+				final NamedElement elem = (NamedElement)object.getSubsettedProperties().get(0).eContainer();
+				parentName = elem.getName();
+			}
+			String subsetPropertyname = object.getSubsettedProperties().get(0).getName();
+			if (parentName != null && !parentName.isEmpty()) {
+				subsetPropertyname = parentName + "::" + object.getSubsettedProperties().get(0).getName(); //$NON-NLS-1$
+			}
+			propertyModifier.append("subsets " + subsetPropertyname); //$NON-NLS-1$
 		}
 		if (object.isID()) {
 			if (propertyModifier.length() > 0) {
