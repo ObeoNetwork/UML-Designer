@@ -163,7 +163,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseActivity(Activity object) {
-		return object.getName();
+		return OPEN_QUOTE_MARK + "Activity" + CLOSE_QUOTE_MARK + caseBehavior(object); //$NON-NLS-1$
 	}
 
 	/**
@@ -774,7 +774,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseStateMachine(StateMachine object) {
-		return object.getName();
+		return OPEN_QUOTE_MARK + "StateMachine" + CLOSE_QUOTE_MARK + caseBehavior(object); //$NON-NLS-1$
 	}
 
 	/**
