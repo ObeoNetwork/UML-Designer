@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" documentation="Copyright (c) 2009, 2014 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="UML2 modelers" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:properties_1.0.0="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" documentation="Copyright (c) 2009, 2014 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="UML2 modelers" version="12.0.0.2017041100">
   <ownedViewpoints name="Reused" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="" preconditionExpression="service:inactive">
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
@@ -545,7 +545,7 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                     <initialOperation>
                       <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1315,12 +1315,10 @@
       <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" documentation="Hides elements (Classes, Interfaces, Associations, ...) not related to the selected (context) Class/Interface." name="Related Elements">
-        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="service:self.isRelated(contextSelection)">
-          <ownedVariables xsi:type="tool:SelectModelElementVariable" name="contextSelection" candidatesExpression="aql:diagram.ownedDiagramElements.target->select(elt | elt.oclIsTypeOf(uml::Class) or elt.oclIsTypeOf(uml::Interface))" message="Select the contextual element. This filter shows only the elements related to the selected context, the other elements will be hidden."/>
-        </filters>
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="service:self.isRelated(contextSelection)"/>
       </filters>
       <validationSet name="callCheckAggregationCompositeAssociation">
-        <ownedRules xsi:type="validation:SemanticValidationRule" name="isValidAggregationCompositeAssociation" level="ERROR" message="This is not a binary association as required for composite or aggregation." targetClass="uml.Association">
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="This is not a binary association as required for composite or aggregation." targetClass="uml.Association" name="isValidAggregationCompositeAssociation">
           <audits auditExpression="service:isValidAggregationCompositeAssociation"/>
         </ownedRules>
       </validationSet>
@@ -1625,7 +1623,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Package">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Package">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1656,7 +1654,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1686,7 +1684,7 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interface">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Interface">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1717,7 +1715,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Enumeration" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Enumeration">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Enumeration">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1747,7 +1745,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.PrimitiveType" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Primitive Type">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Primitive Type">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1777,7 +1775,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Type">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Data Type">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1815,7 +1813,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:self.findTypeByName('String')"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="public"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Property">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Property">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1838,7 +1836,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createOperation">
-                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Operation">
+                <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Operation">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                     <initialOperation>
                       <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1870,7 +1868,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="specification">
                     <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="aql:self.eContainer().eContainer().eAllContents(uml::EnumerationLiteral)->size() - 1"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Literal">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Literal">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -1915,7 +1913,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createQualifier">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Qualifier">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Qualifier">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -2498,7 +2496,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addArchetypeMomentIntervalKeyword"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -2531,7 +2529,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addArchetypeDescriptionKeyword"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -2564,7 +2562,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addArchetypeRoleKeyword"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -2597,7 +2595,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:addArchetypeThingKeyword"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="aql:uml::VisibilityKind::uml::VisibilityKind::public"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -2853,7 +2851,7 @@
         </edgeMappings>
         <containerMappings name="CS_StructuredClassifier" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Create%20class%20diagram%20from%20component']" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Open%20a%20class%20diagram%20from%20component']" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getMappingForStructuredClassifier(self, containerView)" createElements="false" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.StructuredClassifier" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@additionalLayers[name='Interfaces']/@nodeMappings[name='CS_RequiredInterface']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']">
           <borderedNodeMappings name="CS_StructuredClassifier_Port" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:self.ownedAttribute->filter(uml::Port)->select(elt | elt.type &lt;> self)" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Port">
-            <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="service:computeUmlLabel" sizeComputationExpression="2" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2862,7 +2860,7 @@
           </borderedNodeMappings>
           <subContainerMappings name="CS_Part" preconditionExpression="aql:self.oclIsTypeOf(uml::Property) and self.isComposite()" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_Property']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:ownedAttribute" createElements="false" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Property" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram']">
             <borderedNodeMappings name="CS_Part_Port" semanticCandidatesExpression="aql:self.type->filter(uml::StructuredClassifier).ownedAttribute" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Port">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="service:computeUmlLabel" sizeComputationExpression="2">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2965,7 +2963,7 @@
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Part'+self.eContainer().eContents()->filter(uml::Property)->size()"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="service:self.getAggregationKindComposite"/>
-                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Property">
+                <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Property">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                     <initialOperation>
                       <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -2991,7 +2989,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Port">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Port">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3231,7 +3229,7 @@
         </edgeMappings>
         <containerMappings name="CO_Component" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Create%20statemachine%20diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Use%20case%20diagram']/@ownedTools[name='Create%20Use%20Case%20Diagram%20from%20component'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Create%20class%20diagram%20from%20component']" navigationDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20classifier'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Open%20a%20class%20diagram%20from%20component']" pasteDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" preconditionExpression="aql:self.oclIsTypeOf(uml::Component) or self.oclIsTypeOf(uml::Class)" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Class" dropDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
           <borderedNodeMappings name="CO_Port" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="aql:self.ownedAttribute->filter(uml::Port)->select(elt | elt.type &lt;> self)" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Port">
-            <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2" resizeKind="EAST_WEST">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="service:computeUmlLabel" sizeComputationExpression="2" resizeKind="EAST_WEST">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3321,7 +3319,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Component">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Component">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3346,7 +3344,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Class">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3379,7 +3377,7 @@
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="isConjugated" valueExpression="true"/>
-                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Port">
+                <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Port">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                     <initialOperation>
                       <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3403,7 +3401,8 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement" variableName="newInterface">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interface">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" containerViewExpression="var:containerView"/>
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Interface">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3417,7 +3416,6 @@
                     <page name="D_CO_CreateInterface_DefaultPage" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Interface']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
                     <groups name="D_CO_CreateInterface_GeneralGroup" semanticCandidateExpression="var:self" extends="//@extensions.0/@categories.0/@groups.0"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" containerViewExpression="var:containerView"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -3777,7 +3775,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Node" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Node">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Node">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3796,7 +3794,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Node" referenceName="nestedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Node">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Node">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3823,7 +3821,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Device" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Device">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Device">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3842,7 +3840,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Device" referenceName="nestedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Device">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Device">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3869,7 +3867,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ExecutionEnvironment" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Execution Environment">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Execution Environment">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3888,7 +3886,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ExecutionEnvironment" referenceName="nestedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Execution Environment">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Execution Environment">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3915,7 +3913,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Artifact" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Artifact">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Artifact">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -3934,7 +3932,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(uml::Package)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Artifact" referenceName="nestedClassifier">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Artifact">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Artifact">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4201,10 +4199,10 @@
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
       <validationSet name="callOperationPinConsistency">
-        <ownedRules xsi:type="validation:SemanticValidationRule" name="CallOperationPinConsistencyError" level="ERROR" message="service:getCallOperationPinConsistencyErrorMessage" targetClass="uml.Pin">
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="service:getCallOperationPinConsistencyErrorMessage" targetClass="uml.Pin" name="CallOperationPinConsistencyError">
           <audits auditExpression="service:isConsistent"/>
         </ownedRules>
-        <ownedRules xsi:type="validation:SemanticValidationRule" name="CallOperationConsistencyError" level="ERROR" message="service:getCallOperationConsistencyErrorMessage" targetClass="uml.CallOperationAction">
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="service:getCallOperationConsistencyErrorMessage" targetClass="uml.CallOperationAction" name="CallOperationConsistencyError">
           <audits auditExpression="service:isConsistent"/>
         </ownedRules>
       </validationSet>
@@ -4420,7 +4418,7 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityPartition" referenceName="partition">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Partition">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Activity Partition">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4441,7 +4439,7 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityPartition" referenceName="subpartition">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Partition">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Activity Partition">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4470,7 +4468,7 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InterruptibleActivityRegion" referenceName="ownedGroup">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Interruptible Activity Region">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Interruptible Activity Region">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4498,7 +4496,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::Activity)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StructuredActivityNode" referenceName="structuredNode">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Structured Activity Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Structured Activity Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4517,7 +4515,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StructuredActivityNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Structured Activity Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Structured Activity Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4553,7 +4551,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial Node">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Initial Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4573,7 +4571,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InitialNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Initial Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4607,7 +4605,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final Node">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Final Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4627,7 +4625,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityFinalNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Final Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4661,7 +4659,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Flow Final Node">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Flow Final Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4681,7 +4679,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.FlowFinalNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Flow Final Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Flow Final Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4715,7 +4713,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Decision Node">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Decision Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4735,7 +4733,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DecisionNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Decision Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Decision Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4769,7 +4767,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Merge Node">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Merge Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4789,7 +4787,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.MergeNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Merge Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Merge Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4823,7 +4821,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork Node">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Fork Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4843,7 +4841,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ForkNode" referenceName="ownedNode">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Fork Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4881,7 +4879,7 @@
                           <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:joinNode.name"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join Node">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Join Node">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4905,7 +4903,7 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:joinNode.name"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join Node">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Join Node">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4942,7 +4940,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Opaque Action">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Opaque Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -4963,7 +4961,7 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="aql:'// TODO body of '+instance.name"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Opaque Action">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Opaque Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5102,7 +5100,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Event Action">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Accept Event Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5133,7 +5131,7 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Event Action">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Accept Event Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5178,7 +5176,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Wait Time Action">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Wait Time Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5209,7 +5207,7 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Wait Time Action">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Wait Time Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5257,7 +5255,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Signal Action">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Accept Signal Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5289,7 +5287,7 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Signal Action">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Accept Signal Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5337,7 +5335,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Call Action">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Accept Call Action">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5369,7 +5367,7 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Accept Call Action">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Accept Call Action">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5406,7 +5404,7 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="parameter" valueExpression="var:parameter"/>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Activity Parameter">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Activity Parameter">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5439,7 +5437,7 @@
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:container->filter(uml::InterruptibleActivityRegion)->size()>0">
                           <subModelOperations xsi:type="tool:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Store">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Data Store">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5459,7 +5457,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(uml::StructuredActivityNode)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataStoreNode" referenceName="node">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Store">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Data Store">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5484,7 +5482,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createInputPin">
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Input Pin">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Input Pin">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5508,7 +5506,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createOutputPin">
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Output Pin">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Output Pin">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -5685,10 +5683,10 @@
           </subSections>
         </toolSections>
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Activity" position="NORTH_EAST" preconditionExpression="aql:self.behavior.oclIsTypeOf(uml::Activity)" imageExpression="/org.eclipse.uml2.uml.edit/icons/full/obj16/Activity.gif" domainClass="CallBehaviorAction"/>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="StateMachine" position="NORTH_EAST" preconditionExpression="aql:self.behavior.oclIsTypeOf(uml::StateMachine)" imageExpression="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif" domainClass="CallBehaviorAction"/>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="InconsistentPin" position="NORTH_EAST" preconditionExpression="service:isNotConsistent" imageExpression="/org.eclipse.gmf.runtime.diagram.ui/icons/error.gif" domainClass="Pin"/>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="InconsistentCallOperationAction" position="NORTH_EAST" preconditionExpression="service:isNotConsistent" imageExpression="/org.eclipse.gmf.runtime.diagram.ui/icons/error.gif" domainClass="CallOperationAction"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Activity" position="NORTH_EAST" preconditionExpression="aql:self.behavior.oclIsTypeOf(uml::Activity)" domainClass="CallBehaviorAction" imageExpression="/org.eclipse.uml2.uml.edit/icons/full/obj16/Activity.gif"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="StateMachine" position="NORTH_EAST" preconditionExpression="aql:self.behavior.oclIsTypeOf(uml::StateMachine)" domainClass="CallBehaviorAction" imageExpression="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="InconsistentPin" position="NORTH_EAST" preconditionExpression="service:isNotConsistent" domainClass="Pin" imageExpression="/org.eclipse.gmf.runtime.diagram.ui/icons/error.gif"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="InconsistentCallOperationAction" position="NORTH_EAST" preconditionExpression="service:isNotConsistent" domainClass="CallOperationAction" imageExpression="/org.eclipse.gmf.runtime.diagram.ui/icons/error.gif"/>
         </decorationDescriptionsSet>
       </defaultLayer>
       <additionalLayers name="Profiles">
@@ -5956,7 +5954,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
             <conditionnalStyles predicateExpression="aql:(self.eContainer().oclIsTypeOf(uml::State) and self.eContainer().isSubmachineState()) or self.eContainer().oclIsTypeOf(uml::StateMachine)">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" borderLineStyle="dash" labelSize="9" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="9" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']" borderLineStyle="dash">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5964,7 +5962,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.eContainer().oclIsTypeOf(uml::State)">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" borderLineStyle="dash" labelSize="9" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" backgroundStyle="Liquid">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="9" labelExpression="service:computeUmlLabel" hideLabelByDefault="true" backgroundStyle="Liquid" borderLineStyle="dash">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5989,7 +5987,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::State) or self.oclIsKindOf(uml::StateMachine)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Region" referenceName="region">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Region">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Region">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6009,7 +6007,7 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer()">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Region" referenceName="region">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Region">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Region">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6047,7 +6045,7 @@
                 <cases conditionExpression="aql:self.oclIsTypeOf(uml::Region)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.State" referenceName="subvertex">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create State">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create State">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6108,7 +6106,7 @@
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create State Machine">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create State Machine">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6148,7 +6146,7 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="initial"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Initial">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Initial">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6171,7 +6169,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.FinalState" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Final">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Final">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6195,7 +6193,7 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="fork"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Fork">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Fork">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6219,7 +6217,7 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="join"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Join">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Join">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6243,7 +6241,7 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="choice"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Choice">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Choice">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation/>
                     </buttons>
@@ -6265,7 +6263,7 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="junction"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Junction">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Junction">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6289,7 +6287,7 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="terminate"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Terminate">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Terminate">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6313,7 +6311,7 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="shallowHistory"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Shallow History">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Shallow History">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6337,7 +6335,7 @@
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="deepHistory"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Deep History">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Deep History">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6354,7 +6352,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new entry point" name="Entry Point State Node" label="Entry Point" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_entryPoint.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new entry point" name="Entry Point State Node" label="Entry Point" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_entryPoint.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']" inverseSelectionOrder="true">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -6363,7 +6361,7 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
                       <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="entryPoint"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Entry Point">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Entry Point">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6384,7 +6382,7 @@
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
                         <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="entryPoint"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Entry Point">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Entry Point">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6404,7 +6402,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new exit point" name="Exit Point State Node" label="Exit Point" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_exitPoint.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new exit point" name="Exit Point State Node" label="Exit Point" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_exitPoint.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']" inverseSelectionOrder="true">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -6413,7 +6411,7 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
                       <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="exitPoint"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Exit Point">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Exit Point">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation>
                             <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6434,7 +6432,7 @@
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
                         <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="exitPoint"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                        <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Exit Point">
+                        <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Exit Point">
                           <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                             <initialOperation>
                               <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6829,7 +6827,7 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Class">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Class">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -6867,7 +6865,7 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="var:property"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Actor">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Actor">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext"/>
@@ -7403,7 +7401,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Package">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Package">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation/>
                     </buttons>
@@ -7426,7 +7424,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Profile" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Profile">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Profile">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation/>
                     </buttons>
@@ -7451,7 +7449,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:self.createStereotype">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Stereotype">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Stereotype">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation/>
                     </buttons>
@@ -7473,7 +7471,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importMetaclass">
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Import Metaclass">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Import Metaclass">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation/>
                     </buttons>
@@ -7507,7 +7505,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Enumeration" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Enumeration">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Enumeration">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation/>
                       </buttons>
@@ -7530,7 +7528,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.PrimitiveType" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Primitive Type">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Primitive Type">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation/>
                       </buttons>
@@ -7553,7 +7551,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Data Type">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Data Type">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation/>
                       </buttons>
@@ -7592,7 +7590,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:self.findTypeByName('String')"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Property">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Property">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation/>
                     </buttons>
@@ -7618,7 +7616,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="specification">
                     <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="aql:self.eContainer().eContainer().eAllContents(uml::EnumerationLiteral)->size() - 1"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create Literal">
+                  <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Create Literal">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation/>
                     </buttons>
@@ -7790,11 +7788,11 @@
     <entries xsi:type="description:UserFixedColor" red="180" green="200" blue="210" name="Description"/>
     <entries xsi:type="description:UserFixedColor" red="241" green="243" blue="254" name="QualifierBackground"/>
   </userColorsPalettes>
-  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
+  <extensions xsi:type="properties_1.0.0:ViewExtensionDescription" name="Properties">
     <categories name="PR_General">
       <pages name="PR_GeneralPage" labelExpression="General" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0 //@extensions.0/@categories.0/@groups.1 //@extensions.0/@categories.0/@groups.2 //@extensions.0/@categories.0/@groups.3 //@extensions.0/@categories.0/@groups.4 //@extensions.0/@categories.0/@groups.5 //@extensions.0/@categories.0/@groups.6 //@extensions.0/@categories.0/@groups.7 //@extensions.0/@categories.0/@groups.8"/>
       <groups name="PR_GeneralGroup" labelExpression="General" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:self.eClass().eAllStructuralFeatures->select(feature | feature.isGeneralFeature(self))">
+        <controls xsi:type="properties_1.0.0:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:self.eClass().eAllStructuralFeatures->select(feature | feature.isGeneralFeature(self))">
           <ifs name="general_mono_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.0"/>
           </ifs>
@@ -7802,7 +7800,7 @@
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.1"/>
           </ifs>
           <ifs name="general_boolean_if" predicateExpression="aql:input.emfEditServices(self).needsCheckboxWidget(eStructuralFeature)">
-            <widget xsi:type="properties:CheckboxDescription" name="general_rules_mono_boolean" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)" isEnabledExpression="aql:input.getSemanticElement().isEnabled(eStructuralFeature)">
+            <widget xsi:type="properties_1.0.0:CheckboxDescription" name="general_rules_mono_boolean" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)" isEnabledExpression="aql:input.getSemanticElement().isEnabled(eStructuralFeature)">
               <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.2/@widget"/>
             </widget>
           </ifs>
@@ -7813,12 +7811,12 @@
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.4"/>
           </ifs>
           <ifs name="general_reference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)  and not eStructuralFeature.isEnumerationLiterals() and not eStructuralFeature.isDisplayedOperationsList() and not  self.isDisplayedAttributesList()">
-            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name">
+            <widget xsi:type="reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name">
               <onClickOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:eStructuralFeature.many and onClickEventKind='DOUBLE_CLICK'">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->first()">
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit Many">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit Many">
                         <buttons labelExpression="Cancel" default="true" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation/>
                         </buttons>
@@ -7831,7 +7829,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not(eStructuralFeature.many) and onClickEventKind='SINGLE_CLICK'">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection">
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit Mono">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit Mono">
                         <buttons labelExpression="Cancel" default="true" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation/>
                         </buttons>
@@ -7847,12 +7845,12 @@
             </widget>
           </ifs>
           <ifs name="general_enum_literal_if" predicateExpression="aql:eStructuralFeature.isEnumerationLiterals()">
-            <widget xsi:type="properties:ListDescription" name="EnumerationLiteralList" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="Owned Literal" valueExpression="aql:self.oclAsType(uml::Enumeration).ownedLiteral" displayExpression="aql:value.name">
+            <widget xsi:type="properties_1.0.0:ListDescription" name="EnumerationLiteralList" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="Owned Literal" valueExpression="aql:self.oclAsType(uml::Enumeration).ownedLiteral" displayExpression="aql:value.name">
               <onClickOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:selection->size() = 1">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->first()">
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation/>
                         </buttons>
@@ -7888,13 +7886,13 @@
         </controls>
       </groups>
       <groups name="PR_AttributesGroup" labelExpression="Attributes" semanticCandidateExpression="var:self" preconditionExpression="aql:input.getSemanticElement().isDisplayedAttributesList() or input.getSemanticElement().isTaggedValuesAvailable()">
-        <controls xsi:type="properties:ListDescription" name="PR_Attributes" labelExpression="Attributes:" helpExpression="Attributes from Element or applied Stereotype" valueExpression="aql:input.getSemanticElement().getAttributes()" displayExpression="aql:value.getAttributesLabel(input.getSemanticElement())">
+        <controls xsi:type="properties_1.0.0:ListDescription" name="PR_Attributes" labelExpression="Attributes:" helpExpression="Attributes from Element or applied Stereotype" valueExpression="aql:input.getSemanticElement().getAttributes()" displayExpression="aql:value.getAttributesLabel(input.getSemanticElement())">
           <onClickOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.isRemovableAttribute(selection) and  selection->size()=1">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->at(1)">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:onClickEventKind='DOUBLE_CLICK'">
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                       <buttons labelExpression="Cancel" default="true" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation/>
                       </buttons>
@@ -7910,7 +7908,7 @@
                 <subModelOperations xsi:type="tool:Let" variableName="parent" valueExpression="var:self">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->at(1)">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:onClickEventKind='DOUBLE_CLICK'">
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation/>
                         </buttons>
@@ -7919,9 +7917,9 @@
                         </buttons>
                         <page name="Default Page" labelExpression="aql:self.computeUmlLabel()" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1/@controls.0/@onClickOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
                         <groups name="TaggedValuesEdition" labelExpression="Tagged Values" semanticCandidateExpression="var:self">
-                          <controls xsi:type="properties:DynamicMappingForDescription" name="sirius_default_rules_structural_features_for" iterator="eStructuralFeature" iterableExpression="aql:self->asSequence()">
+                          <controls xsi:type="properties_1.0.0:DynamicMappingForDescription" name="sirius_default_rules_structural_features_for" iterator="eStructuralFeature" iterableExpression="aql:self->asSequence()">
                             <ifs name="tagged_values_rules_mono_string_if" predicateExpression="aql:input.emfEditServices(parent).needsTextWidget(eStructuralFeature) and not input.emfEditServices(parent).isMultiline(eStructuralFeature)">
-                              <widget xsi:type="properties:TextDescription" name="tagged_values_rules_mono_string" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent))" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)">
+                              <widget xsi:type="properties_1.0.0:TextDescription" name="tagged_values_rules_mono_string" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent))" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)">
                                 <initialOperation>
                                   <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:eStructuralFeature.setTaggedValuesValue(parent, newValue)"/>
                                 </initialOperation>
@@ -7933,7 +7931,7 @@
                               </widget>
                             </ifs>
                             <ifs name="tagged_values_rules_multi_string_if" predicateExpression="aql:input.emfEditServices(parent).needsTextWidget(eStructuralFeature) and input.emfEditServices(parent).isMultiline(eStructuralFeature)">
-                              <widget xsi:type="properties:TextAreaDescription" name="tagged_values_rules_multi_string" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)">
+                              <widget xsi:type="properties_1.0.0:TextAreaDescription" name="tagged_values_rules_multi_string" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)">
                                 <initialOperation>
                                   <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:eStructuralFeature.setTaggedValuesValue(parent, newValue)"/>
                                 </initialOperation>
@@ -7945,7 +7943,7 @@
                               </widget>
                             </ifs>
                             <ifs name="tagged_values_rules_mono_boolean" predicateExpression="aql:input.emfEditServices(parent).needsCheckboxWidget(eStructuralFeature)">
-                              <widget xsi:type="properties:CheckboxDescription" name="tagged_values_rules_mono_boolean" labelExpression="aql:eStructuralFeature.name" helpExpression="aql:eStructuralFeature.getHelp(parent)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)">
+                              <widget xsi:type="properties_1.0.0:CheckboxDescription" name="tagged_values_rules_mono_boolean" labelExpression="aql:eStructuralFeature.name" helpExpression="aql:eStructuralFeature.getHelp(parent)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)">
                                 <initialOperation>
                                   <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:eStructuralFeature.setTaggedValuesValue(parent, newValue)"/>
                                 </initialOperation>
@@ -7957,7 +7955,7 @@
                               </widget>
                             </ifs>
                             <ifs name="tagged_values_rules_enum_if" predicateExpression="aql:eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many)">
-                              <widget xsi:type="properties:RadioDescription" name="tagged_values_rules_enum" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+                              <widget xsi:type="properties_1.0.0:RadioDescription" name="tagged_values_rules_enum" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
                                 <initialOperation>
                                   <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:eStructuralFeature.setTaggedValuesValue(parent, newValue)"/>
                                 </initialOperation>
@@ -7969,10 +7967,10 @@
                               </widget>
                             </ifs>
                             <ifs name="tagged_values_rules_eattribute_many_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many">
-                              <widget xsi:type="properties:ListDescription" name="tagged_values_rules_eattribute_many" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="var:value"/>
+                              <widget xsi:type="properties_1.0.0:ListDescription" name="tagged_values_rules_eattribute_many" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="var:value"/>
                             </ifs>
                             <ifs name="tagged_values_rules_ereference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)">
-                              <widget xsi:type="properties:ListDescription" name="tagged_values_rules_ereference" labelExpression="aql:input.getSemanticElement().getTaggedValuesWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:eStructuralFeature.getHelp(parent)" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)" displayExpression="aql:value.name"/>
+                              <widget xsi:type="properties_1.0.0:ListDescription" name="tagged_values_rules_ereference" labelExpression="aql:input.getSemanticElement().getTaggedValuesWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:eStructuralFeature.getHelp(parent)" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)" displayExpression="aql:value.name"/>
                             </ifs>
                           </controls>
                         </groups>
@@ -8016,13 +8014,13 @@
         </controls>
       </groups>
       <groups name="PR_OperationsGroup" labelExpression="Operations" semanticCandidateExpression="var:self" preconditionExpression="aql: input.getSemanticElement().isDisplayedOperationsList()">
-        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:self.eClass().eAllStructuralFeatures->select(feature | feature.isGeneralFeature(self))">
+        <controls xsi:type="properties_1.0.0:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:self.eClass().eAllStructuralFeatures->select(feature | feature.isGeneralFeature(self))">
           <ifs name="operation_reference_if" predicateExpression="aql: eStructuralFeature.isDisplayedOperationsList()">
-            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name">
+            <widget xsi:type="reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name">
               <onClickOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->at(1)">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:onClickEventKind='DOUBLE_CLICK'">
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation/>
                       </buttons>
@@ -8039,11 +8037,11 @@
         </controls>
       </groups>
       <groups name="PR_ParametersGroup" labelExpression="Parameters" domainClass="uml::Operation" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="Parameters" labelExpression="Parameters:" helpExpression="Operation Parameters" referenceNameExpression="ownedParameter">
+        <controls xsi:type="reference:ExtReferenceDescription" name="Parameters" labelExpression="Parameters:" helpExpression="Operation Parameters" referenceNameExpression="ownedParameter">
           <onClickOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->at(1)">
               <subModelOperations xsi:type="tool:If" conditionExpression="aql:onClickEventKind='DOUBLE_CLICK'">
-                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                     <initialOperation/>
                   </buttons>
@@ -8058,14 +8056,14 @@
         </controls>
       </groups>
       <groups name="PR_AssociationEndsGroup" labelExpression="Ends" domainClass="uml::Association" semanticCandidateExpression="aql:self">
-        <controls xsi:type="properties:ContainerDescription" name="PR_EndsMainContainer">
-          <controls xsi:type="properties:ContainerDescription" name="PR_AssociationEnds" label="Ends">
-            <controls xsi:type="properties:DynamicMappingForDescription" name="PR_AssociationEndsFor" iterator="end" iterableExpression="aql:self.getAssociationEnds()" forceRefresh="true">
+        <controls xsi:type="properties_1.0.0:ContainerDescription" name="PR_EndsMainContainer">
+          <controls xsi:type="properties_1.0.0:ContainerDescription" name="PR_AssociationEnds" label="Ends">
+            <controls xsi:type="properties_1.0.0:DynamicMappingForDescription" name="PR_AssociationEndsFor" iterator="end" iterableExpression="aql:self.getAssociationEnds()" forceRefresh="true">
               <ifs name="isVisibleAssociationEndLabel" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
-                <widget xsi:type="properties:HyperlinkDescription" name="AssociationEndHyperLink" valueExpression="aql:end" displayExpression="aql:end.name">
+                <widget xsi:type="properties_1.0.0:HyperlinkDescription" name="AssociationEndHyperLink" valueExpression="aql:end" displayExpression="aql:end.name">
                   <initialOperation>
                     <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:end">
-                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                      <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                           <initialOperation/>
                         </buttons>
@@ -8079,42 +8077,42 @@
                 </widget>
               </ifs>
               <ifs name="isVisibleAssociationEndNavigability" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
-                <widget xsi:type="properties:CheckboxDescription" name="AssociationEndNavigable" labelExpression="Navigable" valueExpression="aql:end.isNavigableEnd()">
+                <widget xsi:type="properties_1.0.0:CheckboxDescription" name="AssociationEndNavigable" labelExpression="Navigable" valueExpression="aql:end.isNavigableEnd()">
                   <initialOperation>
                     <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setIsNavigableEnd(newValue)"/>
                   </initialOperation>
                 </widget>
               </ifs>
               <ifs name="isVisibleAssociationEndOwner" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
-                <widget xsi:type="properties:CheckboxDescription" name="AssociationEndOwner" labelExpression="Owned" valueExpression="aql:end.oclAsType(uml::Property).owner.oclIsKindOf(uml::Association)">
+                <widget xsi:type="properties_1.0.0:CheckboxDescription" name="AssociationEndOwner" labelExpression="Owned" valueExpression="aql:end.oclAsType(uml::Property).owner.oclIsKindOf(uml::Association)">
                   <initialOperation>
                     <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setIsOwnedEnd(newValue)"/>
                   </initialOperation>
                 </widget>
               </ifs>
               <ifs name="isVisibleAssociationKind" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
-                <widget xsi:type="properties:SelectDescription" name="AssociationEndKindSelection" valueExpression="aql:end.aggregation" candidatesExpression="aql:end.getAggregationKinds()" candidateDisplayExpression="aql:candidate.getAggregationKindName()">
+                <widget xsi:type="properties_1.0.0:SelectDescription" name="AssociationEndKindSelection" valueExpression="aql:end.aggregation" candidatesExpression="aql:end.getAggregationKinds()" candidateDisplayExpression="aql:candidate.getAggregationKindName()">
                   <initialOperation>
                     <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setAggregationKind(newValue)"/>
                   </initialOperation>
                 </widget>
               </ifs>
               <ifs name="isVisibleAssociationEndLowerBound" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
-                <widget xsi:type="properties:TextDescription" name="AssociationEndLowerBound" labelExpression="Lower:" valueExpression="aql:end.getLower().getBoundValue()">
+                <widget xsi:type="properties_1.0.0:TextDescription" name="AssociationEndLowerBound" labelExpression="Lower:" valueExpression="aql:end.getLower().getBoundValue()">
                   <initialOperation>
                     <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setPropertyLowerBound(end.getLower(), newValue)"/>
                   </initialOperation>
                 </widget>
               </ifs>
               <ifs name="isVisibleAssociationEndUpperBound" predicateExpression="aql:self.oclIsKindOf(uml::Association)">
-                <widget xsi:type="properties:TextDescription" name="AssociationEndLowerBound" labelExpression="Upper:" valueExpression="aql:end.getUpper().getBoundValue()">
+                <widget xsi:type="properties_1.0.0:TextDescription" name="AssociationEndLowerBound" labelExpression="Upper:" valueExpression="aql:end.getUpper().getBoundValue()">
                   <initialOperation>
                     <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:end.setPropertyUpperBound(end.getUpper(), newValue)"/>
                   </initialOperation>
                 </widget>
               </ifs>
             </controls>
-            <layout xsi:type="properties:GridLayoutDescription" numberOfColumns="6"/>
+            <layout xsi:type="properties_1.0.0:GridLayoutDescription" numberOfColumns="6"/>
           </controls>
         </controls>
         <actions tooltipExpression="Add a new association end" imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
@@ -8129,7 +8127,7 @@
         </actions>
       </groups>
       <groups name="PR_ProfilesGroup" labelExpression="Profiles" domainClass="uml::Package" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:ListDescription" name="PR_Profiles" label="Profiles" labelExpression="Applied Profiles:" helpExpression="Applied profiles to the Package" valueExpression="aql:self.oclAsType(uml::Package).getAppliedProfiles()" displayExpression="aql:value.computeUmlLabel()">
+        <controls xsi:type="properties_1.0.0:ListDescription" name="PR_Profiles" label="Profiles" labelExpression="Applied Profiles:" helpExpression="Applied profiles to the Package" valueExpression="aql:self.oclAsType(uml::Package).getAppliedProfiles()" displayExpression="aql:value.computeUmlLabel()">
           <onClickOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
           </onClickOperation>
@@ -8146,7 +8144,7 @@
         </controls>
       </groups>
       <groups name="PR_StereotypesGroup" labelExpression="Stereotypes" domainClass="uml::Element" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:ListDescription" name="Stereotypes" label="Stereotypes" labelExpression="Applied Stereotypes:" helpExpression="The Stereotypes applied to the Element" valueExpression="aql:self.oclAsType(uml::Element).getAppliedStereotypes()" displayExpression="aql:value.computeUmlLabel()">
+        <controls xsi:type="properties_1.0.0:ListDescription" name="Stereotypes" label="Stereotypes" labelExpression="Applied Stereotypes:" helpExpression="The Stereotypes applied to the Element" valueExpression="aql:self.oclAsType(uml::Element).getAppliedStereotypes()" displayExpression="aql:value.computeUmlLabel()">
           <actions imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:selectStereotype()"/>
@@ -8160,13 +8158,13 @@
         </controls>
       </groups>
       <groups name="PR_RelationshipsGroup" labelExpression="Relationships" semanticCandidateExpression="var:self" preconditionExpression="aql:self.isDisplayedRelationshipsGroup()">
-        <controls xsi:type="properties:ListDescription" name="RelationshipOriginating" label="Relationship Originating" labelExpression="Origin:" helpExpression="aql:self.getRelationshipOriginatingHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getRelationShipOrigin(true)" displayExpression="aql:value.computeRelationshipLabel()">
+        <controls xsi:type="properties_1.0.0:ListDescription" name="RelationshipOriginating" label="Relationship Originating" labelExpression="Origin:" helpExpression="aql:self.getRelationshipOriginatingHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getRelationShipOrigin(true)" displayExpression="aql:value.computeRelationshipLabel()">
           <onClickOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool:If" conditionExpression="aql:selection->size() = 1">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:onClickEventKind='DOUBLE_CLICK'">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->first()">
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation/>
                       </buttons>
@@ -8181,13 +8179,13 @@
             </firstModelOperations>
           </onClickOperation>
         </controls>
-        <controls xsi:type="properties:ListDescription" name="RelationshipTargeting" label="Relationship Targeting" labelExpression="Target:" helpExpression="aql:self.getRelationshipTargetingHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getRelationShipOrigin(false)" displayExpression="aql:value.computeRelationshipLabel()">
+        <controls xsi:type="properties_1.0.0:ListDescription" name="RelationshipTargeting" label="Relationship Targeting" labelExpression="Target:" helpExpression="aql:self.getRelationshipTargetingHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getRelationShipOrigin(false)" displayExpression="aql:value.computeRelationshipLabel()">
           <onClickOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool:If" conditionExpression="aql:selection->size() = 1">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:onClickEventKind='DOUBLE_CLICK'">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->first()">
-                    <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
+                    <subModelOperations xsi:type="properties_1.0.0:DialogModelOperation" titleExpression="Edit">
                       <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                         <initialOperation/>
                       </buttons>
@@ -8204,7 +8202,7 @@
         </controls>
       </groups>
       <groups name="PR_DocumentationGroup" labelExpression="Comment" domainClass="uml::Element" semanticCandidateExpression="var:self" preconditionExpression="aql:not input.getSemanticElement().oclIsKindOf(uml::Comment)">
-        <controls xsi:type="properties:TextAreaDescription" name="comment" labelExpression="Comment:" helpExpression="aql:self.getCommentHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getCommentBody()">
+        <controls xsi:type="properties_1.0.0:TextAreaDescription" name="comment" labelExpression="Comment:" helpExpression="aql:self.getCommentHelpLabel()" valueExpression="aql:self.oclAsType(uml::Element).getCommentBody()">
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.existComments()">
@@ -8229,7 +8227,7 @@
     <categories name="PR_Advanced">
       <pages name="PR_AdvancedPage" labelExpression="Advanced" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.1/@groups.0"/>
       <groups name="PR_AdvancedGroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
-        <controls xsi:type="properties:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()->select(feature | feature.isNotGeneralFeature(self))">
+        <controls xsi:type="properties_1.0.0:DynamicMappingForDescription" name="GeneralDynamicMapping" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()->select(feature | feature.isNotGeneralFeature(self))">
           <ifs name="advanced_rules_mono_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.0"/>
           </ifs>
@@ -8237,7 +8235,7 @@
             <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.1"/>
           </ifs>
           <ifs name="advanced_rules_mono_boolean" predicateExpression="aql:input.emfEditServices(self).needsCheckboxWidget(eStructuralFeature)">
-            <widget xsi:type="properties:CheckboxDescription" name="general_rules_mono_boolean" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)">
+            <widget xsi:type="properties_1.0.0:CheckboxDescription" name="general_rules_mono_boolean" labelExpression="aql:input.getSemanticElement().getWidgetLabel(eStructuralFeature)">
               <extends href="platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.2/@widget"/>
             </widget>
           </ifs>

@@ -58,6 +58,7 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Pin;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
@@ -690,6 +691,21 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		buffer.append(caseTypedElement(object));
 		buffer.append(caseMultiplicityElement(object));
 		return buffer.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String casePort(Port object) {
+		String tilde = ""; //$NON-NLS-1$
+		if (object.isConjugated()) {
+			tilde = "~"; //$NON-NLS-1$
+		}
+		if (object.getType() != null) {
+			return caseNamedElement(object) + SPACED_COLUMN + tilde + object.getType().getName();
+		}
+		return caseNamedElement(object) + SPACED_COLUMN;
 	}
 
 	/**
