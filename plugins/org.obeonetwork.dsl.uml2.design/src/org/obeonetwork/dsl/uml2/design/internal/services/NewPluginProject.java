@@ -42,6 +42,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.obeonetwork.dsl.uml2.core.internal.services.LogServices;
 
 /**
  * This class provide some static methods for the creation of plug-in project programmatically.
@@ -290,7 +291,7 @@ public class NewPluginProject {
 			}
 
 			projectDescription
-					.setNatureIds(new String[] {JavaCore.NATURE_ID, IBundleProjectDescription.PLUGIN_NATURE});
+			.setNatureIds(new String[] {JavaCore.NATURE_ID, IBundleProjectDescription.PLUGIN_NATURE});
 
 			final ICommand java = projectDescription.newCommand();
 			java.setBuilderName(JavaCore.BUILDER_ID);
@@ -319,7 +320,7 @@ public class NewPluginProject {
 			classpathEntries.add(JavaCore.newContainerEntry(new Path(
 					"org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"))); //$NON-NLS-1$
 			classpathEntries
-					.add(JavaCore.newContainerEntry(new Path("org.eclipse.pde.core.requiredPlugins"))); //$NON-NLS-1$
+			.add(JavaCore.newContainerEntry(new Path("org.eclipse.pde.core.requiredPlugins"))); //$NON-NLS-1$
 
 			javaProject.setRawClasspath(
 					classpathEntries.toArray(new IClasspathEntry[classpathEntries.size()]),
@@ -362,7 +363,7 @@ public class NewPluginProject {
 					IDE.openEditor(page, file, true);
 				} catch (final PartInitException e) {
 					LogServices.INSTANCE.error("openFileToEdit(" + s.getClass() //$NON-NLS-1$
-							+ "," + file.getClass() + ") not handled", e); //$NON-NLS-1$ //$NON-NLS-2$
+					+ "," + file.getClass() + ") not handled", e); //$NON-NLS-1$ //$NON-NLS-2$
 				}
 			}
 		});

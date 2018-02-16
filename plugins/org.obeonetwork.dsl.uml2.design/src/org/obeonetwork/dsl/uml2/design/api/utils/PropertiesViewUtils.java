@@ -11,7 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.api.utils;
 
 import org.eclipse.uml2.uml.Element;
-import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.LabelServices;
 
 /**
  * Computes labels for the EEF properties view.

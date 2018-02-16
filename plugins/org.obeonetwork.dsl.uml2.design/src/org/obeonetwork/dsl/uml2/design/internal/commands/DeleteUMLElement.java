@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.uml2.uml.Element;
-import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
+import org.obeonetwork.dsl.uml2.core.api.utils.UmlUtils;
 
 /**
  * Delete UML Element.

@@ -13,12 +13,16 @@ package org.obeonetwork.dsl.uml2.design.internal.wizards.newproject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+import org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils;
+import org.obeonetwork.dsl.uml2.core.wizard.AbstractNewUmlModelWizard;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-import org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils;
+import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
-import org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel.AbstractNewUmlModelWizard;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel.UmlModelWizardInitModelPage;
 
 /**
@@ -62,6 +66,22 @@ public class UMLProjectWizard extends AbstractNewUmlModelWizard {
 					+ UmlProjectUtils.MODEL_FILE_EXTENSION;
 
 			super.performFinish();
+
+			// Enable UML viewpoints
+			final Option<ModelingProject> created = ModelingProject.asModelingProject(project);
+			if (created.some()) {
+				Display.getDefault().syncExec(new Runnable() {
+
+					public void run() {
+						// Create default empty UML model
+						org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils.createSemanticResource(project, rootObjectName, newUmlModelFileName);
+
+						// Enable UML viewpoints
+						final ModelingProject modelingProject = created.get();
+						UmlViewpoints.enable(modelingProject.getSession());
+					}
+				});
+			}
 		} catch (final CoreException e) {
 			UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
 			return false;

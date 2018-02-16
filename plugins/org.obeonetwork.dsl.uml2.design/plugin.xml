@@ -20,6 +20,21 @@ Contributors:
      </component>
   </extension>
   <extension
+        point="org.eclipse.sirius.sessionManagerListener">
+     <listener
+           class="org.obeonetwork.dsl.uml2.design.internal.listeners.UmlDesignerSessionManagerListener">
+     </listener>
+     <listener
+           class="org.obeonetwork.dsl.uml2.design.internal.listeners.OpenHelpContextListener">
+     </listener>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.obeonetwork.dsl.uml2.core.preferences.UmlDesignerPreferenceInitializer">
+      </initializer>
+   </extension>
+  <extension
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
@@ -183,7 +198,7 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateActivityDiagram"
+               class="org.obeonetwork.dsl.uml2.core.internal.commands.CreateActivityDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.activity">
             <enabledWhen>
                <with
@@ -228,7 +243,7 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateStateMachineDiagram"
+               class="org.obeonetwork.dsl.uml2.core.internal.commands.CreateStateMachineDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine">
             <enabledWhen>
                <with
@@ -470,30 +485,6 @@ Contributors:
         </constraints>
      </constraintProvider>
   </extension>
-   <extension
-         point="org.eclipse.sirius.sessionManagerListener">
-      <listener
-            class="org.obeonetwork.dsl.uml2.design.internal.listeners.UmlDesignerSessionManagerListener">
-      </listener>
-      <listener
-            class="org.obeonetwork.dsl.uml2.design.internal.listeners.OpenHelpContextListener">
-      </listener>
-   </extension>
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            category="org.eclipse.sirius.ui.page"
-            class="org.obeonetwork.dsl.uml2.design.preferences.UmlDesignerPreferencePage"
-            id="org.obeonetwork.dsl.uml2.design"
-            name="UML Designer">
-      </page>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="org.obeonetwork.dsl.uml2.design.preferences.UmlDesignerPreferenceInitializer">
-      </initializer>
-   </extension>
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <commonWizard

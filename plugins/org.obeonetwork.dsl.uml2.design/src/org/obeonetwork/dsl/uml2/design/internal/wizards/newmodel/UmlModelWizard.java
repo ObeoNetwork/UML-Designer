@@ -18,12 +18,19 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
+import org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils;
+import org.obeonetwork.dsl.uml2.core.wizard.AbstractNewUmlModelWizard;
+import org.obeonetwork.dsl.uml2.dashboard.services.DashboardServices;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-import org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils;
+import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
 
 /**
@@ -138,6 +145,30 @@ public class UmlModelWizard extends AbstractNewUmlModelWizard {
 			newUmlModelFileName = newModelFilePage.getFileName();
 
 			super.performFinish();
+
+			final Option<ModelingProject> created = ModelingProject.asModelingProject(project);
+			if (created.some()) {
+				final Session session = created.get().getSession();
+				if (session != null) {
+					session.getTransactionalEditingDomain().getCommandStack()
+					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+						@Override
+						protected void doExecute() {
+							UmlViewpoints.enable(session);
+						}
+					});
+				}
+			}
+
+			// Open the dashboard
+			DashboardServices.INSTANCE.openDashboard(project);
+			// Open the contextual help
+			// Context ids are defined in the html/contexts.xml file in
+			// org.obeonetwork.dsl.uml2.design.doc project.
+			final String contextId = "org.obeonetwork.dsl.uml2.design.doc.Dashboard"; //$NON-NLS-1$
+			PlatformUI.getWorkbench().getHelpSystem()
+			.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
+			PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 			return true;
 		}
 		return false;

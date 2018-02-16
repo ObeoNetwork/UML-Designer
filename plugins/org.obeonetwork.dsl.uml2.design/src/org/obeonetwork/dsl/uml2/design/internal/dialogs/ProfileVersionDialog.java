@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.uml2.uml.Profile;
-import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.LogServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.UMLDesignerProfileVersion;
 import org.obeonetwork.dsl.uml2.design.internal.services.Version;
 

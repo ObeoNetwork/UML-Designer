@@ -20,6 +20,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
+import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;

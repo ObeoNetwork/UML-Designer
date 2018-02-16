@@ -19,8 +19,9 @@ import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.UseCase;
-import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.RelatedServices;
+import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.NodeInverseRefsServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.RelatedServices;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;

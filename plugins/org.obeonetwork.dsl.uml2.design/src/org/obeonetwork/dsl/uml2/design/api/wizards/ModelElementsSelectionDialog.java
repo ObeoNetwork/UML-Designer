@@ -64,10 +64,12 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
+import org.obeonetwork.dsl.uml2.core.api.wizards.ModelElementsSelectionDialogPatternMatcher;
+import org.obeonetwork.dsl.uml2.core.api.wizards.ModelFilteredTreeContentProvider;
+import org.obeonetwork.dsl.uml2.core.internal.services.AddElementToDiagramServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.ElementServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.UIServices;
 import org.obeonetwork.dsl.uml2.design.internal.listeners.UmlDesignerSessionManagerListener;
-import org.obeonetwork.dsl.uml2.design.internal.services.AddElementToDiagramServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.UIServices;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -877,7 +879,7 @@ public class ModelElementsSelectionDialog {
 
 	/**
 	 * Asks the end-user for a list of elements to select/de-select, and applies the corresponding changes.
-	 * 
+	 *
 	 * @param element
 	 *            uml element
 	 * @return list of element

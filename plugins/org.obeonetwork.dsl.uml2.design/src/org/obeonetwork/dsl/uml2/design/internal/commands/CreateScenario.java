@@ -32,8 +32,8 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
-import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.ElementServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.LabelServices;
 
 /**
  * Create scenario.

@@ -26,6 +26,7 @@ Contributors:
   <name>UML Designer Product Parent</name>
 
   <properties>
+    <uml-site>file:${basedir}/../org.obeonetwork.dsl.uml2.core.update/target/repository</uml-site>
     <uml-site>file:${basedir}/../org.obeonetwork.dsl.uml2.update/target/repository</uml-site>
   </properties>
 

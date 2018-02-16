@@ -47,10 +47,9 @@ public class UmlDesignerSessionListener implements SessionListener {
 					return UmlViewpoints.isUmlViewpoint(selectedViewpoint);
 				}
 			})) {
-				final Viewpoint reused = UmlViewpoints.fromViewpointRegistry().reused();
 				if (Iterables.indexOf(session.getSelectedViewpoints(false), new Predicate<Viewpoint>() {
 					public boolean apply(Viewpoint selectedViewpoint) {
-						return selectedViewpoint.getName().equals(reused.getName());
+						return UmlViewpoints.isReusedViewpoint(selectedViewpoint);
 					}
 				}) == -1) {
 					UmlViewpoints.enableReused(session);

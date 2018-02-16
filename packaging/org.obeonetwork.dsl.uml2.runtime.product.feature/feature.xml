@@ -224,7 +224,6 @@ litigation.
       <import feature="org.eclipse.uml2" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.gmf.runtime.notation" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.acceleo" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.eef" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0" match="greaterOrEqual"/>

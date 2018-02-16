@@ -38,6 +38,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
+import org.obeonetwork.dsl.uml2.core.internal.services.LogServices;
 
 /**
  * A Generic UML Profile tools.
@@ -223,7 +224,7 @@ public class GenericUMLProfileTools {
 			package_ = (EPackage)EcoreUtil.getObjectByType(resource.getContents(), type);
 		} catch (final WrappedException we) {
 			LogServices.INSTANCE.error("load(" + uri.getClass() + "," + type.getClass() //$NON-NLS-1$ //$NON-NLS-2$
-					+ ") not handled", we); //$NON-NLS-1$
+			+ ") not handled", we); //$NON-NLS-1$
 			System.exit(1);
 		}
 
@@ -258,7 +259,7 @@ public class GenericUMLProfileTools {
 				resource.save(null);
 			} catch (final IOException ioe) {
 				LogServices.INSTANCE.error("save(" + package_.getClass() //$NON-NLS-1$
-						+ ") not handled", ioe); //$NON-NLS-1$
+				+ ") not handled", ioe); //$NON-NLS-1$
 			}
 		}
 	}
@@ -278,7 +279,7 @@ public class GenericUMLProfileTools {
 			resource.save(null);
 		} catch (final IOException ioe) {
 			LogServices.INSTANCE.error("save(" + package_.getClass() + "," + uri.getClass() //$NON-NLS-1$ //$NON-NLS-2$
-					+ ") not handled", ioe); //$NON-NLS-1$
+			+ ") not handled", ioe); //$NON-NLS-1$
 		}
 	}
 

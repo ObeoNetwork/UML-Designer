@@ -46,9 +46,10 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.Usage;
+import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ConnectorServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.DependencyServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedCompositeStructureElementsSwitch;
 
 import com.google.common.base.Function;

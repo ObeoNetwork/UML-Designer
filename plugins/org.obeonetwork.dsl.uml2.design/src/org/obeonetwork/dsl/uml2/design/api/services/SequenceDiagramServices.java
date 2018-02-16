@@ -47,9 +47,10 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
-import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.OperationServices;
+import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.LabelServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.LogServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.OperationServices;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;

@@ -17,6 +17,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.generator.GenBaseGeneratorAdapter;
 import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
+import org.obeonetwork.dsl.uml2.core.internal.services.LogServices;
 
 /**
  * This class provide a method to generate a Mode Code from a genmodel.
@@ -49,7 +50,7 @@ public class GenerateModelCode {
 					CodeGenUtil.EclipseUtil.createMonitor(progressMonitor, 3));
 		} catch (final Exception e) {
 			LogServices.INSTANCE.error("generateModelCode(" + genModel.getClass() //$NON-NLS-1$
-					+ ") not handled", e); //$NON-NLS-1$
+			+ ") not handled", e); //$NON-NLS-1$
 
 		}
 	}

@@ -38,6 +38,7 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Usage;
+import org.obeonetwork.dsl.uml2.core.internal.services.LogServices;
 
 import com.google.common.collect.Lists;
 
@@ -363,11 +364,11 @@ public class ConnectorServices {
 		} else if (source instanceof Property && target instanceof Property) {
 			// Make a new connector From Port to Interface
 			new org.obeonetwork.dsl.uml2.design.internal.services.ConnectorServices()
-					.connectProperty2Property(sourceView, (Property)source, targetView, (Property)target);
+			.connectProperty2Property(sourceView, (Property)source, targetView, (Property)target);
 		} else {
 			LogServices.INSTANCE
-					.error("ConnectorServices.createConnector(" + source.getClass() + ", " + target.getClass() //$NON-NLS-1$ //$NON-NLS-2$
-							+ ") not handled", null); //$NON-NLS-1$
+			.error("ConnectorServices.createConnector(" + source.getClass() + ", " + target.getClass() //$NON-NLS-1$ //$NON-NLS-2$
+			+ ") not handled", null); //$NON-NLS-1$
 		}
 	}
 

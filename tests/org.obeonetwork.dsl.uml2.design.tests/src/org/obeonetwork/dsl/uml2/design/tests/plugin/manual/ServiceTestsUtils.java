@@ -28,7 +28,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices;
+import org.obeonetwork.dsl.uml2.core.api.services.ReusedDescriptionServices;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;

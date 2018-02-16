@@ -27,8 +27,11 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.ProfileApplication;
-import org.obeonetwork.dsl.uml2.design.internal.triggers.AutosizeTrigger;
-import org.obeonetwork.dsl.uml2.design.internal.triggers.ConfirmDeletionTrigger;
+import org.obeonetwork.dsl.uml2.core.internal.listeners.CallActionPinListener;
+import org.obeonetwork.dsl.uml2.core.internal.listeners.CreateNewChildListener;
+import org.obeonetwork.dsl.uml2.core.internal.listeners.DescendantCacheListener;
+import org.obeonetwork.dsl.uml2.core.internal.triggers.AutosizeTrigger;
+import org.obeonetwork.dsl.uml2.core.internal.triggers.ConfirmDeletionTrigger;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Maps;
@@ -99,7 +102,7 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 		partService.addPartListener(openedEditorListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(callActionPinListener);
 		newSession.getTransactionalEditingDomain().getCommandStack()
-				.addCommandStackListener(createNewChildListener);
+		.addCommandStackListener(createNewChildListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(descendantCacheListener);
 		final UmlDesignerSessionListener sessionListener = new UmlDesignerSessionListener(newSession);
 		sessionListeners.put(newSession, sessionListener);
@@ -108,10 +111,6 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 
 	public void notifyRemoveSession(Session removedSession) {
 		partService.removePartListener(openedEditorListener);
-		removedSession.getTransactionalEditingDomain().removeResourceSetListener(callActionPinListener);
-		removedSession.getTransactionalEditingDomain().getCommandStack()
-				.removeCommandStackListener(createNewChildListener);
-		removedSession.getTransactionalEditingDomain().removeResourceSetListener(descendantCacheListener);
 		removedSession.removeListener(sessionListeners.get(removedSession));
 		sessionListeners.remove(removedSession);
 	}

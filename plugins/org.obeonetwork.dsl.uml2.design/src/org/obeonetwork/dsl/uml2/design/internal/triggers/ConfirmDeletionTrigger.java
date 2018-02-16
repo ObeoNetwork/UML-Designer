@@ -26,8 +26,8 @@ import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemoval
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.uml2.uml.Element;
-import org.obeonetwork.dsl.uml2.design.internal.dialogs.ConfirmDeletionDialog;
-import org.obeonetwork.dsl.uml2.design.preferences.UmlDesignerPreferences;
+import org.obeonetwork.dsl.uml2.core.internal.dialogs.ConfirmDeletionDialog;
+import org.obeonetwork.dsl.uml2.core.preferences.UmlDesignerPreferences;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;

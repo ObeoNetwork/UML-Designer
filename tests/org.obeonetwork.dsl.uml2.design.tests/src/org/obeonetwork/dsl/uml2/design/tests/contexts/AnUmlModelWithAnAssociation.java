@@ -13,16 +13,13 @@ package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
 import static org.junit.Assert.assertEquals;
 
-
-
-
 // Start of user code AnUmlModelWithAnAssociation imports
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.core.internal.services.AssociationServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.EditLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.api.services.ClassDiagramServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.AssociationServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.EditLabelSwitch;
 // End of user code
 import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 

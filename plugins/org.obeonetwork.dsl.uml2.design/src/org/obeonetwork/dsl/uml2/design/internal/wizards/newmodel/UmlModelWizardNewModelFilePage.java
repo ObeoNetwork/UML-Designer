@@ -11,7 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils;
+import org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils;
 
 /**
  * The semantic model file creation page.

@@ -63,7 +63,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.LogServices;
 
 /**
  * A selection dialog message which provide a list of metaclass.

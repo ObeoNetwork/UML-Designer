@@ -49,7 +49,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
-import org.obeonetwork.dsl.uml2.design.api.wizards.ModelElementsSelectionDialogPatternMatcher;
+import org.obeonetwork.dsl.uml2.core.api.wizards.ModelElementsSelectionDialogPatternMatcher;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
