@@ -34,7 +34,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPackage.Literals;
 import org.eclipse.uml2.uml.resource.UMLResource;
 // Start of user code AnUmlModelWithAProperty imports
-import org.obeonetwork.dsl.uml2.design.internal.services.PropertyServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.PropertyServices;
 import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 
 // End of user code

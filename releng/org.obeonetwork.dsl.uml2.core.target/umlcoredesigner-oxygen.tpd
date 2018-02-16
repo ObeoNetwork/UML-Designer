@@ -1,0 +1,56 @@
+target "UML Core Designer Oxygen" with source requirements
+
+// Eclipse
+
+location "http://download.eclipse.org/releases/oxygen/" {
+	org.eclipse.platform.sdk lazy
+	org.eclipse.equinox.executable.feature.group lazy
+	org.eclipse.epp.mpc.feature.group lazy
+	org.eclipse.emf.edit.feature.group [2.12.0,2.13.0)
+	org.eclipse.emf.mapping.ecore.feature.group lazy
+	org.eclipse.emf.importer.ecore lazy
+	org.eclipse.core.runtime.feature.feature.group lazy
+	org.eclipse.pde.feature.group lazy
+}
+
+// UML
+
+location "http://download.eclipse.org/releases/oxygen/" {
+	org.eclipse.uml2.uml.feature.group [5.3.0,5.4.0)
+	org.eclipse.uml2.uml.edit.feature.group [5.3.0,5.4.0)
+	org.eclipse.uml2.feature.group [5.3.0,5.4.0)
+}
+
+// Orbit
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20170307180635/repository" {
+	com.google.guava [15.0.0,16.0.0)
+	org.hamcrest.core [1.3.0,2.0.0)
+	org.hamcrest.library [1.3.0,2.0.0)
+	org.apache.log4j [1.2.0,1.3.0)
+}
+
+// EEF 2.0
+
+location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon" {
+	org.eclipse.eef.sdk.feature.feature.group lazy
+	org.eclipse.eef.ext.widgets.reference.feature.feature.group lazy
+}
+
+// Sirius
+
+location "http://download.eclipse.org/sirius/updates/releases/5.0.2/oxygen" {
+	org.eclipse.sirius.runtime.feature.group lazy
+	//org.eclipse.sirius.runtime.acceleo.feature.group lazy
+	org.eclipse.sirius.runtime.aql.feature.group lazy
+	org.eclipse.sirius.properties.feature.feature.group lazy
+	//IDE
+	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group lazy
+	org.eclipse.sirius.runtime.ide.eef.feature.group lazy
+	org.eclipse.sirius.runtime.ide.ui.feature.group lazy
+	org.eclipse.sirius.specifier.ide.ui.feature.group lazy
+	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group lazy
+	org.eclipse.sirius.tests.support.feature.group lazy
+	org.eclipse.sirius.aql.feature.group lazy
+}
+

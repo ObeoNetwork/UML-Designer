@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius.ui,
  org.eclipse.ui.views.properties.tabbed,
- org.obeonetwork.dsl.uml2.design
+ org.obeonetwork.dsl.uml2.design,
+ org.obeonetwork.dsl.uml2.core.design
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.sirius.business.api.session

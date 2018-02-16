@@ -34,8 +34,8 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.core.api.services.ReusedDescriptionServices;
 import org.obeonetwork.dsl.uml2.design.api.services.ActivityDiagramServices;
-import org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices;
 import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 
 /**

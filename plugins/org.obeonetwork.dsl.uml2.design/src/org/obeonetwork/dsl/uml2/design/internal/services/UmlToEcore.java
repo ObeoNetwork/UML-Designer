@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.uml2.uml.editor.actions.DiagnosticAction;
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter;
+import org.obeonetwork.dsl.uml2.core.internal.services.LogServices;
 
 /**
  * This class provides method to create an ecore model from an UML model.
@@ -122,7 +123,7 @@ public class UmlToEcore extends DiagnosticAction {
 				r.save(null);
 			} catch (final Exception e) {
 				LogServices.INSTANCE.error("umlToEcore(" + profile.getClass() //$NON-NLS-1$
-						+ ") not handled", e); //$NON-NLS-1$
+				+ ") not handled", e); //$NON-NLS-1$
 				e.printStackTrace();
 			}
 		}

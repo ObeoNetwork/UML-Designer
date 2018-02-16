@@ -24,8 +24,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.uml2.uml.Element;
-import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-import org.obeonetwork.dsl.uml2.design.internal.listeners.Messages;
+import org.obeonetwork.dsl.uml2.core.UMLDesignerCorePlugin;
+import org.obeonetwork.dsl.uml2.core.internal.listeners.Messages;
 
 public class PasteCommandHandler extends AbstractHandler {
 
@@ -60,7 +60,7 @@ public class PasteCommandHandler extends AbstractHandler {
 				TransactionalEditingDomain tempDomain = TransactionUtil
 						.getEditingDomain((Element)selectionList.get(0));
 				Command pasteFromClipBoardCommand = PasteFromClipboardCommand.create(memorizedDomain,
-						(Element)selectionList.get(0), null);
+						selectionList.get(0), null);
 				tempDomain.getCommandStack().execute(pasteFromClipBoardCommand);
 
 				IViewPart modelExplorerView = null;
@@ -75,7 +75,7 @@ public class PasteCommandHandler extends AbstractHandler {
 						modelExplorer.selectReveal(new StructuredSelection(affectedObject));
 					}
 				} catch (final PartInitException e) {
-					UMLDesignerPlugin.log(IStatus.ERROR,
+					UMLDesignerCorePlugin.log(IStatus.ERROR,
 							NLS.bind(Messages.UmlModelExplorer_UI_ErrorMsg_NotFound, modelExplorerView), e);
 				}
 
@@ -84,6 +84,7 @@ public class PasteCommandHandler extends AbstractHandler {
 		return null;
 	}
 
+	@Override
 	public boolean isEnabled() {
 
 		return true;

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.VisibilityKind;
+import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
 
 /**
  * A set of services to handle the Package Hierarchy diagram.

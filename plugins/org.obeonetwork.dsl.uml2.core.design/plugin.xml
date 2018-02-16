@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.sirius.componentization">
+      <component class="org.obeonetwork.dsl.uml2.core.UMLDesignerCorePlugin"
+            id="org.obeonetwork.dsl.uml2.core.design"
+            name="uml2 Designer Core">
+      </component>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.obeonetwork.dsl.uml2.core.internal.listeners.UmlDesignerCoreSessionManagerListener">
+      </listener>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.obeonetwork.dsl.uml2.core.preferences.UmlDesignerPreferenceInitializer">
+      </initializer>
+   </extension>
+</plugin>

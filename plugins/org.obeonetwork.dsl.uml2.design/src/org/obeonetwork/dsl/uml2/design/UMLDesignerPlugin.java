@@ -19,9 +19,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 import org.osgi.framework.BundleContext;
@@ -38,6 +36,11 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 	 * The plug-in ID.
 	 */
 	public static final String PLUGIN_ID = "org.obeonetwork.dsl.uml2.design"; //$NON-NLS-1$
+
+	/**
+	 * Name of the odesign file.
+	 */
+	public static final String ODESIGN_FILE_NAME = "uml2.odesign"; //$NON-NLS-1$
 
 	/**
 	 * The shared instance.
@@ -72,29 +75,12 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 		getDefault().getLog().log(new Status(severity, PLUGIN_ID, message, exception));
 	}
 
-	/**
-	 * Label provider.
-	 */
-	private ICommonLabelProvider labelProvider = null;
-
 	private SessionManagerListener notifWhenSessionAreCreated;
 
 	/**
 	 * The constructor.
 	 */
 	public UMLDesignerPlugin() {
-	}
-
-	/**
-	 * Returns the label provider to use for displaying locked elements.
-	 *
-	 * @return the label provider to use for displaying locked elements.
-	 */
-	public ICommonLabelProvider getLabelProvider() {
-		if (labelProvider == null) {
-			labelProvider = new SiriusCommonLabelProvider();
-		}
-		return labelProvider;
 	}
 
 	/**

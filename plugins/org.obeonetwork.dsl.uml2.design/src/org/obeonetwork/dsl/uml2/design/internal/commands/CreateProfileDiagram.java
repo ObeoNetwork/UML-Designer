@@ -16,6 +16,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.D
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.core.internal.commands.AbstractCreateDiagram;
 
 /**
  * Create profile diagram.

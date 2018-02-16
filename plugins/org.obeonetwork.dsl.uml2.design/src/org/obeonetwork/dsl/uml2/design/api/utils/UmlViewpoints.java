@@ -13,17 +13,21 @@ package org.obeonetwork.dsl.uml2.design.api.utils;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.obeonetwork.dsl.uml2.core.api.utils.UmlCoreViewpoints;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 
 /**
  * UML Viewpoints.
  *
- * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats
+ *         <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlViewpoints {
 
@@ -45,6 +49,9 @@ public class UmlViewpoints {
 						selection.deselectViewpoint(previouslySelected, session,
 								new NullProgressMonitor());
 					}
+					// enable Reused core viewpoint
+					UmlCoreViewpoints.enableReused(session);
+					// enable other UML2 viewpoints
 					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().reused(), session,
 							new NullProgressMonitor());
 					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().capture(),
@@ -73,9 +80,9 @@ public class UmlViewpoints {
 				@Override
 				protected void doExecute() {
 					final ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
-					final Viewpoint reused = UmlViewpoints.fromViewpointRegistry().reused();
+					UmlViewpoints.fromViewpointRegistry().reused();
 					for (final Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
-						if (previouslySelected.getName().equals(reused.getName())) {
+								if (isReusedViewpoint(previouslySelected)) {
 							return;
 						}
 					}
@@ -93,6 +100,27 @@ public class UmlViewpoints {
 	 */
 	public static UmlViewpoints fromViewpointRegistry() {
 		return new UmlViewpoints(ViewpointRegistry.getInstance());
+	}
+
+	/**
+	 * Is it the UML Reused viewpoint
+	 *
+	 * @param viewpoint
+	 *            viewpoint to test
+	 * @return true if viewpoint is the Reused viewpoint
+	 */
+	public static boolean isReusedViewpoint(Viewpoint viewpoint) {
+		if (viewpoint!=null) {
+			final Viewpoint reused = UmlViewpoints.fromViewpointRegistry().reused();
+
+			final String name = viewpoint.getName();
+			final Resource vpResource = viewpoint.eResource();
+			if (name !=null && vpResource !=null) {
+				return name.equals(reused.getName())
+						&& UMLDesignerPlugin.ODESIGN_FILE_NAME.equals(vpResource.getURI().lastSegment());
+			}
+		}
+		return false;
 	}
 
 	/**

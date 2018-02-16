@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
-import org.obeonetwork.dsl.uml2.design.api.services.AbstractDiagramServices;
+import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
 import org.obeonetwork.dsl.uml2.design.api.services.ClassDiagramServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 

@@ -17,8 +17,9 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.DeploymentTarget;
 import org.eclipse.uml2.uml.Type;
-import org.obeonetwork.dsl.uml2.design.internal.services.AssociationServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
+import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.AssociationServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.NodeInverseRefsServices;
 
 /**
  * A set of services to handle the Deployment diagram.

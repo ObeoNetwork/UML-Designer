@@ -16,6 +16,7 @@ import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescriptio
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.core.internal.commands.AbstractCreateDiagram;
 
 /**
  * Create sequence diagram.

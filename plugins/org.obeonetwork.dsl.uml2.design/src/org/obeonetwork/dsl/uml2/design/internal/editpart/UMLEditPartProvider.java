@@ -32,8 +32,8 @@ import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
-import org.obeonetwork.dsl.uml2.design.internal.services.AssociationServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.EditLabelSwitch;
+import org.obeonetwork.dsl.uml2.core.internal.services.AssociationServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.EditLabelSwitch;
 
 /**
  * UML edit part provider.
