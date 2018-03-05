@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.obeonetwork.dsl.uml2.core.runtime.feature"
-      label="UML core Designer"
+      label="UML Designer core"
       version="8.0.0.qualifier"
       provider-name="Obeo">
 
@@ -226,6 +226,30 @@ litigation.
       <import feature="org.eclipse.sirius.runtime.ide.eef" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0" match="greaterOrEqual"/>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.emf.transaction"/>
+      <import plugin="org.eclipse.gmf.runtime.common.core" version="1.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.notation.edit"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.pde.core"/>
+      <import plugin="org.eclipse.sirius" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.common" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.common.ui" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.diagram" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.diagram.ui" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.ecore.extender" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.ext.base" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.ui" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.navigator"/>
+      <import plugin="org.eclipse.uml2.uml" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.uml.edit" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.workbench"/>
    </requires>
 
    <plugin

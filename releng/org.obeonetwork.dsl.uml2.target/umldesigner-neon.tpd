@@ -77,9 +77,5 @@ location "http://download.eclipse.org/sirius/updates/releases/4.1.1/neon" {
 // UML compare 
 
 location "http://download.eclipse.org/modeling/emf/compare/updates/releases/3.2" {
-	org.eclipse.emf.compare.diagram.gmf.feature.group lazy
-	org.eclipse.emf.compare.ide.ui.feature.group lazy
-	org.eclipse.emf.compare.rcp.ui.feature.group lazy
-	org.eclipse.emf.compare.feature.group lazy
-	org.eclipse.emf.compare.uml2.feature.group lazy
+	org.eclipse.emf.compare.diagram.sirius lazy
 }
