@@ -40,7 +40,7 @@ Contributors:
   <properties>
     <tycho-version>0.24.0</tycho-version>
     <root-path>../..</root-path>
-    <platform-version-name>oxygen</platform-version-name>
+    <platform-version-name>capella-1.2</platform-version-name>
   </properties>
 
   <build>

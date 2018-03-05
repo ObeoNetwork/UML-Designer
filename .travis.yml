@@ -92,7 +92,7 @@ deploy:
     skip_cleanup: true
     acl: public_read
     on:
-      branch: master 
+      branch: capella-1.2
   - provider: s3
     access_key_id: AKIAJJVZATSVUD3VGHXA
     secret_access_key:

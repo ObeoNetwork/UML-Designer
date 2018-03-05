@@ -11,7 +11,7 @@ Contributors:
 -->
 <feature
       id="org.obeonetwork.dsl.uml2.core.runtime.sdk.feature"
-      label="UML core Designer SDK"
+      label="UML Designer core SDK"
       version="8.0.0.qualifier"
       provider-name="Obeo">
 
