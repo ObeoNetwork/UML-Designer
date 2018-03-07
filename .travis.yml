@@ -74,6 +74,7 @@ script:
 - if [[ "$TRAVIS_TAG" != "" ]]; then ./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/$TRAVIS_TAG; fi
 # Rename the zipped update site to nightly
 - mv packaging/org.obeonetwork.dsl.uml2.update/target/org.obeonetwork.dsl.uml2.update-*-SNAPSHOT.zip packaging/org.obeonetwork.dsl.uml2.update/target/org.obeonetwork.dsl.uml2.update-nightly.zip
+- mv packaging/org.obeonetwork.dsl.uml2.core.update/target/org.obeonetwork.dsl.uml2.core.update-*-SNAPSHOT.zip packaging/org.obeonetwork.dsl.uml2.core.update/target/org.obeonetwork.dsl.uml2.core.update-nightly.zip
 # Prepare the nightly dir
 - ./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/nightly
 
