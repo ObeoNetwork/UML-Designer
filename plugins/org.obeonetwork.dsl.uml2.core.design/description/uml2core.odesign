@@ -14,7 +14,7 @@
           </style>
         </nodeMappings>
         <nodeMappings name="Empty Diagram" preconditionExpression="service:diagram.isDiagramEmpty" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='delete']/@ownedTools[name='RED_NoOp']" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Add%20direct%20children']" domainClass="uml.Element">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/icons/empty.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.core.design/icons/empty.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -69,7 +69,7 @@
       </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
         <subSections name="existingElements">
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Add existing elements to the diagram" name="AddExistingElements" label="Add" precondition="service:containerView.isValidContainerMapping" iconPath="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Add existing elements to the diagram" name="AddExistingElements" label="Add" precondition="service:containerView.isValidContainerMapping" iconPath="/org.obeonetwork.dsl.uml2.core.design/icons/properties/create.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -104,7 +104,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Remove an existing element from the diagram" name="RemoveExistingElements" label="Remove" precondition="service:containerView.isNotDiagram" forceRefresh="true" iconPath="/org.obeonetwork.dsl.uml2.design/icons/properties/unset.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Remove an existing element from the diagram" name="RemoveExistingElements" label="Remove" precondition="service:containerView.isNotDiagram" forceRefresh="true" iconPath="/org.obeonetwork.dsl.uml2.core.design/icons/properties/unset.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -311,7 +311,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Delete" label="Delete" precondition="service:containerView.isNotDiagram">
-            <menuItemDescription xsi:type="tool:OperationAction" name="from Diagram" icon="/org.obeonetwork.dsl.uml2.design/icons/properties/unset.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="from Diagram" icon="/org.obeonetwork.dsl.uml2.core.design/icons/properties/unset.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:views">
@@ -321,7 +321,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="from Model" icon="/org.obeonetwork.dsl.uml2.design/icons/deleteModel.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="from Model" icon="/org.obeonetwork.dsl.uml2.core.design/icons/deleteModel.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views->filter(viewpoint::DSemanticDecorator).target.destroy()"/>
@@ -408,7 +408,7 @@
           <conditionnalStyles predicateExpression="aql:self.interrupts->filter(ecore::EObject)->size() > 0">
             <style routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
-              <centerLabelStyleDescription labelExpression="." iconPath="/org.obeonetwork.dsl.uml2.design/icons/InterruptibleEdgeIcon.png">
+              <centerLabelStyleDescription labelExpression="." iconPath="/org.obeonetwork.dsl.core.uml2.design/icons/InterruptibleEdgeIcon.png">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </centerLabelStyleDescription>
             </style>
@@ -3061,7 +3061,7 @@
               </subModelOperations>
             </firstModelOperations>
           </onClickOperation>
-          <actions imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
+          <actions imageExpression="/org.obeonetwork.dsl.uml2.core.design/icons/properties/create.gif">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isAttributesOwner()">
@@ -3070,7 +3070,7 @@
               </firstModelOperations>
             </initialOperation>
           </actions>
-          <actions imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/unset.gif">
+          <actions imageExpression="/org.obeonetwork.dsl.uml2.core.design/icons/properties/unset.gif">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.isRemovableAttribute(selection)">
@@ -3081,12 +3081,12 @@
               </firstModelOperations>
             </initialOperation>
           </actions>
-          <actions imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/up.gif">
+          <actions imageExpression="/org.obeonetwork.dsl.uml2.core.design/icons/properties/up.gif">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection.organizeUpAttributes(self, true)"/>
             </initialOperation>
           </actions>
-          <actions imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/down.gif">
+          <actions imageExpression="/org.obeonetwork.dsl.uml2.core.design/icons/properties/down.gif">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection.organizeUpAttributes(self, false)"/>
             </initialOperation>
@@ -3195,12 +3195,12 @@
             <layout xsi:type="properties:GridLayoutDescription" numberOfColumns="6"/>
           </controls>
         </controls>
-        <actions tooltipExpression="Add a new association end" imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
+        <actions tooltipExpression="Add a new association end" imageExpression="/org.obeonetwork.dsl.uml2.core.design/icons/properties/create.gif">
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.addAssociationEnd()"/>
           </initialOperation>
         </actions>
-        <actions tooltipExpression="Remove ends" imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/unset.gif">
+        <actions tooltipExpression="Remove ends" imageExpression="/org.obeonetwork.dsl.uml2.core.design/icons/properties/unset.gif">
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.removeAssociationEnd()"/>
           </initialOperation>
@@ -3225,12 +3225,12 @@
       </groups>
       <groups name="PR_StereotypesGroup" labelExpression="Stereotypes" domainClass="uml::Element" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:ListDescription" name="Stereotypes" label="Stereotypes" labelExpression="Applied Stereotypes:" helpExpression="The Stereotypes applied to the Element" valueExpression="aql:self.oclAsType(uml::Element).getAppliedStereotypes()" displayExpression="aql:value.computeUmlLabel()">
-          <actions imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/create.gif">
+          <actions imageExpression="/org.obeonetwork.dsl.uml2.core.design/icons/properties/create.gif">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:selectStereotype()"/>
             </initialOperation>
           </actions>
-          <actions imageExpression="/org.obeonetwork.dsl.uml2.design/icons/properties/unset.gif">
+          <actions imageExpression="/org.obeonetwork.dsl.uml2.core.design/icons/properties/unset.gif">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unapplyStereotypes(selection)"/>
             </initialOperation>
