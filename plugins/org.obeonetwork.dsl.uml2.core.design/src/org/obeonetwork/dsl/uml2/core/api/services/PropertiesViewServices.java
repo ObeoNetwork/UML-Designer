@@ -83,6 +83,15 @@ import com.google.common.collect.Lists;
  * @author Frederic Bats <a href="mailto:emailadress">frederic.bats@obeo.fr</a>
  */
 public class PropertiesViewServices {
+    /**
+     * Open quote mark.
+     */
+    public static final String OPEN_QUOTE_MARK = "\u00AB"; //$NON-NLS-1$
+
+    /**
+     * Close quote mark.
+     */
+    public static final String CLOSE_QUOTE_MARK = "\u00BB"; //$NON-NLS-1$
 
     /**
      * Add association end.
@@ -244,7 +253,8 @@ public class PropertiesViewServices {
             }
             final String type = ((EStructuralFeature) element).getEType().getName();
 
-            return " «" + stereotypeName + "» :: " + ((EStructuralFeature) element).getName() + " : " + type; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            return OPEN_QUOTE_MARK + stereotypeName + CLOSE_QUOTE_MARK + " :: " + ((EStructuralFeature) element).getName() + " : " + type; //$NON-NLS-1$ //$NON-NLS-2$
+                                                                                                                                           // //$NON-NLS-3$
         }
         return "undefined name"; //$NON-NLS-1$
     }
