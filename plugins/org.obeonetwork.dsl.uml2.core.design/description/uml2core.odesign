@@ -2986,7 +2986,7 @@
               </subModelOperations>
               <subModelOperations xsi:type="tool:If" conditionExpression="aql: not self.isRemovableAttribute(selection) and selection->size()=1">
                 <subModelOperations xsi:type="tool:Let" variableName="parent" valueExpression="var:self">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selection->at(1)">
+                  <subModelOperations xsi:type="tool:Let" variableName="attribute" valueExpression="aql:selection->at(1)">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:onClickEventKind='DOUBLE_CLICK'">
                       <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Edit">
                         <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
@@ -2997,7 +2997,7 @@
                         </buttons>
                         <page name="Default Page" labelExpression="aql:self.computeUmlLabel()" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1/@controls.0/@onClickOperation/@firstModelOperations/@subModelOperations.1/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
                         <groups name="TaggedValuesEdition" labelExpression="Tagged Values" semanticCandidateExpression="var:self">
-                          <controls xsi:type="properties:DynamicMappingForDescription" name="sirius_default_rules_structural_features_for" iterator="eStructuralFeature" iterableExpression="aql:self->asSequence()">
+                          <controls xsi:type="properties:DynamicMappingForDescription" name="sirius_default_rules_structural_features_for" iterator="eStructuralFeature" iterableExpression="aql:attribute->asSequence()">
                             <ifs name="tagged_values_rules_mono_string_if" predicateExpression="aql:input.emfEditServices(parent).needsTextWidget(eStructuralFeature) and not input.emfEditServices(parent).isMultiline(eStructuralFeature)">
                               <widget xsi:type="properties:TextDescription" name="tagged_values_rules_mono_string" labelExpression="aql:eStructuralFeature.name+':'" helpExpression="aql:eStructuralFeature.getHelp(parent))" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.getTaggedValuesValue(parent)">
                                 <initialOperation>
