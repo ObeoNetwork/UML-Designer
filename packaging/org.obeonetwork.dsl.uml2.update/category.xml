@@ -12,8 +12,6 @@
    <feature id="org.obeonetwork.dsl.uml2.runtime.product.feature" version="0.0.0">
       <category name="Obeo Network"/>
    </feature>
-   <feature id="org.obeonetwork.gmf.runtime.diagram.ui.extension.feature" version="0.0.0">
-   </feature>
    <feature id="org.obeonetwork.dsl.uml2.umlgen.feature" version="0.0.0">
       <category name="Obeo Network"/>
    </feature>

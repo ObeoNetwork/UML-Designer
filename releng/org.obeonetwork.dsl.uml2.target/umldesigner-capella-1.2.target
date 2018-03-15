@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UMLDesigner-capella-1.2" sequenceNumber="1520603009">
+<target name="UMLDesigner-capella-1.2" sequenceNumber="1521038226">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="4.6.3.v20170301-0400"/>
@@ -84,7 +84,6 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.polarsys.capella.core.feature.feature.group" version="0.0.0"/>
-      <unit id="org.polarsys.capella.rcp.feature.feature.group" version="0.0.0"/>
       <repository id="site_Capella" location="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.rcp.site"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
