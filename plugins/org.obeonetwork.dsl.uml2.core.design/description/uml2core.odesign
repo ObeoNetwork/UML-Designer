@@ -408,7 +408,7 @@
           <conditionnalStyles predicateExpression="aql:self.interrupts->filter(ecore::EObject)->size() > 0">
             <style routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
-              <centerLabelStyleDescription labelExpression="." iconPath="/org.obeonetwork.dsl.core.uml2.design/icons/InterruptibleEdgeIcon.png">
+              <centerLabelStyleDescription labelExpression="." iconPath="/org.obeonetwork.dsl.uml2.core.design/icons/InterruptibleEdgeIcon.png">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </centerLabelStyleDescription>
             </style>
