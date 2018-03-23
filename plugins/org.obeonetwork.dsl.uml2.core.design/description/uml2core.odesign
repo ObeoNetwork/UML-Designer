@@ -1715,71 +1715,73 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new control flow" name="Control Flow" precondition="aql:preSource.oclIsKindOf(uml::Element) and preTarget.oclIsKindOf(uml::Element) and preSource.isValidActivityEdgeEnd(preTarget)" edgeMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" connectionStartPrecondition="service:preSource.isValidControlFlowStart">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContainer">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ControlFlow" referenceName="edge">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="guard" variableName="guard">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name+'_To_'+target.name+'_guard'"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="weight" variableName="weight">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name+'_To_'+target.name+'_weight'"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new object flow" name="Object Flow" precondition="aql:preSource.oclIsKindOf(uml::Element) and preTarget.oclIsKindOf(uml::Element) and preSource.isValidActivityEdgeEnd(preTarget)" edgeMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow']" connectionStartPrecondition="service:preSource.isValidObjectFlowStart">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ObjectFlow" referenceName="edge">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new interrupting edge" name="Interrupting Edge" precondition="service:preTarget.isValidInterruptingEdgeEnd(preSource)" edgeMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif" connectionStartPrecondition="aql:preSource.oclIsKindOf(uml::ActivityNode) and preSource.inInterruptibleRegion->size() > 0">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Activity)">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ControlFlow" referenceName="edge" variableName="flow">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="guard" variableName="guard">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name+'_To_'+target.name+'_guard'"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="weight" variableName="weight">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name+'_To_'+target.name+'_weight'"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="interrupts" valueExpression="service:source.getInterruptibleRegion"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.getInterruptibleRegion">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="interruptingEdge" valueExpression="var:flow"/>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="AD_Edges">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new control flow" name="Control Flow" precondition="aql:preSource.oclIsKindOf(uml::Element) and preTarget.oclIsKindOf(uml::Element) and preSource.isValidActivityEdgeEnd(preTarget)" edgeMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" connectionStartPrecondition="service:preSource.isValidControlFlowStart">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContainer">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ControlFlow" referenceName="edge">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="guard" variableName="guard">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name+'_To_'+target.name+'_guard'"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="weight" variableName="weight">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name+'_To_'+target.name+'_weight'"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new object flow" name="Object Flow" precondition="aql:preSource.oclIsKindOf(uml::Element) and preTarget.oclIsKindOf(uml::Element) and preSource.isValidActivityEdgeEnd(preTarget)" edgeMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow']" connectionStartPrecondition="service:preSource.isValidObjectFlowStart">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ObjectFlow" referenceName="edge">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new interrupting edge" name="Interrupting Edge" precondition="service:preTarget.isValidInterruptingEdgeEnd(preSource)" edgeMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif" connectionStartPrecondition="aql:preSource.oclIsKindOf(uml::ActivityNode) and preSource.inInterruptibleRegion->size() > 0">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer(uml::Activity)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ControlFlow" referenceName="edge" variableName="flow">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="guard" variableName="guard">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name+'_To_'+target.name+'_guard'"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="weight" variableName="weight">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name+'_To_'+target.name+'_weight'"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="interrupts" valueExpression="service:source.getInterruptibleRegion"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.getInterruptibleRegion">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="interruptingEdge" valueExpression="var:flow"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
           <subSections name="edit">
             <ownedTools xsi:type="tool_1:ContainerDropDescription" name="AD_activityPartitionDrop" mappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ReuseMappingForExecutableNode'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_InterruptibleActivityRegion'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_OpaqueAction'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@additionalLayers[name='Body']/@containerMappings[name='AD_ActivityWithBody']/@subContainerMappings[name='AD_OpaqueActionWithBody']" moveEdges="true">
