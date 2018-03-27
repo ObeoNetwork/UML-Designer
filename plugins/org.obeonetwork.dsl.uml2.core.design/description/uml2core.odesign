@@ -2496,7 +2496,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="create a new shallow history state" name="Shallow History State Node" label="Shallow History" nodeMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="create a new shallow history state" name="Shallow History State Node" label="Shallow History" nodeMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_ReusedMappings']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_shallowHistory.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
