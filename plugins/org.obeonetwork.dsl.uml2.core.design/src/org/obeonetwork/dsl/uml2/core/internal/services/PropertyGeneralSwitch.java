@@ -30,6 +30,7 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
@@ -91,24 +92,24 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 		this.feature = feature;
 	}
 
-    @Override
-    public Boolean caseActivityParameterNode(ActivityParameterNode object) {
-        if (UMLPackage.Literals.ACTIVITY_PARAMETER_NODE__PARAMETER.equals(feature)) {
-            return new Boolean(true);
-        }
-        return null;
-    }
+	@Override
+	public Boolean caseActivityParameterNode(ActivityParameterNode object) {
+		if (UMLPackage.Literals.ACTIVITY_PARAMETER_NODE__PARAMETER.equals(feature)) {
+			return new Boolean(true);
+		}
+		return null;
+	}
 
-    @Override
-    public Boolean caseParameter(Parameter object) {
-        if (UMLPackage.Literals.PARAMETER__IS_STREAM.equals(feature)) {
-            return new Boolean(true);
-        }
-        return null;
-    }
+	@Override
+	public Boolean caseParameter(Parameter object) {
+		if (UMLPackage.Literals.PARAMETER__IS_STREAM.equals(feature)) {
+			return new Boolean(true);
+		}
+		return null;
+	}
 
-    @Override
-    public Boolean caseAcceptEventAction(AcceptEventAction object) {
+	@Override
+	public Boolean caseAcceptEventAction(AcceptEventAction object) {
 		if (UMLPackage.Literals.ACCEPT_EVENT_ACTION__IS_UNMARSHALL.equals(feature)
 				|| UMLPackage.Literals.ACCEPT_EVENT_ACTION__TRIGGER.equals(feature)) {
 			return new Boolean(true);
@@ -214,25 +215,25 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 		return null;
 	}
 
-    @Override
-    public Boolean caseCallOperationAction(CallOperationAction object) {
-        if (UMLPackage.Literals.CALL_OPERATION_ACTION__OPERATION.equals(feature)) {
-            return new Boolean(true);
-        }
-        return null;
-    }
+	@Override
+	public Boolean caseCallOperationAction(CallOperationAction object) {
+		if (UMLPackage.Literals.CALL_OPERATION_ACTION__OPERATION.equals(feature)) {
+			return new Boolean(true);
+		}
+		return null;
+	}
 
-    @Override
-    public Boolean caseClass(Class object) {
-        if (UMLPackage.Literals.CLASS__OWNED_OPERATION.equals(feature)) {
-            return new Boolean(true);
-        }
-        return null;
-    }
+	@Override
+	public Boolean caseClass(Class object) {
+		if (UMLPackage.Literals.CLASS__OWNED_OPERATION.equals(feature)) {
+			return new Boolean(true);
+		}
+		return null;
+	}
 
-    @Override
-    public Boolean caseClassifier(Classifier object) {
-        if (UMLPackage.Literals.CLASSIFIER__ATTRIBUTE.equals(feature)
+	@Override
+	public Boolean caseClassifier(Classifier object) {
+		if (UMLPackage.Literals.CLASSIFIER__ATTRIBUTE.equals(feature)
 				|| UMLPackage.Literals.CLASSIFIER__IS_ABSTRACT.equals(feature)) {
 			return new Boolean(true);
 		}
@@ -261,6 +262,14 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 			return new Boolean(true);
 		}
 		return null;
+	}
+
+	@Override
+	public Boolean caseConstraint(Constraint object) {
+		if (UMLPackage.Literals.CONSTRAINT__SPECIFICATION.equals(feature)) {
+			return new Boolean(true);
+		}
+		return super.caseConstraint(object);
 	}
 
 	@Override
@@ -498,7 +507,8 @@ public class PropertyGeneralSwitch extends UMLSwitch<Boolean> {
 
 	@Override
 	public Boolean casePort(Port object) {
-		// for Port some attribute from Property have to be shown in Advanced instead of General
+		// for Port some attribute from Property have to be shown in Advanced
+		// instead of General
 		if (UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED.equals(feature)
 				|| UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE.equals(feature)
 				|| UMLPackage.Literals.STRUCTURAL_FEATURE__IS_READ_ONLY.equals(feature)
