@@ -27,7 +27,6 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -56,19 +55,19 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
-import org.obeonetwork.dsl.uml2.design.api.wizards.ModelElementsSelectionDialog;
-import org.obeonetwork.dsl.uml2.design.internal.dialogs.ModelElementSelectionDialog;
 import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.AssociationServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.DirectEditLabelSwitch;
 import org.obeonetwork.dsl.uml2.core.internal.services.DisplayLabelSwitch;
 import org.obeonetwork.dsl.uml2.core.internal.services.EditLabelSwitch;
-import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.OperationServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.StereotypeServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.UIServices;
+import org.obeonetwork.dsl.uml2.design.api.wizards.ModelElementsSelectionDialog;
+import org.obeonetwork.dsl.uml2.design.internal.dialogs.ModelElementSelectionDialog;
+import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
@@ -435,14 +434,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @return Stereotype applications
 	 */
 	public Collection<Object> getAllStereotypeApplications(DDiagram diagram) {
-		final Collection<Object> results = Lists.newArrayList();
-		for (final DDiagramElementContainer container : diagram.getContainers()) {
-			final EObject target = container.getTarget();
-			if (target instanceof Element) {
-				results.addAll(((Element)target).getStereotypeApplications());
-			}
-		}
-		return results;
+		return org.obeonetwork.dsl.uml2.core.internal.services.StereotypeServices.INSTANCE
+				.getAllStereotypeApplications(diagram);
 	}
 
 	/**
@@ -680,7 +673,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 * @return The stereotype name.
 	 */
 	public String getStereotypeApplicationLabel(EObject stereotypeApplication) {
-		return stereotypeApplication.eClass().getName();
+		return org.obeonetwork.dsl.uml2.core.internal.services.StereotypeServices.INSTANCE
+				.getStereotypeApplicationLabel(stereotypeApplication);
 	}
 
 	/**
