@@ -71,7 +71,6 @@ public class ModelElementsSelectionDialogPatternMatcher {
         if (matchPredicate == null) {
             matchPredicate = new Predicate<Object>() {
 
-                @Override
                 public boolean apply(Object input) {
                     final ICommonLabelProvider labelProvider = UMLDesignerCorePlugin.getDefault().getLabelProvider();
                     final String displayedLabel = labelProvider.getText(input);

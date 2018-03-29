@@ -51,7 +51,6 @@ public class CreateNewChildListener implements CommandStackListener {
      * @param event
      *            event
      */
-    @Override
     public void commandStackChanged(EventObject event) {
         // Try to select the affected objects.
         final Command mostRecentCommand = ((CommandStack) event.getSource()).getMostRecentCommand();

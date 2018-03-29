@@ -73,7 +73,6 @@ public abstract class AbstractCreateDiagram<T extends PackageableElement> extend
     /**
      * {@inheritDoc}
      */
-    @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
         final ISelection selection = HandlerUtil.getCurrentSelection(event);
 
@@ -155,7 +154,6 @@ public abstract class AbstractCreateDiagram<T extends PackageableElement> extend
         descriptionLabel += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
         final InputDialog askViewPointName = new InputDialog(Display.getDefault().getActiveShell(), "New " + description.getName(), descriptionLabel, defaultName, //$NON-NLS-1$
                 new IInputValidator() {
-                    @Override
                     public String isValid(final String newText) {
                         return null;
                     }

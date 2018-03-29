@@ -63,7 +63,6 @@ public class UmlDesignerCoreSessionManagerListener implements SessionManagerList
 
     private final DescendantCacheListener descendantCacheListener = new DescendantCacheListener();
 
-    @Override
     public void notify(Session updated, int notification) {
         // Nothing
         if (notification == SessionListener.OPENED) {
@@ -89,7 +88,6 @@ public class UmlDesignerCoreSessionManagerListener implements SessionManagerList
         }
     }
 
-    @Override
     public void notifyAddSession(Session newSession) {
         newSession.getEventBroker().addLocalTrigger(AutosizeTrigger.IS_GMF_NODE_ATTACHMENT, new AutosizeTrigger(newSession.getTransactionalEditingDomain()));
         newSession.getEventBroker().addLocalTrigger(ConfirmDeletionTrigger.IS_IMPACTING, new ConfirmDeletionTrigger(newSession));
@@ -101,7 +99,6 @@ public class UmlDesignerCoreSessionManagerListener implements SessionManagerList
         newSession.addListener(sessionListener);
     }
 
-    @Override
     public void notifyRemoveSession(Session removedSession) {
         removedSession.getTransactionalEditingDomain().removeResourceSetListener(callActionPinListener);
         removedSession.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(createNewChildListener);
@@ -110,12 +107,10 @@ public class UmlDesignerCoreSessionManagerListener implements SessionManagerList
         sessionListeners.remove(removedSession);
     }
 
-    @Override
     public void viewpointDeselected(Viewpoint deselectedSirius) {
         // Nothing
     }
 
-    @Override
     public void viewpointSelected(Viewpoint selectedSirius) {
         // Nothing
     }

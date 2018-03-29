@@ -70,7 +70,6 @@ public class InitUmlModel extends WorkspaceModifyOperation {
         if (created.some()) {
             Display.getDefault().syncExec(new Runnable() {
 
-                @Override
                 public void run() {
                     // Create default empty UML model
                     org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils.createSemanticResource(project, rootObjectName, umlFileName);
