@@ -185,18 +185,15 @@ public class ModelElementsSelectionDialog {
             final Control result = super.createContents(parent);
             getTreeViewer().setCheckStateProvider(new ICheckStateProvider() {
 
-                @Override
                 public boolean isChecked(Object element) {
                     return checkedElements.contains(element);
                 }
 
-                @Override
                 public boolean isGrayed(Object element) {
                     return isGrayed.apply(element);
                 }
             });
             getTreeViewer().addCheckStateListener(new ICheckStateListener() {
-                @Override
                 public void checkStateChanged(CheckStateChangedEvent event) {
                     if (!isGrayed.apply(event.getElement())) {
                         if (event.getChecked()) {
@@ -254,7 +251,6 @@ public class ModelElementsSelectionDialog {
             // Step 4 : add modify listener to this textZone
             regularExpressionText.addModifyListener(new ModifyListener() {
 
-                @Override
                 public void modifyText(ModifyEvent e) {
                     final String typedRegex = ((Text) e.getSource()).getText();
                     // Each time the regular expression is modified, the
@@ -503,7 +499,6 @@ public class ModelElementsSelectionDialog {
                 return true;
             }
             return Iterables.any(Arrays.asList(contentProvider.getChildren(element)), new Predicate<Object>() {
-                @Override
                 public boolean apply(Object input) {
                     return isOrHasDescendant(input, pred);
                 }
@@ -683,7 +678,6 @@ public class ModelElementsSelectionDialog {
     }
 
     private static final Function<Object, Void> DO_NOTHING = new Function<Object, Void>() {
-        @Override
         public Void apply(Object from) {
             return null;
         }
@@ -816,7 +810,6 @@ public class ModelElementsSelectionDialog {
      */
     private Predicate<Object> getDisplayablePredicate() {
         return new Predicate<Object>() {
-            @Override
             public boolean apply(Object input) {
                 if (input instanceof Element) {
                     return isOrHasDescendant((Element) input, AddElementToDiagramServices.INSTANCE.isValidForDiagram(diagram, eObject));

@@ -159,7 +159,6 @@ public class LabelServices {
         String name = element.getClass().getSimpleName();
         name = name.substring(0, name.indexOf("Impl")); //$NON-NLS-1$
         predicate = new Predicate<EObject>() {
-            @Override
             public boolean apply(EObject input) {
                 return input.getClass().getName().equals(element.getClass().getName());
             }
@@ -207,7 +206,6 @@ public class LabelServices {
             return end1 + "To" + Character.toUpperCase(end2.charAt(0)) + end2.substring(1); //$NON-NLS-1$
         } else if (element instanceof InstanceSpecification) {
             predicate = new Predicate<EObject>() {
-                @Override
                 public boolean apply(EObject input) {
                     return input instanceof InstanceSpecification;
                 }

@@ -21,7 +21,7 @@ location orbit-R20140525021250 "http://download.eclipse.org/tools/orbit/download
 }
 
 // Sirius
-location sirius-5.1.x "http://download.eclipse.org/sirius/updates/milestones/5.1.1rc4/neon" {
+location sirius-5.1.x "http://download.eclipse.org/sirius/updates/stable/5.1.2-S20180302-050316/neon" {
 	org.eclipse.sirius.properties.feature.feature.group lazy
 	//IDE
 	org.eclipse.sirius.runtime.ide.eef.feature.group lazy

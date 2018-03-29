@@ -75,7 +75,6 @@ public class AssociationServices {
                 endOwners.add(property.getType());
             }
             dlg.setGrayedPredicate(new Predicate<EObject>() {
-                @Override
                 public boolean apply(EObject input) {
                     if (endOwners.contains(input)) {
                         return true;
@@ -288,7 +287,6 @@ public class AssociationServices {
 
         dlg.setGrayedPredicate(new Predicate<EObject>() {
 
-            @Override
             public boolean apply(EObject input) {
                 if (endOwners.contains(input)) {
                     return true;

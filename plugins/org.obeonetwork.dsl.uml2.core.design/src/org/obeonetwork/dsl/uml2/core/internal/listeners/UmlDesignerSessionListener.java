@@ -38,7 +38,6 @@ public class UmlDesignerSessionListener implements SessionListener {
         this.session = session;
     }
 
-    @Override
     public void notify(int changeKind) {
         if (changeKind == SessionListener.OPENED || changeKind == SessionListener.SELECTED_VIEWS_CHANGE_KIND) {
             // The Reused viewpoint must not be disabled by the user as other
@@ -47,13 +46,11 @@ public class UmlDesignerSessionListener implements SessionListener {
             // user change the viewpoint
             // selection
             if (Iterables.any(session.getSelectedViewpoints(false), new Predicate<Viewpoint>() {
-                @Override
                 public boolean apply(Viewpoint selectedViewpoint) {
                     return UmlCoreViewpoints.isUmlViewpoint(selectedViewpoint);
                 }
             })) {
                 if (Iterables.indexOf(session.getSelectedViewpoints(false), new Predicate<Viewpoint>() {
-                    @Override
                     public boolean apply(Viewpoint selectedViewpoint) {
                         return UmlCoreViewpoints.isReusedViewpoint(selectedViewpoint);
                     }

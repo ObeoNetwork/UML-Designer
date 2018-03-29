@@ -31,15 +31,14 @@ public class UmlDesignerPreferencePage extends FieldEditorPreferencePage impleme
         super(GRID);
     }
 
-    @Override
-    protected void createFieldEditors() {
+	@Override
+	protected void createFieldEditors() {
         addField(new BooleanFieldEditor(UmlDesignerPreferences.DELETION_CONFIRMATION_ENABLED_ID, PreferencesMessages.UmlDesigner_PreferencePage_EnableDeletionConfirm, getFieldEditorParent()));
-    }
+	}
 
-    @Override
-    public void init(IWorkbench workbench) {
-        setPreferenceStore(UMLDesignerCorePlugin.getDefault().getPreferenceStore());
-        setDescription(PreferencesMessages.UmlDesigner_PreferencePage_Description);
-    }
+	public void init(IWorkbench workbench) {
+		setPreferenceStore(UMLDesignerCorePlugin.getDefault().getPreferenceStore());
+		setDescription(PreferencesMessages.UmlDesigner_PreferencePage_Description);
+	}
 
 }
