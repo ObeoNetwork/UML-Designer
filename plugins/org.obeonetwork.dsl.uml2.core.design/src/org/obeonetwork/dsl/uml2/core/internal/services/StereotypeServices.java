@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.core.internal.services;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.uml2.uml.Element;
@@ -113,6 +116,24 @@ public class StereotypeServices {
 	}
 
 	/**
+	 * Get all the stereotype applications according to the selected diagram.
+	 *
+	 * @param diagram
+	 *            Current diagram
+	 * @return Stereotype applications
+	 */
+	public Collection<Object> getAllStereotypeApplications(DDiagram diagram) {
+		final Collection<Object> results = Lists.newArrayList();
+		for (final DDiagramElementContainer container : diagram.getContainers()) {
+			final EObject target = container.getTarget();
+			if (target instanceof Element) {
+				results.addAll(((Element)target).getStereotypeApplications());
+			}
+		}
+		return results;
+	}
+
+	/**
 	 * Get base class associated to a stereotype application.
 	 *
 	 * @param stereotypeApplication
@@ -122,6 +143,17 @@ public class StereotypeServices {
 	public Element getBaseClass(EObject stereotypeApplication) {
 		return (Element)stereotypeApplication
 				.eGet(stereotypeApplication.eClass().getEStructuralFeature("base_Class")); //$NON-NLS-1$
+	}
+
+	/**
+	 * Get stereotype application label.
+	 *
+	 * @param stereotypeApplication
+	 *            Stereotype application
+	 * @return The stereotype name.
+	 */
+	public String getStereotypeApplicationLabel(EObject stereotypeApplication) {
+		return stereotypeApplication.eClass().getName();
 	}
 
 	/**

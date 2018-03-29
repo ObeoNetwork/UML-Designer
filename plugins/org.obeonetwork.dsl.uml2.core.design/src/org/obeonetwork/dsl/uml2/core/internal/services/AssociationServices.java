@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.core.internal.services;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,6 +20,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
@@ -27,6 +29,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
@@ -157,6 +160,43 @@ public class AssociationServices {
     }
 
     /**
+     * Retrieve the cross references of the association of all the UML elements displayed as node in a
+     * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+     * property.
+     *
+     * @param diagram
+     *            a diagram.
+     * @return the list of cross reference of the given
+     */
+    public Collection<EObject> getAssociationInverseRefs(DDiagram diagram) {
+        return NodeInverseRefsServices.INSTANCE.getAssociationInverseRefs(diagram);
+    }
+
+    /**
+     * Get association end qualifier for a classifier.
+     *
+     * @param classifier
+     *            association end
+     * @param diagram
+     *            Diagram
+     * @return List of qualifier
+     */
+    public List<Property> getSemanticCandidatesQualifier(Classifier classifier, DDiagram diagram) {
+        final List<Property> qualifiers = new ArrayList<Property>();
+        final Collection<EObject> associations = getAssociationInverseRefs(diagram);
+        for (final EObject association : associations) {
+            for (final Property end : ((Association)association).getMemberEnds()) {
+                if (((Association)association).getMemberEnds().size() <= 2 && end.getType().equals(classifier)
+                        && !end.getQualifiers().isEmpty()
+                        && getVisibleAssociationEnds((Association)association, diagram).size() >= 2) {
+                    qualifiers.add(end);
+                }
+            }
+        }
+        return qualifiers;
+    }
+
+    /**
      * Return the source of an association.
      *
      * @param association
@@ -269,6 +309,28 @@ public class AssociationServices {
         types.add(getSourceType(association));
         types.add(getTargetType(association));
         return types;
+    }
+
+    private List<Property> getVisibleAssociationEnds(Association association, DDiagram diagram) {
+        final List<Property> ends = new ArrayList<Property>();
+        // Association should be visible in self container
+        // At least one of the ends is visible in diagram
+        final EList<DDiagramElement> elements = diagram.getDiagramElements();
+        // check if at least more than 2 ends are displayed in diagram
+        final List<EObject> visibleEndsList = new ArrayList<EObject>();
+        for (final DDiagramElement element : elements) {
+            visibleEndsList.add(element.getTarget());
+        }
+        final EList<Property> associationEnds = association.getMemberEnds();
+        for (final Property end : associationEnds) {
+            if (visibleEndsList.contains(end.getType())) {
+                ends.add(end);
+            }
+            if (end.getType() == null) { // Broken association case
+                ends.add(end);
+            }
+        }
+        return ends;
     }
 
     /**
