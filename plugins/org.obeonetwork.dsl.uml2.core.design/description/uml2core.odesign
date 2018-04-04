@@ -28,36 +28,6 @@
           </style>
         </edgeMappings>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsNavigable">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="targetArrow" value="aql:diagram::EdgeArrows::InputArrow"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsShared">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="targetArrow" value="aql:diagram::EdgeArrows::Diamond"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsComposite">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="targetArrow" value="aql:diagram::EdgeArrows::FillDiamond"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsNavigableAndSourceIsShared">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="targetArrow" value="aql:diagram::EdgeArrows::InputArrowWithDiamond"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsNavigableAndSourceIsComposite">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="targetArrow" value="aql:diagram::EdgeArrows::InputArrowWithFillDiamond"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsNavigable(view)">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sourceArrow" value="aql:diagram::EdgeArrows::InputArrow"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsShared">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sourceArrow" value="aql:diagram::EdgeArrows::Diamond"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsComposite">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sourceArrow" value="aql:diagram::EdgeArrows::FillDiamond"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsNavigableAndTargetIsShared">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sourceArrow" value="aql:diagram::EdgeArrows::InputArrowWithDiamond"/>
-          </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsNavigableAndTargetIsComposite">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="sourceArrow" value="aql:diagram::EdgeArrows::InputArrowWithFillDiamond"/>
-          </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="feature:isAbstract">
             <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="labelFormat" value="service:self.getAbstractBoldLabelFormat"/>
             <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="labelFormat" value="service:self.getAbstractItalicLabelFormat"/>
