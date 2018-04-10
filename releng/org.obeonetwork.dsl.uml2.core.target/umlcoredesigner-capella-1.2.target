@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UML Core Designer Neon for Capella" sequenceNumber="1522155959">
+<target name="UML Core Designer Neon for Capella" sequenceNumber="1522835846">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="4.6.3.v20170301-0400"/>
@@ -10,7 +10,7 @@
       <unit id="org.eclipse.emf.query.feature.group" version="1.10.0.201606071631"/>
       <unit id="org.eclipse.emf.transaction.feature.group" version="1.10.0.201606071900"/>
       <unit id="org.eclipse.gmf.feature.group" version="1.10.0.201606071959"/>
-      <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.300.v20161122-1740"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="com.ibm.icu" version="56.1.0.v201601250100"/>
       <repository id="eclipse-releases-neon" location="http://download.eclipse.org/releases/neon"/>
     </location>
