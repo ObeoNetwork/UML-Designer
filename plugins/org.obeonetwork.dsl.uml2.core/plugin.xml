@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.resourceStrategy">
+      <resourceStrategy
+            class="org.obeonetwork.dsl.uml2.core.UmlResourceStrategy">
+      </resourceStrategy>
+   </extension>
+   <extension
+         id="umlProjectNature"
+         name="UML project nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.obeonetwork.dsl.uml2.core.ProjectNatureUml">
+         </run>
+      </runtime>
+      <requires-nature
+            id="org.eclipse.sirius.nature.modelingproject">
+      </requires-nature>
+   </extension>
+
+</plugin>

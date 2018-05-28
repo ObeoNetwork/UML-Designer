@@ -19,63 +19,68 @@ import org.eclipse.osgi.util.NLS;
  *         <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class Messages extends NLS {
-    private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.core.internal.wizards.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.core.internal.wizards.messages"; //$NON-NLS-1$
 
-    /**
-     * Default model name.
-     */
-    public static String UmlModelWizard_DefaultModelName;
+	/**
+	 * Default model name.
+	 */
+	public static String UmlModelWizard_DefaultModelName;
 
-    /**
-     * Default package name.
-     */
-    public static String UmlModelWizard_DefaultPackageName;
+	/**
+	 * Default package name.
+	 */
+	public static String UmlModelWizard_DefaultPackageName;
 
-    /**
-     * Creating model error.
-     */
-    public static String UmlModelWizard_UI_Error_CreatingUmlModel;
+	/**
+	 * Creating model error.
+	 */
+	public static String UmlModelWizard_UI_Error_CreatingUmlModel;
 
-    /**
-     * Bad file extension error.
-     */
-    public static String UmlModelWizard_UI_ErrorMsg_BadFileExtension;
+	/**
+	 * Bad file extension error.
+	 */
+	public static String UmlModelWizard_UI_ErrorMsg_BadFileExtension;
 
-    /**
-     * Container label.
-     */
-    public static String UmlModelWizardInitModelPage_ContainerLabel;
+	/**
+	 * Container label.
+	 */
+	public static String UmlModelWizardInitModelPage_ContainerLabel;
 
-    /**
-     * Encoding label.
-     */
-    public static String UmlModelWizardInitModelPage_XmlEncodingLabel;
+	/**
+	 * Encoding label.
+	 */
+	public static String UmlModelWizardInitModelPage_XmlEncodingLabel;
 
-    /**
-     * Encodings.
-     */
-    public static String UmlModelWizardInitModelPage_XmlEncodings;
+	/**
+	 * Encodings.
+	 */
+	public static String UmlModelWizardInitModelPage_XmlEncodings;
 
-    /**
-     * Call operation action error.
-     */
-    public static String UmlValidationErrorOnCallOperationAction;
+	/**
+	 * Call operation action error.
+	 */
+	public static String UmlValidationErrorOnCallOperationAction;
 
-    /**
-     * Call operation action error.
-     */
-    public static String UmlValidationErrorOnCallOperationAction2;
+	/**
+	 * Call operation action error.
+	 */
+	public static String UmlValidationErrorOnCallOperationAction2;
 
-    /**
-     * Call operation pin action error.
-     */
-    public static String UmlValidationErrorOnCallOperationActionPin;
+	/**
+	 * Call operation pin action error.
+	 */
+	public static String UmlValidationErrorOnCallOperationActionPin;
 
-    static {
-        // initialize resource bundle
-        NLS.initializeMessages(BUNDLE_NAME, Messages.class);
-    }
+	/**
+	 * Setting Project nature error.
+	 */
+	public static String UmlModelWizard_UI_Error_SettingProjectNature;
 
-    private Messages() {
-    }
+	static {
+		// initialize resource bundle
+		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+	}
+
+	private Messages() {
+	}
 }
