@@ -14,6 +14,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.swt.widgets.Display;
@@ -76,9 +78,15 @@ public class UMLProjectWizard extends AbstractNewUmlModelWizard {
 						// Create default empty UML model
 						org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils.createSemanticResource(project, rootObjectName, newUmlModelFileName);
 
-						// Enable UML viewpoints
-						final ModelingProject modelingProject = created.get();
-						UmlViewpoints.enable(modelingProject.getSession());
+						created.get();
+
+						final Session session = created.get().getSession();
+						if (session != null) {
+							UmlViewpoints.enable(session);
+							if (SessionStatus.DIRTY.equals(session.getStatus())) {
+								session.save(new NullProgressMonitor());
+							}
+						}
 					}
 				});
 			}
