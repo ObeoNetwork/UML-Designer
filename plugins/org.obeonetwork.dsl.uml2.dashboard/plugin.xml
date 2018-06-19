@@ -585,8 +585,8 @@ Capture (Package hierarchy, Use case diagram…), Design (Class diagram, Activit
             %documentation.description
          </Description>
          <Overview
-               imageOff="icons/documentation/HelpSelected.png"
-               imageOn="icons/documentation/HelpOff.png">
+               imageOn="icons/documentation/HelpSelected.png"
+               imageOff="icons/documentation/HelpOff.png">
             <Description>
                &lt;p&gt;&lt;b&gt;Help&lt;/b&gt;&lt;br/&gt;Find help, the reference documentations and the support entry points.&lt;/p&gt;
             </Description>
