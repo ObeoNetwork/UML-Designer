@@ -19,4 +19,13 @@
             class="org.obeonetwork.dsl.uml2.core.preferences.UmlDesignerPreferenceInitializer">
       </initializer>
    </extension>
+   <extension
+         point="org.eclipse.eef.properties.ui.eefTabDescriptorFilter">
+      <descriptor
+            class="org.obeonetwork.dsl.uml2.core.internal.properties.UmlDesignerTabDescriptorFilter"
+            description="Filter to display UML properties tab "
+            id="org.obeonetwork.dsl.uml2.core.design.descriptor"
+            label="UML tab filter">
+      </descriptor>
+   </extension>
 </plugin>

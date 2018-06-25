@@ -35,7 +35,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.navigator,
  org.eclipse.uml2.uml.edit;bundle-version="[5.0.0,6.0.0)",
  org.eclipse.ui.workbench,
- org.obeonetwork.dsl.uml2.core
+ org.obeonetwork.dsl.uml2.core,
+ org.eclipse.eef.properties.ui,
+ org.eclipse.gef
 Export-Package: org.obeonetwork.dsl.uml2.core,
  org.obeonetwork.dsl.uml2.core.api.services,
  org.obeonetwork.dsl.uml2.core.api.utils,
