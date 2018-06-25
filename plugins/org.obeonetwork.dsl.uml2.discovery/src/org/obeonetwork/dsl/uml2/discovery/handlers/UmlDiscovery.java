@@ -36,7 +36,7 @@ import org.obeonetwork.dsl.uml2.discovery.UmlDiscoveryActivator;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlDiscovery extends DiscoveryContentProvider {
-	private static final String CATALOG_URI = "http://www.umldesigner.org/discovery.xmi";
+	private static final String CATALOG_URI = "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/capella-1.2/discovery.xmi";
 
 	@Override
 	public DiscoveryDefinition load(IProgressMonitor monitor) throws InterruptedException {

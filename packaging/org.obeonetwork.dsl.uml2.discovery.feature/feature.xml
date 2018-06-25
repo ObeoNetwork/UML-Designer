@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.obeonetwork.dsl.uml2.runtime.feature"
-      label="UML Designer"
+      id="org.obeonetwork.dsl.uml2.discovery.feature"
+      label="UML Discovery"
       version="8.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://umldesigner.org">
-      This modeler provides a set of common diagrams to work with
-UML 5.0 models.
-Provides same features as org.obeonetwork.dsl.uml2.runtime.sdk.feature
-without the dependencies to Sirius.
+      This plugin provides a wizard to install easily UML and SysML Designers.
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
@@ -220,57 +217,11 @@ litigation.
    </license>
 
    <requires>
-      <import feature="org.eclipse.uml2" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.gmf.runtime.notation" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.ide.ui" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.0.0.qualifier"/>
+      <import plugin="org.eclipse.amalgam.discovery.ui"/>
    </requires>
 
    <plugin
-         id="org.obeonetwork.gmf.runtime.diagram.ui.extension"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.obeonetwork.dsl.uml2.design"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.obeonetwork.dsl.uml2.design.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.obeonetwork.dsl.uml2.usage"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.obeonetwork.dsl.uml2.navigator"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.obeonetwork.dsl.uml2.discovery"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.obeonetwork.dsl.uml2.dashboard"
          download-size="0"
          install-size="0"
          version="0.0.0"

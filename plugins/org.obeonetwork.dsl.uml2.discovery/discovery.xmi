@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<discovery:DiscoveryDefinition
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:discovery="http://www.eclipse.org/amalgamation/discovery/1.0">
+  <categories
+      name="Designers"
+      description="Extended designers."
+      relevance="6"
+      image48="">
+    <components
+        name="UML/SysML Designer"
+        provider="Obeo Network"
+        description="UML and SysML Designers provide a set of common diagrams to work with UML and SysML models."
+        license="EPL"
+        image32="images/sysml_designer.png">
+      <sitesURLS>http://releases.obeonetwork.com/sirius_5_1</sitesURLS>
+      <overview
+          summary="UML and SysML Designer is a graphical tool to edit and visualize UML 2.5 and SysML 1.4 models. As it is based on Sirius, it provides an easy way to combine UML and SysML with domain specific modeling. You can extend the provided diagram definitions and seamlessly work on both UML and SysML and DSL models at the same time. "
+          screenshot="images/sysml_designer_screenshot-320x240.png"
+          url="http://releases.obeonetwork.com/sirius_5_1"/>
+      <id>org.obeonetwork.dsl.sysml.runtime.feature</id>
+      <id>org.obeonetwork.dsl.uml2.runtime.feature</id>
+    </components>
+  </categories>
+  <filters name="Incubation"/>
+</discovery:DiscoveryDefinition>

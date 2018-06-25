@@ -55,9 +55,11 @@ Contributors:
     <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.sdk.feature</module>
     <module>../../packaging/org.obeonetwork.gmf.runtime.diagram.ui.extension.feature</module>
     <module>../../packaging/org.obeonetwork.dsl.uml2.umlgen.feature</module>
+    <module>../../packaging/org.obeonetwork.dsl.uml2.discovery.feature</module>
 
     <!-- Build update-sites -->
     <module>../../packaging/org.obeonetwork.dsl.uml2.core.update</module>
     <module>../../packaging/org.obeonetwork.dsl.uml2.update</module>
+    <module>../../packaging/org.obeonetwork.dsl.uml2.discovery.update</module>
   </modules>
 </project>
