@@ -223,7 +223,6 @@ litigation.
       <import feature="org.eclipse.uml2" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.gmf.runtime.notation" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.ide.eef" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0" match="greaterOrEqual"/>
       <import plugin="com.google.guava"/>
@@ -250,6 +249,18 @@ litigation.
       <import plugin="org.eclipse.uml2.uml" version="5.0.0" match="compatible"/>
       <import plugin="org.eclipse.uml2.uml.edit" version="5.0.0" match="compatible"/>
       <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.eef"/>
+      <import plugin="org.eclipse.eef.common"/>
+      <import plugin="org.eclipse.eef.common.ui"/>
+      <import plugin="org.eclipse.eef.core"/>
+      <import plugin="org.eclipse.eef.core.ext.widgets.reference"/>
+      <import plugin="org.eclipse.eef.ext.widgets.reference"/>
+      <import plugin="org.eclipse.eef.ide"/>
+      <import plugin="org.eclipse.eef.ide.ui"/>
+      <import plugin="org.eclipse.eef.ide.ui.ext.widgets.reference"/>
+      <import plugin="org.eclipse.eef.ide.ui.properties"/>
+      <import plugin="org.eclipse.eef.properties.ui"/>
+      <import plugin="org.eclipse.eef.properties.ui.legacy"/>
    </requires>
 
    <plugin
