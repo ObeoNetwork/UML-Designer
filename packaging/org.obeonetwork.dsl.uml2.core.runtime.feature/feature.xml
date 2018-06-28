@@ -261,6 +261,7 @@ litigation.
       <import plugin="org.eclipse.eef.ide.ui.properties"/>
       <import plugin="org.eclipse.eef.properties.ui"/>
       <import plugin="org.eclipse.eef.properties.ui.legacy"/>
+      <import feature="org.eclipse.sirius.properties.feature" version="5.1.0.201710261549"/>
    </requires>
 
    <plugin
