@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer Branding
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.branding;singleton:=true
-Bundle-Version: 8.0.0.qualifier
+Bundle-Version: 8.1.0.qualifier
 Bundle-Vendor: Obeo Network
 Require-Bundle: org.eclipse.ui.intro.universal,
  org.eclipse.ui.intro;bundle-version="3.4.200",

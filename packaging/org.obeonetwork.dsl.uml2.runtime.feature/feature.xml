@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.uml2.runtime.feature"
       label="UML Designer"
-      version="8.0.0.qualifier"
+      version="8.1.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://umldesigner.org">
@@ -225,7 +225,7 @@ litigation.
       <import feature="org.eclipse.sirius.runtime" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.0.0.qualifier"/>
+      <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.1.0.qualifier"/>
    </requires>
 
    <plugin
