@@ -66,7 +66,7 @@ script:
 # Build uml designer
 - mvn clean verify
 # Build uml designer products
-#- mvn clean verify -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml
+- mvn clean verify -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml
 # Prepare local dirs to deploy: copy repository, bundles and tp
 - chmod a+x prepare-deploy-local-dir.sh
 - echo "$TRAVIS_TAG"
@@ -93,31 +93,7 @@ deploy:
     skip_cleanup: true
     acl: public_read
     on:
-      branch: capella-1.2
-  - provider: s3
-    access_key_id: AKIAJJVZATSVUD3VGHXA
-    secret_access_key:
-     secure: JR+FhCfNYeOp1kg6VsNFxDpXeI0MB27DZyzZ31krTrYhogtn5lPQZoRVc1e7/C/jaZqsbY3RZvjXnZOzTVxOgOV2VqbWGUzTwsnzLATiqtIvlq6MJvwDfaB/zRzYs3aVjss7QiVVsCsYh6rlihD4C3Xn2lRZIRMarTUYbVNYWyk=
-    bucket: obeo-umldesigner-nightly
-    local-dir: "${TRAVIS_BUILD_DIR}/nightly"
-    acl: public_read
-    skip_cleanup: true
-    region: eu-west-1
-    upload-dir: "${TRAVIS_BRANCH}"
-    on:
-      branch: 5.0.x  
-  - provider: s3
-    access_key_id: AKIAJJVZATSVUD3VGHXA
-    secret_access_key:
-     secure: JR+FhCfNYeOp1kg6VsNFxDpXeI0MB27DZyzZ31krTrYhogtn5lPQZoRVc1e7/C/jaZqsbY3RZvjXnZOzTVxOgOV2VqbWGUzTwsnzLATiqtIvlq6MJvwDfaB/zRzYs3aVjss7QiVVsCsYh6rlihD4C3Xn2lRZIRMarTUYbVNYWyk=
-    bucket: obeo-umldesigner-nightly
-    local-dir: "${TRAVIS_BUILD_DIR}/nightly"
-    acl: public_read
-    skip_cleanup: true
-    region: eu-west-1
-    upload-dir: "${TRAVIS_BRANCH}"
-    on:
-      branch: 5.0.x_juno_3.8
+      branch: master
 # Deploy release on s3
   - provider: s3
     access_key_id: AKIAJJVZATSVUD3VGHXA
