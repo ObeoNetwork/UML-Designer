@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.uml2.discovery.feature"
       label="UML Discovery"
-      version="8.1.0.qualifier"
+      version="8.1.1.qualifier"
       provider-name="Obeo">
 
    <description url="http://umldesigner.org">

@@ -3,10 +3,10 @@
    <description url="http://www.obeo.fr">
       Viewpoint
    </description>
-   <feature url="features/org.obeonetwork.dsl.uml2.core.runtime.feature_8.1.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.1.0.qualifier">
+   <feature url="features/org.obeonetwork.dsl.uml2.core.runtime.feature_8.1.1.qualifier.jar" id="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.1.1.qualifier">
       <category name="Obeo Network"/>
    </feature>
-   <feature url="features/org.obeonetwork.dsl.uml2.core.runtime.sdk.feature_8.1.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.core.runtime.sdk.feature" version="8.1.0.qualifier">
+   <feature url="features/org.obeonetwork.dsl.uml2.core.runtime.sdk.feature_8.1.1.qualifier.jar" id="org.obeonetwork.dsl.uml2.core.runtime.sdk.feature" version="8.1.1.qualifier">
       <category name="Obeo Network"/>
    </feature>
     <feature id="org.obeonetwork.gmf.runtime.diagram.ui.extension.feature" version="0.0.0">

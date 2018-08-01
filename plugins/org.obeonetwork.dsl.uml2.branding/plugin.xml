@@ -170,7 +170,7 @@
       <property name="windowImages" value="icons/logo_16.gif,icons/logo_32.gif,icons/logo_64.gif"/>
       <property name="appName" value="UML Designer"/>
       <property name="aboutImage" value="icons/about.gif"/>
-      <property name="aboutText" value="UML Designer &#x0A;&#x0A;Version  8.1.0&#x0A;&#x0A;&#x0A;(c) Copyright (c) 2005-2018 Obeo. All Rights Reserved.&#x0A;Visit http://www.obeo.fr"/>
+      <property name="aboutText" value="UML Designer &#x0A;&#x0A;Version  8.1.1&#x0A;&#x0A;&#x0A;(c) Copyright (c) 2005-2018 Obeo. All Rights Reserved.&#x0A;Visit http://www.obeo.fr"/>
       <property name="startupForegroundColor" value="000000"/>
       <property name="startupMessageRect" value="3,300,495,15"/>
       <property name="startupProgressRect" value="3,315,495,15"/>
