@@ -11,3 +11,29 @@
 <script src="{{ page.relativePath }}/js/jquery-1.10.2.js"></script>
 <script src="{{ page.relativePath }}/js/bootstrap.js"></script>
 <script src="{{ page.relativePath }}/js/modern-business.js"></script>
+
+<!-- Cookies Consent/RGPD -->
+  <script type="text/javascript" src="https://www.obeo.fr/templates/purity_iii/js/ihavecookies.min.js"></script>
+  <script>
+    jQuery(document).ready(function () {
+      jQuery('body').ihavecookies({
+        title: 'Accept Cookies & Privacy Policy',
+        message: 'This website uses cookies to ensure you get the best experience on our website. By clicking "Accept" or by closing this pop-up, you consent to our cookies in accordance with our Cookies and Privacy Polyicy.',
+        delay: 1000,
+        expires: 30,
+        link: 'https://www.obeo.fr/en/legal-information',
+        onAccept: function () {
+          location.reload();
+        },
+        uncheckBoxes: true
+      });
+    });
+  </script>
+  <script>
+    if (document.cookie.indexOf('cookieControl') > -1) {
+      var sc = document.createElement('script');
+      sc.src = "https://www.obeo.fr/templates/purity_iii/js/js.cookie.js";
+      sc.type = 'application/javascript';
+      document.getElementsByTagName('head')[0].appendChild(sc);
+    }
+  </script>
