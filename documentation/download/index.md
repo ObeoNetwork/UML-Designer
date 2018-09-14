@@ -39,7 +39,7 @@ If you already have an Eclipse installed you can install it by using the UML Des
 
 To install UML Designer, it is possible to:
 * download a **bundle**, in this case UML designer is already installed, just unzip and run the `umldesigner` executable.
-* get UML Designer in an existing Eclipse from the "marketplace":../download/index.html#Marketplace or from an [update-site]({{page.relativePath}}/download/index.html#update-sites). If you decide to install this way, during the installation if you get the security warning saying that the authenticity or validity of the software can't be established, just click [OK]({{page.relativePath}}/images/SecurityWarning.png).
+* get UML Designer in an existing Eclipse from the [marketplace]({{page.relativePath}}/download/index.html#marketplace) or from an [update-site]({{page.relativePath}}/download/index.html#update-sites). If you decide to install this way, during the installation if you get the security warning saying that the authenticity or validity of the software can't be established, just click [OK]({{page.relativePath}}/images/SecurityWarning.png).
 
 _Pay attention that the nightly build is unstable, this build is for testing purposes only._
 
