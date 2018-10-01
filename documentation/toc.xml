@@ -44,7 +44,9 @@
     </topic>
     <topic href="html/developer-guide/build.html" label="Build">
     </topic>
-    <topic href="html/developer-guide/continuous-integration.html" label="Continuous Integration">
+    <topic href="html/developer-guide/test.html" label="Test">
+    </topic>
+    <topic href="html/developer-guide/release.html" label="Release">
     </topic>
     <topic href="html/developer-guide/documentation.html" label="Build documentation">
     </topic>
