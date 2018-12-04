@@ -4,10 +4,11 @@ Bundle-SymbolicName: org.obeonetwork.gmf.runtime.diagram.ui.extension;singleton=
 Bundle-Version: 8.1.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.sirius.diagram,
- org.eclipse.sirius.common.ui,
+ org.eclipse.sirius.diagram;bundle-version="[6.0.0,7.0.0)",
+ org.eclipse.sirius.common.ui;bundle-version="[6.0.0,7.0.0)",
  org.eclipse.gmf.runtime.diagram.ui,
- org.eclipse.sirius.diagram.ui
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.sirius.ext.gmf.runtime;bundle-version="[6.0.0,7.0.0)"
 Bundle-Activator: org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator
 Bundle-Localization: plugin
 Bundle-Vendor: Obeo Network

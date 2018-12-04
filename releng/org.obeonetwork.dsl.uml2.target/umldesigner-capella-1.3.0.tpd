@@ -1,0 +1,27 @@
+target "UML Designer Capella-1.3.0"
+
+include "../org.obeonetwork.dsl.uml2.core.target/umlcoredesigner-capella-1.3.0.tpd"
+with source, requirements
+
+location amalgam-1.10.0 "http://download.eclipse.org/modeling/amalgam/updates/stable/1.10.0-S20181119/capella" {
+	org.eclipse.amalgam.discovery.feature.group lazy
+	org.eclipse.amalgam.discovery.ui lazy
+	org.eclipse.amalgam.explorer.activity.feature.group lazy
+}
+
+// Acceleo 3.7.4
+
+location "http://download.eclipse.org/acceleo/updates/releases/3.7/R201807201001" {
+	org.eclipse.acceleo.feature.group lazy
+}
+
+// UML compare 3.3.2
+location "http://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R201709090201" {
+	org.eclipse.emf.compare.diagram.gmf.feature.group lazy
+	org.eclipse.emf.compare.ide.ui.feature.group lazy
+	org.eclipse.emf.compare.rcp.ui.feature.group lazy
+	org.eclipse.emf.compare.feature.group lazy
+	org.eclipse.emf.compare.uml2.feature.group lazy
+	org.eclipse.emf.compare.diagram.ide.ui.sirius lazy
+	org.eclipse.emf.compare.diagram.sirius lazy
+}

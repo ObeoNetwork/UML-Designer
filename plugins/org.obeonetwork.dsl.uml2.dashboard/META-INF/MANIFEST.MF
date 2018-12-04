@@ -7,14 +7,14 @@ Bundle-Activator: org.obeonetwork.dsl.uml2.dashboard.DashboardPlugin
 Bundle-Vendor: Obeo
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.sirius.ui;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.sirius.ui;bundle-version="[6.0.0,7.0.0)",
  org.eclipse.emf.transaction,
- org.eclipse.amalgam.explorer.activity.ui;bundle-version="[1.8.0,2.0.0)",
- org.eclipse.sirius.common.ui;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.amalgam.explorer.activity.ui,
+ org.eclipse.sirius.common.ui;bundle-version="[6.0.0,7.0.0)",
  org.eclipse.uml2.uml.edit;bundle-version="[5.2.0,5.4.0)",
  org.eclipse.gmf.runtime.diagram.ui,
  com.google.guava;bundle-version="[15.0.0,22.0.0)",
- org.eclipse.sirius.ext.base;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.sirius.ext.base;bundle-version="[6.0.0,7.0.0)",
  org.eclipse.core.expressions
 Export-Package: org.obeonetwork.dsl.uml2.dashboard.services
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

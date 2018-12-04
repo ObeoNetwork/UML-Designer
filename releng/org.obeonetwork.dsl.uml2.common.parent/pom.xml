@@ -40,7 +40,7 @@ Contributors:
   <properties>
     <tycho-version>0.24.0</tycho-version>
     <root-path>../..</root-path>
-    <platform-version-name>capella-1.2.0</platform-version-name>
+    <platform-version-name>capella-1.3.0</platform-version-name>
   </properties>
 
   <build>
