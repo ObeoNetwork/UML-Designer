@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.uml2.umlgen.feature"
       label="UML Designer Java Generator &amp; Reverse"
-      version="8.1.0.qualifier"
+      version="9.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://umldesigner.org">
