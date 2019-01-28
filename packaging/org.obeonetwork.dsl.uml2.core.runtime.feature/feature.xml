@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.uml2.core.runtime.feature"
       label="UML Designer core"
-      version="8.1.1.qualifier"
+      version="9.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://umldesigner.org">
@@ -235,14 +235,14 @@ litigation.
       <import plugin="org.eclipse.jdt.core"/>
       <import plugin="org.eclipse.jface"/>
       <import plugin="org.eclipse.pde.core"/>
-      <import plugin="org.eclipse.sirius" version="5.0.0" match="compatible"/>
-      <import plugin="org.eclipse.sirius.common" version="5.0.0" match="compatible"/>
-      <import plugin="org.eclipse.sirius.common.ui" version="5.0.0" match="compatible"/>
-      <import plugin="org.eclipse.sirius.diagram" version="5.0.0" match="compatible"/>
-      <import plugin="org.eclipse.sirius.diagram.ui" version="5.0.0" match="compatible"/>
-      <import plugin="org.eclipse.sirius.ecore.extender" version="5.0.0" match="compatible"/>
-      <import plugin="org.eclipse.sirius.ext.base" version="5.0.0" match="compatible"/>
-      <import plugin="org.eclipse.sirius.ui" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius" version="6.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.common" version="6.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.common.ui" version="6.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.diagram" version="6.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.diagram.ui" version="6.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.ecore.extender" version="6.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.ext.base" version="6.0.0" match="compatible"/>
+      <import plugin="org.eclipse.sirius.ui" version="6.0.0" match="compatible"/>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.ui.navigator"/>
@@ -261,7 +261,7 @@ litigation.
       <import plugin="org.eclipse.eef.ide.ui.properties"/>
       <import plugin="org.eclipse.eef.properties.ui"/>
       <import plugin="org.eclipse.eef.properties.ui.legacy"/>
-      <import feature="org.eclipse.sirius.properties.feature" version="5.0.0" match="compatible"/>
+      <import feature="org.eclipse.sirius.properties.feature" version="6.1.0" match="compatible"/>
    </requires>
 
    <plugin

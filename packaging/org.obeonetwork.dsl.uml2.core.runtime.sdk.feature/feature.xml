@@ -12,7 +12,7 @@ Contributors:
 <feature
       id="org.obeonetwork.dsl.uml2.core.runtime.sdk.feature"
       label="UML Designer core SDK"
-      version="8.1.1.qualifier"
+      version="9.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://umldesigner.org">
@@ -232,7 +232,7 @@ litigation.
          version="0.0.0"/>
 
    <requires>
-      <import feature="org.eclipse.sirius.specifier.ide.ui" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.specifier.ide.ui" version="6.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 

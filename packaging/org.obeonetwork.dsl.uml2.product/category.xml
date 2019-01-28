@@ -3,19 +3,19 @@
    <description url="http://www.obeo.fr">
       Viewpoint
    </description>
-   <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="8.1.1.qualifier">
+   <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="9.0.0.qualifier">
       <category name="Obeo Network"/>
    </feature>
-   <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="8.1.1.qualifier">
+   <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="9.0.0.qualifier">
       <category name="Obeo Network"/>
    </feature>
-   <feature id="org.obeonetwork.dsl.uml2.runtime.product.feature" version="8.1.1.qualifier">
+   <feature id="org.obeonetwork.dsl.uml2.runtime.product.feature" version="9.0.0.qualifier">
       <category name="Obeo Network"/>
    </feature>
-   <feature url="features/org.obeonetwork.dsl.uml2.core.runtime.feature_8.1.1.qualifier.jar" id="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.1.1.qualifier">
+   <feature url="features/org.obeonetwork.dsl.uml2.core.runtime.feature_9.0.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.core.runtime.feature" version="9.0.0.qualifier">
       <category name="Obeo Network"/>
    </feature>
-   <feature url="features/org.obeonetwork.dsl.uml2.umlgen.feature_8.1.1.qualifier.jar" id="org.obeonetwork.dsl.uml2.umlgen.feature" version="8.1.1.qualifier">
+   <feature url="features/org.obeonetwork.dsl.uml2.umlgen.feature_9.0.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.umlgen.feature" version="9.0.0.qualifier">
       <category name="Obeo Network"/>
    </feature>
    <category-def name="Obeo Network" label="Obeo Network">
