@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.obeonetwork.dsl.uml2</groupId>
     <artifactId>parent</artifactId>
-    <version>8.1.1-SNAPSHOT</version>
+    <version>9.0.0-SNAPSHOT</version>
     <relativePath>../../releng/org.obeonetwork.dsl.uml2.parent</relativePath>
   </parent>
 

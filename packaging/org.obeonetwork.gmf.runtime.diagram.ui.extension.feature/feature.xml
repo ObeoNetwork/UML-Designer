@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.gmf.runtime.diagram.ui.extension.feature"
       label="GMF Runtime UI Extension Feature"
-      version="8.1.1.qualifier"
+      version="9.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://ww.umldesigner.org">
@@ -215,6 +215,7 @@ Agreement more than one year after the cause of action arose.
 Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
+
    <plugin
          id="org.obeonetwork.gmf.runtime.diagram.ui.extension"
          download-size="0"

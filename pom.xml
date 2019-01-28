@@ -27,7 +27,7 @@ Contributors:
 
     <groupId>org.obeonetwork.dsl.uml2</groupId>
     <artifactId>top</artifactId>
-    <version>8.1.1-SNAPSHOT</version>
+    <version>9.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>

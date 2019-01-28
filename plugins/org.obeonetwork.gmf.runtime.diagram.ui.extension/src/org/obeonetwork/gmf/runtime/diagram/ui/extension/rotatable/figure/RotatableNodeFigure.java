@@ -13,8 +13,8 @@ package org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirDefaultSizeNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 
 /**
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
