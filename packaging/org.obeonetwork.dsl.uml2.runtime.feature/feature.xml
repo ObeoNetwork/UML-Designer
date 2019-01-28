@@ -225,11 +225,7 @@ litigation.
       <import feature="org.eclipse.sirius.runtime" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0" match="greaterOrEqual"/>
-<<<<<<< HEAD
-      <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.1.1.qualifier"/>
-=======
       <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="9.0.0.qualifier"/>
->>>>>>> 39fd0a27f11c9b826653def388b8ee09f399a46c
    </requires>
 
    <plugin
