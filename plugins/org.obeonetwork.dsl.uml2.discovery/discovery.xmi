@@ -14,11 +14,11 @@
         description="UML and SysML Designers provide a set of common diagrams to work with UML and SysML models."
         license="EPL"
         image32="images/logo_UMLDesigner.png">
-      <sitesURLS>http://releases.obeonetwork.com/sirius_5_1_2</sitesURLS>
+      <sitesURLS>http://releases.obeonetwork.com/sirius_6_1_0</sitesURLS>
       <overview
           summary="UML and SysML Designer is a graphical tool to edit and visualize UML 2.5 and SysML 1.4 models. As it is based on Sirius, it provides an easy way to combine UML and SysML with domain specific modeling. You can extend the provided diagram definitions and seamlessly work on both UML and SysML and DSL models at the same time. "
           screenshot="images/sysml_designer_screenshot-320x240.png"
-          url="http://releases.obeonetwork.com/sirius_5_1"/>
+          url="http://releases.obeonetwork.com/sirius_6_1_0"/>
       <id>org.obeonetwork.dsl.sysml.runtime.feature</id>
       <id>org.obeonetwork.dsl.uml2.runtime.feature</id>
       <id>org.eclipse.sirius.properties.feature.patch</id>
