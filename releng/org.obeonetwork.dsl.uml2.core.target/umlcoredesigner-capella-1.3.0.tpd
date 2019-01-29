@@ -41,7 +41,7 @@ location orbit-R20140525021250 "http://download.eclipse.org/tools/orbit/download
 }
 
 // Sirius
-location sirius-6.1.0 "http://download.eclipse.org/sirius/updates/releases/6.1.0/oxygen" {
+location sirius-6.1.1 "http://download.eclipse.org/sirius/updates/releases/6.1.1/oxygen" {
 	org.eclipse.sirius.runtime.feature.group lazy
 	org.eclipse.sirius.runtime.aql.feature.group lazy
 	org.eclipse.sirius.properties.feature.feature.group lazy

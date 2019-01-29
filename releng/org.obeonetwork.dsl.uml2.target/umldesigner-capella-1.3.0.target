@@ -51,7 +51,7 @@
       <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.aql.feature.group" version="0.0.0"/>
-      <repository id="sirius-6.1.0" location="http://download.eclipse.org/sirius/updates/releases/6.1.0/oxygen"/>
+      <repository id="sirius-6.1.1" location="http://download.eclipse.org/sirius/updates/releases/6.1.1/oxygen"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.amalgam.discovery.feature.group" version="0.0.0"/>
