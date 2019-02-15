@@ -29,6 +29,30 @@ Contributors:
   <build>
     <plugins>
       <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>0.24.0</version>
+        <executions>
+          <execution>
+            <id>default-assemble-repository</id>
+            <phase>package</phase>
+            <goals>
+              <goal>assemble-repository</goal>
+            </goals>
+            <configuration>
+            	<includeAllDependencies>true</includeAllDependencies>
+            </configuration>
+          </execution>
+          <execution>
+            <id>default-archive-repository</id>
+            <phase>package</phase>
+            <goals>
+              <goal>archive-repository</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <executions>
           <execution>
