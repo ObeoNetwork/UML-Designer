@@ -112,3 +112,7 @@ deploy:
       repo: ObeoNetwork/UML-Designer
 dd:
   secure: SVW8lL8L5J7f/AgTRm69vYlOVx+U/grtQM52Ue/ZaHtNhZEuXbz2FmPhMzK3k7Adlqw2vbrzmBe78svbHvMLOuqWGPfcmYlBLeSDQPp8VI6KLpGt+y2UltoSdLKjnXyn6KCerXYm4FTdqxtZDuso52THGNC0Enn3kHv6d9tR4qw=
+
+cache:
+  directories:
+  - $HOME/.m2
