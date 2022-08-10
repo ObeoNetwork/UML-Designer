@@ -73,6 +73,18 @@ h5, .h5 {
 	background-color: #fbb800;
 	border: 2px solid #fbb800;
 }
+
+.btn-default-inv {
+	border: 2px solid #fbb800;
+    background: #fbb800;
+    color: #fff;
+}
+
+.btn-default-inv:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+	color: #fff;
+	background-color: transparent;
+	border: 2px solid #fbb800;
+}
 	
 .btn-lg {
 	border-radius: 0;
