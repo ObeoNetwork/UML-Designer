@@ -26,7 +26,8 @@ img {
 	margin: 15px 0;
 }
 
-a, .first_section h3 a:hover, .section h3 a:hover, .section-colored h3 a:hover {
+
+a, .first_section h3 a:hover, .section h3 a:hover, .section-colored h3 a:hover, .bg_green3 a:hover {
 	color: #fbb800;
 	font-weight: 600;
 }
